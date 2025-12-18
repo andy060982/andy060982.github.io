@@ -54,8 +54,9 @@
             display: flex; justify-content: space-between; align-items: center; height: 60px;
         }
 
-        .logo { height: 40px; transition: opacity 0.2s; }
+        .logo { height: 40px; transition: opacity 0.2s, filter 0.3s; }
         .logo:hover { opacity: 0.7; }
+        [data-theme="dark"] .logo { filter: invert(1); }
 
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
@@ -438,12 +439,10 @@
             if (body.getAttribute('data-theme') === 'dark') {
                 body.removeAttribute('data-theme');
                 icon.textContent = '🌙';
-                navLogo.src = '../images/aa-logo.png';
                 localStorage.setItem('theme', 'light');
             } else {
                 body.setAttribute('data-theme', 'dark');
                 icon.textContent = '☀️';
-                navLogo.src = '../images/aa-logo-dark.png';
                 localStorage.setItem('theme', 'dark');
             }
         }
@@ -454,7 +453,6 @@
             if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 document.body.setAttribute('data-theme', 'dark');
                 document.getElementById('theme-icon').textContent = '☀️';
-                document.getElementById('nav-logo').src = '../images/aa-logo-dark.png';
             }
         })();
     </script>
