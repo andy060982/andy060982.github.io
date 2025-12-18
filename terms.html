@@ -3,72 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Use – Andy Apps</title>
+    <title>Terms of Use – Andy Arevalo</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.7; color: #333; }
-        h1 { color: #007AFF; }
-        h2 { color: #333; margin-top: 30px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        nav { margin-bottom: 20px; }
-        nav a { margin-right: 15px; color: #007AFF; text-decoration: none; }
-        nav a:hover { text-decoration: underline; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 0.9em; }
-        a { color: #007AFF; }
-        ul { padding-left: 20px; }
-        .updated { color: #666; font-size: 0.9em; }
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #007AFF;
+            --card-bg: #ffffff;
+            --border: #e5e5e7;
+        }
+
+        [data-theme="dark"] {
+            --bg: #000000;
+            --bg-secondary: #1c1c1e;
+            --text: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #0a84ff;
+            --card-bg: #1c1c1e;
+            --border: #38383a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        [data-theme="dark"] nav { background: rgba(0,0,0,0.8); }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo { height: 40px; transition: opacity 0.2s; }
+        .logo:hover { opacity: 0.7; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 20px; padding: 5px; }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .updated {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+
+        ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
+
+        li { margin-bottom: 8px; }
+
+        strong { color: var(--text); }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text); font-size: 14px; }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 13px; }
+            h1 { font-size: 28px; }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="support.html">Support</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="images/signature.png" alt="Andy Arevalo" class="logo" id="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#apps">Apps</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <h1>Terms of Use</h1>
-    <p class="updated"><strong>Last Updated:</strong> November 2025</p>
+    <div class="content">
+        <h1>Terms of Use</h1>
+        <p class="updated"><strong>Last Updated:</strong> November 2025</p>
 
-    <h2>1. Apps Covered</h2>
-    <p>These terms apply to all Andy Apps products including: OnTime Speaker Pro, OnStage Timer Pro, Not Another Twin Calculator, Not Another Stage Timer, Duse – Habit Tracker, Student Guardian, and future Andy Apps releases.</p>
+        <h2>1. Apps Covered</h2>
+        <p>These terms apply to all apps by Andy Arevalo including: OnTime Speaker Pro, OnStage Timer Pro, Not Another Twin Calculator, Not Another Stage Timer, Duse – Habit Tracker, Student Guardian, and future releases.</p>
 
-    <h2>2. Use of the Apps</h2>
-    <p>You may use our apps for personal or professional purposes. Prohibited activities include:</p>
-    <ul>
-        <li>Reverse engineering or decompiling</li>
-        <li>Modifying apps or accessing source code</li>
-        <li>Bypassing security measures</li>
-        <li>Unauthorized copying or distribution</li>
-        <li>Unlawful use</li>
-    </ul>
+        <h2>2. Use of the Apps</h2>
+        <p>You may use our apps for personal or professional purposes. Prohibited activities include:</p>
+        <ul>
+            <li>Reverse engineering or decompiling</li>
+            <li>Modifying apps or accessing source code</li>
+            <li>Bypassing security measures</li>
+            <li>Unauthorized copying or distribution</li>
+            <li>Unlawful use</li>
+        </ul>
 
-    <h2>3. User-Generated Data</h2>
-    <p>You are responsible for data accuracy and maintaining backups. We do not access, store, or transmit your content unless you choose to export it.</p>
+        <h2>3. User-Generated Data</h2>
+        <p>You are responsible for data accuracy and maintaining backups. We do not access, store, or transmit your content unless you choose to export it.</p>
 
-    <h2>4. Purchases, Subscriptions, and Billing</h2>
-    <p>Payments are handled solely by Apple using your Apple ID. We do not collect billing information. Auto-renewable subscriptions continue unless canceled through your Apple ID settings.</p>
+        <h2>4. Purchases, Subscriptions, and Billing</h2>
+        <p>Payments are handled solely by Apple using your Apple ID. We do not collect billing information. Auto-renewable subscriptions continue unless canceled through your Apple ID settings.</p>
 
-    <h2>5. Disclaimer of Warranties</h2>
-    <p>Apps are provided "as is" without warranties. We make no guarantees regarding error-free performance, timing suitability for safety-critical applications, or device compatibility.</p>
+        <h2>5. Disclaimer of Warranties</h2>
+        <p>Apps are provided "as is" without warranties. We make no guarantees regarding error-free performance, timing suitability for safety-critical applications, or device compatibility.</p>
 
-    <h2>6. Limitation of Liability</h2>
-    <p>Andy Apps is not liable for any loss of data or any indirect, incidental, or consequential damages. Your sole remedy is discontinuing use of our apps.</p>
+        <h2>6. Limitation of Liability</h2>
+        <p>Andy Arevalo is not liable for any loss of data or any indirect, incidental, or consequential damages. Your sole remedy is discontinuing use of our apps.</p>
 
-    <h2>7. Intellectual Property</h2>
-    <p>All branding, icons, features, and design elements belong to Andy Apps and cannot be redistributed without permission.</p>
+        <h2>7. Intellectual Property</h2>
+        <p>All branding, icons, features, and design elements belong to Andy Arevalo and cannot be redistributed without permission.</p>
 
-    <h2>8. Termination</h2>
-    <p>We may suspend access for violations. You may discontinue use by deleting the apps.</p>
+        <h2>8. Termination</h2>
+        <p>We may suspend access for violations. You may discontinue use by deleting the apps.</p>
 
-    <h2>9. Changes to These Terms</h2>
-    <p>Updates may occur; continued use indicates acceptance of revisions.</p>
+        <h2>9. Changes to These Terms</h2>
+        <p>Updates may occur; continued use indicates acceptance of revisions.</p>
 
-    <h2>10. Contact</h2>
-    <p>Email: <a href="mailto:arevalo.andy@gmail.com">arevalo.andy@gmail.com</a><br>We typically respond within 48 hours.</p>
+        <h2>10. Contact</h2>
+        <p>Email: <a href="mailto:arevalo.andy@gmail.com">arevalo.andy@gmail.com</a><br>We typically respond within 48 hours.</p>
+    </div>
 
     <footer>
-        <p><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
-        <p>&copy; 2025 Andy Apps</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#apps">Apps</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; 2025 Andy Arevalo. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            const navLogo = document.getElementById('nav-logo');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                navLogo.src = 'images/signature.png';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                navLogo.src = 'images/signature-dark.png';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+                document.getElementById('nav-logo').src = 'images/signature-dark.png';
+            }
+        })();
+    </script>
 </body>
 </html>

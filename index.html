@@ -3,82 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andy Apps – Simple. Focused. Useful.</title>
+    <title>Andy Arevalo – App Developer</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
-        h1 { color: #007AFF; margin-bottom: 5px; }
-        .tagline { color: #666; font-size: 1.2em; margin-bottom: 30px; }
-        .intro { background: #f5f5f7; padding: 20px; border-radius: 12px; margin-bottom: 30px; }
-        .app { border-bottom: 1px solid #eee; padding: 20px 0; }
-        .app:last-child { border-bottom: none; }
-        .app h3 { color: #007AFF; margin-bottom: 10px; }
-        .app p { margin: 5px 0; }
-        .features { color: #666; font-size: 0.9em; }
-        nav { margin-bottom: 20px; }
-        nav a { margin-right: 15px; color: #007AFF; text-decoration: none; }
-        nav a:hover { text-decoration: underline; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 0.9em; }
-        a { color: #007AFF; }
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #007AFF;
+            --card-bg: #ffffff;
+            --border: #e5e5e7;
+        }
+
+        [data-theme="dark"] {
+            --bg: #000000;
+            --bg-secondary: #1c1c1e;
+            --text: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #0a84ff;
+            --card-bg: #1c1c1e;
+            --border: #38383a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        [data-theme="dark"] nav {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            height: 40px;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.7;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 20px 80px;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        .hero-signature {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Apps Section */
+        .apps-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] .app-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .app-icon-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--accent), #5856d6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .app-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .app-info .tagline {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .app-description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .app-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .app-store-badge {
+            display: inline-block;
+        }
+
+        .app-store-badge img {
+            height: 40px;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="support.html">Support</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="images/signature.png" alt="Andy Arevalo" class="logo" id="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="#apps">Apps</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <h1>Andy Apps</h1>
-    <p class="tagline">Simple. Focused. Useful.</p>
+    <section class="hero">
+        <img src="images/signature.png" alt="Andy Arevalo" class="hero-signature" id="hero-signature">
+        <h1>Simple. Focused. Useful.</h1>
+        <p>Clean, intuitive mobile apps designed to make everyday tasks easier. No bloat, no tracking, just tools that work.</p>
+    </section>
 
-    <div class="intro">
-        <p>A collection of clean, intuitive, and purpose-driven mobile applications created to make everyday tasks easier. We build only necessary features while maintaining speed, reliability, and user-friendly design.</p>
-    </div>
+    <section class="apps-section" id="apps">
+        <h2 class="section-title">Apps</h2>
+        <div class="apps-grid">
 
-    <h2>Our Apps</h2>
+            <!-- Student Guardian -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img src="images/student-guardian.png" alt="Student Guardian" class="app-icon">
+                    <div class="app-info">
+                        <h3>Student Guardian</h3>
+                        <span class="tagline">School Email Organizer</span>
+                    </div>
+                </div>
+                <p class="app-description">Helps parents stay organized with their children's school communications. Connect your email, filter trusted sources, and get AI-powered summaries.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Email Filtering</span>
+                    <span class="feature-tag">AI Summaries</span>
+                    <span class="feature-tag">Calendar</span>
+                    <span class="feature-tag">15 Languages</span>
+                </div>
+                <span class="coming-soon">Coming January 2026</span>
+            </div>
 
-    <div class="app">
-        <h3>Student Guardian</h3>
-        <p>Helps parents stay organized with their children's school communications.</p>
-        <p class="features">Email filtering, AI summaries, calendar integration, multi-language support</p>
-    </div>
+            <!-- OnTime Speaker Pro -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img src="images/ontime-speaker-pro.png" alt="OnTime Speaker Pro" class="app-icon">
+                    <div class="app-info">
+                        <h3>OnTime Speaker Pro</h3>
+                        <span class="tagline">Professional Speech Timer</span>
+                    </div>
+                </div>
+                <p class="app-description">The ultimate timer for Toastmasters, debate teams, and conferences. Features the classic green-yellow-red timing system with Meeting Mode.</p>
+                <div class="app-features">
+                    <span class="feature-tag">14 Presets</span>
+                    <span class="feature-tag">Meeting Mode</span>
+                    <span class="feature-tag">Live Activities</span>
+                    <span class="feature-tag">Report Sharing</span>
+                </div>
+                <a href="https://apps.apple.com/us/app/ontime-speaker-pro/id6755796055" class="app-store-badge" target="_blank">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+            </div>
 
-    <div class="app">
-        <h3>OnTime Speaker Pro</h3>
-        <p>Professional speech timer for Toastmasters, debate teams, and conferences.</p>
-        <p class="features">Green-yellow-red timing system, Meeting Mode, 14 presets, report sharing, Live Activities</p>
-    </div>
+            <!-- OnStage Timer Pro -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img src="images/onstage-timer-pro.png" alt="OnStage Timer Pro" class="app-icon">
+                    <div class="app-info">
+                        <h3>OnStage Timer Pro</h3>
+                        <span class="tagline">Performer & Presenter Timer</span>
+                    </div>
+                </div>
+                <p class="app-description">Precision timing for performers, presenters, and event coordinators. Customizable themes and external display support.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Overtime Alerts</span>
+                    <span class="feature-tag">Custom Themes</span>
+                    <span class="feature-tag">External Display</span>
+                    <span class="feature-tag">Pro Customizations</span>
+                </div>
+                <a href="https://apps.apple.com/us/app/onstage-timer-pro/id6755630146" class="app-store-badge" target="_blank">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+            </div>
 
-    <div class="app">
-        <h3>OnStage Timer Pro</h3>
-        <p>Precision timer for performers and presenters.</p>
-        <p class="features">Overtime alerts, themes, external-display mode, Pro customizations</p>
-    </div>
+            <!-- Not Another Twin Calculator -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img src="images/twin-calculator.png" alt="Not Another Twin Calculator" class="app-icon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="app-icon-placeholder" style="display:none">🔢</div>
+                    <div class="app-info">
+                        <h3>Not Another Twin Calculator</h3>
+                        <span class="tagline">Dual Calculator</span>
+                    </div>
+                </div>
+                <p class="app-description">Two calculators, one screen. Perfect for comparing calculations, tip splitting, or unit conversions side by side.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Side-by-Side</span>
+                    <span class="feature-tag">History Tracking</span>
+                    <span class="feature-tag">Clean Interface</span>
+                </div>
+                <a href="https://apps.apple.com/us/app/not-another-twin-calculator/id6755574828" class="app-store-badge" target="_blank">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+            </div>
 
-    <div class="app">
-        <h3>Not Another Twin Calculator</h3>
-        <p>Dual-calculator app with side-by-side calculations.</p>
-        <p class="features">History tracking, clean interface</p>
-    </div>
+            <!-- Not Another Stage Timer -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img src="images/not-another-stage-timer.png" alt="Not Another Stage Timer" class="app-icon">
+                    <div class="app-info">
+                        <h3>Not Another Stage Timer</h3>
+                        <span class="tagline">Simple Event Timer</span>
+                    </div>
+                </div>
+                <p class="app-description">Distraction-free timing for classrooms, events, and presentations. Simple, elegant, and effective.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Distraction-Free</span>
+                    <span class="feature-tag">Large Display</span>
+                    <span class="feature-tag">Easy Controls</span>
+                </div>
+                <a href="https://apps.apple.com/us/app/not-another-stage-timer/id6755610255" class="app-store-badge" target="_blank">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+            </div>
 
-    <div class="app">
-        <h3>Not Another Stage Timer</h3>
-        <p>Simple timing tool for classrooms and events.</p>
-        <p class="features">Distraction-free design</p>
-    </div>
+            <!-- Duse -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img src="images/duse.png" alt="Duse" class="app-icon">
+                    <div class="app-info">
+                        <h3>Duse</h3>
+                        <span class="tagline">Habit Tracker</span>
+                    </div>
+                </div>
+                <p class="app-description">Minimalist habit tracking that helps you build consistency. Visual progress tracking without the complexity.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Minimalist</span>
+                    <span class="feature-tag">Progress Visualization</span>
+                    <span class="feature-tag">Streaks</span>
+                </div>
+                <a href="https://apps.apple.com/us/app/duse-habit-tracker/id6742254716" class="app-store-badge" target="_blank">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+            </div>
 
-    <div class="app">
-        <h3>Duse – Habit Tracker</h3>
-        <p>Minimalist habit tracking application.</p>
-        <p class="features">Progress visualization</p>
-    </div>
+        </div>
+    </section>
 
     <footer>
-        <p><strong>Contact:</strong> <a href="mailto:arevalo.andy@gmail.com">arevalo.andy@gmail.com</a> (typically within 48 hours)</p>
-        <p><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
-        <p>&copy; 2025 Andy Apps</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="#apps">Apps</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+        <p class="footer-contact">
+            Contact: <a href="mailto:arevalo.andy@gmail.com">arevalo.andy@gmail.com</a>
+        </p>
+        <p class="copyright">&copy; 2025 Andy Arevalo. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            const navLogo = document.getElementById('nav-logo');
+            const heroSignature = document.getElementById('hero-signature');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                navLogo.src = 'images/signature.png';
+                heroSignature.src = 'images/signature.png';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                navLogo.src = 'images/signature-dark.png';
+                heroSignature.src = 'images/signature-dark.png';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+                document.getElementById('nav-logo').src = 'images/signature-dark.png';
+                document.getElementById('hero-signature').src = 'images/signature-dark.png';
+            }
+        })();
+    </script>
 </body>
 </html>

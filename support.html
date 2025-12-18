@@ -3,50 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support – Andy Apps</title>
+    <title>Support – Andy Arevalo</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.7; color: #333; }
-        h1 { color: #007AFF; }
-        nav { margin-bottom: 20px; }
-        nav a { margin-right: 15px; color: #007AFF; text-decoration: none; }
-        nav a:hover { text-decoration: underline; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 0.9em; }
-        a { color: #007AFF; }
-        .contact-box { background: #f5f5f7; padding: 30px; border-radius: 12px; text-align: center; margin: 40px 0; }
-        .contact-box h2 { margin-top: 0; }
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #007AFF;
+            --card-bg: #ffffff;
+            --border: #e5e5e7;
+        }
+
+        [data-theme="dark"] {
+            --bg: #000000;
+            --bg-secondary: #1c1c1e;
+            --text: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #0a84ff;
+            --card-bg: #1c1c1e;
+            --border: #38383a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        [data-theme="dark"] nav { background: rgba(0,0,0,0.8); }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo { height: 40px; transition: opacity 0.2s; }
+        .logo:hover { opacity: 0.7; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 20px; padding: 5px; }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .intro {
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .contact-box {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-box h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .contact-box p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .contact-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .contact-box a:hover { text-decoration: underline; }
+
+        .response-time {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 16px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .apps-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .app-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 11px;
+        }
+
+        .app-item-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .app-item-info span {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text); font-size: 14px; }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 13px; }
+            h1 { font-size: 28px; }
+            .apps-list { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="support.html">Support</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="images/signature.png" alt="Andy Arevalo" class="logo" id="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#apps">Apps</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <h1>Support</h1>
-    <p>Need help with one of our apps? We're here to assist you.</p>
+    <div class="content">
+        <h1>Support</h1>
+        <p class="intro">Need help with one of our apps? We're here to assist you.</p>
 
-    <div class="contact-box">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:arevalo.andy@gmail.com">arevalo.andy@gmail.com</a></p>
-        <p>We typically respond within <strong>48 hours</strong>.</p>
+        <div class="contact-box">
+            <h2>Contact Us</h2>
+            <p>Email us at:</p>
+            <a href="mailto:arevalo.andy@gmail.com">arevalo.andy@gmail.com</a>
+            <br>
+            <span class="response-time">Typically responds within 48 hours</span>
+        </div>
+
+        <h2>Our Apps</h2>
+        <div class="apps-list">
+            <div class="app-item">
+                <img src="images/student-guardian.png" alt="Student Guardian">
+                <div class="app-item-info">
+                    <h3>Student Guardian</h3>
+                    <span>School Email Organizer</span>
+                </div>
+            </div>
+            <div class="app-item">
+                <img src="images/ontime-speaker-pro.png" alt="OnTime Speaker Pro">
+                <div class="app-item-info">
+                    <h3>OnTime Speaker Pro</h3>
+                    <span>Professional Speech Timer</span>
+                </div>
+            </div>
+            <div class="app-item">
+                <img src="images/onstage-timer-pro.png" alt="OnStage Timer Pro">
+                <div class="app-item-info">
+                    <h3>OnStage Timer Pro</h3>
+                    <span>Performer & Presenter Timer</span>
+                </div>
+            </div>
+            <div class="app-item">
+                <img src="images/twin-calculator.png" alt="Not Another Twin Calculator" onerror="this.src='images/aa-logo.png'">
+                <div class="app-item-info">
+                    <h3>Not Another Twin Calculator</h3>
+                    <span>Dual Calculator</span>
+                </div>
+            </div>
+            <div class="app-item">
+                <img src="images/not-another-stage-timer.png" alt="Not Another Stage Timer">
+                <div class="app-item-info">
+                    <h3>Not Another Stage Timer</h3>
+                    <span>Simple Event Timer</span>
+                </div>
+            </div>
+            <div class="app-item">
+                <img src="images/duse.png" alt="Duse">
+                <div class="app-item-info">
+                    <h3>Duse</h3>
+                    <span>Habit Tracker</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <h2>Our Apps</h2>
-    <ul>
-        <li><strong>Student Guardian</strong> – School email organizer for parents</li>
-        <li><strong>OnTime Speaker Pro</strong> – Professional speech timer</li>
-        <li><strong>OnStage Timer Pro</strong> – Performer and presenter timer</li>
-        <li><strong>Not Another Twin Calculator</strong> – Dual calculator</li>
-        <li><strong>Not Another Stage Timer</strong> – Simple event timer</li>
-        <li><strong>Duse</strong> – Habit tracker</li>
-    </ul>
-
     <footer>
-        <p><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
-        <p>&copy; 2025 Andy Apps</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#apps">Apps</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; 2025 Andy Arevalo. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            const navLogo = document.getElementById('nav-logo');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                navLogo.src = 'images/signature.png';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                navLogo.src = 'images/signature-dark.png';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+                document.getElementById('nav-logo').src = 'images/signature-dark.png';
+            }
+        })();
+    </script>
 </body>
 </html>
