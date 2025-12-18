@@ -185,7 +185,7 @@
     <nav>
         <div class="nav-container">
             <a href="../index.html">
-                <img src="../images/signature.png" alt="Andy Arevalo" class="logo" id="nav-logo">
+                <img src="../images/aa-logo.png" alt="Andy Arevalo" class="logo" id="nav-logo" width="40" height="40">
             </a>
             <div class="nav-links">
                 <a href="../index.html#apps">Apps</a>
@@ -320,12 +320,12 @@
             if (body.getAttribute('data-theme') === 'dark') {
                 body.removeAttribute('data-theme');
                 icon.textContent = '🌙';
-                navLogo.src = '../images/signature.png';
+                navLogo.src = '../images/aa-logo.png';
                 localStorage.setItem('theme', 'light');
             } else {
                 body.setAttribute('data-theme', 'dark');
                 icon.textContent = '☀️';
-                navLogo.src = '../images/signature-dark.png';
+                navLogo.src = '../images/aa-logo-dark.png';
                 localStorage.setItem('theme', 'dark');
             }
         }
@@ -336,7 +336,7 @@
             if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 document.body.setAttribute('data-theme', 'dark');
                 document.getElementById('theme-icon').textContent = '☀️';
-                document.getElementById('nav-logo').src = '../images/signature-dark.png';
+                document.getElementById('nav-logo').src = '../images/aa-logo-dark.png';
             }
         })();
     </script>
