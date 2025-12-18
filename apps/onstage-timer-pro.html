@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnStage Timer Pro – Performer & Presenter Timer | Andy Arevalo</title>
+    <meta name="description" content="Professional countdown timer for speakers, presenters, and performers. Three themes, overtime tracking, external display support, and Apple Watch app.">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #007AFF;
+            --card-bg: #ffffff;
+            --border: #e5e5e7;
+            --green: #34c759;
+            --yellow: #ffcc00;
+            --red: #ff3b30;
+        }
+
+        [data-theme="dark"] {
+            --bg: #000000;
+            --bg-secondary: #1c1c1e;
+            --text: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #0a84ff;
+            --card-bg: #1c1c1e;
+            --border: #38383a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000; padding: 0 20px;
+        }
+
+        [data-theme="dark"] nav { background: rgba(0,0,0,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; height: 60px;
+        }
+
+        .logo { height: 40px; transition: opacity 0.2s; }
+        .logo:hover { opacity: 0.7; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 20px; padding: 5px; }
+
+        .hero {
+            padding: 120px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .price-badge { background: var(--bg); border: 1px solid var(--border); padding: 10px 20px; border-radius: 25px; font-size: 14px; }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        /* Themes Section */
+        .themes {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .theme-card {
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .theme-card.dark { background: #1c1c1e; color: white; }
+        .theme-card.minimal { background: #2c2c2e; color: white; }
+        .theme-card.light { background: #f5f5f7; color: #1d1d1f; border: 1px solid var(--border); }
+
+        .theme-card h3 { font-size: 20px; margin-bottom: 8px; }
+        .theme-card p { opacity: 0.8; font-size: 14px; }
+
+        /* Features */
+        .features {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Use Cases */
+        .use-cases { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .use-cases-list { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .use-case-tag { background: var(--bg-secondary); padding: 12px 24px; border-radius: 25px; font-size: 15px; color: var(--text-secondary); }
+
+        /* Pricing */
+        .pricing { padding: 60px 20px; background: var(--bg-secondary); }
+        .pricing-content { max-width: 600px; margin: 0 auto; text-align: center; }
+        .pricing-box {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+        }
+        .pricing-box .price { font-size: 48px; font-weight: 700; }
+        .pricing-box .period { color: var(--text-secondary); font-size: 18px; }
+        .free-trial { color: var(--accent); font-weight: 600; margin-top: 16px; }
+
+        /* Platforms */
+        .platforms { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .platforms-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .platform { text-align: center; }
+        .platform-icon { font-size: 48px; margin-bottom: 8px; }
+        .platform span { color: var(--text-secondary); font-size: 14px; }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text); text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: var(--accent); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .themes-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html">
+                <img src="../images/signature.png" alt="Andy Arevalo" class="logo" id="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html#apps">Apps</a>
+                <a href="../support.html">Support</a>
+                <a href="../privacy.html">Privacy</a>
+                <a href="../terms.html">Terms</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>OnStage Timer Pro</h1>
+                <p class="tagline">Performer & Presenter Timer</p>
+                <p>Professional countdown timer for speakers, presenters, and performers. Full-screen display with overtime tracking, customizable themes, and external display support.</p>
+                <div class="hero-badges">
+                    <a href="https://apps.apple.com/us/app/onstage-timer-pro/id6755630146" class="app-store-badge" target="_blank">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <span class="price-badge">Free 3-day trial</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../images/onstage-timer-pro.png" alt="OnStage Timer Pro" class="app-icon-large">
+            </div>
+        </div>
+    </section>
+
+    <section class="themes">
+        <h2 class="section-title">Professional Themes</h2>
+        <div class="themes-grid">
+            <div class="theme-card dark">
+                <h3>Spotlight Dark</h3>
+                <p>Bold and visible. Perfect for stages and studios.</p>
+            </div>
+            <div class="theme-card minimal">
+                <h3>Minimal Dark</h3>
+                <p>Clean and distraction-free. Focus on what matters.</p>
+            </div>
+            <div class="theme-card light">
+                <h3>Light Stage</h3>
+                <p>Bright and readable. Great for well-lit environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Overtime Tracking</h3>
+                <p>Timer continues past zero showing negative time (e.g., "-02:30") so you know exactly how far over you've gone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Color Zones</h3>
+                <p>Customizable green/yellow/red thresholds. Set your own warning and critical time points.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📺</div>
+                <h3>External Display</h3>
+                <p>Mirror to HDMI or USB-C displays from iPad. Your audience sees the countdown too.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⌚</div>
+                <h3>Apple Watch App</h3>
+                <p>Control your timer from your wrist. Start, pause, and monitor without touching your phone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Quick Adjustments</h3>
+                <p>Add or subtract 30 seconds or 1 minute while the timer is running. Adapt on the fly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Custom Messages</h3>
+                <p>Display motivational messages at each stage. Personalize the experience.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Unlimited Presets</h3>
+                <p>Save configurations for different events. Store duration, thresholds, colors, and alerts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Professional Cues</h3>
+                <p>Multiple cue tone options with optional haptic feedback. Choose what works for your environment.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Millisecond Accurate</h3>
+                <p>Precision timing engine ensures your countdown is always accurate.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <h2 class="section-title">Perfect For</h2>
+        <div class="use-cases-list">
+            <span class="use-case-tag">Conference Speakers</span>
+            <span class="use-case-tag">Workshop Leaders</span>
+            <span class="use-case-tag">Toastmasters</span>
+            <span class="use-case-tag">Educators</span>
+            <span class="use-case-tag">Performers</span>
+            <span class="use-case-tag">Moderators</span>
+            <span class="use-case-tag">Debate Teams</span>
+            <span class="use-case-tag">Podcasters</span>
+            <span class="use-case-tag">Worship Leaders</span>
+        </div>
+    </section>
+
+    <section class="platforms">
+        <h2 class="section-title">Available On</h2>
+        <div class="platforms-grid">
+            <div class="platform">
+                <div class="platform-icon">📱</div>
+                <span>iPhone</span>
+            </div>
+            <div class="platform">
+                <div class="platform-icon">📱</div>
+                <span>iPad</span>
+            </div>
+            <div class="platform">
+                <div class="platform-icon">⌚</div>
+                <span>Apple Watch</span>
+            </div>
+            <div class="platform">
+                <div class="platform-icon">💻</div>
+                <span>Mac (M1+)</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Simple Pricing</h2>
+            <div class="pricing-box">
+                <div class="price">$5.99</div>
+                <div class="period">per year</div>
+                <p class="free-trial">Includes free 3-day trial</p>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 14px;">One subscription works across all your devices</p>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Take the stage with confidence</h2>
+        <p>Download OnStage Timer Pro and never lose track of time again.</p>
+        <a href="https://apps.apple.com/us/app/onstage-timer-pro/id6755630146" class="app-store-badge" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#apps">Apps</a>
+            <a href="../support.html">Support</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; 2025 Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            const navLogo = document.getElementById('nav-logo');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                navLogo.src = '../images/signature.png';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                navLogo.src = '../images/signature-dark.png';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+                document.getElementById('nav-logo').src = '../images/signature-dark.png';
+            }
+        })();
+    </script>
+</body>
+</html>
