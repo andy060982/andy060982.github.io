@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThermoTimer – Sauna & Cold Plunge Timer | Andy Arevalo</title>
+    <meta name="description" content="Guided thermal therapy timer for sauna and cold plunge sessions. 6 protocols, Apple Watch support, session tracking, and three beautiful themes.">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --accent: #007AFF;
+            --card-bg: #ffffff;
+            --border: #e5e5e7;
+            --sauna: #ff6b35;
+            --cold: #00b4d8;
+            --rest: #4ecdc4;
+        }
+
+        [data-theme="dark"] {
+            --bg: #000000;
+            --bg-secondary: #1c1c1e;
+            --text: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --accent: #0a84ff;
+            --card-bg: #1c1c1e;
+            --border: #38383a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000; padding: 0 20px;
+        }
+
+        [data-theme="dark"] nav { background: rgba(0,0,0,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; height: 60px;
+        }
+
+        .logo { height: 40px; transition: opacity 0.2s, filter 0.3s; }
+        .logo:hover { opacity: 0.7; }
+        [data-theme="dark"] .logo { filter: invert(1); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 20px; padding: 5px; }
+
+        .hero {
+            padding: 120px 20px 60px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--sauna); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .price-badge { background: var(--sauna); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        /* Protocols */
+        .protocols {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .protocol-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .protocol-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .protocol-card p { color: var(--text-secondary); font-size: 14px; margin-bottom: 12px; }
+        .protocol-phases { display: flex; gap: 8px; flex-wrap: wrap; }
+        .phase-tag { font-size: 12px; padding: 4px 10px; border-radius: 12px; font-weight: 500; }
+        .phase-tag.sauna { background: rgba(255, 107, 53, 0.15); color: var(--sauna); }
+        .phase-tag.cold { background: rgba(0, 180, 216, 0.15); color: var(--cold); }
+        .phase-tag.rest { background: rgba(78, 205, 196, 0.15); color: var(--rest); }
+
+        /* Phase Demo */
+        .phase-demo {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .phase-cards {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .phase-card {
+            padding: 40px 20px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+        }
+
+        .phase-card.sauna { background: linear-gradient(135deg, #ff6b35, #f7931e); }
+        .phase-card.cold { background: linear-gradient(135deg, #00b4d8, #0077b6); }
+        .phase-card.rest { background: linear-gradient(135deg, #4ecdc4, #2ab7ca); }
+
+        .phase-card .icon { font-size: 48px; margin-bottom: 12px; }
+        .phase-card h3 { font-size: 24px; margin-bottom: 8px; }
+        .phase-card p { opacity: 0.9; font-size: 14px; }
+
+        /* Features */
+        .features {
+            padding: 60px 20px;
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Platforms */
+        .platforms {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .platforms-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .platform-item .icon { font-size: 48px; margin-bottom: 12px; }
+        .platform-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+        .platform-item p { color: var(--text-secondary); font-size: 14px; }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text); text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: var(--accent); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 100px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .phase-cards { grid-template-columns: 1fr; }
+            .platforms-grid { grid-template-columns: 1fr; gap: 20px; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html">
+                <img src="../images/aa-logo-40.png" alt="Andy Arevalo" class="logo" id="nav-logo" width="40" height="40">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html#apps">Apps</a>
+                <a href="../support.html">Support</a>
+                <a href="../privacy.html">Privacy</a>
+                <a href="../terms.html">Terms</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>ThermoTimer</h1>
+                <p class="tagline">Sauna & Cold Plunge Timer</p>
+                <p>The perfect companion for your thermal therapy sessions. Guided protocols for sauna and cold plunge with phase timing, session tracking, and Apple Watch support.</p>
+                <div class="hero-badges">
+                    <a href="https://apps.apple.com/us/app/thermotimer/id6755892933" class="app-store-badge" target="_blank">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <span class="price-badge">$2.99</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../images/thermotimer-256.png" alt="ThermoTimer" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <section class="phase-demo">
+        <h2 class="section-title">Three Phase Types</h2>
+        <div class="phase-cards">
+            <div class="phase-card sauna">
+                <div class="icon">🔥</div>
+                <h3>Sauna</h3>
+                <p>Heat exposure for relaxation and recovery</p>
+            </div>
+            <div class="phase-card cold">
+                <div class="icon">❄️</div>
+                <h3>Cold Plunge</h3>
+                <p>Cold immersion for alertness and resilience</p>
+            </div>
+            <div class="phase-card rest">
+                <div class="icon">🧘</div>
+                <h3>Rest</h3>
+                <p>Recovery time between phases</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="protocols">
+        <h2 class="section-title">6 Guided Protocols</h2>
+        <div class="protocols-grid">
+            <div class="protocol-card">
+                <h3>Beginner</h3>
+                <p>Gentle introduction to thermal therapy</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">10min Sauna</span>
+                    <span class="phase-tag cold">30s Cold</span>
+                    <span class="phase-tag rest">3min Rest</span>
+                    <span class="phase-tag">× 2</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Wim Hof Method</h3>
+                <p>Short cold, longer sauna exposure</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">15min Sauna</span>
+                    <span class="phase-tag cold">3min Cold</span>
+                    <span class="phase-tag rest">2min Rest</span>
+                    <span class="phase-tag">× 3</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Finnish Sauna</h3>
+                <p>Traditional long sauna sessions</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">20min Sauna</span>
+                    <span class="phase-tag cold">1min Cold</span>
+                    <span class="phase-tag rest">5min Rest</span>
+                    <span class="phase-tag">× 3</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Contrast Therapy</h3>
+                <p>Balanced hot and cold exposure</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">10min Sauna</span>
+                    <span class="phase-tag cold">2min Cold</span>
+                    <span class="phase-tag rest">1min Rest</span>
+                    <span class="phase-tag">× 4</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Quick Recovery</h3>
+                <p>Short session for busy days</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">8min Sauna</span>
+                    <span class="phase-tag cold">2min Cold</span>
+                    <span class="phase-tag rest">1min Rest</span>
+                    <span class="phase-tag">× 2</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Cold Focused</h3>
+                <p>Emphasis on cold exposure</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">5min Sauna</span>
+                    <span class="phase-tag cold">5min Cold</span>
+                    <span class="phase-tag rest">2min Rest</span>
+                    <span class="phase-tag">× 3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⌚</div>
+                <h3>Apple Watch</h3>
+                <p>Control your sessions directly from your wrist. Perfect for when your phone is in a locker.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Session History</h3>
+                <p>Track all your sessions with detailed stats. See time spent in hot and cold phases.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Streak Tracking</h3>
+                <p>Build consistency with streak tracking. Stay motivated with your progress.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Three Themes</h3>
+                <p>Sauna Glow for warm ambiance, Dark Minimal for OLED, Light Clean for outdoors.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔅</div>
+                <h3>Dim Mode</h3>
+                <p>Low brightness mode keeps the timer visible in dark sauna environments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Audio & Haptics</h3>
+                <p>Customizable alerts for phase transitions. Never miss a change.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <h3>Custom Protocols</h3>
+                <p>Create your own therapy sequences with custom durations and phases.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <h3>Export Sessions</h3>
+                <p>Share your session history. Track your thermal therapy journey.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Offline</h3>
+                <p>No accounts, no ads, no subscriptions. Works everywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms">
+        <h2 class="section-title">Available On</h2>
+        <div class="platforms-grid">
+            <div class="platform-item">
+                <div class="icon">📱</div>
+                <h3>iPhone</h3>
+                <p>iOS 17.0+</p>
+            </div>
+            <div class="platform-item">
+                <div class="icon">📱</div>
+                <h3>iPad</h3>
+                <p>iPadOS 17.0+</p>
+            </div>
+            <div class="platform-item">
+                <div class="icon">⌚</div>
+                <h3>Apple Watch</h3>
+                <p>watchOS 11.0+</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to optimize your thermal therapy?</h2>
+        <p>Download ThermoTimer for just $2.99. No subscriptions, no ads.</p>
+        <a href="https://apps.apple.com/us/app/thermotimer/id6755892933" class="app-store-badge" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#apps">Apps</a>
+            <a href="../support.html">Support</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; 2025 Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+            }
+        })();
+    </script>
+</body>
+</html>
