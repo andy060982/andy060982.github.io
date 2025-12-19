@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About – Andy Arevalo</title>
+    <meta name="description" content="Andy Arevalo is an independent iOS app developer creating simple, focused, and useful apps. Learn about the philosophy behind the apps.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/about.html">
+    <meta property="og:title" content="About – Andy Arevalo">
+    <meta property="og:description" content="Andy Arevalo is an independent iOS app developer creating simple, focused, and useful apps. Learn about the philosophy behind the apps.">
+    <meta property="og:image" content="https://andyarevalo.com/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/about.html">
+    <meta name="twitter:title" content="About – Andy Arevalo">
+    <meta name="twitter:description" content="Andy Arevalo is an independent iOS app developer creating simple, focused, and useful apps. Learn about the philosophy behind the apps.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/og-image.png">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --accent: #007AFF;
+            --card-bg: #ffffff;
+            --border: #e5e5e7;
+        }
+
+        [data-theme="dark"] {
+            --bg: #000000;
+            --bg-secondary: #1c1c1e;
+            --text: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --accent: #0a84ff;
+            --card-bg: #1c1c1e;
+            --border: #38383a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        [data-theme="dark"] nav { background: rgba(0,0,0,0.8); }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo { height: 40px; transition: opacity 0.2s, filter 0.3s; }
+        .logo:hover { opacity: 0.7; }
+        [data-theme="dark"] .logo { filter: invert(1); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 20px; padding: 5px; }
+
+        /* Hero */
+        .hero {
+            padding: 140px 20px 60px;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Philosophy cards */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .philosophy-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .philosophy-card .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .philosophy-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .philosophy-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text); font-size: 14px; text-decoration: none; }
+        .footer-links a:hover { color: var(--accent); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 13px; }
+            .stats { grid-template-columns: 1fr; gap: 20px; }
+            .philosophy-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="images/aa-logo-40.png" alt="Andy Arevalo" class="logo" id="nav-logo" width="40" height="40">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#apps">Apps</a>
+                <a href="about.html">About</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon">&#127769;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>About</h1>
+        <p>Building apps that respect your time, privacy, and intelligence.</p>
+    </section>
+
+    <div class="content">
+        <section class="section">
+            <h2>The Story</h2>
+            <p>Hi, I'm Andy. I'm an independent iOS developer who believes apps should be simple tools that help you get things done, not attention-seeking distractions that waste your time.</p>
+            <p>I started building apps because I couldn't find the tools I needed. Timers that were either too basic or bloated with features I'd never use. Habit trackers that felt more like social media than productivity tools. Calculators buried under ads.</p>
+            <p>So I built what I wanted to use myself. Clean interfaces. No dark patterns. No data harvesting. Just useful tools that do their job and get out of your way.</p>
+        </section>
+
+        <section class="section">
+            <h2>Philosophy</h2>
+            <p>Every app I build follows three principles:</p>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="icon">&#9898;</div>
+                    <h3>Simple</h3>
+                    <p>No feature bloat. Each app does one thing exceptionally well.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="icon">&#127919;</div>
+                    <h3>Focused</h3>
+                    <p>Designed to help you accomplish your goal, not keep you engaged.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="icon">&#128736;</div>
+                    <h3>Useful</h3>
+                    <p>Solves real problems. Every feature earns its place.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Privacy First</h2>
+            <p>Your data is yours. My apps don't collect personal information, don't track your behavior, and don't sell anything to advertisers. Most apps work entirely offline.</p>
+            <p>When an app needs internet access (like for AI features), I'm transparent about exactly what data is sent and why. You can always review the <a href="privacy.html">privacy policy</a> for specific details.</p>
+        </section>
+
+        <section class="section">
+            <div class="stats">
+                <div class="stat">
+                    <h3>7</h3>
+                    <p>Apps Published</p>
+                </div>
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Ads in Any App</p>
+                </div>
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Data Sold</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Check Out the Apps</h2>
+            <p>Timer apps, habit trackers, calculators, and more. All built with the same care.</p>
+            <a href="index.html#apps" class="cta-button">View All Apps</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#apps">Apps</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; 2025 Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').innerHTML = '&#9728;';
+            }
+        })();
+    </script>
+</body>
+</html>
