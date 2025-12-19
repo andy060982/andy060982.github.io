@@ -1,568 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andy Arevalo – App Developer</title>
-    <meta name="description" content="Simple, focused, and useful iOS apps by Andy Arevalo. Timer apps for speakers and performers, habit trackers, calculators, and more. No bloat, no tracking.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andy Arevalo – App Developer</title>
+  <meta name="description" content="Simple, focused, and useful iOS apps by Andy Arevalo. Timer apps for speakers and performers, habit trackers, calculators, and more. No bloat, no tracking.">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://andyarevalo.com/">
-    <meta property="og:title" content="Andy Arevalo – iOS App Developer">
-    <meta property="og:description" content="Simple, focused, and useful iOS apps. Timer apps for speakers and performers, habit trackers, calculators, and more. No bloat, no tracking.">
-    <meta property="og:image" content="https://andyarevalo.com/images/og-image.png">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://andyarevalo.com/">
+  <meta property="og:title" content="Andy Arevalo – iOS App Developer">
+  <meta property="og:description" content="Simple, focused, and useful iOS apps. Timer apps for speakers and performers, habit trackers, calculators, and more. No bloat, no tracking.">
+  <meta property="og:image" content="https://andyarevalo.com/images/og-image.png">
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://andyarevalo.com/">
-    <meta name="twitter:title" content="Andy Arevalo – iOS App Developer">
-    <meta name="twitter:description" content="Simple, focused, and useful iOS apps. Timer apps for speakers and performers, habit trackers, calculators, and more. No bloat, no tracking.">
-    <meta name="twitter:image" content="https://andyarevalo.com/images/og-image.png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://andyarevalo.com/">
+  <meta name="twitter:title" content="Andy Arevalo – iOS App Developer">
+  <meta name="twitter:description" content="Simple, focused, and useful iOS apps. Timer apps for speakers and performers, habit trackers, calculators, and more. No bloat, no tracking.">
+  <meta name="twitter:image" content="https://andyarevalo.com/images/og-image.png">
 
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --bg-secondary: #f5f5f7;
-            --text: #1d1d1f;
-            --text-secondary: #6e6e73;
-            --accent: #007AFF;
-            --card-bg: #ffffff;
-            --border: #e5e5e7;
-        }
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-        [data-theme="dark"] {
-            --bg: #000000;
-            --bg-secondary: #1c1c1e;
-            --text: #f5f5f7;
-            --text-secondary: #a1a1a6;
-            --accent: #0a84ff;
-            --card-bg: #1c1c1e;
-            --border: #38383a;
-        }
+  <style>
+    /* Dark theme (default) */
+    :root {
+      --bg: #0b0f19;
+      --bg-secondary: #0f1626;
+      --text: #e8edf7;
+      --muted: #b7c0d4;
+      --line: rgba(255,255,255,.12);
+      --accent: #8fb7ff;
+      --accent2: #9ef0d2;
+      --card-bg: rgba(15,22,38,.72);
+      --max: 1000px;
+      --radius: 16px;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* Light theme */
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f7;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0,0,0,.12);
+      --accent: #007AFF;
+      --accent2: #34c759;
+      --card-bg: #ffffff;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            transition: background 0.3s, color 0.3s;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: rgba(255,255,255,0.8);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: 0 20px;
-        }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
 
-        [data-theme="dark"] nav {
-            background: rgba(0,0,0,0.8);
-        }
+    /* Gradient background for dark mode only */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
+                  radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-        }
+    [data-theme="light"] body::before {
+      background: none;
+    }
 
-        .logo {
-            height: 40px;
-            width: auto;
-            transition: opacity 0.2s, filter 0.3s;
-        }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-        .logo:hover {
-            opacity: 0.7;
-        }
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(15,22,38,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-        [data-theme="dark"] .logo {
-            filter: invert(1);
-        }
+    [data-theme="light"] header {
+      background: rgba(255,255,255,.8);
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
 
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 650;
+      letter-spacing: .2px;
+      color: var(--text);
+      text-decoration: none;
+    }
 
-        .nav-links a:hover {
-            color: var(--accent);
-        }
+    .brand:hover { text-decoration: none; opacity: 0.8; }
 
-        .theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            padding: 5px;
-        }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 20px rgba(143,183,255,.35);
+      display: inline-block;
+    }
 
-        /* Hero Section */
-        .hero {
-            padding: 140px 20px 80px;
-            text-align: center;
-            background: var(--bg-secondary);
-        }
+    .navlinks {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      align-items: center;
+    }
 
-        .hero-signature {
-            height: 60px;
-            width: auto;
-            margin-bottom: 20px;
-        }
+    .navlinks a { color: var(--muted); }
+    .navlinks a:hover { color: var(--text); text-decoration: none; }
 
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 5px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
 
-        .hero p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .theme-toggle:hover { color: var(--text); }
 
-        /* Apps Section */
-        .apps-section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* Main Content */
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
 
-        .section-title {
-            font-size: 28px;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 50px;
-        }
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
 
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-        }
+    .hero-signature {
+      height: 60px;
+      width: auto;
+      margin-bottom: 20px;
+    }
 
-        .app-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    [data-theme="light"] .hero-signature {
+      filter: none;
+    }
 
-        .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
 
-        [data-theme="dark"] .app-card:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        .app-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
+    /* Apps Section */
+    .apps-section {
+      margin-top: 40px;
+    }
 
-        .app-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
 
-        .app-icon-placeholder {
-            width: 80px;
-            height: 80px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--accent), #5856d6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 32px;
-            font-weight: 600;
-        }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
 
-        .app-info h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
+    /* App Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        .app-info .tagline {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
+    [data-theme="light"] .card {
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
 
-        .app-description {
-            color: var(--text-secondary);
-            font-size: 15px;
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+    }
 
-        .app-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
+    [data-theme="light"] .card:hover {
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
 
-        .feature-tag {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 12px;
-        }
+    .app-card-link {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .app-store-badge {
-            display: inline-block;
-        }
+    .app-card-link:hover { text-decoration: none; }
 
-        .app-store-badge img {
-            height: 40px;
-        }
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
 
-        .coming-soon {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 20px;
-        }
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    }
 
-        .app-card-link {
-            text-decoration: none;
-            color: inherit;
-        }
+    .app-icon-placeholder {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      font-weight: 600;
+    }
 
-        .learn-more {
-            color: var(--accent);
-            font-size: 14px;
-            font-weight: 500;
-        }
+    .app-info h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
 
-        /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            padding: 60px 20px;
-            text-align: center;
-        }
+    .app-info .tagline {
+      font-size: 13px;
+      color: var(--muted);
+    }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
+    .app-description {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
 
-        .footer-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
+    .app-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
 
-        .footer-links a:hover {
-            color: var(--accent);
-        }
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: var(--muted);
+    }
 
-        .footer-contact {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
+    [data-theme="light"] .pill {
+      background: var(--bg-secondary);
+    }
 
-        .footer-contact a {
-            color: var(--accent);
-            text-decoration: none;
-        }
+    .coming-soon {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 20px;
+    }
 
-        .copyright {
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
+    .learn-more {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+    }
 
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 15px;
-            }
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 30px 18px;
+      text-align: center;
+      font-size: 13px;
+      margin-top: 40px;
+    }
 
-            .nav-links a {
-                font-size: 13px;
-            }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
 
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
 
-            .hero {
-                padding: 120px 20px 60px;
-            }
-        }
-    </style>
+    .footer-contact {
+      margin-bottom: 12px;
+    }
+
+    .footer-contact a { color: var(--accent); }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .navlinks { gap: 10px; font-size: 13px; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .hero { padding: 40px 0 30px; }
+    }
+  </style>
 </head>
+
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html">
-                <img src="images/aa-logo-40.png" alt="Andy Arevalo" class="logo" id="nav-logo" width="40" height="40">
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="#apps">Apps</a>
-                <a href="about.html">About</a>
-                <a href="support.html">Support</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="terms.html">Terms</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon">🌙</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+  <header>
+    <div class="nav">
+      <a href="index.html" class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Andy Arevalo</span>
+      </a>
 
-    <main>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="#apps">Apps</a>
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <span id="theme-icon">&#9728;</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
     <section class="hero">
-        <img src="images/signature.png" alt="Andy Arevalo" class="hero-signature" id="hero-signature" width="191" height="60">
-        <h1>Simple. Focused. Useful.</h1>
-        <p>Clean, intuitive mobile apps designed to make everyday tasks easier. No bloat, no tracking, just tools that work.</p>
+      <img src="images/signature.png" alt="Andy Arevalo" class="hero-signature" id="hero-signature" width="191" height="60">
+      <h1>Simple. Focused. Useful.</h1>
+      <p>Clean, intuitive mobile apps designed to make everyday tasks easier. No bloat, no tracking, just tools that work.</p>
     </section>
 
+    <!-- Apps -->
     <section class="apps-section" id="apps">
-        <h2 class="section-title">Apps</h2>
-        <div class="apps-grid">
+      <h2 class="section-title">Apps</h2>
+      <div class="apps-grid">
 
-            <!-- Student Guardian -->
-            <div class="app-card">
-                <div class="app-header">
-                    <img src="images/student-guardian-80.png" alt="Student Guardian" class="app-icon" width="80" height="80" loading="lazy">
-                    <div class="app-info">
-                        <h3>Student Guardian</h3>
-                        <span class="tagline">School Email Organizer</span>
-                    </div>
-                </div>
-                <p class="app-description">Helps parents stay organized with their children's school communications. Connect your email, filter trusted sources, and get AI-powered summaries.</p>
-                <div class="app-features">
-                    <span class="feature-tag">Email Filtering</span>
-                    <span class="feature-tag">AI Summaries</span>
-                    <span class="feature-tag">Calendar</span>
-                    <span class="feature-tag">15 Languages</span>
-                </div>
-                <span class="coming-soon">Coming January 2026</span>
+        <!-- Student Guardian -->
+        <div class="card">
+          <div class="app-header">
+            <img src="images/student-guardian-80.png" alt="Student Guardian" class="app-icon" width="64" height="64" loading="lazy">
+            <div class="app-info">
+              <h3>Student Guardian</h3>
+              <span class="tagline">School Email Organizer</span>
             </div>
-
-            <!-- ThermoTimer -->
-            <a href="apps/thermotimer.html" class="app-card-link">
-            <div class="app-card">
-                <div class="app-header">
-                    <img src="images/thermotimer-80.png" alt="ThermoTimer" class="app-icon" width="80" height="80" loading="lazy">
-                    <div class="app-info">
-                        <h3>ThermoTimer</h3>
-                        <span class="tagline">Sauna & Cold Plunge Timer</span>
-                    </div>
-                </div>
-                <p class="app-description">Guided protocols for sauna and cold plunge sessions. Track your thermal therapy with phase timing and Apple Watch support.</p>
-                <div class="app-features">
-                    <span class="feature-tag">6 Protocols</span>
-                    <span class="feature-tag">Apple Watch</span>
-                    <span class="feature-tag">Session History</span>
-                    <span class="feature-tag">3 Themes</span>
-                </div>
-                <span class="learn-more">Learn more →</span>
-            </div>
-            </a>
-
-            <!-- OnTime Speaker Pro -->
-            <a href="apps/ontime-speaker-pro.html" class="app-card-link">
-            <div class="app-card">
-                <div class="app-header">
-                    <img src="images/ontime-speaker-pro-80.png" alt="OnTime Speaker Pro" class="app-icon" width="80" height="80" loading="lazy">
-                    <div class="app-info">
-                        <h3>OnTime Speaker Pro</h3>
-                        <span class="tagline">Professional Speech Timer</span>
-                    </div>
-                </div>
-                <p class="app-description">The ultimate timer for Toastmasters, debate teams, and conferences. Features the classic green-yellow-red timing system with Meeting Mode.</p>
-                <div class="app-features">
-                    <span class="feature-tag">14 Presets</span>
-                    <span class="feature-tag">Meeting Mode</span>
-                    <span class="feature-tag">Live Activities</span>
-                    <span class="feature-tag">Report Sharing</span>
-                </div>
-                <span class="learn-more">Learn more →</span>
-            </div>
-            </a>
-
-            <!-- OnStage Timer Pro -->
-            <a href="apps/onstage-timer-pro.html" class="app-card-link">
-            <div class="app-card">
-                <div class="app-header">
-                    <img src="images/onstage-timer-pro-80.png" alt="OnStage Timer Pro" class="app-icon" width="80" height="80" loading="lazy">
-                    <div class="app-info">
-                        <h3>OnStage Timer Pro</h3>
-                        <span class="tagline">Performer & Presenter Timer</span>
-                    </div>
-                </div>
-                <p class="app-description">Precision timing for performers, presenters, and event coordinators. Customizable themes and external display support.</p>
-                <div class="app-features">
-                    <span class="feature-tag">Overtime Alerts</span>
-                    <span class="feature-tag">Custom Themes</span>
-                    <span class="feature-tag">External Display</span>
-                    <span class="feature-tag">Pro Customizations</span>
-                </div>
-                <span class="learn-more">Learn more →</span>
-            </div>
-            </a>
-
-            <!-- Not Another Twin Calculator -->
-            <a href="apps/twin-calculator.html" class="app-card-link">
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon-placeholder">🔢</div>
-                    <div class="app-info">
-                        <h3>Not Another Twin Calculator</h3>
-                        <span class="tagline">Dual Calculator</span>
-                    </div>
-                </div>
-                <p class="app-description">Two calculators, one screen. Perfect for comparing calculations, tip splitting, or unit conversions side by side.</p>
-                <div class="app-features">
-                    <span class="feature-tag">Side-by-Side</span>
-                    <span class="feature-tag">History Tracking</span>
-                    <span class="feature-tag">Clean Interface</span>
-                </div>
-                <span class="learn-more">Learn more →</span>
-            </div>
-            </a>
-
-            <!-- Not Another Stage Timer -->
-            <a href="apps/stage-timer.html" class="app-card-link">
-            <div class="app-card">
-                <div class="app-header">
-                    <img src="images/not-another-stage-timer-80.png" alt="Not Another Stage Timer" class="app-icon" width="80" height="80" loading="lazy">
-                    <div class="app-info">
-                        <h3>Not Another Stage Timer</h3>
-                        <span class="tagline">Simple Event Timer</span>
-                    </div>
-                </div>
-                <p class="app-description">Distraction-free timing for classrooms, events, and presentations. Simple, elegant, and effective.</p>
-                <div class="app-features">
-                    <span class="feature-tag">Distraction-Free</span>
-                    <span class="feature-tag">Large Display</span>
-                    <span class="feature-tag">Easy Controls</span>
-                </div>
-                <span class="learn-more">Learn more →</span>
-            </div>
-            </a>
-
-            <!-- Duse -->
-            <a href="apps/duse.html" class="app-card-link">
-            <div class="app-card">
-                <div class="app-header">
-                    <img src="images/duse-80.png" alt="Duse" class="app-icon" width="80" height="80" loading="lazy">
-                    <div class="app-info">
-                        <h3>Duse</h3>
-                        <span class="tagline">Habit Tracker</span>
-                    </div>
-                </div>
-                <p class="app-description">Minimalist habit tracking that helps you build consistency. Visual progress tracking without the complexity.</p>
-                <div class="app-features">
-                    <span class="feature-tag">Minimalist</span>
-                    <span class="feature-tag">Progress Visualization</span>
-                    <span class="feature-tag">Streaks</span>
-                </div>
-                <span class="learn-more">Learn more →</span>
-            </div>
-            </a>
-
+          </div>
+          <p class="app-description">Helps parents stay organized with their children's school communications. Connect your email, filter trusted sources, and get AI-powered summaries.</p>
+          <div class="app-features">
+            <span class="pill">Email Filtering</span>
+            <span class="pill">AI Summaries</span>
+            <span class="pill">Calendar</span>
+            <span class="pill">15 Languages</span>
+          </div>
+          <span class="coming-soon">Coming January 2026</span>
         </div>
+
+        <!-- ThermoTimer -->
+        <a href="apps/thermotimer.html" class="app-card-link">
+          <div class="card">
+            <div class="app-header">
+              <img src="images/thermotimer-80.png" alt="ThermoTimer" class="app-icon" width="64" height="64" loading="lazy">
+              <div class="app-info">
+                <h3>ThermoTimer</h3>
+                <span class="tagline">Sauna & Cold Plunge Timer</span>
+              </div>
+            </div>
+            <p class="app-description">Guided protocols for sauna and cold plunge sessions. Track your thermal therapy with phase timing and Apple Watch support.</p>
+            <div class="app-features">
+              <span class="pill">6 Protocols</span>
+              <span class="pill">Apple Watch</span>
+              <span class="pill">Session History</span>
+              <span class="pill">3 Themes</span>
+            </div>
+            <span class="learn-more">Learn more &#8594;</span>
+          </div>
+        </a>
+
+        <!-- OnTime Speaker Pro -->
+        <a href="apps/ontime-speaker-pro.html" class="app-card-link">
+          <div class="card">
+            <div class="app-header">
+              <img src="images/ontime-speaker-pro-80.png" alt="OnTime Speaker Pro" class="app-icon" width="64" height="64" loading="lazy">
+              <div class="app-info">
+                <h3>OnTime Speaker Pro</h3>
+                <span class="tagline">Professional Speech Timer</span>
+              </div>
+            </div>
+            <p class="app-description">The ultimate timer for Toastmasters, debate teams, and conferences. Features the classic green-yellow-red timing system with Meeting Mode.</p>
+            <div class="app-features">
+              <span class="pill">14 Presets</span>
+              <span class="pill">Meeting Mode</span>
+              <span class="pill">Live Activities</span>
+              <span class="pill">Report Sharing</span>
+            </div>
+            <span class="learn-more">Learn more &#8594;</span>
+          </div>
+        </a>
+
+        <!-- OnStage Timer Pro -->
+        <a href="apps/onstage-timer-pro.html" class="app-card-link">
+          <div class="card">
+            <div class="app-header">
+              <img src="images/onstage-timer-pro-80.png" alt="OnStage Timer Pro" class="app-icon" width="64" height="64" loading="lazy">
+              <div class="app-info">
+                <h3>OnStage Timer Pro</h3>
+                <span class="tagline">Performer & Presenter Timer</span>
+              </div>
+            </div>
+            <p class="app-description">Precision timing for performers, presenters, and event coordinators. Customizable themes and external display support.</p>
+            <div class="app-features">
+              <span class="pill">Overtime Alerts</span>
+              <span class="pill">Custom Themes</span>
+              <span class="pill">External Display</span>
+              <span class="pill">Pro Customizations</span>
+            </div>
+            <span class="learn-more">Learn more &#8594;</span>
+          </div>
+        </a>
+
+        <!-- Not Another Twin Calculator -->
+        <a href="apps/twin-calculator.html" class="app-card-link">
+          <div class="card">
+            <div class="app-header">
+              <div class="app-icon-placeholder">&#128290;</div>
+              <div class="app-info">
+                <h3>Not Another Twin Calculator</h3>
+                <span class="tagline">Dual Calculator</span>
+              </div>
+            </div>
+            <p class="app-description">Two calculators, one screen. Perfect for comparing calculations, tip splitting, or unit conversions side by side.</p>
+            <div class="app-features">
+              <span class="pill">Side-by-Side</span>
+              <span class="pill">History Tracking</span>
+              <span class="pill">Clean Interface</span>
+            </div>
+            <span class="learn-more">Learn more &#8594;</span>
+          </div>
+        </a>
+
+        <!-- Not Another Stage Timer -->
+        <a href="apps/stage-timer.html" class="app-card-link">
+          <div class="card">
+            <div class="app-header">
+              <img src="images/not-another-stage-timer-80.png" alt="Not Another Stage Timer" class="app-icon" width="64" height="64" loading="lazy">
+              <div class="app-info">
+                <h3>Not Another Stage Timer</h3>
+                <span class="tagline">Simple Event Timer</span>
+              </div>
+            </div>
+            <p class="app-description">Distraction-free timing for classrooms, events, and presentations. Simple, elegant, and effective.</p>
+            <div class="app-features">
+              <span class="pill">Distraction-Free</span>
+              <span class="pill">Large Display</span>
+              <span class="pill">Easy Controls</span>
+            </div>
+            <span class="learn-more">Learn more &#8594;</span>
+          </div>
+        </a>
+
+        <!-- Duse -->
+        <a href="apps/duse.html" class="app-card-link">
+          <div class="card">
+            <div class="app-header">
+              <img src="images/duse-80.png" alt="Duse" class="app-icon" width="64" height="64" loading="lazy">
+              <div class="app-info">
+                <h3>Duse</h3>
+                <span class="tagline">Habit Tracker</span>
+              </div>
+            </div>
+            <p class="app-description">Minimalist habit tracking that helps you build consistency. Visual progress tracking without the complexity.</p>
+            <div class="app-features">
+              <span class="pill">Minimalist</span>
+              <span class="pill">Progress Visualization</span>
+              <span class="pill">Streaks</span>
+            </div>
+            <span class="learn-more">Learn more &#8594;</span>
+          </div>
+        </a>
+
+      </div>
     </section>
-    </main>
+  </main>
 
-    <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="#apps">Apps</a>
-            <a href="about.html">About</a>
-            <a href="support.html">Support</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
-        </div>
-        <p class="footer-contact">
-            Contact: <a href="mailto:contact@andyarevalo.com">contact@andyarevalo.com</a>
-        </p>
-        <p class="copyright">&copy; 2025 Andy Arevalo. All rights reserved.</p>
-    </footer>
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="#apps">Apps</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <p class="footer-contact">
+      Contact: <a href="mailto:contact@andyarevalo.com">contact@andyarevalo.com</a>
+    </p>
+    <p>&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+  </footer>
 
-    <script>
-        // Theme toggle
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.getElementById('theme-icon');
-            const navLogo = document.getElementById('nav-logo');
-            const heroSignature = document.getElementById('hero-signature');
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById('theme-icon');
+      const signature = document.getElementById('hero-signature');
 
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                icon.textContent = '🌙';
-                heroSignature.src = 'images/signature.png';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                icon.textContent = '☀️';
-                heroSignature.src = 'images/signature-dark.png';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
+      if (body.getAttribute('data-theme') === 'light') {
+        body.removeAttribute('data-theme');
+        icon.innerHTML = '&#9728;'; // sun
+        signature.src = 'images/signature.png';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.setAttribute('data-theme', 'light');
+        icon.innerHTML = '&#127769;'; // moon
+        signature.src = 'images/signature.png';
+        localStorage.setItem('theme', 'light');
+      }
+    }
 
-        // Load saved theme
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                document.body.setAttribute('data-theme', 'dark');
-                document.getElementById('theme-icon').textContent = '☀️';
-                document.getElementById('hero-signature').src = 'images/signature-dark.png';
-            }
-        })();
-    </script>
+    // Load saved theme (default to dark)
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        document.getElementById('theme-icon').innerHTML = '&#127769;';
+      }
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
