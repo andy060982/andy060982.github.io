@@ -147,6 +147,64 @@
 
         .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
 
+        /* Screenshots */
+        .screenshots {
+            padding: 60px 20px;
+        }
+
+        .screenshots-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 4px;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-thumb {
+            background: var(--line);
+            border-radius: 4px;
+        }
+
+        .screenshot-item {
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+            text-align: center;
+        }
+
+        .screenshot-item img {
+            height: 500px;
+            width: auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 1px solid var(--line);
+        }
+
+        .screenshot-item.landscape img {
+            height: 280px;
+            border-radius: 16px;
+        }
+
+        .screenshot-item p {
+            margin-top: 12px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
         /* Districts */
         .districts {
             padding: 60px 20px;
@@ -283,6 +341,8 @@
             .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
             .camera-cards { grid-template-columns: 1fr; }
             .nav-links { gap: 10px; font-size: 13px; }
+            .screenshot-item img { height: 400px; border-radius: 20px; }
+            .screenshot-item.landscape img { height: 220px; }
         }
     </style>
 </head>
@@ -322,6 +382,42 @@
             </div>
             <div class="hero-image">
                 <img src="../images/roadwatch-ca.png" alt="RoadWatch CA" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <div class="screenshots-container">
+            <h2 class="section-title">Screenshots</h2>
+            <div class="screenshots-scroll">
+                <div class="screenshot-item">
+                    <img src="../images/roadwatch-ca-screenshots/map-overview.png" alt="California map with traffic camera clusters" loading="lazy">
+                    <p>Statewide Camera Map</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="../images/roadwatch-ca-screenshots/map-zoomed.png" alt="Zoomed map showing individual cameras" loading="lazy">
+                    <p>Zoomed View with Pins</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="../images/roadwatch-ca-screenshots/filter-menu.png" alt="Filter menu for districts and camera types" loading="lazy">
+                    <p>Filter by District & Type</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="../images/roadwatch-ca-screenshots/camera-detail.png" alt="Camera detail view with live video" loading="lazy">
+                    <p>Camera Detail View</p>
+                </div>
+                <div class="screenshot-item landscape">
+                    <img src="../images/roadwatch-ca-screenshots/landscape-video.png" alt="Full screen landscape video view" loading="lazy">
+                    <p>Full Screen Landscape Mode</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="../images/roadwatch-ca-screenshots/favorites.png" alt="Favorites list with saved cameras" loading="lazy">
+                    <p>Favorites & Quick Access</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="../images/roadwatch-ca-screenshots/create-group.png" alt="Create group dialog for organizing cameras" loading="lazy">
+                    <p>Create Custom Groups</p>
+                </div>
             </div>
         </div>
     </section>
