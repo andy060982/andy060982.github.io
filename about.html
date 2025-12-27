@@ -25,29 +25,59 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <style>
+    /* Dark theme (default) */
     :root {
       --bg: #0b0f19;
+      --bg-secondary: #0f1626;
       --panel: #0f1626;
       --text: #e8edf7;
       --muted: #b7c0d4;
       --line: rgba(255,255,255,.12);
       --accent: #8fb7ff;
       --accent2: #9ef0d2;
+      --card-bg: rgba(15,22,38,.72);
       --max: 920px;
       --radius: 16px;
+    }
+
+    /* Light theme */
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f7;
+      --panel: #f5f5f7;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0,0,0,.12);
+      --accent: #007AFF;
+      --accent2: #34c759;
+      --card-bg: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
-                  radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%),
-                  var(--bg);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.55;
       min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
     }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
+                  radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    [data-theme="light"] body::before { background: none; }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -62,6 +92,8 @@
       top: 0;
       z-index: 10;
     }
+
+    [data-theme="light"] header { background: rgba(255,255,255,.8); }
 
     .nav {
       max-width: var(--max);
@@ -100,11 +132,23 @@
       flex-wrap: wrap;
       font-size: 14px;
       color: var(--muted);
+      align-items: center;
     }
 
     .navlinks a { color: var(--muted); }
     .navlinks a:hover { color: var(--text); text-decoration: none; }
     .navlinks a[aria-current="page"] { color: var(--accent); }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 5px;
+      color: var(--muted);
+    }
+
+    .theme-toggle:hover { color: var(--text); }
 
     /* Main Content */
     main {
@@ -133,6 +177,11 @@
       border-radius: var(--radius);
       padding: 22px;
       box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+
+    [data-theme="light"] .card {
+      background: var(--card-bg);
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
     }
 
     /* Avatar Card */
@@ -217,6 +266,10 @@
       color: var(--muted);
     }
 
+    [data-theme="light"] .pill {
+      background: var(--bg-secondary);
+    }
+
     /* Quote */
     .quote {
       padding: 14px 16px;
@@ -251,6 +304,14 @@
     .btn:hover {
       background: rgba(255,255,255,.10);
       text-decoration: none;
+    }
+
+    [data-theme="light"] .btn {
+      background: var(--bg-secondary);
+    }
+
+    [data-theme="light"] .btn:hover {
+      background: #e8e8ed;
     }
 
     /* Sections */
@@ -315,6 +376,9 @@
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <span id="theme-icon">&#9728;</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -497,7 +561,29 @@
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById('theme-icon');
+
+      if (body.getAttribute('data-theme') === 'light') {
+        body.removeAttribute('data-theme');
+        icon.innerHTML = '&#9728;';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.setAttribute('data-theme', 'light');
+        icon.innerHTML = '&#127769;';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        document.getElementById('theme-icon').innerHTML = '&#127769;';
+      }
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
