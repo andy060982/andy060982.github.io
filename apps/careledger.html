@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareLedger – Medication Tracker | Andy Arevalo</title>
+    <meta name="description" content="Family medication management made simple. Track medications, set reminders, and coordinate care for your loved ones with CareLedger.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/careledger.html">
+    <meta property="og:title" content="CareLedger – Medication Tracker">
+    <meta property="og:description" content="Family medication management made simple. Track medications, set reminders, and coordinate care for your loved ones.">
+    <meta property="og:image" content="https://andyarevalo.com/images/careledger.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/careledger.html">
+    <meta name="twitter:title" content="CareLedger – Medication Tracker">
+    <meta name="twitter:description" content="Family medication management made simple. Track medications, set reminders, and coordinate care for your loved ones.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/careledger.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #8fb7ff;
+            --accent2: #9ef0d2;
+            --card-bg: rgba(15,22,38,.72);
+            --teal: #34c8b0;
+            --warning: #ff9f0a;
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #007AFF;
+            --accent2: #34c759;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(143,183,255,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero {
+            padding: 100px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--teal); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: rgba(255, 159, 10, 0.1);
+            border: 1px solid var(--warning);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+
+        .disclaimer h3 {
+            color: var(--warning);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .disclaimer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Core Features */
+        .core-features {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+            border: 1px solid var(--line);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-card.patients { border: 2px solid var(--teal); }
+        .feature-card.medications { border: 2px solid var(--accent); }
+
+        .feature-icon { font-size: 48px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 24px; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); }
+
+        /* Features */
+        .features {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .features-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .features-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .features-icon { font-size: 36px; margin-bottom: 16px; }
+        .features-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .features-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Pricing */
+        .pricing {
+            padding: 60px 20px;
+        }
+
+        .pricing-content { max-width: 800px; margin: 0 auto; }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .pricing-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .pricing-card.featured {
+            border: 2px solid var(--teal);
+            box-shadow: 0 0 0 1px var(--teal), 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        .pricing-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .pricing-card .price { font-size: 32px; font-weight: 700; }
+        .pricing-card .period { color: var(--text-secondary); font-size: 14px; margin-bottom: 12px; }
+        .pricing-card .note { color: var(--text-secondary); font-size: 13px; }
+
+        .free-tier {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+        }
+
+        .free-features {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .free-features span {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; background: var(--bg-secondary); }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--teal), var(--accent));
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 16px 32px;
+            border-radius: 30px;
+        }
+
+        footer {
+            background: var(--bg);
+            padding: 30px 18px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#apps">Apps</a>
+                <a href="../about.html">About</a>
+                <a href="../support.html">Support</a>
+                <a href="../privacy.html">Privacy</a>
+                <a href="../terms.html">Terms</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>CareLedger</h1>
+                <p class="tagline">Medication Tracker</p>
+                <p>Family medication management made simple. Track medications for yourself and loved ones, set smart reminders, and coordinate care with other caregivers.</p>
+                <div class="hero-badges">
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../images/careledger-256.png" alt="CareLedger" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <div class="disclaimer">
+        <h3>&#9888; Important Notice</h3>
+        <p>CareLedger is a personal health tracking tool for individual and family use. This app is <strong>NOT HIPAA compliant</strong> and should not be used by healthcare providers. This app does not provide medical advice. Always consult qualified healthcare providers for medical decisions.</p>
+    </div>
+
+    <section class="core-features">
+        <h2 class="section-title">Care for Everyone</h2>
+        <div class="feature-grid">
+            <div class="feature-card patients">
+                <div class="feature-icon">&#128106;</div>
+                <h3>Multiple Patients</h3>
+                <p>Manage medications for yourself, aging parents, children, or anyone in your care. Each patient has their own profile and medication list.</p>
+            </div>
+            <div class="feature-card medications">
+                <div class="feature-icon">&#128138;</div>
+                <h3>Complete Tracking</h3>
+                <p>Track doses, schedules, inventory levels, and adherence. Get reminders so no dose is missed.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="features-card">
+                <div class="features-icon">&#128247;</div>
+                <h3>Prescription Scanning</h3>
+                <p>Scan prescription labels with your camera to quickly add medications. Uses AI to extract medication details.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128276;</div>
+                <h3>Smart Reminders</h3>
+                <p>Customizable notifications for each dose. Morning, afternoon, evening, or custom times.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128202;</div>
+                <h3>Adherence Tracking</h3>
+                <p>See dose history and adherence rates. Know when doses were taken, missed, or skipped.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128230;</div>
+                <h3>Inventory Management</h3>
+                <p>Track pill counts and get low-stock alerts. Never run out of medications.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128197;</div>
+                <h3>Appointment Calendar</h3>
+                <p>Track doctor appointments and sync with your device calendar.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128209;</div>
+                <h3>Visit Prep Summary</h3>
+                <p>Generate a PDF summary of medications and adherence to share with your doctor.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128218;</div>
+                <h3>Medication Education</h3>
+                <p>Learn about medications with AI-powered educational content. Understand what you're taking.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128274;</div>
+                <h3>Private & Local</h3>
+                <p>Your health data stays on your device. No accounts required, no tracking, no cloud storage.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Pricing</h2>
+            <div class="free-tier">
+                <p><strong>Free Tier Includes:</strong></p>
+                <div class="free-features">
+                    <span>&#10003; 2 Patients</span>
+                    <span>&#10003; Unlimited Medications</span>
+                    <span>&#10003; All Reminders</span>
+                    <span>&#10003; 5 AI Scans/Month</span>
+                </div>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Monthly</h3>
+                    <div class="price">$2.99</div>
+                    <div class="period">per month</div>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Yearly</h3>
+                    <div class="price">$19.99</div>
+                    <div class="period">per year</div>
+                    <div class="note">7-day free trial</div>
+                </div>
+                <div class="pricing-card">
+                    <h3>Lifetime</h3>
+                    <div class="price">$49.99</div>
+                    <div class="period">one-time</div>
+                    <div class="note">Pay once, own forever</div>
+                </div>
+            </div>
+            <div class="free-tier" style="margin-top: 20px;">
+                <p><strong>Premium Includes:</strong></p>
+                <div class="free-features">
+                    <span>&#10003; Unlimited Patients</span>
+                    <span>&#10003; Unlimited AI Scans</span>
+                    <span>&#10003; PDF Export</span>
+                    <span>&#10003; Unlimited Education</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Care for your loved ones, simplified</h2>
+        <p>CareLedger helps families manage medications with confidence.</p>
+        <span class="coming-soon-badge">Coming Soon to the App Store</span>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#apps">Apps</a>
+            <a href="../about.html">About</a>
+            <a href="../support.html">Support</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>
