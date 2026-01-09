@@ -33,6 +33,10 @@
             --card-bg: rgba(15,22,38,.72);
             --teal: #34c8b0;
             --warning: #ff9f0a;
+            --purple: #af52de;
+            --pink: #ff2d55;
+            --green: #34c759;
+            --blue: #007aff;
         }
 
         [data-theme="light"] {
@@ -47,6 +51,8 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -122,8 +128,44 @@
         }
         .theme-toggle:hover { color: var(--text); }
 
+        /* Page Navigation */
+        .page-nav {
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            padding: 12px 20px;
+            margin-top: 58px;
+            position: sticky;
+            top: 58px;
+            z-index: 999;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .page-nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .page-nav a {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .page-nav a:hover {
+            color: var(--text);
+            background: var(--card-bg);
+            text-decoration: none;
+        }
+
         .hero {
-            padding: 100px 20px 60px;
+            padding: 40px 20px 60px;
             background: var(--bg-secondary);
         }
 
@@ -142,7 +184,8 @@
         .hero-image { display: flex; justify-content: center; }
         .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
 
-        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 16px; }
+        .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
 
         /* Disclaimer */
         .disclaimer {
@@ -224,9 +267,304 @@
         .features-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
         .features-card p { color: var(--text-secondary); font-size: 15px; }
 
+        /* Feature Categories Section */
+        .feature-categories {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-section {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--line);
+        }
+
+        .category-icon {
+            font-size: 32px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--line);
+        }
+
+        .category-header h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .category-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            padding: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+        }
+
+        .feature-item-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            width: 32px;
+            text-align: center;
+        }
+
+        .feature-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* How-To Section */
+        .howto-section {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .howto-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .howto-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .howto-header {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .howto-header:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        [data-theme="light"] .howto-header:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .howto-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .howto-header .icon {
+            font-size: 24px;
+        }
+
+        .howto-toggle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: transform 0.3s;
+        }
+
+        .howto-card.open .howto-toggle {
+            transform: rotate(180deg);
+        }
+
+        .howto-body {
+            padding: 0 24px 24px;
+            display: none;
+        }
+
+        .howto-card.open .howto-body {
+            display: block;
+        }
+
+        .howto-steps {
+            counter-reset: step;
+            list-style: none;
+        }
+
+        .howto-steps li {
+            counter-increment: step;
+            padding: 12px 0 12px 48px;
+            position: relative;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .howto-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .howto-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--bg);
+        }
+
+        .howto-steps strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .howto-steps p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .howto-tip {
+            background: rgba(52, 199, 89, 0.1);
+            border: 1px solid var(--green);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        .howto-tip strong {
+            color: var(--green);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 20px;
+        }
+
+        .faq-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 40px;
+        }
+
+        .faq-category-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-left: 16px;
+            border-left: 3px solid var(--teal);
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        [data-theme="light"] .faq-question:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .faq-question h4 {
+            font-size: 16px;
+            font-weight: 500;
+            padding-right: 20px;
+        }
+
+        .faq-toggle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px 16px;
+            display: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-answer ul {
+            margin: 12px 0;
+            padding-left: 24px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        .faq-answer code {
+            background: rgba(143,183,255,0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
         /* Pricing */
         .pricing {
             padding: 60px 20px;
+            background: var(--bg-secondary);
         }
 
         .pricing-content { max-width: 800px; margin: 0 auto; }
@@ -281,8 +619,39 @@
             font-size: 14px;
         }
 
+        /* Comparison Table */
+        .comparison-table {
+            margin-top: 40px;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .comparison-table th {
+            background: var(--card-bg);
+            font-weight: 600;
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .check { color: var(--green); }
+        .limit { color: var(--warning); }
+
         /* CTA */
-        .cta { padding: 80px 20px; text-align: center; background: var(--bg-secondary); }
+        .cta { padding: 80px 20px; text-align: center; }
         .cta h2 { font-size: 36px; margin-bottom: 20px; }
         .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
 
@@ -297,7 +666,7 @@
         }
 
         footer {
-            background: var(--bg);
+            background: var(--bg-secondary);
             padding: 30px 18px;
             text-align: center;
             border-top: 1px solid var(--line);
@@ -309,13 +678,19 @@
         .copyright { color: var(--text-secondary); font-size: 13px; }
 
         @media (max-width: 768px) {
-            .hero { padding: 80px 20px 40px; }
+            .hero { padding: 20px 20px 40px; }
             .hero-content { grid-template-columns: 1fr; text-align: center; }
             .hero-text h1 { font-size: 36px; }
             .hero-badges { justify-content: center; }
             .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
             .feature-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 10px; font-size: 13px; }
+            .page-nav { margin-top: 54px; top: 54px; }
+            .page-nav-content { justify-content: flex-start; gap: 8px; }
+            .page-nav a { font-size: 13px; padding: 6px 10px; }
+            .category-header { flex-direction: column; text-align: center; }
+            .feature-list { grid-template-columns: 1fr; }
+            .section-title { font-size: 26px; }
         }
     </style>
 </head>
@@ -340,12 +715,21 @@
         </div>
     </nav>
 
+    <div class="page-nav">
+        <div class="page-nav-content">
+            <a href="#features">Features</a>
+            <a href="#howto">How-To Guides</a>
+            <a href="#faq">FAQ</a>
+            <a href="#pricing">Pricing</a>
+        </div>
+    </div>
+
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
                 <h1>CareLedger</h1>
                 <p class="tagline">Medication Tracker</p>
-                <p>Family medication management made simple. Track medications for yourself and loved ones, set smart reminders, and coordinate care with other caregivers.</p>
+                <p>Family medication management made simple. Track medications for yourself and loved ones, set smart reminders, coordinate care with other caregivers, and prepare for doctor visits.</p>
                 <div class="hero-badges">
                     <span class="coming-soon-badge">Coming Soon</span>
                 </div>
@@ -367,63 +751,1322 @@
             <div class="feature-card patients">
                 <div class="feature-icon">&#128106;</div>
                 <h3>Multiple Patients</h3>
-                <p>Manage medications for yourself, aging parents, children, or anyone in your care. Each patient has their own profile and medication list.</p>
+                <p>Manage medications for yourself, aging parents, children, or anyone in your care. Each patient has their own profile with color-coded tracking.</p>
             </div>
             <div class="feature-card medications">
                 <div class="feature-icon">&#128138;</div>
                 <h3>Complete Tracking</h3>
-                <p>Track doses, schedules, inventory levels, and adherence. Get reminders so no dose is missed.</p>
+                <p>Track doses, schedules, inventory levels, symptoms, appointments, and adherence. Get reminders so no dose is missed.</p>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <h2 class="section-title">Features</h2>
-        <div class="features-grid">
-            <div class="features-card">
-                <div class="features-icon">&#128247;</div>
-                <h3>Prescription Scanning</h3>
-                <p>Scan prescription labels with your camera to quickly add medications. Uses AI to extract medication details.</p>
+    <!-- Detailed Features Section -->
+    <section id="features" class="feature-categories">
+        <h2 class="section-title">All Features</h2>
+        <p class="section-subtitle">CareLedger is packed with features to help families manage medications and coordinate care.</p>
+
+        <!-- Patient Management -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128100;</div>
+                <div>
+                    <h3>Patient Management</h3>
+                    <p>Manage care for multiple family members</p>
+                </div>
             </div>
-            <div class="features-card">
-                <div class="features-icon">&#128276;</div>
-                <h3>Smart Reminders</h3>
-                <p>Customizable notifications for each dose. Morning, afternoon, evening, or custom times.</p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#127912;</div>
+                    <div>
+                        <h4>Color-Coded Profiles</h4>
+                        <p>Each patient gets a unique color for easy visual identification throughout the app.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128247;</div>
+                    <div>
+                        <h4>Custom Avatars</h4>
+                        <p>Add photos to patient profiles for quick recognition.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#127973;</div>
+                    <div>
+                        <h4>Preferred Pharmacy</h4>
+                        <p>Store pharmacy name, address, and phone for each patient.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128197;</div>
+                    <div>
+                        <h4>Personal Info</h4>
+                        <p>Store date of birth, legal name, and notes for doctor visits.</p>
+                    </div>
+                </div>
             </div>
-            <div class="features-card">
-                <div class="features-icon">&#128202;</div>
-                <h3>Adherence Tracking</h3>
-                <p>See dose history and adherence rates. Know when doses were taken, missed, or skipped.</p>
+        </div>
+
+        <!-- Medication Tracking -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128138;</div>
+                <div>
+                    <h3>Medication Tracking</h3>
+                    <p>Complete medication management with inventory</p>
+                </div>
             </div>
-            <div class="features-card">
-                <div class="features-icon">&#128230;</div>
-                <h3>Inventory Management</h3>
-                <p>Track pill counts and get low-stock alerts. Never run out of medications.</p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128337;</div>
+                    <div>
+                        <h4>Flexible Schedules</h4>
+                        <p>Daily, weekly, as-needed, or custom schedules with multiple times per day.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128230;</div>
+                    <div>
+                        <h4>Inventory Tracking</h4>
+                        <p>Track pill counts, log refills, and see projected runout dates.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9888;</div>
+                    <div>
+                        <h4>Low Supply Alerts</h4>
+                        <p>Get notified when medications are running low with customizable thresholds.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128247;</div>
+                    <div>
+                        <h4>Pill Photos</h4>
+                        <p>Store photos of medications for visual identification.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9989;</div>
+                    <div>
+                        <h4>Dose Check-In</h4>
+                        <p>Mark doses as taken, skipped, or missed with optional notes.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128200;</div>
+                    <div>
+                        <h4>Adherence Tracking</h4>
+                        <p>See dose history and adherence rates over time.</p>
+                    </div>
+                </div>
             </div>
-            <div class="features-card">
-                <div class="features-icon">&#128197;</div>
-                <h3>Appointment Calendar</h3>
-                <p>Track doctor appointments and sync with your device calendar.</p>
+        </div>
+
+        <!-- Prescription Scanner -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128247;</div>
+                <div>
+                    <h3>Prescription Scanner</h3>
+                    <p>AI-powered prescription label scanning</p>
+                </div>
             </div>
-            <div class="features-card">
-                <div class="features-icon">&#128209;</div>
-                <h3>Visit Prep Summary</h3>
-                <p>Generate a PDF summary of medications and adherence to share with your doctor.</p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128241;</div>
+                    <div>
+                        <h4>On-Device OCR</h4>
+                        <p>Free, private text recognition using Apple's Vision framework.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9729;</div>
+                    <div>
+                        <h4>Cloud OCR</h4>
+                        <p>Enhanced accuracy with Claude AI for complex labels (Premium).</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128269;</div>
+                    <div>
+                        <h4>Smart Extraction</h4>
+                        <p>Automatically extracts medication name, dosage, and instructions.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128274;</div>
+                    <div>
+                        <h4>Safety Verification</h4>
+                        <p>Review and confirm extracted data before saving with confidence scores.</p>
+                    </div>
+                </div>
             </div>
-            <div class="features-card">
-                <div class="features-icon">&#128218;</div>
-                <h3>Medication Education</h3>
-                <p>Learn about medications with AI-powered educational content. Understand what you're taking.</p>
+        </div>
+
+        <!-- Appointments & Calendar -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128197;</div>
+                <div>
+                    <h3>Appointments & Calendar</h3>
+                    <p>Track appointments and see all events at a glance</p>
+                </div>
             </div>
-            <div class="features-card">
-                <div class="features-icon">&#128274;</div>
-                <h3>Private & Local</h3>
-                <p>Your health data stays on your device. No accounts required, no tracking, no cloud storage.</p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128198;</div>
+                    <div>
+                        <h4>Appointment Tracking</h4>
+                        <p>Store doctor visits with date, time, location, and notes.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128276;</div>
+                    <div>
+                        <h4>Appointment Reminders</h4>
+                        <p>Configurable reminders before appointments.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128467;</div>
+                    <div>
+                        <h4>Week View Calendar</h4>
+                        <p>See doses, appointments, and tasks in a unified calendar view.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#8596;</div>
+                    <div>
+                        <h4>Week Navigation</h4>
+                        <p>Navigate forward and backward to see past and future events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Symptom Journal -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128221;</div>
+                <div>
+                    <h3>Symptom Journal</h3>
+                    <p>Track symptoms and potential side effects</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128293;</div>
+                    <div>
+                        <h4>14 Symptom Types</h4>
+                        <p>Pain, fatigue, nausea, headache, fever, and more with custom notes.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128200;</div>
+                    <div>
+                        <h4>Severity Tracking</h4>
+                        <p>5-level severity scale with color-coded visualization.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128279;</div>
+                    <div>
+                        <h4>Medication Linking</h4>
+                        <p>Link symptoms to medications to track potential side effects.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128205;</div>
+                    <div>
+                        <h4>Body Location</h4>
+                        <p>Record where symptoms occur (e.g., "lower back", "left knee").</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Caregiver Notes -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128221;</div>
+                <div>
+                    <h3>Caregiver Notes</h3>
+                    <p>Coordinate care between multiple caregivers</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128466;</div>
+                    <div>
+                        <h4>Daily Notes</h4>
+                        <p>Record observations, concerns, and updates for each patient.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9888;</div>
+                    <div>
+                        <h4>Handoff Flags</h4>
+                        <p>Mark important notes as "next caregiver should know this".</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#127991;</div>
+                    <div>
+                        <h4>Categories</h4>
+                        <p>Organize notes by category: medication, behavior, nutrition, sleep, and more.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128100;</div>
+                    <div>
+                        <h4>Author Tracking</h4>
+                        <p>See who wrote each note for accountability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visit Prep & Export -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128196;</div>
+                <div>
+                    <h3>Visit Prep & Data Export</h3>
+                    <p>Prepare for doctor visits and export your data</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128196;</div>
+                    <div>
+                        <h4>Visit Prep PDF</h4>
+                        <p>Generate a one-page summary with medications, symptoms, and adherence.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128203;</div>
+                    <div>
+                        <h4>CSV Export</h4>
+                        <p>Export medications, doses, and symptoms to spreadsheet format.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128230;</div>
+                    <div>
+                        <h4>Bundle Export</h4>
+                        <p>Export all patient data as a ZIP file (Premium).</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128172;</div>
+                    <div>
+                        <h4>Share Sheet</h4>
+                        <p>Share exports via email, messages, or other apps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medication Education -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128218;</div>
+                <div>
+                    <h3>Medication Education</h3>
+                    <p>AI-powered information about your medications</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128161;</div>
+                    <div>
+                        <h4>Drug Information</h4>
+                        <p>Learn about drug class, common uses, and how medications work.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9888;</div>
+                    <div>
+                        <h4>Side Effects</h4>
+                        <p>View common and serious side effects to watch for.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128712;</div>
+                    <div>
+                        <h4>Precautions</h4>
+                        <p>Important warnings and when to contact your doctor.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128274;</div>
+                    <div>
+                        <h4>30-Day Cache</h4>
+                        <p>Education content is cached for offline access.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications & Reliability -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128276;</div>
+                <div>
+                    <h3>Notifications & Reliability</h3>
+                    <p>Smart reminders you can trust</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128138;</div>
+                    <div>
+                        <h4>Dose Reminders</h4>
+                        <p>Notifications for each scheduled dose.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9888;</div>
+                    <div>
+                        <h4>Overdue Alerts</h4>
+                        <p>Follow-up notifications if doses are missed.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128200;</div>
+                    <div>
+                        <h4>Trust Score</h4>
+                        <p>Notification Health dashboard shows delivery and action rates.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128295;</div>
+                    <div>
+                        <h4>Self-Test</h4>
+                        <p>Test notification delivery to verify system health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Import & Share -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128229;</div>
+                <div>
+                    <h3>Import & Share</h3>
+                    <p>Add data from other apps</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128172;</div>
+                    <div>
+                        <h4>Share Extension</h4>
+                        <p>Share text from Messages, Mail, or Safari to import appointments.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128269;</div>
+                    <div>
+                        <h4>Smart Parsing</h4>
+                        <p>Automatically detects appointments, medications, and refill reminders.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128203;</div>
+                    <div>
+                        <h4>Review Queue</h4>
+                        <p>All imports require confirmation before saving.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9989;</div>
+                    <div>
+                        <h4>Confidence Scores</h4>
+                        <p>See how confident the parser is about extracted data.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing">
+    <!-- How-To Section -->
+    <section id="howto" class="howto-section">
+        <h2 class="section-title">How-To Guides</h2>
+        <p class="section-subtitle">Step-by-step instructions for common tasks</p>
+
+        <div class="howto-content">
+            <!-- Getting Started -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128640;</span> Getting Started</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Download CareLedger</strong>
+                            <p>Download the app from the App Store when it launches.</p>
+                        </li>
+                        <li>
+                            <strong>Complete Onboarding</strong>
+                            <p>Review the feature introduction and acknowledge the HIPAA disclaimer.</p>
+                        </li>
+                        <li>
+                            <strong>Allow Notifications</strong>
+                            <p>Enable notifications to receive medication reminders.</p>
+                        </li>
+                        <li>
+                            <strong>Create Your First Patient</strong>
+                            <p>Add a name and select a color. You can add yourself or a family member.</p>
+                        </li>
+                        <li>
+                            <strong>Add Your First Medication</strong>
+                            <p>Either scan a prescription label or add manually.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> You can add multiple patients during onboarding if you're managing medications for several family members.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adding a Patient -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128100;</span> Adding a Patient</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Patients Tab</strong>
+                            <p>Tap the Patients tab at the bottom of the screen.</p>
+                        </li>
+                        <li>
+                            <strong>Tap the + Button</strong>
+                            <p>Tap the plus button in the top right corner.</p>
+                        </li>
+                        <li>
+                            <strong>Enter Patient Name</strong>
+                            <p>Enter a display name (e.g., "Mom", "Dad", "Me").</p>
+                        </li>
+                        <li>
+                            <strong>Choose a Color</strong>
+                            <p>Select a color that will identify this patient throughout the app.</p>
+                        </li>
+                        <li>
+                            <strong>Add Optional Info</strong>
+                            <p>Add date of birth, legal name, pharmacy info, and notes if desired.</p>
+                        </li>
+                        <li>
+                            <strong>Save</strong>
+                            <p>Tap Save to create the patient profile.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Adding a Medication -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128138;</span> Adding a Medication</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Select a Patient</strong>
+                            <p>Go to a patient's detail page or ensure a patient is selected.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Add Medication</strong>
+                            <p>Tap the plus button or "Add Medication" button.</p>
+                        </li>
+                        <li>
+                            <strong>Enter Medication Name</strong>
+                            <p>Type the medication name (e.g., "Lisinopril").</p>
+                        </li>
+                        <li>
+                            <strong>Set Dosage</strong>
+                            <p>Enter the dose text (e.g., "10mg", "2 tablets").</p>
+                        </li>
+                        <li>
+                            <strong>Choose Schedule</strong>
+                            <p>Select Daily, Weekly, As Needed, or Custom.</p>
+                        </li>
+                        <li>
+                            <strong>Set Times</strong>
+                            <p>Add the times of day when the medication should be taken.</p>
+                        </li>
+                        <li>
+                            <strong>Add Instructions</strong>
+                            <p>Enter any special instructions (e.g., "Take with food").</p>
+                        </li>
+                        <li>
+                            <strong>Save</strong>
+                            <p>Tap Save to add the medication.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> After adding a medication, tap "Add Inventory" to log your current pill count.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scanning a Prescription -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128247;</span> Scanning a Prescription Label</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Tap Scan Prescription</strong>
+                            <p>From the Home screen or a patient's page, tap "Scan Prescription".</p>
+                        </li>
+                        <li>
+                            <strong>Position the Label</strong>
+                            <p>Hold your phone over the prescription label so it's clearly visible.</p>
+                        </li>
+                        <li>
+                            <strong>Capture the Image</strong>
+                            <p>Tap the capture button when the label is in focus.</p>
+                        </li>
+                        <li>
+                            <strong>Wait for Processing</strong>
+                            <p>The app will analyze the image and extract medication details.</p>
+                        </li>
+                        <li>
+                            <strong>Review Extracted Data</strong>
+                            <p>Check the medication name, dosage, and instructions. Make corrections if needed.</p>
+                        </li>
+                        <li>
+                            <strong>Verify and Save</strong>
+                            <p>Check the safety verification box and tap Save.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> For best results, ensure good lighting and hold the phone steady. Cloud OCR (Premium) provides better accuracy for complex labels.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checking In a Dose -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#9989;</span> Checking In a Dose</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>View Upcoming Doses</strong>
+                            <p>On the Home screen, you'll see upcoming and overdue doses.</p>
+                        </li>
+                        <li>
+                            <strong>Tap a Dose</strong>
+                            <p>Tap on the dose you want to check in.</p>
+                        </li>
+                        <li>
+                            <strong>Choose an Action</strong>
+                            <p>Tap "Take" to mark as taken, or "Skip" if skipping.</p>
+                        </li>
+                        <li>
+                            <strong>Adjust Pills (Optional)</strong>
+                            <p>Change the number of pills if different from the default.</p>
+                        </li>
+                        <li>
+                            <strong>Add Note (Optional)</strong>
+                            <p>Add a note explaining why you skipped or any observations.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> Checking in doses updates your inventory count automatically!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recording a Symptom -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128221;</span> Recording a Symptom</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Patient's Profile</strong>
+                            <p>Navigate to the patient experiencing symptoms.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Symptom Journal</strong>
+                            <p>Access the Symptom Journal section.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Add Symptom</strong>
+                            <p>Tap the plus button to add a new entry.</p>
+                        </li>
+                        <li>
+                            <strong>Select Symptom Type</strong>
+                            <p>Choose from 14 symptom types (pain, fatigue, nausea, etc.).</p>
+                        </li>
+                        <li>
+                            <strong>Rate Severity</strong>
+                            <p>Use the 1-5 scale to rate how severe the symptom is.</p>
+                        </li>
+                        <li>
+                            <strong>Add Details</strong>
+                            <p>Optionally add duration, body location, and notes.</p>
+                        </li>
+                        <li>
+                            <strong>Link to Medication (Optional)</strong>
+                            <p>If this might be a side effect, link it to the suspected medication.</p>
+                        </li>
+                        <li>
+                            <strong>Save</strong>
+                            <p>Tap Save to record the symptom.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Adding Caregiver Note -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128466;</span> Adding a Caregiver Note</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Patient's Profile</strong>
+                            <p>Navigate to the patient you're caring for.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Caregiver Notes</strong>
+                            <p>Access the Caregiver Notes section.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Add Note</strong>
+                            <p>Tap the plus button to create a new note.</p>
+                        </li>
+                        <li>
+                            <strong>Write Your Note</strong>
+                            <p>Enter your observations, concerns, or updates.</p>
+                        </li>
+                        <li>
+                            <strong>Set Priority</strong>
+                            <p>Choose Low, Normal, High, or Urgent priority.</p>
+                        </li>
+                        <li>
+                            <strong>Enable Handoff (If Important)</strong>
+                            <p>Toggle "Handoff" if the next caregiver needs to see this.</p>
+                        </li>
+                        <li>
+                            <strong>Select Category</strong>
+                            <p>Choose a category like Medication, Behavior, or Sleep.</p>
+                        </li>
+                        <li>
+                            <strong>Save</strong>
+                            <p>Tap Save to add the note.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> Handoff notes appear prominently so the next caregiver doesn't miss important information.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generating Visit Prep -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128196;</span> Generating a Visit Prep Summary</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Patient's Profile</strong>
+                            <p>Navigate to the patient with an upcoming appointment.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Visit Prep</strong>
+                            <p>Find and tap the Visit Prep option.</p>
+                        </li>
+                        <li>
+                            <strong>Select Sections</strong>
+                            <p>Choose which information to include (medications, symptoms, notes, etc.).</p>
+                        </li>
+                        <li>
+                            <strong>Select Date Range</strong>
+                            <p>Choose how far back to include symptom and adherence data.</p>
+                        </li>
+                        <li>
+                            <strong>Generate PDF</strong>
+                            <p>Tap Generate to create the summary.</p>
+                        </li>
+                        <li>
+                            <strong>Preview or Share</strong>
+                            <p>Preview the PDF, then share via email, print, or save.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> Generate the Visit Prep the night before your appointment so you have time to review it.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Using Share Extension -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128229;</span> Importing from Messages or Email</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Find the Message</strong>
+                            <p>Open the text message or email containing appointment details.</p>
+                        </li>
+                        <li>
+                            <strong>Select the Text</strong>
+                            <p>Long-press and select the relevant text.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Share</strong>
+                            <p>Tap the Share button in the menu.</p>
+                        </li>
+                        <li>
+                            <strong>Choose CareLedger</strong>
+                            <p>Find and tap CareLedger in the share sheet.</p>
+                        </li>
+                        <li>
+                            <strong>Review Extraction</strong>
+                            <p>CareLedger will parse the text and show what it found.</p>
+                        </li>
+                        <li>
+                            <strong>Assign to Patient</strong>
+                            <p>Select which patient this appointment belongs to.</p>
+                        </li>
+                        <li>
+                            <strong>Confirm</strong>
+                            <p>Review the details and tap Confirm to save.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> This works great for pharmacy refill reminders and appointment confirmations from healthcare providers.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Managing Inventory -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128230;</span> Managing Medication Inventory</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Medication Detail</strong>
+                            <p>Tap on a medication to view its details.</p>
+                        </li>
+                        <li>
+                            <strong>View Current Count</strong>
+                            <p>See the current pill count and days remaining.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Add Inventory</strong>
+                            <p>When you pick up a refill, tap to add inventory.</p>
+                        </li>
+                        <li>
+                            <strong>Enter Quantity</strong>
+                            <p>Enter the number of pills received.</p>
+                        </li>
+                        <li>
+                            <strong>Save</strong>
+                            <p>The pill count and days remaining will update automatically.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> Set a low supply threshold (default: 7 days) to get alerts when it's time to refill.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checking Notification Health -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128276;</span> Checking Notification Health</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Settings</strong>
+                            <p>Tap the Settings tab or gear icon.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Notification Health</strong>
+                            <p>Find and tap the Notification Health option.</p>
+                        </li>
+                        <li>
+                            <strong>View Trust Score</strong>
+                            <p>See your overall trust score (0-100) based on delivery and action rates.</p>
+                        </li>
+                        <li>
+                            <strong>Review Metrics</strong>
+                            <p>See how many notifications were scheduled, delivered, actioned, and failed.</p>
+                        </li>
+                        <li>
+                            <strong>Run Self-Test</strong>
+                            <p>Tap "Run Test" to send a test notification and verify delivery.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> If your trust score is low, check that notifications are enabled in iOS Settings.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Using BYOK -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128273;</span> Using Your Own API Key (BYOK)</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Get an API Key</strong>
+                            <p>Sign up at console.anthropic.com and create an API key.</p>
+                        </li>
+                        <li>
+                            <strong>Go to Settings</strong>
+                            <p>Open the Settings tab in CareLedger.</p>
+                        </li>
+                        <li>
+                            <strong>Tap AI Settings</strong>
+                            <p>Find the AI Settings section.</p>
+                        </li>
+                        <li>
+                            <strong>Select "Your API Key"</strong>
+                            <p>Choose the "Your API Key" option.</p>
+                        </li>
+                        <li>
+                            <strong>Enter Your Key</strong>
+                            <p>Paste your Claude API key. It's stored securely in the Keychain.</p>
+                        </li>
+                        <li>
+                            <strong>Grant AI Consent</strong>
+                            <p>Acknowledge that your data will be sent to the API.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> BYOK gives you unlimited AI features without a subscription. You pay Anthropic directly for API usage.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Answers to common questions about CareLedger</p>
+
+        <div class="faq-content">
+            <!-- General Questions -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">General</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What is CareLedger?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>CareLedger is an iOS app for families managing medications. It helps you track medications, set reminders, monitor inventory, record symptoms, and coordinate care for multiple family members. It's designed for caregivers managing medications for aging parents, children, or themselves.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Is CareLedger HIPAA compliant?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>No.</strong> CareLedger is a personal health tracking tool for individual and family use. It is NOT HIPAA compliant and should not be used by healthcare providers, covered entities, or for any purpose requiring HIPAA compliance. Your data is stored locally on your device.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Does CareLedger provide medical advice?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>No.</strong> CareLedger is a tracking and organization tool only. It does not provide medical advice, diagnoses, or treatment recommendations. Always consult qualified healthcare providers for medical decisions. The medication education feature provides general information only and should not replace professional medical guidance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Where is my data stored?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All your data is stored locally on your device using Apple's SwiftData framework. CareLedger does not require an account and does not upload your health data to any servers. The only exception is when using AI features (prescription scanning with Cloud OCR or medication education), which sends specific data to the AI service for processing.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Can I sync data between devices?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>CloudKit sync is planned for a future update. Currently, data is stored only on the device where you enter it. We've designed the data model to be CloudKit-ready, so when sync is available, your existing data will be compatible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient & Medication Questions -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Patients & Medications</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>How many patients can I track?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Free users can track up to <strong>2 patients</strong>. Premium subscribers can track <strong>unlimited patients</strong>. This is perfect for families caring for multiple people.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Is there a limit on medications?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, there is no limit on the number of medications you can track, even on the free tier. You can add as many medications as needed for each patient.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What schedule types are supported?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>CareLedger supports four schedule types:</p>
+                        <ul>
+                            <li><strong>Daily:</strong> Same times every day</li>
+                            <li><strong>Weekly:</strong> Specific days of the week</li>
+                            <li><strong>As Needed (PRN):</strong> No fixed schedule, take when needed</li>
+                            <li><strong>Custom:</strong> Define your own pattern</li>
+                        </ul>
+                        <p>You can set multiple times per day for daily medications (e.g., 8 AM and 8 PM).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>How do I track "as needed" medications?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For as-needed (PRN) medications, set the schedule type to "As Needed". You won't get scheduled reminders, but you can still log doses when taken. The app will track your usage patterns and calculate inventory based on your actual consumption history.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What happens if I miss a dose?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you don't check in a dose within a configurable time window, you'll receive an overdue alert. You can then mark the dose as:</p>
+                        <ul>
+                            <li><strong>Taken:</strong> If you took it late</li>
+                            <li><strong>Skipped:</strong> If you intentionally skipped (add a reason)</li>
+                            <li><strong>Missed:</strong> If it was unintentionally missed</li>
+                        </ul>
+                        <p>All statuses are tracked in your adherence history.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI & Scanner Questions -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">AI & Prescription Scanner</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>How does the prescription scanner work?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The scanner uses Optical Character Recognition (OCR) to read prescription labels. Two modes are available:</p>
+                        <ul>
+                            <li><strong>On-Device OCR:</strong> Uses Apple's Vision framework. Free, private, works offline. Good for clear labels.</li>
+                            <li><strong>Cloud OCR:</strong> Uses Claude AI for enhanced accuracy. Better for complex or hard-to-read labels. Requires internet and uses AI credits.</li>
+                        </ul>
+                        <p>After scanning, you always review and confirm the extracted data before saving.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>How many AI features can I use for free?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Free users get <strong>5 AI uses per month</strong>, shared between Cloud OCR and Medication Education. The counter resets on the first of each month. On-device OCR is always free and unlimited.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What is BYOK (Bring Your Own Key)?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>BYOK allows you to use your own Claude API key for AI features. This gives you:</p>
+                        <ul>
+                            <li>Unlimited AI uses (you pay Anthropic directly)</li>
+                            <li>No need for a CareLedger subscription for AI features</li>
+                            <li>Direct control over your API usage and costs</li>
+                        </ul>
+                        <p>Get an API key at <code>console.anthropic.com</code>. Your key is stored securely in the iOS Keychain.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Is my data safe when using AI features?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>When using AI features, only the specific data needed for that request is sent to the AI service (e.g., the prescription image or medication name). This data is processed and not stored by the AI provider. You must grant explicit consent before using any AI features, and you can revoke consent at any time in Settings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Questions -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Notifications & Reminders</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Why am I not receiving notifications?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If notifications aren't working, check these things:</p>
+                        <ul>
+                            <li>Open iOS Settings > CareLedger and ensure notifications are enabled</li>
+                            <li>Check that "Allow Notifications" is on with Alerts, Sounds, and Badges enabled</li>
+                            <li>Make sure Do Not Disturb or Focus modes aren't blocking CareLedger</li>
+                            <li>Check the Notification Health dashboard in CareLedger Settings</li>
+                            <li>Run the Self-Test to verify notification delivery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What is the Trust Score?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Trust Score (0-100) measures notification reliability. It's calculated from:</p>
+                        <ul>
+                            <li><strong>Delivery Rate (60%):</strong> Percentage of scheduled notifications that were delivered</li>
+                            <li><strong>Action Rate (40%):</strong> Percentage of delivered notifications you responded to</li>
+                        </ul>
+                        <p>A score of 90+ is Excellent, 75-89 is Good, 50-74 is Fair, and below 50 Needs Attention.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Can I customize notification times?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Each medication can have its own schedule with multiple daily times. Appointment reminders can be set to alert you a configurable number of hours before (default: 1 hour). You can also enable or disable specific notification types in Settings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription Questions -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Subscription & Pricing</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What's included in the free tier?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The free tier includes:</p>
+                        <ul>
+                            <li>2 patient profiles</li>
+                            <li>Unlimited medications</li>
+                            <li>All notifications and reminders</li>
+                            <li>Unlimited on-device OCR scanning</li>
+                            <li>5 AI features per month (Cloud OCR + Education)</li>
+                            <li>30 caregiver notes per patient</li>
+                            <li>CSV export</li>
+                            <li>Calendar, symptom journal, and timeline</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What do I get with Premium?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Premium unlocks:</p>
+                        <ul>
+                            <li>Unlimited patient profiles</li>
+                            <li>Unlimited AI features (Cloud OCR + Education)</li>
+                            <li>Unlimited caregiver notes</li>
+                            <li>PDF export for Visit Prep</li>
+                            <li>Bundle (ZIP) export with all data</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Do TestFlight users get Premium?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Yes!</strong> TestFlight beta testers automatically receive full Premium access for the duration of the beta. This allows you to test all features and provide feedback. Thank you for helping us improve CareLedger!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Can I cancel my subscription?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel anytime through your Apple ID subscription settings. You'll retain Premium access until the end of your billing period. Your data remains on your device even after downgrading to the free tier.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data & Privacy Questions -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Data & Privacy</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>How do I export my data?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Go to Settings > Data Export. You can export:</p>
+                        <ul>
+                            <li><strong>CSV:</strong> Spreadsheet-compatible files for medications, doses, or symptoms (Free)</li>
+                            <li><strong>PDF:</strong> Formatted Visit Prep summary (Premium)</li>
+                            <li><strong>Bundle:</strong> ZIP file with all patient data (Premium)</li>
+                        </ul>
+                        <p>Use the Share Sheet to send exports via email, save to Files, or share with other apps.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Can I delete a patient or medication?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Swipe left on any item in a list to delete, or tap Edit and then Delete. Be careful: deleting a patient will permanently remove all their medications, appointments, symptoms, and notes. Deleting a medication removes its dose history and inventory events.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What happens if I delete the app?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Deleting the app will permanently delete all your CareLedger data from your device. We recommend exporting your data before uninstalling. If you reinstall the app, you'll need to start fresh unless CloudKit sync is enabled in a future update.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>The scanner isn't reading my label correctly</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Try these tips for better scanning results:</p>
+                        <ul>
+                            <li>Ensure good, even lighting (avoid shadows)</li>
+                            <li>Hold the phone steady and parallel to the label</li>
+                            <li>Make sure the entire label is visible and in focus</li>
+                            <li>Try Cloud OCR (Premium) for complex or worn labels</li>
+                            <li>If all else fails, manually enter the information</li>
+                        </ul>
+                        <p>Remember: you can always edit extracted data before saving.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>My pill count seems wrong</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The pill count is calculated from inventory events (refills) minus doses taken. If it's incorrect:</p>
+                        <ul>
+                            <li>Check that you logged your refills correctly</li>
+                            <li>Verify you're checking in doses (taking updates the count)</li>
+                            <li>You can add an inventory adjustment to correct the count</li>
+                        </ul>
+                        <p>Go to the medication detail page and tap "Add Inventory" to make adjustments.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>How do I contact support?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Visit our <a href="../support.html">Support page</a> to contact us. Please include:</p>
+                        <ul>
+                            <li>Your iOS version and device model</li>
+                            <li>CareLedger app version</li>
+                            <li>A description of the issue</li>
+                            <li>Steps to reproduce the problem</li>
+                        </ul>
+                        <p>We typically respond within 24-48 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
         <div class="pricing-content">
             <h2 class="section-title">Pricing</h2>
             <div class="free-tier">
@@ -463,6 +2106,76 @@
                     <span>&#10003; Unlimited Education</span>
                 </div>
             </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Free</th>
+                            <th>Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Patient Profiles</td>
+                            <td class="limit">2</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Medications per Patient</td>
+                            <td class="check">Unlimited</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Dose Reminders</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>Inventory Tracking</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>On-Device OCR</td>
+                            <td class="check">Unlimited</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Cloud OCR (AI)</td>
+                            <td class="limit">5/month</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Medication Education</td>
+                            <td class="limit">5/month</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Caregiver Notes</td>
+                            <td class="limit">30/patient</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>CSV Export</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>PDF Export</td>
+                            <td>&#8212;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>Bundle Export (ZIP)</td>
+                            <td>&#8212;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
@@ -498,6 +2211,16 @@
                 icon.innerHTML = '&#127769;';
                 localStorage.setItem('theme', 'light');
             }
+        }
+
+        function toggleHowto(element) {
+            const card = element.closest('.howto-card');
+            card.classList.toggle('open');
+        }
+
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
         }
 
         (function() {
