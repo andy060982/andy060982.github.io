@@ -1903,6 +1903,29 @@
                         <p>Yes! Each medication can have its own schedule with multiple daily times. Appointment reminders can be set to alert you a configurable number of hours before (default: 1 hour). You can also enable or disable specific notification types in Settings.</p>
                     </div>
                 </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What do I do if the Notification Health test fails?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If the self-test fails, try these troubleshooting steps:</p>
+                        <ul>
+                            <li><strong>"Failed to schedule":</strong> The app couldn't schedule the test notification. Restart the app and try again.</li>
+                            <li><strong>"Not delivered within timeout":</strong> The notification was scheduled but iOS didn't deliver it in time. Check these settings:</li>
+                        </ul>
+                        <ol>
+                            <li>Open <strong>iOS Settings → CareLedger → Notifications</strong></li>
+                            <li>Ensure <strong>Allow Notifications</strong> is ON</li>
+                            <li>Enable <strong>Time Sensitive Notifications</strong> if available</li>
+                            <li>Check that <strong>Focus</strong> or <strong>Do Not Disturb</strong> isn't blocking CareLedger</li>
+                            <li>Go to <strong>iOS Settings → Focus</strong> and add CareLedger to allowed apps</li>
+                            <li>Restart your iPhone and run the test again</li>
+                        </ol>
+                        <p>If tests keep failing, your notification delivery may be affected by iOS battery optimization. Try using the app more frequently to signal to iOS that notifications are important.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Subscription Questions -->
