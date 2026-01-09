@@ -1189,6 +1189,54 @@
                 </div>
             </div>
         </div>
+
+        <!-- Settings & Personalization -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#9881;</div>
+                <div>
+                    <h3>Settings & Personalization</h3>
+                    <p>Customize your experience</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#127912;</div>
+                    <div>
+                        <h4>Theme Selection</h4>
+                        <p>Choose System (automatic), Light, or Dark mode for the app appearance.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9855;</div>
+                    <div>
+                        <h4>Accessibility</h4>
+                        <p>View current iOS accessibility settings and access system settings directly.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9729;</div>
+                    <div>
+                        <h4>iCloud Backup</h4>
+                        <p>Back up all your data to iCloud for safekeeping and easy restoration.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128190;</div>
+                    <div>
+                        <h4>Local Export</h4>
+                        <p>Export your data to a JSON file you can save, share, or transfer.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128259;</div>
+                    <div>
+                        <h4>Data Restore</h4>
+                        <p>Restore from iCloud or import from a backup file with merge options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- How-To Section -->
@@ -1670,6 +1718,99 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Changing App Theme -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#127912;</span> Changing the App Theme</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Settings</strong>
+                            <p>Tap the Settings tab or gear icon.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Appearance</strong>
+                            <p>Find the Appearance option in the App Settings section.</p>
+                        </li>
+                        <li>
+                            <strong>Choose a Theme</strong>
+                            <p>Select from System (follows iOS), Light, or Dark mode.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> System mode automatically switches between light and dark based on your iOS settings, perfect for those who use automatic appearance switching.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backing Up Data -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#9729;</span> Backing Up Your Data</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Settings</strong>
+                            <p>Tap the Settings tab or gear icon.</p>
+                        </li>
+                        <li>
+                            <strong>Tap Backup & Restore</strong>
+                            <p>Find the Backup & Restore option.</p>
+                        </li>
+                        <li>
+                            <strong>Choose Backup Method</strong>
+                            <p>Select iCloud Backup or Export to File.</p>
+                        </li>
+                        <li>
+                            <strong>For iCloud Backup</strong>
+                            <p>Tap "Backup to iCloud" and wait for confirmation. Your data is securely stored in your iCloud account.</p>
+                        </li>
+                        <li>
+                            <strong>For Local Export</strong>
+                            <p>Tap "Export to File" and choose where to save the JSON backup file.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Tip:</strong> iCloud backup is recommended as it happens automatically and can be restored on any device signed into your iCloud account.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restoring Data -->
+            <div class="howto-card">
+                <div class="howto-header" onclick="toggleHowto(this)">
+                    <h3><span class="icon">&#128259;</span> Restoring Your Data</h3>
+                    <span class="howto-toggle">&#9660;</span>
+                </div>
+                <div class="howto-body">
+                    <ol class="howto-steps">
+                        <li>
+                            <strong>Go to Backup & Restore</strong>
+                            <p>Settings > Backup & Restore.</p>
+                        </li>
+                        <li>
+                            <strong>Choose Restore Source</strong>
+                            <p>Select "Restore from iCloud" or "Import from File".</p>
+                        </li>
+                        <li>
+                            <strong>Choose Restore Mode</strong>
+                            <p><strong>Replace All Data:</strong> Deletes current data first, then restores from backup.<br><strong>Merge with Existing:</strong> Keeps current data and adds backup data.</p>
+                        </li>
+                        <li>
+                            <strong>Confirm</strong>
+                            <p>Confirm the restore action. You'll see a count of restored patients.</p>
+                        </li>
+                    </ol>
+                    <div class="howto-tip">
+                        <strong>Warning:</strong> Replace All Data permanently deletes your current data. Make sure you have a backup before using this option.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1729,7 +1870,7 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>CloudKit sync is planned for a future update. Currently, data is stored only on the device where you enter it. We've designed the data model to be CloudKit-ready, so when sync is available, your existing data will be compatible.</p>
+                        <p>Automatic real-time CloudKit sync is planned for a future update. In the meantime, you can use <strong>iCloud Backup</strong> to manually back up your data and restore it on another device. Go to Settings > Backup & Restore to back up to iCloud or export to a file.</p>
                     </div>
                 </div>
             </div>
