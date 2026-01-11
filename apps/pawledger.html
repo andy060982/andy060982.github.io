@@ -944,88 +944,6 @@
             </div>
         </div>
 
-        <!-- Symptom Journal -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">&#128221;</div>
-                <div>
-                    <h3>Symptom Journal</h3>
-                    <p>Track symptoms and potential side effects</p>
-                </div>
-            </div>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#128293;</div>
-                    <div>
-                        <h4>14 Symptom Types</h4>
-                        <p>Pain, fatigue, nausea, headache, fever, and more with custom notes.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#128200;</div>
-                    <div>
-                        <h4>Severity Tracking</h4>
-                        <p>5-level severity scale with color-coded visualization.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#128279;</div>
-                    <div>
-                        <h4>Medication Linking</h4>
-                        <p>Link symptoms to medications to track potential side effects.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#128205;</div>
-                    <div>
-                        <h4>Body Location</h4>
-                        <p>Record where symptoms occur (e.g., "lower back", "left knee").</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pet Notes -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">&#128221;</div>
-                <div>
-                    <h3>Pet Notes</h3>
-                    <p>Coordinate care between multiple pets</p>
-                </div>
-            </div>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#128466;</div>
-                    <div>
-                        <h4>Daily Notes</h4>
-                        <p>Record observations, concerns, and updates for each pet.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#9888;</div>
-                    <div>
-                        <h4>Handoff Flags</h4>
-                        <p>Mark important notes as "next pet sitter should know this".</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#127991;</div>
-                    <div>
-                        <h4>Categories</h4>
-                        <p>Organize notes by category: medication, behavior, nutrition, sleep, and more.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-item-icon">&#128100;</div>
-                    <div>
-                        <h4>Author Tracking</h4>
-                        <p>See who wrote each note for accountability.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Visit Prep & Export -->
         <div class="category-section">
             <div class="category-header">
@@ -1040,14 +958,14 @@
                     <div class="feature-item-icon">&#128196;</div>
                     <div>
                         <h4>Visit Prep PDF</h4>
-                        <p>Generate a one-page summary with medications, symptoms, and adherence.</p>
+                        <p>Generate a one-page summary with medications, vaccinations, and adherence.</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-item-icon">&#128203;</div>
                     <div>
                         <h4>CSV Export</h4>
-                        <p>Export medications, doses, and symptoms to spreadsheet format.</p>
+                        <p>Export medications, doses, and vaccinations to spreadsheet format.</p>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -1437,97 +1355,6 @@
                 </div>
             </div>
 
-            <!-- Recording a Symptom -->
-            <div class="howto-card">
-                <div class="howto-header" onclick="toggleHowto(this)">
-                    <h3><span class="icon">&#128221;</span> Recording a Symptom</h3>
-                    <span class="howto-toggle">&#9660;</span>
-                </div>
-                <div class="howto-body">
-                    <ol class="howto-steps">
-                        <li>
-                            <strong>Go to Pet's Profile</strong>
-                            <p>Navigate to the pet experiencing symptoms.</p>
-                        </li>
-                        <li>
-                            <strong>Tap Symptom Journal</strong>
-                            <p>Access the Symptom Journal section.</p>
-                        </li>
-                        <li>
-                            <strong>Tap Add Symptom</strong>
-                            <p>Tap the plus button to add a new entry.</p>
-                        </li>
-                        <li>
-                            <strong>Select Symptom Type</strong>
-                            <p>Choose from 14 symptom types (pain, fatigue, nausea, etc.).</p>
-                        </li>
-                        <li>
-                            <strong>Rate Severity</strong>
-                            <p>Use the 1-5 scale to rate how severe the symptom is.</p>
-                        </li>
-                        <li>
-                            <strong>Add Details</strong>
-                            <p>Optionally add duration, body location, and notes.</p>
-                        </li>
-                        <li>
-                            <strong>Link to Medication (Optional)</strong>
-                            <p>If this might be a side effect, link it to the suspected medication.</p>
-                        </li>
-                        <li>
-                            <strong>Save</strong>
-                            <p>Tap Save to record the symptom.</p>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <!-- Adding Caregiver Note -->
-            <div class="howto-card">
-                <div class="howto-header" onclick="toggleHowto(this)">
-                    <h3><span class="icon">&#128466;</span> Adding a Caregiver Note</h3>
-                    <span class="howto-toggle">&#9660;</span>
-                </div>
-                <div class="howto-body">
-                    <ol class="howto-steps">
-                        <li>
-                            <strong>Go to Pet's Profile</strong>
-                            <p>Navigate to the pet you're caring for.</p>
-                        </li>
-                        <li>
-                            <strong>Tap Pet Notes</strong>
-                            <p>Access the Pet Notes section.</p>
-                        </li>
-                        <li>
-                            <strong>Tap Add Note</strong>
-                            <p>Tap the plus button to create a new note.</p>
-                        </li>
-                        <li>
-                            <strong>Write Your Note</strong>
-                            <p>Enter your observations, concerns, or updates.</p>
-                        </li>
-                        <li>
-                            <strong>Set Priority</strong>
-                            <p>Choose Low, Normal, High, or Urgent priority.</p>
-                        </li>
-                        <li>
-                            <strong>Enable Handoff (If Important)</strong>
-                            <p>Toggle "Handoff" if the next pet sitter needs to see this.</p>
-                        </li>
-                        <li>
-                            <strong>Select Category</strong>
-                            <p>Choose a category like Medication, Behavior, or Sleep.</p>
-                        </li>
-                        <li>
-                            <strong>Save</strong>
-                            <p>Tap Save to add the note.</p>
-                        </li>
-                    </ol>
-                    <div class="howto-tip">
-                        <strong>Tip:</strong> Handoff notes appear prominently so the next pet sitter doesn't miss important information.
-                    </div>
-                </div>
-            </div>
-
             <!-- Generating Visit Prep -->
             <div class="howto-card">
                 <div class="howto-header" onclick="toggleHowto(this)">
@@ -1546,11 +1373,11 @@
                         </li>
                         <li>
                             <strong>Select Sections</strong>
-                            <p>Choose which information to include (medications, symptoms, notes, etc.).</p>
+                            <p>Choose which information to include (medications, vaccinations, notes, etc.).</p>
                         </li>
                         <li>
                             <strong>Select Date Range</strong>
-                            <p>Choose how far back to include symptom and adherence data.</p>
+                            <p>Choose how far back to include adherence data.</p>
                         </li>
                         <li>
                             <strong>Generate PDF</strong>
@@ -1714,7 +1541,7 @@
                         </li>
                     </ol>
                     <div class="howto-tip">
-                        <strong>Tip:</strong> BYOK gives you unlimited AI features without a subscription. You pay Anthropic directly for API usage.
+                        <strong>Tip:</strong> BYOK is a Premium feature that gives you unlimited AI features. You pay Anthropic directly for API usage instead of through your subscription.
                     </div>
                 </div>
             </div>
@@ -1978,11 +1805,11 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>BYOK allows you to use your own Claude API key for AI features. This gives you:</p>
+                        <p>BYOK is a <strong>Premium feature</strong> that allows you to use your own Claude API key for AI features. This gives you:</p>
                         <ul>
                             <li>Unlimited AI uses (you pay Anthropic directly)</li>
-                            <li>No need for a PawLedger subscription for AI features</li>
                             <li>Direct control over your API usage and costs</li>
+                            <li>Use your preferred API billing instead of subscription</li>
                         </ul>
                         <p>Get an API key at <code>console.anthropic.com</code>. Your key is stored securely in the iOS Keychain.</p>
                     </div>
@@ -2086,9 +1913,8 @@
                             <li>All notifications and reminders</li>
                             <li>Unlimited on-device OCR scanning</li>
                             <li>5 AI features per month (Cloud OCR + Education)</li>
-                            <li>30 pet notes per pet</li>
                             <li>CSV export</li>
-                            <li>Calendar, symptom journal, and timeline</li>
+                            <li>Calendar and timeline</li>
                         </ul>
                     </div>
                 </div>
@@ -2103,7 +1929,7 @@
                         <ul>
                             <li>Unlimited pet profiles</li>
                             <li>Unlimited AI features (Cloud OCR + Education)</li>
-                            <li>Unlimited pet notes</li>
+                            <li>BYOK (Bring Your Own Key) option</li>
                             <li>PDF export for Visit Prep</li>
                             <li>Bundle (ZIP) export with all data</li>
                         </ul>
@@ -2143,7 +1969,7 @@
                     <div class="faq-answer">
                         <p>Go to Settings > Data Export. You can export:</p>
                         <ul>
-                            <li><strong>CSV:</strong> Spreadsheet-compatible files for medications, doses, or symptoms (Free)</li>
+                            <li><strong>CSV:</strong> Spreadsheet-compatible files for medications and doses (Free)</li>
                             <li><strong>PDF:</strong> Formatted Visit Prep summary (Premium)</li>
                             <li><strong>Bundle:</strong> ZIP file with all pet data (Premium)</li>
                         </ul>
@@ -2157,7 +1983,7 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes. Swipe left on any item in a list to delete, or tap Edit and then Delete. Be careful: deleting a pet will permanently remove all their medications, appointments, symptoms, and notes. Deleting a medication removes its dose history and inventory events.</p>
+                        <p>Yes. Swipe left on any item in a list to delete, or tap Edit and then Delete. Be careful: deleting a pet will permanently remove all their medications, appointments, vaccinations, and notes. Deleting a medication removes its dose history and inventory events.</p>
                     </div>
                 </div>
 
@@ -2318,9 +2144,9 @@
                             <td class="check">Unlimited</td>
                         </tr>
                         <tr>
-                            <td>Pet Notes</td>
-                            <td class="limit">30/pet</td>
-                            <td class="check">Unlimited</td>
+                            <td>BYOK (Own API Key)</td>
+                            <td>&#8212;</td>
+                            <td class="check">&#10003;</td>
                         </tr>
                         <tr>
                             <td>CSV Export</td>
