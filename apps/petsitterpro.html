@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSitterPro – Professional Pet Sitting Management | Andy Arevalo</title>
+    <meta name="description" content="The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/petsitterpro.html">
+    <meta property="og:title" content="PetSitterPro – Professional Pet Sitting Management">
+    <meta property="og:description" content="The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.">
+    <meta property="og:image" content="https://andyarevalo.com/images/petsitterpro.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/petsitterpro.html">
+    <meta name="twitter:title" content="PetSitterPro – Professional Pet Sitting Management">
+    <meta name="twitter:description" content="The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/petsitterpro.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #4A90A4;
+            --accent2: #FF9500;
+            --card-bg: rgba(15,22,38,.72);
+            --teal: #4A90A4;
+            --warning: #ff9f0a;
+            --purple: #af52de;
+            --pink: #ff2d55;
+            --green: #34c759;
+            --blue: #007aff;
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #4A90A4;
+            --accent2: #FF9500;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(74,144,164,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(255,149,0,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(74,144,164,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        /* Page Navigation */
+        .page-nav {
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            padding: 12px 20px;
+            margin-top: 58px;
+            position: sticky;
+            top: 58px;
+            z-index: 999;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .page-nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .page-nav a {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .page-nav a:hover {
+            color: var(--text);
+            background: var(--card-bg);
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 40px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--teal); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 120px; }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 16px; }
+        .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Core Features */
+        .core-features {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+            border: 1px solid var(--line);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-icon { font-size: 48px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 20px; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 14px; }
+
+        /* Features */
+        .features {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .features-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .features-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .features-icon { font-size: 36px; margin-bottom: 16px; }
+        .features-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .features-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Pricing */
+        .pricing {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .pricing-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .pricing-card { box-shadow: 0 8px 40px rgba(0,0,0,.1); }
+
+        .pricing-trial {
+            background: var(--green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .pricing-price span {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover { background: rgba(255,255,255,.02); }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        .footer-copyright {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-badges { justify-content: center; }
+            .feature-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 { font-size: 32px; }
+            .hero-text .tagline { font-size: 18px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .app-icon-large { width: 180px; height: 180px; font-size: 80px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <span class="dot"></span>
+                Andy Arevalo
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../support.html">Support</a>
+                <a href="../privacy.html">Privacy</a>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-nav">
+        <div class="page-nav-content">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+            <a href="#support">Support</a>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>PetSitterPro</h1>
+                <p class="tagline">Professional Pet Sitting Management</p>
+                <p>The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create professional invoices, and grow your business.</p>
+                <div class="hero-badges">
+                    <a href="https://apps.apple.com/app/petsitterpro" class="app-store-badge">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="app-icon-large">&#128062;</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="core-features">
+        <h2 class="section-title">Everything You Need</h2>
+        <p class="section-subtitle">Run your pet sitting business like a pro</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#128101;</div>
+                <h3>Client Management</h3>
+                <p>Store client details, emergency contacts, and access codes all in one secure place.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128205;</div>
+                <h3>GPS Walk Tracking</h3>
+                <p>Track every walk with GPS. Show clients exactly where you went and how far.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128197;</div>
+                <h3>Smart Scheduling</h3>
+                <p>Visual calendar with recurring visits, blocked time, and calendar sync.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128196;</div>
+                <h3>Professional Reports</h3>
+                <p>Generate branded PDF reports with activities, photos, and walk maps.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128176;</div>
+                <h3>Quotes & Invoicing</h3>
+                <p>Create professional quotes and invoices. Track payments and who owes you.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128202;</div>
+                <h3>Financial Tracking</h3>
+                <p>Log expenses and mileage for tax time. See your profit at a glance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <p class="section-subtitle">Built specifically for professional pet sitters</p>
+        <div class="features-grid">
+            <div class="features-card">
+                <div class="features-icon">&#128273;</div>
+                <h3>Access Codes</h3>
+                <p>Store keys, lockbox codes, alarm codes, and gate codes for each client. Never forget access info again.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128198;</div>
+                <h3>Recurring Schedules</h3>
+                <p>Set up recurring visits like MWF walks that auto-generate. Block your days off weekly.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128241;</div>
+                <h3>Quick Messages</h3>
+                <p>Send "On my way!" or "Just finished!" messages with one tap using customizable templates.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128247;</div>
+                <h3>Visit Photos</h3>
+                <p>Capture photos during visits and include them in your professional reports to clients.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128663;</div>
+                <h3>Mileage Tracking</h3>
+                <p>Track your miles for tax deductions. Manual entry or automatic tracking with IRS rate calculation.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128179;</div>
+                <h3>Expense Tracking</h3>
+                <p>Log business expenses with receipt photos. Organized by IRS categories for easy tax prep.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128274;</div>
+                <h3>Face ID Security</h3>
+                <p>Protect your client data with Face ID or Touch ID. Your business information stays secure.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#127760;</div>
+                <h3>Privacy First</h3>
+                <p>All data stored locally on your device. We never see your business data or client information.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Simple Pricing</h2>
+        <p class="section-subtitle">Start free, upgrade when you're ready</p>
+        <div class="pricing-card">
+            <span class="pricing-trial">7-Day Free Trial</span>
+            <div class="pricing-price">$9.99<span>/month</span></div>
+            <ul class="pricing-features">
+                <li>Unlimited clients and pets</li>
+                <li>GPS walk tracking</li>
+                <li>Professional PDF reports</li>
+                <li>Quotes and invoicing</li>
+                <li>Expense and mileage tracking</li>
+                <li>Recurring blocked time</li>
+                <li>Calendar integration</li>
+                <li>Face ID/Touch ID security</li>
+            </ul>
+            <a href="https://apps.apple.com/app/petsitterpro" class="cta-button">
+                Start Free Trial
+            </a>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Answers to common questions about PetSitterPro</p>
+        <div class="faq-content">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I add a new client?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Go to the Clients tab and tap the + button in the top right corner. Fill in the client's details, then add their pets and access codes.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How does GPS walk tracking work?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    During an active visit for a walk-type appointment, tap "Track Walk" to start GPS tracking. Your route will be recorded and displayed on a map. Tap "Stop Tracking" when done. The route and distance are saved with the visit and can be included in your report.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I block recurring days off?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Go to Schedule, then Blocked Time, then Add. Toggle on "Repeat" and select your frequency (Weekly, Daily, etc.). For weekly blocks, select the days you want off. Choose whether it should repeat indefinitely or until a specific date.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I create an invoice?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Go to the Money tab, then Invoices, then tap +. Select a client, add line items for your services, and save. You can then preview and share the PDF invoice with your client.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Can I track my mileage for taxes?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Go to Money, then Mileage. You can manually enter trips or use the tracker to record your drive in real-time. The app calculates your IRS deduction automatically at the current rate ($0.67/mile).
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Is my data backed up?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Your data is stored locally on your device and included in your iCloud or iTunes backups if you have those enabled. The app itself does not upload data to cloud servers to protect your privacy.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I cancel my subscription?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Subscriptions are managed through Apple. Go to your iPhone Settings, tap [Your Name], then Subscriptions, then PetSitterPro, then Cancel Subscription.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" style="padding: 60px 20px; text-align: center;">
+        <h2 class="section-title">Need Help?</h2>
+        <p class="section-subtitle">We're here to help you succeed with PetSitterPro</p>
+        <p style="margin-top: 20px;">
+            <a href="mailto:support@petsitterpro.app" style="font-size: 20px; font-weight: 600;">support@petsitterpro.app</a>
+        </p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../privacy.html">Privacy Policy</a>
+            <a href="../terms.html">Terms of Service</a>
+            <a href="../support.html">Support</a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 Andy Apps. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.getAttribute('data-theme') === 'light') {
+                html.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#9790;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('open');
+        }
+
+        // Load saved theme
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const icon = document.getElementById('theme-icon');
+            if (saved === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#9790;';
+            }
+        })();
+    </script>
+</body>
+</html>
