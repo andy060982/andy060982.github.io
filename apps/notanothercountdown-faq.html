@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ – Not Another Countdown | Andy Arevalo</title>
+    <meta name="description" content="Frequently asked questions about Not Another Countdown app. Get answers about widgets, notifications, subscriptions, and more.">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanothercountdown-faq.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #a855f7;
+            --accent-alt: #7c3aed;
+            --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3ee 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--line);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        nav .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Header */
+        .page-header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 40px 0;
+        }
+
+        .faq-category {
+            margin-bottom: 48px;
+        }
+
+        .faq-category h2 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding-left: 16px;
+            border-left: 2px solid var(--line);
+        }
+
+        .faq-answer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .cta-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="notanothercountdown.html" class="nav-brand">Not Another Countdown</a>
+            <ul class="nav-links">
+                <li><a href="notanothercountdown.html">Home</a></li>
+                <li><a href="notanothercountdown-howto.html">How To</a></li>
+                <li><a href="notanothercountdown-pricing.html">Pricing</a></li>
+                <li><a href="notanothercountdown-faq.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about Not Another Countdown</p>
+        </div>
+    </header>
+
+    <main class="faq-section">
+        <div class="container">
+
+            <!-- General -->
+            <div class="faq-category">
+                <h2>General</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">What is Not Another Countdown?</div>
+                    <div class="faq-answer">Not Another Countdown is a beautiful countdown timer app for iPhone. Create countdowns for birthdays, vacations, weddings, graduations, and any event that matters to you. See your countdowns on Home Screen and Lock Screen widgets.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is the app free?</div>
+                    <div class="faq-answer">Yes! You can use Not Another Countdown for free with up to 3 countdowns. This includes all features like widgets, notifications, and recurring events. Upgrade to Premium for unlimited countdowns.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to create an account?</div>
+                    <div class="faq-answer">No account required. Just download the app and start creating countdowns immediately. Your data syncs automatically via iCloud if you're signed in to your Apple ID.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What devices are supported?</div>
+                    <div class="faq-answer">Not Another Countdown works on iPhone running iOS 17 or later. iPad support is coming in a future update.</div>
+                </div>
+            </div>
+
+            <!-- Widgets -->
+            <div class="faq-category">
+                <h2>Widgets</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I add a widget to my Home Screen?</div>
+                    <div class="faq-answer">Long-press on your Home Screen, tap the + button in the top corner, search for "Not Another Countdown", then choose your widget size (Small, Medium, or Large) and tap "Add Widget".</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I add a widget to my Lock Screen?</div>
+                    <div class="faq-answer">Long-press on your Lock Screen, tap "Customize", select the Lock Screen, tap the widget area above or below the time, then find "Not Another Countdown" and choose Circular, Rectangular, or Inline style.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Which countdown appears in the widget?</div>
+                    <div class="faq-answer">The widget automatically shows your next upcoming countdown. When that event passes, it switches to the next one.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How often does the widget update?</div>
+                    <div class="faq-answer">Widgets update approximately every minute. The countdown displayed is always accurate to within a minute or two.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Why isn't my widget showing the right countdown?</div>
+                    <div class="faq-answer">Try opening the app once to refresh the data. If the issue persists, remove the widget and add it again. Make sure you have at least one future countdown event.</div>
+                </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="faq-category">
+                <h2>Notifications & Reminders</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">What notification options are available?</div>
+                    <div class="faq-answer">You can set reminders for: Day of event (morning notification), Day before, and Week before. Enable or disable each option per event.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">I'm not receiving notifications. What should I do?</div>
+                    <div class="faq-answer">Check that notifications are enabled in Settings → Notifications → Not Another Countdown. Make sure "Allow Notifications" is on and your notification settings (Banners, Sounds, Badges) are configured.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What time do notifications arrive?</div>
+                    <div class="faq-answer">Notifications are sent at 9:00 AM on the scheduled day. If you set a specific time for your event, the "day of" notification will arrive at that time.</div>
+                </div>
+            </div>
+
+            <!-- Recurring Events -->
+            <div class="faq-category">
+                <h2>Recurring Events</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do recurring events work?</div>
+                    <div class="faq-answer">When you enable "Repeats Annually" for an event, the countdown automatically calculates to the next occurrence. Perfect for birthdays and anniversaries — set it once and it counts down year after year.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What happens after a recurring event passes?</div>
+                    <div class="faq-answer">The countdown immediately starts counting toward next year's date. For example, if your friend's birthday was yesterday, the app now shows the countdown to their next birthday.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I see past occurrences?</div>
+                    <div class="faq-answer">Recurring events always show the upcoming occurrence. Non-recurring past events appear in the "Past Events" section with a "time since" display.</div>
+                </div>
+            </div>
+
+            <!-- Premium & Purchases -->
+            <div class="faq-category">
+                <h2>Premium & Purchases</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">What's included in Premium?</div>
+                    <div class="faq-answer">Premium unlocks unlimited countdowns. All other features (widgets, notifications, recurring events, categories, icons) are available in the free version.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What are my purchase options?</div>
+                    <div class="faq-answer">Three options: Lifetime ($4.99 one-time), Annual ($4.99/year), or Monthly ($0.99/month). Lifetime is the best value — pay once, own forever.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I restore my purchase?</div>
+                    <div class="faq-answer">Open the app, go to Settings (gear icon), scroll down and tap "Restore Purchases". Your purchase will be restored if you're signed in with the same Apple ID.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I cancel my subscription?</div>
+                    <div class="faq-answer">Open Settings on your iPhone → tap your name → Subscriptions → Not Another Countdown → Cancel Subscription. You'll keep access until the end of your billing period.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I get a refund?</div>
+                    <div class="faq-answer">Refunds are handled by Apple. Visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> to request a refund for any App Store purchase.</div>
+                </div>
+            </div>
+
+            <!-- Data & Privacy -->
+            <div class="faq-category">
+                <h2>Data & Privacy</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is my data private?</div>
+                    <div class="faq-answer">Yes. Your countdown data stays on your device and in your personal iCloud account. We don't collect, store, or have access to any of your data.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Does the app sync across devices?</div>
+                    <div class="faq-answer">Your countdowns sync automatically via iCloud when you're signed in with the same Apple ID on multiple devices.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I delete my data?</div>
+                    <div class="faq-answer">You can delete individual countdowns by swiping left on them or using the delete button in the detail view. To remove all data, delete the app from your device.</div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="faq-category">
+                <h2>Troubleshooting</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">The app is crashing. What should I do?</div>
+                    <div class="faq-answer">Try force-quitting the app and reopening it. If the issue continues, restart your iPhone. Still having trouble? Make sure you have the latest version from the App Store.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">My countdown shows the wrong time remaining.</div>
+                    <div class="faq-answer">Check that your event date and time are set correctly. Also verify your iPhone's time zone is correct in Settings → General → Date & Time.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I contact support?</div>
+                    <div class="faq-answer">Email us at <a href="mailto:arevalo.andy@gmail.com">arevalo.andy@gmail.com</a> or visit our <a href="../support.html">support page</a>. We typically respond within 24 hours.</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Still have questions?</h2>
+            <p>We're here to help. Reach out anytime.</p>
+            <a href="mailto:arevalo.andy@gmail.com" class="cta-button">Contact Support</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="notanothercountdown.html">Home</a>
+                <a href="notanothercountdown-howto.html">How To</a>
+                <a href="notanothercountdown-pricing.html">Pricing</a>
+                <a href="../privacy.html">Privacy</a>
+                <a href="../terms.html">Terms</a>
+                <a href="../support.html">Support</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Andy Arevalo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

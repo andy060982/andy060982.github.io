@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Guide – Not Another Countdown | Andy Arevalo</title>
+    <meta name="description" content="Learn how to use Not Another Countdown. Step-by-step guides for creating countdowns, adding widgets, setting up notifications, and more.">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanothercountdown-howto.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #a855f7;
+            --accent-alt: #7c3aed;
+            --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3ee 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--line);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        nav .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Header */
+        .page-header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 24px 32px;
+            margin: 40px 0;
+        }
+
+        .toc h2 {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        /* Guide Sections */
+        .guide-section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .guide-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .guide-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--accent);
+        }
+
+        .guide-section h3 {
+            font-size: 1.1rem;
+            margin: 32px 0 16px;
+            color: var(--text);
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .steps li strong {
+            color: var(--text);
+        }
+
+        .tip-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-box strong {
+            color: var(--accent);
+        }
+
+        .tip-box p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        /* Features Grid */
+        .features-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .feature-mini {
+            background: var(--bg-secondary);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .feature-mini .icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-mini span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { gap: 16px; }
+            .steps li { padding-left: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="notanothercountdown.html" class="nav-brand">Not Another Countdown</a>
+            <ul class="nav-links">
+                <li><a href="notanothercountdown.html">Home</a></li>
+                <li><a href="notanothercountdown-howto.html">How To</a></li>
+                <li><a href="notanothercountdown-pricing.html">Pricing</a></li>
+                <li><a href="notanothercountdown-faq.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>How To Guide</h1>
+            <p>Everything you need to get the most out of Not Another Countdown</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#create">Create a Countdown</a></li>
+                    <li><a href="#widgets">Add Widgets</a></li>
+                    <li><a href="#notifications">Set Up Notifications</a></li>
+                    <li><a href="#recurring">Recurring Events</a></li>
+                    <li><a href="#categories">Categories & Icons</a></li>
+                    <li><a href="#manage">Manage Countdowns</a></li>
+                </ul>
+            </div>
+
+            <!-- Create a Countdown -->
+            <section class="guide-section" id="create">
+                <h2>Create a Countdown</h2>
+                <p>Creating your first countdown takes just a few seconds.</p>
+
+                <ol class="steps">
+                    <li><strong>Open the app</strong> and tap the <strong>+</strong> button in the top right corner.</li>
+                    <li><strong>Enter the event name</strong> — something like "Sarah's Birthday" or "Vacation to Hawaii".</li>
+                    <li><strong>Pick the date</strong> using the date picker. Toggle "Include Time" if you want to count down to a specific hour.</li>
+                    <li><strong>Choose a category</strong> (Birthday, Vacation, Wedding, etc.) — this sets the default icon and color.</li>
+                    <li><strong>Customize the icon</strong> if you want. Tap the icon row to choose from 50+ options.</li>
+                    <li><strong>Set your notifications</strong> — day of, day before, and/or week before.</li>
+                    <li><strong>Tap "Add"</strong> to save your countdown!</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>Pro Tip:</strong>
+                    <p>Add a note to your event to remember important details, like gift ideas or reservation numbers.</p>
+                </div>
+            </section>
+
+            <!-- Add Widgets -->
+            <section class="guide-section" id="widgets">
+                <h2>Add Widgets</h2>
+                <p>See your countdowns at a glance with Home Screen and Lock Screen widgets.</p>
+
+                <h3>Home Screen Widgets</h3>
+                <ol class="steps">
+                    <li><strong>Long-press</strong> on any empty area of your Home Screen until the apps jiggle.</li>
+                    <li>Tap the <strong>+ button</strong> in the top left corner.</li>
+                    <li>Search for <strong>"Not Another Countdown"</strong> or scroll to find it.</li>
+                    <li>Choose your size: <strong>Small</strong> (days only), <strong>Medium</strong> (days + hours + event info), or <strong>Large</strong> (full countdown display).</li>
+                    <li>Tap <strong>"Add Widget"</strong> then position it where you want.</li>
+                    <li>Tap <strong>"Done"</strong> in the top right to save.</li>
+                </ol>
+
+                <div class="features-mini">
+                    <div class="feature-mini">
+                        <div class="icon">⬜</div>
+                        <span>Small</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">▬</div>
+                        <span>Medium</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">⬛</div>
+                        <span>Large</span>
+                    </div>
+                </div>
+
+                <h3>Lock Screen Widgets</h3>
+                <ol class="steps">
+                    <li><strong>Long-press</strong> on your Lock Screen to enter customization mode.</li>
+                    <li>Tap <strong>"Customize"</strong> at the bottom.</li>
+                    <li>Select <strong>"Lock Screen"</strong>.</li>
+                    <li>Tap the <strong>widget area</strong> above or below the time.</li>
+                    <li>Find <strong>"Not Another Countdown"</strong> in the widget list.</li>
+                    <li>Choose <strong>Circular</strong>, <strong>Rectangular</strong>, or <strong>Inline</strong> style.</li>
+                    <li>Tap <strong>"Done"</strong> to save.</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>Widget Updates:</strong>
+                    <p>Widgets show your next upcoming countdown and update automatically. Open the app occasionally to ensure data stays fresh.</p>
+                </div>
+            </section>
+
+            <!-- Set Up Notifications -->
+            <section class="guide-section" id="notifications">
+                <h2>Set Up Notifications</h2>
+                <p>Never miss an important moment with smart reminders.</p>
+
+                <h3>Available Reminder Options</h3>
+                <div class="features-mini">
+                    <div class="feature-mini">
+                        <div class="icon">🔔</div>
+                        <span>Day Of</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">📅</div>
+                        <span>Day Before</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">📆</div>
+                        <span>Week Before</span>
+                    </div>
+                </div>
+
+                <h3>Enable Notifications</h3>
+                <ol class="steps">
+                    <li>When creating or editing an event, scroll to the <strong>"Notifications"</strong> section.</li>
+                    <li>Toggle on the reminders you want: <strong>Day of event</strong>, <strong>Day before</strong>, <strong>Week before</strong>.</li>
+                    <li>Make sure you've allowed notifications when the app first asked, or enable them in <strong>Settings → Notifications → Not Another Countdown</strong>.</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>Notification Timing:</strong>
+                    <p>Reminders arrive at 9:00 AM. If your event has a specific time, the "day of" notification arrives at that time.</p>
+                </div>
+            </section>
+
+            <!-- Recurring Events -->
+            <section class="guide-section" id="recurring">
+                <h2>Recurring Events</h2>
+                <p>Perfect for birthdays and anniversaries that happen every year.</p>
+
+                <ol class="steps">
+                    <li>Create a new event or edit an existing one.</li>
+                    <li>In the <strong>"Options"</strong> section, toggle on <strong>"Repeats Annually"</strong>.</li>
+                    <li>Save the event.</li>
+                </ol>
+
+                <p>Once enabled, the app automatically calculates the countdown to the <strong>next occurrence</strong>. When this year's birthday passes, it immediately starts counting down to next year's!</p>
+
+                <div class="tip-box">
+                    <strong>Example:</strong>
+                    <p>If Mom's birthday is March 15 and today is March 20, the app shows the countdown to March 15 next year — not "5 days ago".</p>
+                </div>
+            </section>
+
+            <!-- Categories & Icons -->
+            <section class="guide-section" id="categories">
+                <h2>Categories & Icons</h2>
+                <p>Organize your countdowns and make them visually distinct.</p>
+
+                <h3>Built-in Categories</h3>
+                <div class="features-mini">
+                    <div class="feature-mini">
+                        <div class="icon">🎂</div>
+                        <span>Birthday</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">🎄</div>
+                        <span>Holiday</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">✈️</div>
+                        <span>Vacation</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">💒</div>
+                        <span>Wedding</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">👶</div>
+                        <span>Baby</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">🎓</div>
+                        <span>Graduation</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">🎵</div>
+                        <span>Concert</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">🏃</div>
+                        <span>Sports</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">💼</div>
+                        <span>Work</span>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="icon">📅</div>
+                        <span>Custom</span>
+                    </div>
+                </div>
+
+                <p>Each category comes with a default icon and color. You can customize the icon by tapping the icon row when creating or editing an event.</p>
+
+                <h3>50+ Icons Available</h3>
+                <p>Choose from celebrations, travel, love & family, education, entertainment, sports, health, nature, technology, and more!</p>
+            </section>
+
+            <!-- Manage Countdowns -->
+            <section class="guide-section" id="manage">
+                <h2>Manage Countdowns</h2>
+                <p>Edit, delete, and organize your events.</p>
+
+                <h3>Edit a Countdown</h3>
+                <ol class="steps">
+                    <li>Tap on any countdown to open the detail view.</li>
+                    <li>Tap the <strong>⋯ menu</strong> in the top right corner.</li>
+                    <li>Select <strong>"Edit"</strong>.</li>
+                    <li>Make your changes and tap <strong>"Save"</strong>.</li>
+                </ol>
+
+                <h3>Delete a Countdown</h3>
+                <ol class="steps">
+                    <li>Tap on the countdown to open details.</li>
+                    <li>Tap the <strong>⋯ menu</strong> → <strong>"Delete"</strong>.</li>
+                    <li>Confirm deletion.</li>
+                </ol>
+
+                <h3>Filter by Category</h3>
+                <p>On the main screen, scroll the category chips horizontally to filter your countdowns. Tap "All" to see everything.</p>
+
+                <h3>Search</h3>
+                <p>Pull down on the main list to reveal the search bar. Type to find countdowns by name.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="notanothercountdown.html">Home</a>
+                <a href="notanothercountdown-howto.html">How To</a>
+                <a href="notanothercountdown-pricing.html">Pricing</a>
+                <a href="notanothercountdown-faq.html">FAQ</a>
+                <a href="../privacy.html">Privacy</a>
+                <a href="../terms.html">Terms</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Andy Arevalo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

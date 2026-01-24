@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing – Not Another Countdown | Andy Arevalo</title>
+    <meta name="description" content="Not Another Countdown pricing. Start free with 3 countdowns. Upgrade to Premium for unlimited countdowns with lifetime, annual, or monthly options.">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanothercountdown-pricing.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #a855f7;
+            --accent-alt: #7c3aed;
+            --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3ee 100%);
+            --green: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--line);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        nav .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Header */
+        .page-header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Grid */
+        .pricing-section {
+            padding: 40px 0 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 32px;
+            border: 2px solid var(--line);
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Best Value';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .plan-name {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pricing-card.featured .plan-price {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-period {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .plan-features li.disabled {
+            opacity: 0.5;
+        }
+
+        .plan-features li.disabled::before {
+            content: '—';
+            color: var(--text-secondary);
+        }
+
+        .plan-cta {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .plan-cta.primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .plan-cta.secondary {
+            background: transparent;
+            border: 2px solid var(--line);
+            color: var(--text);
+        }
+
+        .plan-cta:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 60px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .comparison-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .comparison-table th {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th:not(:first-child),
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table td:first-child {
+            color: var(--text);
+        }
+
+        .check {
+            color: var(--green);
+            font-size: 1.2rem;
+        }
+
+        .limit {
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .faq-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .faq-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { gap: 16px; }
+            .plan-price { font-size: 2.5rem; }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="notanothercountdown.html" class="nav-brand">Not Another Countdown</a>
+            <ul class="nav-links">
+                <li><a href="notanothercountdown.html">Home</a></li>
+                <li><a href="notanothercountdown-howto.html">How To</a></li>
+                <li><a href="notanothercountdown-pricing.html">Pricing</a></li>
+                <li><a href="notanothercountdown-faq.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Simple, Fair Pricing</h1>
+            <p>Start free. Upgrade when you need more countdowns. No tricks, no hidden fees.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Pricing Cards -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-grid">
+
+                    <!-- Free -->
+                    <div class="pricing-card">
+                        <div class="plan-name">Free</div>
+                        <div class="plan-price">$0</div>
+                        <div class="plan-period">forever</div>
+                        <ul class="plan-features">
+                            <li>Up to 3 countdowns</li>
+                            <li>Home Screen widgets</li>
+                            <li>Lock Screen widgets</li>
+                            <li>Smart notifications</li>
+                            <li>Recurring events</li>
+                            <li>50+ icons</li>
+                            <li>10 categories</li>
+                            <li class="disabled">Unlimited countdowns</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/not-another-countdown/id6757996776" class="plan-cta secondary">Download Free</a>
+                    </div>
+
+                    <!-- Lifetime -->
+                    <div class="pricing-card featured">
+                        <div class="plan-name">Lifetime</div>
+                        <div class="plan-price">$4.99</div>
+                        <div class="plan-period">one-time purchase</div>
+                        <ul class="plan-features">
+                            <li>Unlimited countdowns</li>
+                            <li>Home Screen widgets</li>
+                            <li>Lock Screen widgets</li>
+                            <li>Smart notifications</li>
+                            <li>Recurring events</li>
+                            <li>50+ icons</li>
+                            <li>10 categories</li>
+                            <li>All future updates</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/not-another-countdown/id6757996776" class="plan-cta primary">Get Lifetime</a>
+                    </div>
+
+                    <!-- Annual -->
+                    <div class="pricing-card">
+                        <div class="plan-name">Annual</div>
+                        <div class="plan-price">$4.99</div>
+                        <div class="plan-period">per year</div>
+                        <ul class="plan-features">
+                            <li>Unlimited countdowns</li>
+                            <li>Home Screen widgets</li>
+                            <li>Lock Screen widgets</li>
+                            <li>Smart notifications</li>
+                            <li>Recurring events</li>
+                            <li>50+ icons</li>
+                            <li>10 categories</li>
+                            <li>Cancel anytime</li>
+                        </ul>
+                        <a href="https://apps.apple.com/app/not-another-countdown/id6757996776" class="plan-cta secondary">Subscribe Yearly</a>
+                    </div>
+
+                </div>
+
+                <!-- Monthly option note -->
+                <p style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+                    Monthly subscription also available at $0.99/month
+                </p>
+            </div>
+        </section>
+
+        <!-- Feature Comparison -->
+        <section class="comparison-section">
+            <div class="container">
+                <h2>Feature Comparison</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Free</th>
+                            <th>Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Countdowns</td>
+                            <td class="limit">Up to 3</td>
+                            <td class="check">✓ Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Home Screen Widgets</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Lock Screen Widgets</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Smart Notifications</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Recurring Events</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Categories</td>
+                            <td class="check">✓ All 10</td>
+                            <td class="check">✓ All 10</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Icons</td>
+                            <td class="check">✓ 50+</td>
+                            <td class="check">✓ 50+</td>
+                        </tr>
+                        <tr>
+                            <td>iCloud Sync</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Dark Mode</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Pricing FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Pricing Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Which plan should I choose?</h3>
+                        <p>If you only need a few countdowns, Free is perfect. For unlimited countdowns, Lifetime is the best value — pay once, use forever.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can I try before I buy?</h3>
+                        <p>Yes! The free version includes all features with up to 3 countdowns. No credit card required, no trial period — it's free forever.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What's the difference between Lifetime and Annual?</h3>
+                        <p>Lifetime is a one-time $4.99 purchase that never expires. Annual is $4.99/year recurring. Lifetime pays for itself after one year.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How do I restore my purchase?</h3>
+                        <p>Open the app, go to Settings → Restore Purchases. Make sure you're signed in with the same Apple ID you used to purchase.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can I cancel my subscription?</h3>
+                        <p>Yes, anytime. Go to iPhone Settings → [Your Name] → Subscriptions → Not Another Countdown → Cancel. You keep access until the period ends.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How do I request a refund?</h3>
+                        <p>Refunds are handled by Apple. Visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> within 14 days of purchase.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="notanothercountdown.html">Home</a>
+                <a href="notanothercountdown-howto.html">How To</a>
+                <a href="notanothercountdown-pricing.html">Pricing</a>
+                <a href="notanothercountdown-faq.html">FAQ</a>
+                <a href="../privacy.html">Privacy</a>
+                <a href="../terms.html">Terms</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Andy Arevalo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
