@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Another Countdown – Event Timer & Widgets | Andy Arevalo</title>
+    <meta name="description" content="Beautiful countdown timers for life's important moments. Track birthdays, vacations, weddings & more with Home Screen and Lock Screen widgets.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/notanothercountdown.html">
+    <meta property="og:title" content="Not Another Countdown – Event Timer & Widgets">
+    <meta property="og:description" content="Beautiful countdown timers for life's important moments. Track birthdays, vacations, weddings & more with widgets.">
+    <meta property="og:image" content="https://andyarevalo.com/images/notanothercountdown.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/notanothercountdown.html">
+    <meta name="twitter:title" content="Not Another Countdown – Event Timer & Widgets">
+    <meta name="twitter:description" content="Beautiful countdown timers for life's important moments. Track birthdays, vacations, weddings & more with widgets.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/notanothercountdown.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanothercountdown.html">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #a855f7;
+            --accent-alt: #7c3aed;
+            --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3ee 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 27px;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .app-store-badge {
+            height: 54px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .app-store-badge:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--line);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Widget Showcase */
+        .widgets {
+            padding: 80px 0;
+        }
+
+        .widgets h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .widgets .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .widget-types {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .widget-type {
+            text-align: center;
+        }
+
+        .widget-type h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .widget-type p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .pricing .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: 'Best Value';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: var(--bg);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .pricing-card li::before {
+            content: '✓';
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-column h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-links {
+                gap: 30px;
+            }
+
+            .widget-types {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="nav-brand">Andy Arevalo</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#apps">Apps</a></li>
+                <li><a href="../support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="../images/notanothercountdown.png" alt="Not Another Countdown App Icon" class="app-icon">
+            <h1>Not Another Countdown</h1>
+            <p class="tagline">Beautiful countdown timers for life's important moments. Birthdays, vacations, weddings, and everything in between.</p>
+            <a href="https://apps.apple.com/app/not-another-countdown/id6757996776" target="_blank" rel="noopener">
+                <img src="../images/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge">
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Everything You Need to Track What Matters</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Beautiful Countdowns</h3>
+                    <p>Create stunning visual countdowns that show days, hours, minutes, and seconds. Choose from 50+ icons and colorful themes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Home Screen Widgets</h3>
+                    <p>Small, medium, and large widgets let you see your countdowns at a glance without opening the app.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Lock Screen Widgets</h3>
+                    <p>Circular, rectangular, and inline widgets for your Lock Screen. Your countdown is always just a glance away.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Reminders</h3>
+                    <p>Get notified on the day of, the day before, or a week before your event. Never miss what matters.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Annual Recurring</h3>
+                    <p>Perfect for birthdays and anniversaries. Events automatically count down to the next occurrence every year.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <h3>10 Categories</h3>
+                    <p>Birthday, Holiday, Vacation, Wedding, Baby, Graduation, Concert, Sports, Work, and Custom events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Widget Showcase -->
+    <section class="widgets">
+        <div class="container">
+            <h2>Widgets Everywhere</h2>
+            <p class="subtitle">Add countdown widgets to your Home Screen and Lock Screen. Always know exactly how long until your next big moment.</p>
+            <div class="widget-types">
+                <div class="widget-type">
+                    <h4>Home Screen</h4>
+                    <p>Small • Medium • Large</p>
+                </div>
+                <div class="widget-type">
+                    <h4>Lock Screen</h4>
+                    <p>Circular • Rectangular • Inline</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Simple, Fair Pricing</h2>
+            <p class="subtitle">Start free with 3 countdowns. Upgrade anytime for unlimited.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">$0</div>
+                    <div class="period">forever</div>
+                    <ul>
+                        <li>Up to 3 countdowns</li>
+                        <li>All widget types</li>
+                        <li>Smart reminders</li>
+                        <li>10 categories</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Lifetime</h3>
+                    <div class="price">$4.99</div>
+                    <div class="period">one-time purchase</div>
+                    <ul>
+                        <li>Unlimited countdowns</li>
+                        <li>All features included</li>
+                        <li>No subscription</li>
+                        <li>Future updates free</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Annual</h3>
+                    <div class="price">$4.99</div>
+                    <div class="period">per year</div>
+                    <ul>
+                        <li>Unlimited countdowns</li>
+                        <li>All features included</li>
+                        <li>Cancel anytime</li>
+                        <li>Save 58% vs monthly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Not Another Countdown</h3>
+                    <p>Track life's moments beautifully.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>App</h4>
+                        <ul>
+                            <li><a href="https://apps.apple.com/app/not-another-countdown/id6757996776" target="_blank" rel="noopener">App Store</a></li>
+                            <li><a href="../support.html">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="../privacy.html">Privacy Policy</a></li>
+                            <li><a href="../terms.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:arevalo.andy@gmail.com">Email</a></li>
+                            <li><a href="../index.html">More Apps</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Andy Arevalo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
