@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Guardian – School Email Organizer | Andy Arevalo</title>
+    <meta name="description" content="Never miss another school email. Student Guardian connects to your inbox, filters school communications, and uses AI to summarize them in your language.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/studentguardian.html">
+    <meta property="og:title" content="Student Guardian – School Email Organizer">
+    <meta property="og:description" content="Never miss another school email. AI-powered summaries, calendar integration, and grade tracking for busy parents.">
+    <meta property="og:image" content="https://andyarevalo.com/images/studentguardian.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/studentguardian.html">
+    <meta name="twitter:title" content="Student Guardian – School Email Organizer">
+    <meta name="twitter:description" content="Never miss another school email. AI-powered summaries, calendar integration, and grade tracking for busy parents.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/studentguardian.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/studentguardian.html">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #5E9EFF;
+            --accent2: #FF6B6B;
+            --card-bg: rgba(15,22,38,.72);
+            --teal: #34c8b0;
+            --warning: #ff9f0a;
+            --purple: #af52de;
+            --pink: #ff2d55;
+            --green: #34c759;
+            --blue: #007aff;
+            --orange: #FF9500;
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #007AFF;
+            --accent2: #FF3B30;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(94,158,255,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(255,107,107,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(94,158,255,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 26px;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 60px rgba(94,158,255,.3);
+            background: linear-gradient(135deg, #5E9EFF, #7B68EE);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: clamp(18px, 3vw, 22px);
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .app-store-badge {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: white;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .app-store-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(94,158,255,.4);
+            text-decoration: none;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Core Features */
+        .core-features {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+            border: 1px solid var(--line);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-card.email { border: 2px solid var(--accent); }
+        .feature-card.ai { border: 2px solid var(--purple); }
+        .feature-card.calendar { border: 2px solid var(--orange); }
+
+        .feature-icon { font-size: 48px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 22px; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .steps-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--line);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 { font-size: 20px; margin-bottom: 8px; }
+        .step-content p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Features List */
+        .features {
+            padding: 60px 20px;
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .features-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .features-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .features-icon { font-size: 36px; margin-bottom: 16px; }
+        .features-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .features-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Languages */
+        .languages {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .languages-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .language-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .language-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 60px 20px;
+        }
+
+        .pricing-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .free-tier {
+            background: rgba(52, 199, 89, 0.1);
+            border: 1px solid var(--green);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .free-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .free-features span {
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 { font-size: 18px; margin-bottom: 16px; color: var(--text-secondary); }
+        .pricing-card .price { font-size: 36px; font-weight: 700; }
+        .pricing-card .period { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+        .pricing-card .note { font-size: 13px; color: var(--green); margin-top: 8px; }
+
+        /* Comparison Table */
+        .comparison-table {
+            margin-top: 40px;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .comparison-table th {
+            background: rgba(94,158,255,.1);
+            font-weight: 600;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .comparison-table .check { color: var(--green); }
+        .comparison-table .limit { color: var(--warning); }
+
+        /* FAQ */
+        .faq-section {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle { transform: rotate(180deg); }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+
+        /* CTA */
+        .cta {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(94,158,255,.1), rgba(255,107,107,.1));
+        }
+
+        .cta h2 { font-size: clamp(24px, 4vw, 32px); margin-bottom: 16px; }
+        .cta p { color: var(--text-secondary); margin-bottom: 24px; }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a { color: var(--text-secondary); font-size: 14px; }
+        .footer-links a:hover { color: var(--text); }
+
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .step { flex-direction: column; text-align: center; }
+            .pricing-card.featured { transform: none; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <span class="dot"></span>
+                Andy Arevalo
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="app-icon">&#127891;</div>
+        <h1>Student Guardian</h1>
+        <p class="tagline">Never miss another school email. AI-powered summaries, calendar integration, and grade tracking for busy parents.</p>
+        <a href="https://apps.apple.com/app/student-guardian/id6756404037" class="app-store-badge">Download on the App Store</a>
+    </section>
+
+    <section class="core-features">
+        <h2 class="section-title">Everything You Need</h2>
+        <div class="feature-grid">
+            <div class="feature-card email">
+                <div class="feature-icon">&#128231;</div>
+                <h3>Smart Email Filtering</h3>
+                <p>Connect Gmail or Outlook and automatically filter school-related emails from trusted sources like teachers and administrators.</p>
+            </div>
+            <div class="feature-card ai">
+                <div class="feature-icon">&#129302;</div>
+                <h3>AI Summaries</h3>
+                <p>Get instant AI-powered summaries of long emails. Extract dates, events, grades, and action items automatically.</p>
+            </div>
+            <div class="feature-card calendar">
+                <div class="feature-icon">&#128197;</div>
+                <h3>Calendar Integration</h3>
+                <p>Events mentioned in emails are automatically added to your calendar. Never miss a field trip, conference, or deadline.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="steps-container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Connect Your Email</h3>
+                    <p>Sign in with Gmail, Outlook, iCloud, Yahoo, or AOL. Your credentials are stored securely on your device using the iOS Keychain.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Add Trusted Sources</h3>
+                    <p>Tell Student Guardian which email addresses or domains are from your school. Only emails from trusted sources are shown.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Add Your Students</h3>
+                    <p>Create profiles for each child with their name, grade, and school. Color-code them for easy identification.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Get Organized</h3>
+                    <p>View a unified dashboard with today's digest, upcoming events, newsletters, and grade notifications. AI summaries help you quickly understand long emails.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="features-grid">
+            <div class="features-card">
+                <div class="features-icon">&#128202;</div>
+                <h3>Grade Tracking</h3>
+                <p>Automatically detect and track grade notifications from district emails. See trends and stay informed.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128240;</div>
+                <h3>Newsletter Digest</h3>
+                <p>Weekly newsletters from teachers are highlighted on your dashboard for easy access.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#127760;</div>
+                <h3>15 Languages</h3>
+                <p>AI summaries can be translated into your preferred language. Perfect for multilingual families.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128274;</div>
+                <h3>Privacy First</h3>
+                <p>Your emails stay on your device. We never store or access your personal data on our servers.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128276;</div>
+                <h3>Smart Notifications</h3>
+                <p>Get notified about important emails, upcoming events, and action items that need your attention.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128241;</div>
+                <h3>Widgets</h3>
+                <p>Add home screen widgets to see today's summary and upcoming events at a glance.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128100;</div>
+                <h3>Multiple Students</h3>
+                <p>Manage communications for all your children in one place. Color-coded profiles keep things organized.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128736;</div>
+                <h3>Sender Roles</h3>
+                <p>Assign roles to senders (Teacher, District, Staff) to unlock features like grade tracking and newsletter extraction.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="languages">
+        <div class="languages-content">
+            <h2 class="section-title">AI Summaries in Your Language</h2>
+            <p>Premium users can get AI summaries translated into 15 languages, making it easier for multilingual families to stay informed.</p>
+            <div class="language-grid">
+                <span class="language-badge">&#127482;&#127480; English</span>
+                <span class="language-badge">&#127466;&#127480; Spanish</span>
+                <span class="language-badge">&#127467;&#127479; French</span>
+                <span class="language-badge">&#127465;&#127466; German</span>
+                <span class="language-badge">&#127470;&#127481; Italian</span>
+                <span class="language-badge">&#127477;&#127481; Portuguese</span>
+                <span class="language-badge">&#127464;&#127475; Chinese</span>
+                <span class="language-badge">&#127471;&#127477; Japanese</span>
+                <span class="language-badge">&#127472;&#127479; Korean</span>
+                <span class="language-badge">&#127479;&#127482; Russian</span>
+                <span class="language-badge">&#127462;&#127466; Arabic</span>
+                <span class="language-badge">&#127470;&#127475; Hindi</span>
+                <span class="language-badge">&#127483;&#127475; Vietnamese</span>
+                <span class="language-badge">&#127477;&#127473; Polish</span>
+                <span class="language-badge">&#127475;&#127473; Dutch</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Simple Pricing</h2>
+            <div class="free-tier">
+                <p><strong>Free Tier Includes:</strong></p>
+                <div class="free-features">
+                    <span>&#10003; Unlimited Students</span>
+                    <span>&#10003; Email Filtering</span>
+                    <span>&#10003; Calendar Integration</span>
+                    <span>&#10003; 5 AI Summaries/Month</span>
+                </div>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Monthly</h3>
+                    <div class="price">$3.99</div>
+                    <div class="period">per month</div>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Yearly</h3>
+                    <div class="price">$29.99</div>
+                    <div class="period">per year</div>
+                    <div class="note">Save 37% (2.5 months free)</div>
+                </div>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Free</th>
+                            <th>Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Student Profiles</td>
+                            <td class="check">Unlimited</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Email Accounts</td>
+                            <td class="check">Unlimited</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Trusted Sources</td>
+                            <td class="check">Unlimited</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Calendar Integration</td>
+                            <td class="check">&#10003;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>AI Summaries</td>
+                            <td class="limit">5/month</td>
+                            <td class="check">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Summary Languages</td>
+                            <td class="limit">English only</td>
+                            <td class="check">15 languages</td>
+                        </tr>
+                        <tr>
+                            <td>Auto-Summarize New Emails</td>
+                            <td>&#8212;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>Grade Extraction</td>
+                            <td>&#8212;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>Attendance Tracking</td>
+                            <td>&#8212;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td>BYOK (Own API Key)</td>
+                            <td>&#8212;</td>
+                            <td class="check">&#10003;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="faq-content">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is my email data secure?</span>
+                    <span class="faq-toggle">&#9662;</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Your email credentials are stored securely in the iOS Keychain, and your emails are processed locally on your device. We never store your emails on our servers. The only data sent to our servers is the email content for AI summarization, and it's immediately discarded after processing.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Which email providers are supported?</span>
+                    <span class="faq-toggle">&#9662;</span>
+                </div>
+                <div class="faq-answer">
+                    We support Gmail, Outlook/Microsoft 365, iCloud, Yahoo, and AOL. Gmail uses IMAP with app passwords for secure access. Outlook uses OAuth 2.0 for secure authentication.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What are "Trusted Sources"?</span>
+                    <span class="faq-toggle">&#9662;</span>
+                </div>
+                <div class="faq-answer">
+                    Trusted Sources are email addresses or domains that you mark as school-related. Only emails from these sources appear in Student Guardian. For example, you might add "teachers@school.edu" or the entire "@school.edu" domain.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How does AI summarization work?</span>
+                    <span class="faq-toggle">&#9662;</span>
+                </div>
+                <div class="faq-answer">
+                    When you tap "Summarize" on an email, we send the email content to our secure backend which uses GPT-4o-mini to generate a concise summary. The AI extracts key information like dates, events, grades, and action items. Premium users can also bring their own OpenAI API key.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I use Student Guardian for multiple children?</span>
+                    <span class="faq-toggle">&#9662;</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! You can create unlimited student profiles, each with their own color for easy identification. Associate trusted sources with specific students to keep their communications organized.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What's the difference between Free and Premium?</span>
+                    <span class="faq-toggle">&#9662;</span>
+                </div>
+                <div class="faq-answer">
+                    Free users get unlimited email filtering, calendar integration, and 5 AI summaries per month (English only). Premium unlocks unlimited AI summaries, 15 languages, auto-summarization of new emails, grade/attendance extraction, and the ability to use your own OpenAI API key.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Take control of school communications</h2>
+        <p>Join thousands of parents who never miss important school updates.</p>
+        <a href="https://apps.apple.com/app/student-guardian/id6756404037" class="app-store-badge">Download Free</a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#apps">Apps</a>
+            <a href="../about.html">About</a>
+            <a href="../support.html">Support</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>
