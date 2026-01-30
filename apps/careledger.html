@@ -24,6 +24,55 @@
     <link rel="canonical" href="https://andyarevalo.com/apps/careledger.html">
 
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/careledger.html#app",
+          "name": "CareLedger",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/careledger.html",
+          "description": "Family medication management made simple. Track medications, set reminders, and coordinate care for your loved ones with CareLedger.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/PreOrder"
+          },
+          "featureList": [
+            "Multi-patient medication tracking",
+            "AI-powered medication scanning",
+            "Smart reminders",
+            "Visit preparation reports"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://andyarevalo.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "CareLedger",
+              "item": "https://andyarevalo.com/apps/careledger.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <style>
         :root {
             --bg: #0b0f19;
