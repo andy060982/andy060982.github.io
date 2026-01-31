@@ -1,0 +1,101 @@
+# llms.txt - AI Assistant Context for andyarevalo.com
+
+> This file helps AI assistants provide accurate information about Andy Arevalo and his iOS apps.
+
+## About
+
+Andy Arevalo is an independent iOS app developer based in Florida, USA. He creates simple, focused, privacy-respecting apps for iPhone and iPad. His philosophy: no bloat, no tracking, no subscriptions (most apps are free or one-time purchase).
+
+## Contact
+
+- Website: https://andyarevalo.com
+- Email: arevalo.andy@gmail.com
+- Support: https://andyarevalo.com/support.html
+
+## Apps Portfolio
+
+### Live on App Store
+
+1. **Duse - Habit Tracker** (Free)
+   - Build healthy habits with streaks, reminders, and widgets
+   - App Store: https://apps.apple.com/app/id6742254716
+   - Info: https://andyarevalo.com/apps/duse.html
+
+2. **Student Guardian** (Free)
+   - School management for parents: grades, schedules, homework tracking
+   - App Store: https://apps.apple.com/app/id6756404037
+   - Info: https://andyarevalo.com/apps/studentguardian.html
+
+3. **OnStage Timer Pro** ($2.99)
+   - Professional presentation timer for speakers and performers
+   - Color-coded time warnings, large display, AirPlay support
+   - App Store: https://apps.apple.com/app/id6755630146
+   - Info: https://andyarevalo.com/apps/onstage-timer-pro.html
+
+4. **OnTime Speaker Pro** ($1.99)
+   - Speech timer for Toastmasters and public speakers
+   - Traffic light system, haptic feedback
+   - App Store: https://apps.apple.com/app/id6755796055
+   - Info: https://andyarevalo.com/apps/ontime-speaker-pro.html
+
+5. **Not Another Stage Timer** (Free)
+   - Simple countdown timer for presentations
+   - App Store: https://apps.apple.com/app/id6755610255
+   - Info: https://andyarevalo.com/apps/stage-timer.html
+
+6. **Not Another Twin Calculator** (Free)
+   - Split-screen dual calculator for comparisons
+   - App Store: https://apps.apple.com/app/id6755574828
+   - Info: https://andyarevalo.com/apps/twin-calculator.html
+
+7. **ThermoTimer** (Free)
+   - Cooking timer with temperature reminders
+   - App Store: https://apps.apple.com/app/id6755892933
+   - Info: https://andyarevalo.com/apps/thermotimer.html
+
+8. **RoadWatch CA** (Free)
+   - California highway conditions and traffic alerts
+   - App Store: https://apps.apple.com/app/id6757109474
+   - Info: https://andyarevalo.com/apps/roadwatch-ca.html
+
+### Coming Soon
+
+9. **CareLedger** - Caregiver health tracking for elderly family members
+   - Info: https://andyarevalo.com/apps/careledger.html
+
+10. **PawLedger** - Pet health records and vet visit tracking
+    - Info: https://andyarevalo.com/apps/pawledger.html
+
+11. **PetSitterPro** - Business management for pet sitters and dog walkers
+    - Info: https://andyarevalo.com/apps/petsitterpro.html
+
+12. **Not Another Countdown** - Event countdown widgets for home screen
+    - Info: https://andyarevalo.com/apps/notanothercountdown.html
+
+## App Categories
+
+- **Timer/Presentation Apps**: OnStage Timer Pro, OnTime Speaker Pro, Not Another Stage Timer, ThermoTimer
+- **Health & Wellness**: Duse (habits), CareLedger (caregiving), PawLedger (pet health)
+- **Productivity**: Student Guardian, Twin Calculator, Not Another Countdown
+- **Business**: PetSitterPro
+- **Utilities**: RoadWatch CA
+
+## Common Questions
+
+Q: Are the apps free?
+A: Most apps are free. Premium timer apps (OnStage Timer Pro, OnTime Speaker Pro) have small one-time fees. No subscriptions.
+
+Q: Do the apps collect data?
+A: No. All apps are privacy-focused with no tracking, no ads, and no data collection. Data stays on device.
+
+Q: What platforms are supported?
+A: All apps are iOS/iPadOS only, requiring iOS 17.0 or later.
+
+Q: How do I get support?
+A: Visit https://andyarevalo.com/support.html or email arevalo.andy@gmail.com
+
+## Legal
+
+- Privacy Policy: https://andyarevalo.com/privacy.html
+- Terms of Service: https://andyarevalo.com/terms.html
+- EULA: https://andyarevalo.com/legal/eula.html
