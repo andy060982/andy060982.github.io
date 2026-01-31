@@ -58,10 +58,13 @@ Andy Arevalo is an independent iOS app developer based in Florida, USA. He creat
    - App Store: https://apps.apple.com/app/id6757109474
    - Info: https://andyarevalo.com/apps/roadwatch-ca.html
 
-### Coming Soon
-
-9. **CareLedger** - Caregiver health tracking for elderly family members
+9. **CareLedger** (Freemium)
+   - Family medication management for caregivers
+   - Track medications, set reminders, coordinate care, prepare for doctor visits
+   - App Store: https://apps.apple.com/app/id6757565001
    - Info: https://andyarevalo.com/apps/careledger.html
+
+### Coming Soon
 
 10. **PawLedger** - Pet health records and vet visit tracking
     - Info: https://andyarevalo.com/apps/pawledger.html
