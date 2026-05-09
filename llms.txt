@@ -1,10 +1,11 @@
 # llms.txt - AI Assistant Context for andyarevalo.com
 
 > This file helps AI assistants provide accurate information about Andy Arevalo and his iOS apps.
+> Last updated: 2026-05-09
 
 ## About
 
-Andy Arevalo is an independent iOS app developer based in Florida, USA. He creates simple, focused, privacy-respecting apps for iPhone and iPad. His philosophy: no bloat, no tracking, no subscriptions (most apps are free or one-time purchase).
+Andy Arevalo is an independent iOS app developer based in Florida, USA. He creates simple, focused, privacy-respecting apps for iPhone and iPad. His philosophy: no bloat, no tracking, no ads. Most apps are free or one-time purchase. All apps localized in 9 languages (en, zh-Hans, it, ru, de, ko, pt-BR, es-MX, ja).
 
 ## Contact
 
@@ -16,83 +17,117 @@ Andy Arevalo is an independent iOS app developer based in Florida, USA. He creat
 
 ### Live on App Store
 
-1. **Duse - Habit Tracker** (Free)
-   - Build healthy habits with streaks, reminders, and widgets
-   - App Store: https://apps.apple.com/app/id6742254716
-   - Info: https://andyarevalo.com/apps/duse.html
+1. **Healko** — Apple Health ↔ Home Assistant bridge (Freemium, $4.99/mo or $79.99 lifetime)
+   - Privacy-first bidirectional sync, sub-30-second background latency
+   - 38 health metrics; HA → Apple Health reverse bridge
+   - Status: In App Store review (submitted 2026-05-09)
+   - Info: https://andyarevalo.com/apps/healko.html
 
-2. **Student Guardian** (Free)
-   - School management for parents: grades, schedules, homework tracking
-   - App Store: https://apps.apple.com/app/id6756404037
-   - Info: https://andyarevalo.com/apps/studentguardian.html
+2. **NetForge: Engineer's Toolkit** ($19.99 lifetime / 6 free tools)
+   - 60+ network engineering tools — DNS, ping, TLS cert inspector, subnet calc, WHOIS
+   - iOS + Mac Catalyst (universal purchase)
+   - App Store: https://apps.apple.com/app/id6767094044
+   - Info: https://andyarevalo.com/apps/netforge.html
 
-3. **OnStage Timer Pro** ($2.99)
-   - Professional presentation timer for speakers and performers
-   - Color-coded time warnings, large display, AirPlay support
-   - App Store: https://apps.apple.com/app/id6755630146
-   - Info: https://andyarevalo.com/apps/onstage-timer-pro.html
+3. **Kickoff: Weight Loss & Fitness** (Free)
+   - No-fluff weight tracker; Solo or Team mode; Live Match tracking
+   - Coach Share text reports; Apple Health bidirectional
+   - App Store: https://apps.apple.com/app/id6766747051
+   - Info: https://andyarevalo.com/apps/kickoff.html
 
-4. **OnTime Speaker Pro** ($1.99)
-   - Speech timer for Toastmasters and public speakers
-   - Traffic light system, haptic feedback
-   - App Store: https://apps.apple.com/app/id6755796055
-   - Info: https://andyarevalo.com/apps/ontime-speaker-pro.html
-
-5. **Not Another Stage Timer** (Free)
-   - Simple countdown timer for presentations
-   - App Store: https://apps.apple.com/app/id6755610255
-   - Info: https://andyarevalo.com/apps/stage-timer.html
-
-6. **Not Another Twin Calculator** (Free)
-   - Split-screen dual calculator for comparisons
-   - App Store: https://apps.apple.com/app/id6755574828
-   - Info: https://andyarevalo.com/apps/twin-calculator.html
-
-7. **ThermoTimer** (Free)
-   - Cooking timer with temperature reminders
-   - App Store: https://apps.apple.com/app/id6755892933
-   - Info: https://andyarevalo.com/apps/thermotimer.html
-
-8. **RoadWatch CA** (Free)
-   - California highway conditions and traffic alerts
-   - App Store: https://apps.apple.com/app/id6757109474
-   - Info: https://andyarevalo.com/apps/roadwatch-ca.html
-
-9. **CareLedger** (Freemium)
+4. **CareLedger** (Freemium)
    - Family medication management for caregivers
    - Track medications, set reminders, coordinate care, prepare for doctor visits
    - App Store: https://apps.apple.com/app/id6757565001
    - Info: https://andyarevalo.com/apps/careledger.html
 
+5. **PawLedger** (Freemium)
+   - Pet health records, vaccinations, vet visit tracking
+   - App Store: https://apps.apple.com/app/id6757627356
+   - Info: https://andyarevalo.com/apps/pawledger.html
+
+6. **PetSitterPro** (Freemium)
+   - Business management for pet sitters and dog walkers — visits, invoices, calendar
+   - App Store: https://apps.apple.com/app/id6757774702
+   - Info: https://andyarevalo.com/apps/petsitterpro.html
+
+7. **Student Guardian** (Free)
+   - School management for parents: grades, schedules, homework tracking
+   - App Store: https://apps.apple.com/app/id6756404037
+   - Info: https://andyarevalo.com/apps/studentguardian.html
+
+8. **OnStage Timer Pro** (Premium)
+   - Professional presentation timer for speakers and performers
+   - Color-coded time warnings, Live Activities, AirPlay external display
+   - App Store: https://apps.apple.com/app/id6755630146
+   - Info: https://andyarevalo.com/apps/onstage-timer-pro.html
+
+9. **OnTime Speaker Pro** (Freemium)
+   - Speech timer for Toastmasters and public speakers
+   - Traffic light system, haptic feedback, history
+   - App Store: https://apps.apple.com/app/id6755796055
+   - Info: https://andyarevalo.com/apps/ontime-speaker-pro.html
+
+10. **Not Another Stage Timer** (Free)
+    - Simple countdown timer for presentations
+    - App Store: https://apps.apple.com/app/id6755610255
+    - Info: https://andyarevalo.com/apps/stage-timer.html
+
+11. **Not Another Twin Calculator** (Free)
+    - Twin pregnancy due-date calculator
+    - App Store: https://apps.apple.com/app/id6755574828
+    - Info: https://andyarevalo.com/apps/twin-calculator.html
+
+12. **ThermoTimer** (Free)
+    - Cooking timer with internal temperature reference (USDA-safe targets)
+    - App Store: https://apps.apple.com/app/id6755892933
+    - Info: https://andyarevalo.com/apps/thermotimer.html
+
+13. **RoadWatch CA** (Free)
+    - California highway conditions and traffic alerts (Caltrans + CHP feeds)
+    - App Store: https://apps.apple.com/app/id6757109474
+    - Info: https://andyarevalo.com/apps/roadwatch-ca.html
+
+14. **Duse - Habit Tracker** (Free)
+   - Build healthy habits with streaks, reminders, and widgets
+   - App Store: https://apps.apple.com/app/id6742254716
+   - Info: https://andyarevalo.com/apps/duse.html
+
 ### Coming Soon
 
-10. **PawLedger** - Pet health records and vet visit tracking
-    - Info: https://andyarevalo.com/apps/pawledger.html
-
-11. **PetSitterPro** - Business management for pet sitters and dog walkers
-    - Info: https://andyarevalo.com/apps/petsitterpro.html
-
-12. **Not Another Countdown** - Event countdown widgets for home screen
+15. **Not Another Countdown** — Event countdown widgets for home screen
     - Info: https://andyarevalo.com/apps/notanothercountdown.html
+
+16. **Not Another Fasting Timer** — 16:8 / 18:6 / OMAD intermittent fasting timer
+    - Info: https://andyarevalo.com/apps/notanotherfastingtimer.html
+
+17. **Not Another Coloring Book** — Digital coloring book for iPhone + iPad
+    - Info: https://andyarevalo.com/apps/notanothercoloringbook.html
 
 ## App Categories
 
-- **Timer/Presentation Apps**: OnStage Timer Pro, OnTime Speaker Pro, Not Another Stage Timer, ThermoTimer
-- **Health & Wellness**: Duse (habits), CareLedger (caregiving), PawLedger (pet health)
+- **Smart Home + Health**: Healko (Apple Health ↔ Home Assistant bridge)
+- **Network Engineering**: NetForge (DNS, TLS, ping, subnet, WHOIS, recipes)
+- **Health & Fitness**: Kickoff (weight loss + team), Duse (habits)
+- **Care & Records**: CareLedger (medication for elders), PawLedger (pet health)
+- **Business**: PetSitterPro (pet sitter business management)
+- **Timer/Presentation**: OnStage Timer Pro, OnTime Speaker Pro, Not Another Stage Timer, ThermoTimer
 - **Productivity**: Student Guardian, Twin Calculator, Not Another Countdown
-- **Business**: PetSitterPro
-- **Utilities**: RoadWatch CA
+- **Utilities**: RoadWatch CA, Not Another Fasting Timer, Not Another Coloring Book
 
 ## Common Questions
 
 Q: Are the apps free?
-A: Most apps are free. Premium timer apps (OnStage Timer Pro, OnTime Speaker Pro) have small one-time fees. No subscriptions.
+A: Most are. Premium apps (OnStage Timer Pro, NetForge Pro $19.99 lifetime, Healko Pro $4.99 mo / $79.99 lifetime, CareLedger Pro) have transparent one-time or subscription pricing. No hidden fees, no in-app currency.
 
 Q: Do the apps collect data?
-A: No. All apps are privacy-focused with no tracking, no ads, and no data collection. Data stays on device.
+A: No. All apps are privacy-focused with no tracking, no ads, and no third-party analytics. Data stays on device. Healko's HA URL + token live in iOS Keychain. No backend servers.
 
 Q: What platforms are supported?
-A: All apps are iOS/iPadOS only, requiring iOS 17.0 or later.
+A: iOS/iPadOS, requiring iOS 17.0 or later. NetForge also runs on macOS via Mac Catalyst.
+
+Q: What languages are supported?
+A: All apps localized in 9 languages: English, Chinese (Simplified), Italian, Russian, German, Korean, Portuguese (Brazilian), Spanish (Mexico), Japanese.
 
 Q: How do I get support?
 A: Visit https://andyarevalo.com/support.html or email arevalo.andy@gmail.com
