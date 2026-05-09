@@ -379,6 +379,25 @@
         .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
         .footer-links a:hover { color: var(--text); }
         .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Troubleshooting */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(255,138,0,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
 
         @media (max-width: 768px) {
             .hero { padding: 80px 20px 40px; }
@@ -401,6 +420,7 @@
             <div class="nav-links">
                 <a href="../index.html">Home</a>
                 <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
                 <a href="../about.html">About</a>
                 <a href="../support.html">Support</a>
                 <a href="../privacy.html">Privacy</a>
@@ -553,6 +573,30 @@
             </div>
         </div>
     </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Habits, streaks, troubleshooting</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Habits &amp; Streaks</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How does Duse define a "streak"?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>A streak counts the number of consecutive days you completed a habit. Skipping a day resets the streak unless that day is a configured rest day. You can also manually mark a day as "skipped" without breaking the streak (Pro feature).</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I have habits with different schedules?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Each habit has its own schedule: daily, every N days, specific days of the week, weekends only, weekdays only. The streak counter respects the schedule — a Monday-Wednesday-Friday habit completed every M-W-F is a perfect streak.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What's the maximum streak Duse tracks?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No upper limit. We've seen users with 1,000+ day streaks. The Best Streak counter never decreases — only the current streak resets on a miss.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Widgets &amp; Notifications</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Widget shows old data</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS schedules widget refreshes — typically every 15-60 minutes. Force refresh: long-press the widget → Edit Widget → Done. Or open Duse to trigger an immediate widget reload.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Reminder didn't fire at the scheduled time</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check Settings → Notifications → Duse is allowed. iOS Focus mode (Do Not Disturb) suppresses non-Time Sensitive alerts — Duse uses standard notifications. If you've upgraded iOS recently, sometimes the permission resets — re-enable.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>I marked a habit complete but the streak didn't increment</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Streak increments at midnight (your timezone) once the day's quota is met. Marking a habit complete late in the day is fine. If a streak still isn't incrementing the next morning: force-quit the app and re-open. SwiftData sometimes lags on first read.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Lost my data after deleting + reinstalling</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Duse stores data on-device only — no cloud backup. Reinstalling clears it. iCloud Drive Backup (set up in iOS Settings → Apple ID → iCloud) backs up app data automatically. After restoring from backup, your habits are back.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Daylight saving time messed up my streak</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Duse uses your iOS timezone — DST transitions shouldn't affect streaks. If you traveled across timezones, the day boundary may shift. Manually edit the affected entry from the Habit Detail view.</p></div></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="cta">
         <h2>Start building better habits today</h2>
@@ -566,6 +610,7 @@
         <div class="footer-links">
             <a href="../index.html">Home</a>
             <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
             <a href="../about.html">About</a>
             <a href="../support.html">Support</a>
             <a href="../privacy.html">Privacy</a>
@@ -589,6 +634,11 @@
                 localStorage.setItem('theme', 'light');
             }
         }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
 
         (function() {
             const savedTheme = localStorage.getItem('theme');

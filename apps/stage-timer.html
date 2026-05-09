@@ -289,6 +289,25 @@
         .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
         .footer-links a:hover { color: var(--text); }
         .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Troubleshooting */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(200,50,50,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
 
         @media (max-width: 768px) {
             .hero { padding: 80px 20px 40px; }
@@ -312,6 +331,7 @@
             <div class="nav-links">
                 <a href="../index.html">Home</a>
                 <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
                 <a href="../about.html">About</a>
                 <a href="../support.html">Support</a>
                 <a href="../privacy.html">Privacy</a>
@@ -415,6 +435,23 @@
             <span class="use-case-tag">Kids' Activities</span>
         </div>
     </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Stage timing essentials</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Basics</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How is this different from OnStage Timer Pro?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Not Another Stage Timer is the lightweight free version: count up, count down, basic warnings, no Live Activities. OnStage Timer Pro adds Live Activities, Watch sync, audio cues, external display mirror, history, and stage-display features for paid users.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I use it for sports timing?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Up-counter mode is ideal for split timing in workouts. Down-counter for interval training. The big-digit display reads from across a gym.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Screen dimmed during my talk</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Open Settings → Display → Auto-Lock → set to "Never" before going on stage, then restore your preferred setting after. Not Another Stage Timer doesn't override auto-lock by default — that's an OnStage Timer Pro feature.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why no audio cues?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Free tier shows visual warnings only. For audio cues + override-silent-switch, see OnStage Timer Pro.</p></div></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="cta">
         <h2>Time made simple</h2>
@@ -428,6 +465,7 @@
         <div class="footer-links">
             <a href="../index.html">Home</a>
             <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
             <a href="../about.html">About</a>
             <a href="../support.html">Support</a>
             <a href="../privacy.html">Privacy</a>
@@ -451,6 +489,11 @@
                 localStorage.setItem('theme', 'light');
             }
         }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
 
         (function() {
             const savedTheme = localStorage.getItem('theme');

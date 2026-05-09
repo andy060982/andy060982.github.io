@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healko – Apple Health a Home Assistant | Andy Arevalo</title>
+    <meta name="description" content="Bridge privacy-first tra Apple Health e Home Assistant. Sincronizzazione bidirezionale, latenza in background sotto 30 secondi, campioni etichettati per sorgente, 9 lingue.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/it/healko.html">
+    <meta property="og:title" content="Healko – Apple Health a Home Assistant">
+    <meta property="og:description" content="Bridge privacy-first tra Apple Health e Home Assistant. Sincronizzazione bidirezionale, latenza in background sotto 30 secondi, campioni etichettati per sorgente, 9 lingue.">
+    <meta property="og:image" content="https://andyarevalo.com/images/healko.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/it/healko.html">
+    <meta name="twitter:title" content="Healko – Apple Health a Home Assistant">
+    <meta name="twitter:description" content="Bridge privacy-first tra Apple Health e Home Assistant. Sincronizzazione bidirezionale, latenza in background sotto 30 secondi, campioni etichettati per sorgente, 9 lingue.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/healko.png">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/it/healko.html">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/it/healko.html#app",
+          "name": "Healko",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/it/healko.html",
+          "description": "Bridge privacy-first tra Apple Health e Home Assistant. Sincronizzazione bidirezionale, latenza in background sotto 30 secondi, campioni etichettati per sorgente, 9 lingue.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Gratis" },
+            { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Healko Pro Mensile" },
+            { "@type": "Offer", "price": "29.99", "priceCurrency": "USD", "name": "Healko Pro Annuale" },
+            { "@type": "Offer", "price": "79.99", "priceCurrency": "USD", "name": "Healko Pro a Vita" }
+          ],
+          "featureList": [
+            "Bidirectional sync between Apple Health and Home Assistant",
+            "38 Apple Health metrics supported",
+            "Sub-30-second background latency",
+            "Source-tagged HealthKit samples",
+            "Apple Watch + Shortcuts + Siri",
+            "Modalità Demo for quick evaluation",
+            "9 lingue localized"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://andyarevalo.com" },
+            { "@type": "ListItem", "position": 2, "name": "Healko", "item": "https://andyarevalo.com/apps/it/healko.html" }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #1976D2;
+            --accent2: #42A5F5;
+            --card-bg: rgba(15,22,38,.72);
+        }
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #1976D2;
+            --accent2: #42A5F5;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(25,118,210,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(66,165,245,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: .2px; color: var(--text); text-decoration: none; }
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 0 20px rgba(25,118,210,.35); }
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 18px; padding: 5px; color: var(--text-secondary); }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero { padding: 100px 20px 60px; background: var(--bg-secondary); }
+        .hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-text h1 { font-size: 44px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .price-badge { background: var(--accent); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; }
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 14px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+        .modes { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+        .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .mode-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 20px; padding: 40px 30px; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .mode-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .mode-icon { font-size: 48px; margin-bottom: 16px; }
+        .mode-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--accent); }
+        .mode-card p { color: var(--text-secondary); font-size: 16px; margin-bottom: 16px; }
+        .mode-card ul { list-style: none; padding: 0; }
+        .mode-card li { padding: 6px 0; padding-left: 24px; position: relative; color: var(--text-secondary); font-size: 15px; }
+        .mode-card li::before { content: '✓'; position: absolute; left: 0; color: var(--accent2); font-weight: bold; }
+
+        .features { padding: 80px 20px; background: var(--bg-secondary); }
+        .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 30px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        .pricing { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .price-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 28px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .price-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .price-card.highlight { border: 2px solid var(--accent); position: relative; }
+        .price-card.highlight::before { content: 'BEST VALUE'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; letter-spacing: .5px; }
+        .price-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .price-card .price { font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+        .price-card .period { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; }
+        .price-card p { color: var(--text-secondary); font-size: 14px; }
+
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(25,118,210,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer { background: var(--bg); padding: 30px 18px; text-align: center; border-top: 1px solid var(--line); }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 32px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .mode-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../index.html#apps">App</a>
+                <a href="#features">Funzioni</a>
+                <a href="#pricing">Prezzi</a>
+                <a href="#faq">FAQ</a>
+                <a href="../../support.html">Supporto</a>
+                <a href="../../privacy.html">Privacy</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambia tema"><span id="theme-icon">&#9728;</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Healko</h1>
+                <p class="tagline">Apple Health ↔ Home Assistant</p>
+                <p>Il bridge privacy-first tra Apple Health e la tua casa intelligente. Invia i dati vitali alla dashboard Home Assistant in meno di 30 secondi — o tira i dati dei sensori nell'altra direzione. Nessun intermediario, nessun server, nessun account.</p>
+                <div class="hero-badges">
+                    <span class="price-badge">Gratis + IAP Pro</span>
+                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">iOS 17+</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../../images/healko.png" alt="Healko app icon" class="app-icon-large">
+            </div>
+        </div>
+    </section>
+
+    <section class="modes">
+        <h2 class="section-title">Bridge bidirezionale</h2>
+        <p class="section-subtitle">Healko è l'unica app HK ↔ HA che funziona in entrambe le direzioni out-of-the-box.</p>
+        <div class="mode-grid">
+            <div class="mode-card">
+                <div class="mode-icon">📱→🏠</div>
+                <h3>Sincronizzazione in avanti</h3>
+                <p>Apple Health a Home Assistant.</p>
+                <ul>
+                    <li>38 metriche: battiti, passi, sonno, peso</li>
+                    <li>Pressione, SpO2, glicemia, temperatura corporea</li>
+                    <li>Invio in background sotto 30 secondi</li>
+                    <li>Etichettato per sorgente per dashboard HA</li>
+                </ul>
+            </div>
+            <div class="mode-card">
+                <div class="mode-icon">🏠→📱</div>
+                <h3>Bridge inverso</h3>
+                <p>Sensori Home Assistant ad Apple Health.</p>
+                <ul>
+                    <li>Collega qualsiasi sensore HA numerico a una metrica</li>
+                    <li>Bilance intelligenti, sfigmomanometri, materassi del sonno</li>
+                    <li>HKQuantitySamples etichettati per sorgente</li>
+                    <li>Cadenza di polling 10 secondi su Pro</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Costruito per la community Home Assistant</h2>
+        <p class="section-subtitle">Progettato da un utente HA, per utenti HA.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Connessione diretta</h3>
+                <p>Comunica direttamente con il TUO Home Assistant. Nessun server Healko nel mezzo. URL e token risiedono solo nel Portachiavi iOS.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Latenza inferiore a 30 secondi</h3>
+                <p>HKObserverQuery sveglia l'app in background per inviare i tuoi dati nel momento in cui vengono registrati.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Locale + Cloud</h3>
+                <p>Rete locale o Nabu Casa Cloud. Funziona su Wi-Fi domestico, su rete cellulare e tra reti.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>9 lingue</h3>
+                <p>Inglese, cinese, italiano, russo, tedesco, coreano, portoghese, spagnolo, giapponese — tutte dal lancio.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3>Shortcuts & Siri</h3>
+                <p>"Force Sync Now", "What's my heart rate?", "Pause sync for an hour" — all built in.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⌚</div>
+                <h3>Pronto per Apple Watch</h3>
+                <p>v1.0 viene rilasciato con metriche Watch passanti. Target app Watch in arrivo in v1.1.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎭</div>
+                <h3>Modalità Demo</h3>
+                <p>Prova l'intera app con dati sintetici prima di collegare il tuo HA. Nessuna configurazione richiesta.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Privacy per design</h3>
+                <p>Nessun account. Nessuna analitica. Nessun server di terze parti. I tuoi dati di salute non lasciano mai il percorso tra il tuo telefono e il tuo HA.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Prezzi</h2>
+        <p class="section-subtitle">Il piano gratuito è davvero utile. Pro sblocca tutto il set.</p>
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Gratis</h3>
+                <div class="price">$0</div>
+                <div class="period">per sempre</div>
+                <p>5 metriche, sincronizzazione manuale, dashboard di base.</p>
+            </div>
+            <div class="price-card">
+                <h3>Pro Mensile</h3>
+                <div class="price">$4.99</div>
+                <div class="period">al mese</div>
+                <p>Tutte le 38 metriche, bridge inverso, libreria Comandi rapidi.</p>
+            </div>
+            <div class="price-card">
+                <h3>Pro Annuale</h3>
+                <div class="price">$29.99</div>
+                <div class="period">all'anno — risparmia 50%</div>
+                <p>Come mensile, fatturato annualmente.</p>
+            </div>
+            <div class="price-card highlight">
+                <h3>Pro a Vita</h3>
+                <div class="price">$79.99</div>
+                <div class="period">una volta, possesso a vita</div>
+                <p>Tutto Pro, nessun addebito ricorrente. Ideale per utenti HA che odiano gli abbonamenti.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Domande frequenti</h2>
+        <p class="section-subtitle">Configurazione, risoluzione problemi e la filosofia dietro Healko</p>
+
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Per iniziare</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cosa mi serve per usare Healko?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Un iPhone con iOS 17 o successivo, una configurazione Apple Health con almeno una metrica registrata (Apple Watch aiuta) e un'istanza Home Assistant in esecuzione — rete locale o Nabu Casa Cloud. Nessuna creazione di account, nessuna iscrizione email.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Come ottengo un Long-Lived Access Token da HA?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>In Home Assistant: clicca sul profilo (in basso a sinistra) → scorri in fondo alla pagina del profilo → «Long-Lived Access Tokens» → «Create Token» → chiamalo «Healko» → copia il token. Incollalo nella schermata di configurazione di Healko. Lo stesso token funziona sia per collegarsi localmente che tramite Nabu Casa Cloud.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Rete locale o Nabu Casa Cloud?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Entrambi funzionano. Locale (es. <code>http://homeassistant.local:8123</code>) è più veloce e non usa banda internet — ma funziona solo quando il tuo iPhone è sulla stessa Wi-Fi di HA. Nabu Casa Cloud (<code>https://abc12345.ui.nabu.casa</code>) funziona ovunque — cellulare, in viaggio, ecc. Molti utenti aggiungono entrambi gli URL e li alternano. Healko usa l'URL configurato al momento.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Voglio solo dare un'occhiata — c'è una demo?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Sì. Tocca «Salta — Modalità Demo» nella schermata di benvenuto. L'app popola dati sintetici e ti permette di raggiungere Oggi / Tendenze / Impostazioni senza alcuna configurazione HA o autorizzazione HealthKit. Utile per valutare prima di impegnarsi.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Sincronizzazione e metriche</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Quanto velocemente appaiono i dati in HA?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Tipicamente sotto i 30 secondi dal momento in cui Apple Health registra un campione. Healko usa <code>HKObserverQuery</code> con <code>enableBackgroundDelivery</code>, così iOS sveglia l'app anche con lo schermo spento. La consegna in background è opportunistica — iOS può ritardarla un po' se il telefono è in modalità risparmio energetico o sotto stress termico.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Quali metriche sono supportate?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>38 in v1.0, che coprono: <strong>attività</strong> (passi, distanza, energia attiva/basale, minuti di esercizio, push count, piani saliti, velocità di camminata, lunghezza del passo), <strong>vitali</strong> (battiti, FC riposo, HRV SDNN, pressione, SpO2, temperatura corporea, frequenza respiratoria), <strong>corpo</strong> (peso, BMI, % grasso corporeo, massa magra, altezza, vita), <strong>sonno</strong> (fasi, tempo a letto), <strong>nutrizione</strong> (acqua, caffeina) e altre. La schermata Impostazioni le elenca tutte.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Perché il piano gratuito è limitato a 5 metriche?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>HKObserverQuery + enableBackgroundDelivery di Apple ha costi reali (batteria, profondità della coda del kernel) che crescono col numero di tipi osservati. Per gli utenti gratuiti limitiamo a 5 per mantenere l'esperienza fluida su iPhone più vecchi. Pro rimuove il limite.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Healko invia dati ai vostri server?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No. Ogni POST di metrica va dal tuo iPhone direttamente alla tua istanza HA tramite l'URL configurato. Healko non ha backend. Le uniche chiamate in uscita di Healko sono: (a) al tuo Home Assistant, e (b) a <code>ipinfo.io</code> come parte di un lookup IP pubblico opzionale se acconsenti. Nessuna analitica, nessuna telemetria, nessun cloud AI.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Come funziona il bridge inverso?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Mappi un sensore HA (es. <code>sensor.bedroom_scale</code>) a una metrica Apple Health (es. Peso). Healko interroga il sensore HA secondo la cadenza scelta (10s / 30s / 5min) e quando il valore cambia scrive un nuovo HKQuantitySample in Apple Health. Il campione è etichettato con l'ID entità HA così puoi vedere in Apple Health esattamente da quale sensore proviene ogni lettura. Il bridge inverso è una funzione Pro.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Privacy e sicurezza</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Dove è memorizzato il mio token HA?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Nel Portachiavi iOS solo su questo dispositivo. Specificamente con <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>, il che significa che il token è cifrato a riposo e disponibile solo dopo che il dispositivo è stato sbloccato almeno una volta dopo l'avvio. Non lascia mai il tuo telefono.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cosa dice l'etichetta privacy dell'App Store?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>I dati sanitari sono raccolti per la funzionalità dell'app, non collegati all'identità, non usati per il tracciamento. È l'unica categoria spuntata. Healko non ha analitica, annunci o SDK di terze parti.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Healko ha un account o login?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No. Nessun account, nessuna email, nessuna password. L'unica credenziale che Healko memorizza è il tuo URL HA e token. Disconnetti in qualsiasi momento dalle Impostazioni per cancellarli.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Prezzi e abbonamento</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cosa è gratis vs Pro?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p><strong>Gratis:</strong> 5 metriche simultanee in direzione diretta, sincronizzazione manuale, dashboard completa. <strong>Pro:</strong> tutte le 38 metriche, il bridge inverso, la libreria Comandi rapidi completa, timing di push prioritario, funzioni Watch al rilascio.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Come funziona a Vita?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Acquisto non-consumabile una tantum di $79.99 che sblocca le funzioni Pro per sempre su ogni dispositivo legato al tuo Apple ID. Nessun addebito ricorrente. Include tutte le funzioni Pro attuali e future. Progettato per la community HA che non vuole abbonamenti.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Posso passare da mensile a vita?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Sì. Cancella l'abbonamento dalle impostazioni Apple ID (il tuo mensile continuerà fino alla fine del periodo), poi compra a Vita separatamente. Apple attualmente non offre un percorso di «credito verso upgrade» tra abbonamenti e acquisti una tantum, ma i conti tornano dopo uno o due anni.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Risoluzione problemi</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>"Couldn't reach Home Assistant"</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Cause più comuni:</p><ul><li><strong>Formato URL errato:</strong> includi il protocollo (<code>http://</code> o <code>https://</code>) e la porta. Locale: <code>http://homeassistant.local:8123</code>. Cloud: <code>https://abc.ui.nabu.casa</code> (senza porta).</li><li><strong>Mismatch Wi-Fi:</strong> per URL locali il telefono deve essere sulla stessa rete. Se sei su cellulare, usa l'URL Cloud.</li><li><strong>Token scaduto o ruotato:</strong> genera un nuovo Long-Lived Access Token in HA e incollalo.</li><li><strong>HA in riavvio:</strong> se hai appena riavviato HA, aspetta 30 secondi.</li></ul></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>"Token rejected" (HTTP 401)</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Il tuo token non è valido per questa istanza HA. In HA: profilo → Long-Lived Access Tokens → controlla che il token esista ancora o generane uno nuovo. Nota: rigenerare un token esistente invalida il vecchio — incolla quello nuovo in Healko.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>"sensor.healko_*" entities disappeared from HA</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Le entità REST-API di HA vivono solo in memoria runtime — riavviare HA le cancella. Apri Healko → Impostazioni → «Invia tutte le metriche a HA ora». Questo ripubblica ogni metrica abilitata e le entità riappaiono immediatamente. Healko ripubblica anche in foreground per questa ragione.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Sincronizzazione in background interrotta</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Apri l'app una volta per svegliarla. iOS potrebbe aver sospeso i privilegi background di Healko per: (a) modalità risparmio energetico, (b) limitazione termica, (c) hai chiuso forzatamente l'app dallo switcher multitasking (che disabilita il background fino al prossimo avvio). Riaprire ripristina sempre la sincronizzazione.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>I dati Apple Health non appaiono in HA</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Verifica che la metrica sia abilitata in Impostazioni → Metriche. Se è una metrica che Healko ha ma Apple Health no (nessun dato storico), Healko non ha nulla da inviare. Indossa Apple Watch o aggiungi dati di test in Apple Health → Sfoglia → Aggiungi dati, poi attiva una sincronizzazione manuale.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Passi / battiti non appaiono in Tendenze</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Apple nasconde lo stato di lettura per design — anche se hai concesso accesso nell'onboarding, Apple Health → Sorgenti → Healko mostra cosa viene effettivamente letto. Se un tipo è disattivato, abilitalo lì.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Loop di polling bridge inverso interrotto</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Il bridge inverso interroga in foreground o mentre l'app è in esecuzione. iOS sospenderà i poll a lungo termine. Le funzioni Pro includono task background più duraturi. Se un sensore smette di apparire in Apple Health, apri Healko una volta — questo riavvia sempre il loop.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>La Modalità Demo mostra notifiche reali</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>La Modalità Demo cortocircuita tutte le letture HK reali e scritture HA — nessuna notifica reale dovrebbe partire. Se ne vedi una, invia un'email a arevalo.andy@gmail.com con la tua versione iOS e uno screenshot. La copertura demo è testata ad ogni rilascio.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Come disconnetto / ricomincio?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Impostazioni → «Disconnetti e riavvia onboarding». Questo cancella URL HA e token salvati dal dispositivo e mostra di nuovo la schermata di benvenuto. I permessi HealthKit restano nelle Impostazioni iOS — vai a Impostazioni → Salute → Healko per revocarli completamente.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Dati vitali ovunque, in privato.</h2>
+        <p>Healko è il ponte che la community HA stava chiedendo. iOS 17+, gratis per iniziare, $79.99 a vita.</p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../index.html#apps">App</a>
+            <a href="../../about.html">Chi sono</a>
+            <a href="../../support.html">Supporto</a>
+            <a href="../../privacy.html">Privacy</a>
+            <a href="../../terms.html">Termini</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

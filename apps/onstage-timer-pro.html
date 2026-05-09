@@ -308,6 +308,25 @@
         .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
         .footer-links a:hover { color: var(--text); }
         .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Troubleshooting */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(139,0,0,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
 
         @media (max-width: 768px) {
             .hero { padding: 80px 20px 40px; }
@@ -330,6 +349,7 @@
             <div class="nav-links">
                 <a href="../index.html">Home</a>
                 <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
                 <a href="../about.html">About</a>
                 <a href="../support.html">Support</a>
                 <a href="../privacy.html">Privacy</a>
@@ -477,6 +497,30 @@
             <p style="color: var(--text-secondary); font-size: 14px;">One subscription works across all your devices</p>
         </div>
     </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Stage timing, audio cues, troubleshooting</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Live Activities &amp; Stage Display</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How do I show the timer on the lock screen?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Start any timer — OnStage Timer Pro automatically presents a Live Activity on iPhone (iOS 17+) and on the Dynamic Island (iPhone 14 Pro+ / 15 / 16 / 17 Pro). The timer continues counting down even when the app is backgrounded. Tap the Live Activity to bring the app forward.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I display on Apple Watch?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes — pair your Watch to your iPhone, and the timer appears on the Watch face automatically when running. Tap-to-pause from the Watch.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does it support external displays for stage delivery?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Connect via AirPlay or Lightning-to-HDMI / USB-C-to-HDMI. The full-screen mirror shows huge digits the speaker can read from across the stage.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Audio Cues</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What audio cues are available?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Configurable: 5-min warning, 1-min warning, 30-sec warning, 10-sec countdown beeps, end alarm. Each can be enabled or muted individually. Volume override is on by default — even with silent switch on, the cues play (configurable in Settings).</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cue didn't play when phone was muted</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Make sure "Override silent switch" is on in Settings → Audio. We also configure AVAudioSession for playback so cues fire regardless of ringer state. If cues still don't play, restart the app once — the audio session sometimes needs a fresh init after a system audio interruption (call, FaceTime).</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Live Activity disappeared mid-talk</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS terminates Live Activities after 8 hours. If your talk is shorter than that, the activity should never expire. Common causes for premature termination: iOS low-power mode, a different app with a higher-priority Live Activity, or an iOS background freeze. Open OnStage Timer Pro to refresh.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Idle timer dimmed the screen during a presentation</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>OnStage Timer Pro disables the iOS idle timer while a timer is running — your screen stays awake. If you paused the timer, the idle timer reactivates after iOS's normal delay. To keep the screen on while paused, use Settings → "Keep screen always on".</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Live Activity shows wrong time after backgrounding</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Live Activities sometimes lag a second or two during scenePhase transitions (background → foreground). On foreground, OnStage Timer Pro re-syncs the activity. If the timer is consistently wrong, force-quit and re-launch.</p></div></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="cta">
         <h2>Take the stage with confidence</h2>
@@ -490,6 +534,7 @@
         <div class="footer-links">
             <a href="../index.html">Home</a>
             <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
             <a href="../about.html">About</a>
             <a href="../support.html">Support</a>
             <a href="../privacy.html">Privacy</a>
@@ -513,6 +558,11 @@
                 localStorage.setItem('theme', 'light');
             }
         }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
 
         (function() {
             const savedTheme = localStorage.getItem('theme');

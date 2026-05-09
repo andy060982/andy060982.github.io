@@ -384,6 +384,25 @@
         .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
         .footer-links a:hover { color: var(--text); }
         .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Troubleshooting */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(227,134,0,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
 
         @media (max-width: 768px) {
             .hero { padding: 80px 20px 40px; }
@@ -408,6 +427,7 @@
             <div class="nav-links">
                 <a href="../index.html">Home</a>
                 <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
                 <a href="../about.html">About</a>
                 <a href="../support.html">Support</a>
                 <a href="../privacy.html">Privacy</a>
@@ -651,6 +671,29 @@
             </div>
         </div>
     </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">California road conditions, alerts, data sources</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Data &amp; Coverage</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Where does the road condition data come from?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Caltrans (California Department of Transportation) public data feeds, plus CHP (California Highway Patrol) incident reports. RoadWatch CA aggregates and presents both in a single map and list view. Updates every 5-15 minutes depending on the source.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why don't I see incidents in my area?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>If Caltrans/CHP haven't reported anything, the map is empty. Local roads (city streets, county roads) are not in the Caltrans feed — only state highways and interstates. For local roads, check your county's emergency-services page.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does it cover construction closures?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes, Caltrans publishes scheduled closures. RoadWatch CA shows them with start/end times and detour info if Caltrans provides it.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Alerts &amp; Routes</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I get alerts for my commute route?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Add a saved route (e.g. "I-280 Sunnyvale to SF"). RoadWatch CA polls every 15 minutes while the app is open and sends a notification when a new incident is reported on or near your route.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Background alerts on iOS — do they work?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS suspends background polling aggressively for non-VoIP / non-location apps. RoadWatch CA re-checks on app launch and from widgets — the alert flow works best when you keep the widget on your home screen and check it before driving.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Map shows "No data"</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Caltrans feeds occasionally go down. Pull-to-refresh forces a re-fetch. If the issue persists for &gt;30 minutes, the API itself is likely unavailable — check status.caltrans.ca.gov. RoadWatch CA caches the last successful pull, so you'll see the most recent good data.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Notification sounds the same regardless of severity</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS uses a single sound per notification category. Severity is shown in the notification text and icon. Critical incidents are flagged with 🚨 in the title.</p></div></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="cta">
         <h2>Never be surprised by traffic again</h2>
@@ -664,6 +707,7 @@
         <div class="footer-links">
             <a href="../index.html">Home</a>
             <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
             <a href="../about.html">About</a>
             <a href="../support.html">Support</a>
             <a href="../privacy.html">Privacy</a>
@@ -687,6 +731,11 @@
                 localStorage.setItem('theme', 'light');
             }
         }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
 
         (function() {
             const savedTheme = localStorage.getItem('theme');

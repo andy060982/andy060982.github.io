@@ -284,6 +284,25 @@
         .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
         .footer-links a:hover { color: var(--text); }
         .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Troubleshooting */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(146,90,220,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
 
         @media (max-width: 768px) {
             .hero { padding: 80px 20px 40px; }
@@ -305,6 +324,7 @@
             <div class="nav-links">
                 <a href="../index.html">Home</a>
                 <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
                 <a href="../about.html">About</a>
                 <a href="../support.html">Support</a>
                 <a href="../privacy.html">Privacy</a>
@@ -402,6 +422,23 @@
             "Most calculators keep adding 'features' that slow you down. This one stays focused: quick, readable, and practical."
         </blockquote>
     </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Twin pregnancy due-date calculator</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Calculations</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How does Not Another Twin Calculator estimate twin due dates?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Twin pregnancies typically deliver 2-3 weeks earlier than singletons. The app applies ACOG (American College of Obstetricians and Gynecologists) guidance: 36-37 weeks for di-di twins, 34-37 weeks for mo-di twins, 32-34 weeks for mo-mo twins.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I enter LMP or conception date?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Both. LMP (last menstrual period) follows the standard +280 days minus 14 to convert. Conception is +266 days. Twin offset applied after.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is this medical advice?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p><strong>No.</strong> Not Another Twin Calculator is an informational tool only. Always consult your obstetrician for actual delivery planning. Twin pregnancies have many variables this calculator can't predict.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Date picker shows wrong format</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Date format follows your iOS region. To force MM/dd/yyyy or dd/MM/yyyy, change iOS Settings → General → Language &amp; Region.</p></div></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="cta">
         <h2>Two is better than one</h2>
@@ -415,6 +452,7 @@
         <div class="footer-links">
             <a href="../index.html">Home</a>
             <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
             <a href="../about.html">About</a>
             <a href="../support.html">Support</a>
             <a href="../privacy.html">Privacy</a>
@@ -438,6 +476,11 @@
                 localStorage.setItem('theme', 'light');
             }
         }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
 
         (function() {
             const savedTheme = localStorage.getItem('theme');

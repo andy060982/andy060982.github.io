@@ -433,6 +433,25 @@
         }
 
         /* Responsive */
+        /* FAQ + Troubleshooting */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(94,122,255,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -584,6 +603,28 @@
     </section>
 
     <!-- Footer -->
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Troubleshooting &amp; Tips</h2>
+        <p class="section-subtitle">For complete FAQ see <a href="notanothercountdown-faq.html">FAQ page</a></p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Widgets</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Widget not updating to today's countdown</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS refreshes widgets on a system schedule (every 15 min - 1 hour). Force refresh: long-press widget → Edit Widget → Done. Or open Not Another Countdown to trigger an immediate widget reload.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Lock-screen widget shows yesterday's count</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Lock screen widgets refresh less aggressively than home-screen widgets. Wake the phone and let iOS refresh, or open the app once.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Notifications</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Countdown reminder didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Each countdown has its own notification toggle. Open the countdown → Edit → Reminders → enable. iOS Focus mode may suppress the visible alert.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>"Today is the day" notification didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>That notification fires at midnight in your iOS timezone. If you crossed timezones the day before, the boundary may shift. Open the app to see the current state.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Countdown shows negative days for a future date</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Likely a timezone mismatch — the date you saved is interpreted differently by your current device timezone. Edit the countdown and re-pick the date.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Lost data after device restore</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Not Another Countdown stores on-device. iOS Backup (iCloud or computer) preserves app data. After restore, the countdowns return.</p></div></div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -622,5 +663,11 @@
             </div>
         </div>
     </footer>
+    <script>
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>

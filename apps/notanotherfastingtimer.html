@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Another Fasting Timer | Andy Arevalo</title>
+    <meta name="description" content="A simple, no-fluff intermittent fasting timer. 16:8, 18:6, OMAD, custom windows. Widgets, streaks, no accounts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/notanotherfastingtimer.html">
+    <meta property="og:title" content="Not Another Fasting Timer">
+    <meta property="og:description" content="A simple, no-fluff intermittent fasting timer.">
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanotherfastingtimer.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        :root { --bg: #0b0f19; --bg-secondary: #0f1626; --text: #e8edf7; --text-secondary: #b7c0d4; --line: rgba(255,255,255,.12); --accent: #FF6B35; --accent2: #FFB088; --card-bg: rgba(15,22,38,.72); }
+        [data-theme="light"] { --bg: #fff; --bg-secondary: #f5f5f7; --text: #1d1d1f; --text-secondary: #6e6e73; --line: rgba(0,0,0,.12); --card-bg: #fff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+        body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(1200px 800px at 15% 10%, rgba(255,107,53,.18), transparent 55%); pointer-events: none; z-index: -1; }
+        [data-theme="light"] body::before { background: none; }
+        a { color: var(--accent); text-decoration: none; }
+        nav { position: fixed; top: 0; left: 0; right: 0; backdrop-filter: blur(20px); background: rgba(15,22,38,.55); border-bottom: 1px solid var(--line); z-index: 1000; }
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; color: var(--text); text-decoration: none; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 18px; padding: 5px; color: var(--text-secondary); }
+        .hero { padding: 100px 20px 60px; background: var(--bg-secondary); text-align: center; }
+        .hero h1 { font-size: 44px; font-weight: 700; margin-bottom: 8px; }
+        .tagline { font-size: 22px; color: var(--accent); margin-bottom: 20px; }
+        .hero p { font-size: 18px; color: var(--text-secondary); max-width: 700px; margin: 0 auto 30px; }
+        .price-badge { background: var(--accent); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; display: inline-block; }
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 14px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+        .features { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 30px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .cta { padding: 80px 20px; text-align: center; }
+        footer { background: var(--bg); padding: 30px 18px; text-align: center; border-top: 1px solid var(--line); }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="brand"><span class="dot"></span><span>Andy Arevalo</span></a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
+                <a href="../support.html">Support</a>
+                <a href="../privacy.html">Privacy</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span id="theme-icon">&#9728;</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Not Another Fasting Timer</h1>
+        <p class="tagline">Intermittent fasting, no fluff</p>
+        <p>Pick a window — 16:8, 18:6, OMAD, or custom — and the app gets out of your way. Clean countdown, lock-screen widget, streak tracking. No coaching, no community, no upsells.</p>
+        <span class="price-badge">Coming Soon</span>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">What's in the box</h2>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon">⏱️</div><h3>Preset windows</h3><p>16:8, 18:6, 20:4, OMAD (23:1), or build your own.</p></div>
+            <div class="feature-card"><div class="feature-icon">📱</div><h3>Widget</h3><p>Lock screen + home screen widget shows time remaining at a glance.</p></div>
+            <div class="feature-card"><div class="feature-icon">🔥</div><h3>Streaks</h3><p>Track your consistency. Best streak. Total fasts completed.</p></div>
+            <div class="feature-card"><div class="feature-icon">🔔</div><h3>Notifications</h3><p>Mid-fast checkpoints (8h, 12h, 16h) and end-of-window alert.</p></div>
+            <div class="feature-card"><div class="feature-icon">📊</div><h3>History</h3><p>Calendar view of every completed fast. Weekly + monthly stats.</p></div>
+            <div class="feature-card"><div class="feature-icon">🍎</div><h3>Apple Health</h3><p>Optional — log fast windows as Mindful Sessions in Apple Health.</p></div>
+            <div class="feature-card"><div class="feature-icon">🌙</div><h3>Dark mode</h3><p>System-driven. OLED-friendly true black option for nighttime checks.</p></div>
+            <div class="feature-card"><div class="feature-icon">🔒</div><h3>Privacy</h3><p>No accounts, no analytics, no ads. Data stays on-device.</p></div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Fasting basics, troubleshooting</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Fasting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What does 16:8 mean?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>16 hours of fasting, 8 hours of eating window. Most common form of intermittent fasting. Example: stop eating at 8pm, resume at noon next day.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is fasting safe?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p><strong>Talk to your doctor.</strong> Intermittent fasting is generally safe for healthy adults but not recommended for pregnant or breastfeeding women, people with diabetes, eating disorders, or certain medical conditions. Not Another Fasting Timer is a tool, not medical advice.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I drink water during a fast?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Water, black coffee, plain tea, and electrolyte powders without sugar are typically fine. Anything with calories breaks the fast.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>I started a fast and now want to end it early</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Tap "End fast" → the app saves the partial fast to history and resets. Streaks count completed fasts only — partial doesn't break the streak unless explicitly marked as a "broken fast".</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Widget shows wrong remaining time</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS schedules widget refreshes — typically every 15 minutes to 1 hour. Force refresh: long-press → Edit Widget → Done. Or open the app once.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>End-of-fast notification didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Settings → Notifications → Not Another Fasting Timer → Allow. iOS Focus mode may suppress non-Time Sensitive alerts. The fast still completes; the alert just didn't visually show.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Just fast.</h2>
+        <p>Coming soon to the App Store. iOS 17+, free.</p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#apps">Apps</a>
+            <a href="../about.html">About</a>
+            <a href="../support.html">Support</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) { element.closest('.faq-item').classList.toggle('open'); }
+        (function() {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

@@ -335,6 +335,25 @@
         .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
         .footer-links a:hover { color: var(--text); }
         .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Troubleshooting */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(33,102,172,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
 
         @media (max-width: 768px) {
             .hero { padding: 80px 20px 40px; }
@@ -357,6 +376,7 @@
             <div class="nav-links">
                 <a href="../index.html">Home</a>
                 <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
                 <a href="../about.html">About</a>
                 <a href="../support.html">Support</a>
                 <a href="../privacy.html">Privacy</a>
@@ -491,6 +511,33 @@
             <p style="color: var(--text-secondary); font-size: 14px;">Works on iPhone, iPad, and Mac (M1+)</p>
         </div>
     </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Speech prep, timer cues, troubleshooting</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Setup &amp; Speech Types</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What speech types are supported?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Built-in templates for Toastmasters Pathways speeches, TED talks, conference talks, classroom presentations, and custom durations. Each template has its own green/yellow/red cue points. Pro lets you edit cue points per speech.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I save my own speech configurations?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes (Pro). Customize duration, cue colors, and cue points, then save as a template. The template appears in the picker for future sessions.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Cues &amp; Audio</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why didn't the timer beep at the cue?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Audio cues are off by default to avoid surprising the speaker. Enable in Settings → Audio. If enabled but silent: AVAudioSession may have been interrupted by a call. Re-launch the app to reset.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does Live Activity work on my iPhone?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS 16.1+ on any iPhone. iPhone 14 Pro and newer get the Dynamic Island view. Older iPhones get a regular Live Activity on the lock screen.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">History &amp; Reports</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How long is meeting history retained?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Indefinitely on free tier (last 10 sessions). Pro keeps unlimited history with notes, durations, and ranges. All on-device, no cloud.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Troubleshooting</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Pause-then-resume drifted the timer by a few seconds</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Pause/resume uses CFAbsoluteTimeGetCurrent for monotonic timing — drift should be &lt;100ms. If you see seconds of drift, an iOS time-zone change happened mid-session. Restart the timer.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Restore Purchase says "no purchases"</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Make sure you're signed into the same Apple ID that bought the subscription. Settings → Apple ID → Subscriptions to verify it's active. Then in OnTime Speaker Pro, tap Restore Purchase.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Notifications are not arriving for cue boundaries</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Local notifications need permission. Settings → Notifications → OnTime Speaker Pro → Allow. The cue notifications fire at green / yellow / red boundaries when the app is backgrounded.</p></div></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="cta">
         <h2>Ready to improve your speeches?</h2>
@@ -504,6 +551,7 @@
         <div class="footer-links">
             <a href="../index.html">Home</a>
             <a href="../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
             <a href="../about.html">About</a>
             <a href="../support.html">Support</a>
             <a href="../privacy.html">Privacy</a>
@@ -527,6 +575,11 @@
                 localStorage.setItem('theme', 'light');
             }
         }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
 
         (function() {
             const savedTheme = localStorage.getItem('theme');
