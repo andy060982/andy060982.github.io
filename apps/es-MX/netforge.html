@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetForge: Engineer's Toolkit | Andy Arevalo</title>
+    <meta name="description" content="60+ network engineering tools in one app. DNS, ping, TLS cert inspector, subnet calculator, WHOIS, traceroute, port scanner. Gratis 6, Pro $19.99 de por vida.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/es-MX/netforge.html">
+    <meta property="og:title" content="NetForge: Engineer's Toolkit">
+    <meta property="og:description" content="60+ network engineering tools in one app. DNS, ping, TLS cert inspector, subnet calculator, WHOIS, traceroute, port scanner. Gratis 6, Pro $19.99 de por vida.">
+    <meta property="og:image" content="https://andyarevalo.com/images/netforge.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/es-MX/netforge.html">
+    <meta name="twitter:title" content="NetForge: Engineer's Toolkit">
+    <meta name="twitter:description" content="60+ network engineering tools in one app. DNS, ping, TLS cert inspector, subnet calculator, WHOIS, traceroute, port scanner. Gratis 6, Pro $19.99 de por vida.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/netforge.png">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/es-MX/netforge.html">
+    <link rel="alternate" hreflang="x-default" href="https://andyarevalo.com/apps/es-MX/netforge.html">
+    <link rel="alternate" hreflang="en" href="https://andyarevalo.com/apps/es-MX/netforge.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://andyarevalo.com/apps/zh-Hans/netforge.html">
+    <link rel="alternate" hreflang="it" href="https://andyarevalo.com/apps/it/netforge.html">
+    <link rel="alternate" hreflang="ru" href="https://andyarevalo.com/apps/ru/netforge.html">
+    <link rel="alternate" hreflang="de" href="https://andyarevalo.com/apps/de/netforge.html">
+    <link rel="alternate" hreflang="ko" href="https://andyarevalo.com/apps/ko/netforge.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://andyarevalo.com/apps/pt-BR/netforge.html">
+    <link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/netforge.html">
+    <link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/netforge.html">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/es-MX/netforge.html#app",
+          "name": "NetForge: Engineer's Toolkit",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "iOS, macOS",
+          "url": "https://andyarevalo.com/apps/es-MX/netforge.html",
+          "description": "60+ network engineering tools in one app. DNS, ping, TLS cert inspector, subnet calculator, WHOIS, traceroute, port scanner. Gratis 6, Pro $19.99 de por vida.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Gratis (6 tools)" },
+            { "@type": "Offer", "price": "19.99", "priceCurrency": "USD", "name": "NetForge Pro de por vida" }
+          ],
+          "featureList": [
+            "60+ network engineering tools",
+            "DNS lookup with all record types",
+            "Ping, traceroute, MTR-style hops",
+            "TLS certificate inspector",
+            "Subnet calculator with VLSM",
+            "WHOIS lookup",
+            "Cert expiry monitoring with notifications",
+            "Public IP + ASN + geolocation",
+            "Port scanner",
+            "Recipes — multi-tool workflows",
+            "Standards + RFC reference inline",
+            "PDF export (Pro)",
+            "iOS + Mac Catalyst"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://andyarevalo.com" },
+            { "@type": "ListItem", "position": 2, "name": "NetForge", "item": "https://andyarevalo.com/apps/es-MX/netforge.html" }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #00B894;
+            --accent2: #55EFC4;
+            --card-bg: rgba(15,22,38,.72);
+        }
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #00857A;
+            --accent2: #2EB68F;
+            --card-bg: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(1200px 800px at 15% 10%, rgba(0,184,148,.18), transparent 55%), radial-gradient(900px 700px at 80% 25%, rgba(85,239,196,.14), transparent 55%); pointer-events: none; z-index: -1; }
+        [data-theme="light"] body::before { background: none; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav { position: fixed; top: 0; left: 0; right: 0; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(15,22,38,.55); border-bottom: 1px solid var(--line); z-index: 1000; }
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: .2px; color: var(--text); text-decoration: none; }
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 0 20px rgba(0,184,148,.35); }
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 18px; padding: 5px; color: var(--text-secondary); }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero { padding: 100px 20px 60px; background: var(--bg-secondary); }
+        .hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-text h1 { font-size: 44px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .price-badge { background: var(--accent); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; }
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 14px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+        .tools { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .tool-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .tool-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .tool-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .tool-card h3 { color: var(--accent); margin-bottom: 12px; font-size: 18px; }
+        .tool-card ul { list-style: none; padding: 0; }
+        .tool-card li { padding: 4px 0; padding-left: 18px; position: relative; color: var(--text-secondary); font-size: 14px; }
+        .tool-card li::before { content: '›'; position: absolute; left: 0; color: var(--accent2); font-weight: bold; }
+        .tool-card .free { color: var(--accent); font-weight: 600; font-size: 11px; }
+
+        .features { padding: 80px 20px; background: var(--bg-secondary); }
+        .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 30px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        .pricing { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
+        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .price-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 28px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .price-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .price-card.highlight { border: 2px solid var(--accent); position: relative; }
+        .price-card.highlight::before { content: 'BEST VALUE'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; letter-spacing: .5px; }
+        .price-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .price-card .price { font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+        .price-card .period { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; }
+        .price-card p { color: var(--text-secondary); font-size: 14px; }
+
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(0,184,148,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer { background: var(--bg); padding: 30px 18px; text-align: center; border-top: 1px solid var(--line); }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 32px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .price-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Inicio</a>
+                <a href="../../index.html#apps">Apps</a>
+                <a href="#tools">Herramientas</a>
+                <a href="#features">Funciones</a>
+                <a href="#pricing">Precios</a>
+                <a href="#faq">FAQ</a>
+                <a href="../../support.html">Soporte</a>
+                <a href="../../privacy.html">Privacidad</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema"><span id="theme-icon">&#9728;</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>NetForge</h1>
+                <p class="tagline">The Engineer's Toolkit</p>
+                <p>60+ network engineering tools in your pocket. DNS, ping, TLS cert inspection, subnet math, WHOIS, traceroute, port scanning, recipe workflows. Built by a network engineer, for network engineers.</p>
+                <div class="hero-badges">
+                    <span class="price-badge">Gratis 6 herramientas</span>
+                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">Pro $19.99 de por vida</span>
+                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">iOS + Mac</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../../images/netforge.png" alt="NetForge app icon" class="app-icon-large">
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="tools">
+        <h2 class="section-title">60+ herramientas, organizadas</h2>
+        <p class="section-subtitle">Every tool you reach for, in one app. The first 6 are free; Pro unlocks the rest.</p>
+        <div class="tool-categories">
+            <div class="tool-card">
+                <h3>DNS y nombres</h3>
+                <ul>
+                    <li>DNS Lookup <span class="free">GRATIS</span></li>
+                    <li>Reverse DNS (PTR)</li>
+                    <li>WHOIS</li>
+                    <li>DNS Propagation Check</li>
+                    <li>DNSSEC Validator</li>
+                    <li>SPF / DMARC / DKIM</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Conectividad</h3>
+                <ul>
+                    <li>Ping <span class="free">GRATIS</span></li>
+                    <li>Traceroute (MTR-style hops)</li>
+                    <li>HTTP timing breakdown</li>
+                    <li>Speed Test</li>
+                    <li>MOS Calculator (VoIP quality)</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>TLS y certificados</h3>
+                <ul>
+                    <li>TLS Certificate Inspector <span class="free">GRATIS</span></li>
+                    <li>SAN / SNI checker</li>
+                    <li>Cipher suite analyzer</li>
+                    <li>Cert expiry monitor + notifications</li>
+                    <li>SMTP STARTTLS check</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Subnetting</h3>
+                <ul>
+                    <li>Subnet Calculator <span class="free">GRATIS</span></li>
+                    <li>VLSM &amp; supernetting</li>
+                    <li>IPv6 expansion</li>
+                    <li>CIDR aggregator</li>
+                    <li>Wildcard mask</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Descubrimiento</h3>
+                <ul>
+                    <li>Public IP <span class="free">GRATIS</span></li>
+                    <li>ASN lookup</li>
+                    <li>BGP route lookup</li>
+                    <li>Geolocation</li>
+                    <li>Port scanner</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Referencia</h3>
+                <ul>
+                    <li>IANA Port lookup</li>
+                    <li>RFC index</li>
+                    <li>Standards: 802.1Q, OSPF, BGP</li>
+                    <li>Linux man pages (network commands)</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Recetas (Flujos)</h3>
+                <ul>
+                    <li>DNS Propagation Check across resolvers</li>
+                    <li>Wi-Fi Quality Assessment</li>
+                    <li>Outage Triage</li>
+                    <li>Cert Health for a domain</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Flujo Pro</h3>
+                <ul>
+                    <li>History (every run, queryable)</li>
+                    <li>Saved tab (pin sites)</li>
+                    <li>PDF export</li>
+                    <li>Cert expiry watch list</li>
+                    <li>Public IP + Cert widgets</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Built for the field</h2>
+        <p class="section-subtitle">Made by a network engineer, used at customer sites.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Zero setup</h3>
+                <p>No account. No subscription noise on launch. Open the app, run a tool, get the answer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Inline references</h3>
+                <p>Tap any RFC, standard, or man-page citation in a result and get the relevant section right inside the app.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>History &amp; saved sites</h3>
+                <p>Every run is logged with timestamps. Tap any history entry to re-open the result. Pin frequent sites.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Cert expiry watch</h3>
+                <p>Add a hostname to the watch list and get local notifications 30 / 14 / 7 / 1 days before TLS expiry.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Recipes</h3>
+                <p>Multi-tool workflows for common debug paths. Outage triage? One tap runs DNS + ping + TLS + traceroute.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>PDF export</h3>
+                <p>Pro feature. Export any tool's output as a clean PDF for tickets, customer reports, or runbooks.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🖥️</div>
+                <h3>iOS + Mac Catalyst</h3>
+                <p>Same app on iPhone, iPad, and Mac. Universal purchase — buy Pro once, use everywhere.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Privacidad</h3>
+                <p>Tool runs query directly from your device. The only network call is the one you initiated. No analytics, no tracking.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Precios</h2>
+        <p class="section-subtitle">Gratis tier is enough for most field debug. Pro removes friction.</p>
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Gratis</h3>
+                <div class="price">$0</div>
+                <div class="period">para siempre</div>
+                <p>6 essential tools: DNS, Ping, Public IP, Subnet Calc, TLS Cert, WHOIS. Unlimited runs.</p>
+            </div>
+            <div class="price-card highlight">
+                <h3>Pro de por vida</h3>
+                <div class="price">$19.99</div>
+                <div class="period">compra única, para siempre</div>
+                <p>All 60+ tools, history, saved sites, recipes, cert watch, widgets, PDF export. iOS + Mac.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Setup, troubleshooting, and the philosophy behind NetForge</p>
+
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">General</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Who is NetForge for?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Network engineers, sysadmins, DevOps engineers, and anyone who debugs network problems at a customer site or from a laptop. The app replaces a folder of bookmarks (whatsmydns.net, mxtoolbox, ipinfo.io, sslchecker, subnet calculator, etc.) with a single offline-first tool.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why one app instead of separate ones?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Field debug is rarely "just DNS" or "just ping". A flaky outage triage usually involves DNS, then ping, then traceroute, then TLS, then WHOIS, then BGP. Switching apps wastes seconds. NetForge keeps state across tools, has a history of every run, and offers recipe workflows that bundle the common sequences.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does NetForge work without internet?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>The reference content (RFC index, standards, man pages, IANA ports, subnet math) works offline. The active tools (DNS, ping, traceroute, TLS, WHOIS) need internet — they make real network calls. Subnet Calc is fully offline.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Mac version too?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Mac Catalyst version is in App Store review now and ships imminently. Universal purchase — Pro on iOS unlocks Mac and vice versa.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Herramientas</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Which DNS record types are supported?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, CAA, PTR (reverse), DNSKEY, DS, RRSIG, NSEC, NSEC3, TLSA, SVCB, HTTPS. You can pick which DNS resolver to query (1.1.1.1, 8.8.8.8, 9.9.9.9, your ISP, custom). Wire-format queries — no DoH proxy.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does ping use ICMP?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS sandboxing doesn't allow raw ICMP from a non-system app. NetForge uses TCP ping (configurable port — default 443) which gives you reachability + RTT for the part of the path that matters most for service availability. Traceroute uses TCP-based hop discovery for the same reason.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What does the TLS Cert Inspector show?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Full chain (leaf, intermediates, root), SAN list, SNI, expiry date with countdown, signature algorithm, key size, OCSP staple if present, cipher suite negotiated, TLS version, SCT count. Tap any cert in the chain to see its full PEM and computed fingerprints.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Subnet Calculator features?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>IPv4 + IPv6. CIDR notation. VLSM (variable-length subnet mask) breakdown — give it a /24 and ask for 4 /26 + 2 /29, get the assignments. Wildcard mask conversion. Supernet aggregator. CIDR overlap detector. All offline.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>WHOIS supports all TLDs?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Most. NetForge follows the standard WHOIS referral chain (IANA → registry → registrar). For modern TLDs that have RDAP (the JSON-based replacement), NetForge uses RDAP for cleaner output. For ccTLDs without WHOIS exposure (a few exist), NetForge tells you so.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Precios y Pro</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What's free vs Pro?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p><strong>Gratis:</strong> 6 tools (DNS Lookup, Ping, Public IP, Subnet Calculator, TLS Cert Inspector, WHOIS) with unlimited runs. <strong>Pro:</strong> all 54 additional tools, run history, saved sites, recipe workflows, cert expiry watch list with notifications, home-screen widgets, PDF export.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why one-time purchase, no subscription?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Herramientas you reach for ad-hoc deserve to be paid for once. A monthly subscription for an app you might use every day OR not for a month makes no sense. $19.99 lifetime, no upsells, no recurring billing. The price will likely go up over time but anyone with the lifetime keeps it.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is the Pro purchase tied to my Apple ID?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Once purchased, Pro is unlocked on every device tied to your Apple ID — iPhone, iPad, Mac. Use Restore Purchase if you change devices.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I try Pro before buying?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>The free 6 tools are the most-used in the app and are unlimited. Tap any locked tool to see exactly what Pro adds — the paywall shows the full feature list. There's no trial period, but the lifetime price is low enough to be a low-stakes commit.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Privacidad y seguridad</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Where do queries go?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Directly from your device to the network endpoint or service you specified. NetForge has no server. The only "third-party" call is to <code>ipinfo.io</code> for the Public IP tool — opt-in on first run. Everything else is direct: DNS to the resolver you picked, ping to the host you typed, TLS handshake to the SNI host you queried.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is run history private?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. History is stored in iOS-encrypted SwiftData on your device only. Never leaves the phone. Can be cleared at any time from Settings.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Any analytics or tracking?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No. No analytics SDK. No crash reporter that sends data off-device. App Store nutrition label confirms: zero data collected.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Solución de problemas</h3>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>"DNS query timed out"</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Either the resolver is unreachable, or there's an iOS network issue. Try switching the resolver in Settings (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9). If all resolvers fail: airplane mode? Captive portal not signed in? Check Wi-Fi.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Ping shows host unreachable but I can browse the site</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>NetForge's ping uses TCP on port 443 by default. If a firewall blocks 443 to that IP from outside (load balancer in front, etc.) but allows the host's actual web port, the TCP ping fails while HTTP works. Try changing the ping port in Settings to match the service's listening port.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>TLS Cert Inspector shows expired but the site loads in Safari</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Different SNI. The cert NetForge sees is the one served when SNI = the hostname you typed. Safari may be sending a different SNI (or none, falling back to the default cert). Compare the SAN in NetForge's report to the actual hostname in your Safari URL.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cert expiry watch doesn't notify me</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check Settings → Notifications → NetForge is enabled. Background expiry checks fire on app foreground (current implementation). v1.1 adds true BGAppRefreshTask scheduling. If you haven't opened the app in &gt; 7 days, you may miss the 7-day warning — open the app weekly or rely on the 14 / 30 day warnings.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Public IP keeps showing my carrier's CGNAT IP, not my home IP</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Expected when on cellular. Your carrier-NATs all phones behind a shared egress IP (CGNAT). Switch to your home Wi-Fi to see your real public IP.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>WHOIS for .ai or other ccTLD shows nothing</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Some ccTLDs (.ai, .io historically, certain country registries) don't expose WHOIS at all, only an in-browser web form. NetForge will tell you when no WHOIS is available. For those, the registry's web page is the source of truth.</p></div></div>
+
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Traceroute hops mostly show * * *</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Many ISPs and corporate firewalls drop the response packets that traceroute relies on. Hops between the source and destination silently swallow the probe. Look at the FIRST hop (your gateway) and the LAST hop (the destination) — those usually answer. The hops in between being dark is normal and not a sign of a problem.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>The toolkit you forgot you had.</h2>
+        <p>NetForge is on the App Store now. Gratis 6 herramientas, $19.99 lifetime for the rest. iOS 17+, macOS 14+.</p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">Inicio</a>
+            <a href="../../index.html#apps">Apps</a>
+            <a href="../../about.html">Acerca</a>
+            <a href="../../support.html">Soporte</a>
+            <a href="../../privacy.html">Privacidad</a>
+            <a href="../../terms.html">Términos</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

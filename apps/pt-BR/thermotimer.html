@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThermoTimer – Sauna & Cold Plunge Timer | Andy Arevalo</title>
+    <meta name="description" content="Guided thermal therapy timer for sauna and cold plunge sessions. 6 protocols, Apple Watch support, session tracking, and three beautiful themes.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/pt-BR/thermotimer.html">
+    <meta property="og:title" content="ThermoTimer – Sauna & Cold Plunge Timer">
+    <meta property="og:description" content="Guided thermal therapy timer for sauna and cold plunge sessions. 6 protocols, Apple Watch support, session tracking, and three beautiful themes.">
+    <meta property="og:image" content="https://andyarevalo.com/images/thermotimer-256.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/pt-BR/thermotimer.html">
+    <meta name="twitter:title" content="ThermoTimer – Sauna & Cold Plunge Timer">
+    <meta name="twitter:description" content="Guided thermal therapy timer for sauna and cold plunge sessions. 6 protocols, Apple Watch support, session tracking, and three beautiful themes.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/thermotimer-256.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/pt-BR/thermotimer.html">
+    <link rel="alternate" hreflang="x-default" href="https://andyarevalo.com/apps/pt-BR/thermotimer.html">
+    <link rel="alternate" hreflang="en" href="https://andyarevalo.com/apps/pt-BR/thermotimer.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://andyarevalo.com/apps/zh-Hans/thermotimer.html">
+    <link rel="alternate" hreflang="it" href="https://andyarevalo.com/apps/it/thermotimer.html">
+    <link rel="alternate" hreflang="ru" href="https://andyarevalo.com/apps/ru/thermotimer.html">
+    <link rel="alternate" hreflang="de" href="https://andyarevalo.com/apps/de/thermotimer.html">
+    <link rel="alternate" hreflang="ko" href="https://andyarevalo.com/apps/ko/thermotimer.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://andyarevalo.com/apps/pt-BR/thermotimer.html">
+    <link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/thermotimer.html">
+    <link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/thermotimer.html">
+
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/pt-BR/thermotimer.html#app",
+          "name": "ThermoTimer",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/pt-BR/thermotimer.html",
+          "description": "Guided thermal therapy timer for sauna and cold plunge sessions. 6 protocols, Apple Watch support, session tracking, and three beautiful themes.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "featureList": [
+            "6 thermal therapy protocols",
+            "Apple Watch support",
+            "Session history tracking",
+            "Three visual themes"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://andyarevalo.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "ThermoTimer",
+              "item": "https://andyarevalo.com/apps/pt-BR/thermotimer.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #8fb7ff;
+            --accent2: #9ef0d2;
+            --card-bg: rgba(15,22,38,.72);
+            --sauna: #ff6b35;
+            --cold: #00b4d8;
+            --rest: #4ecdc4;
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #007AFF;
+            --accent2: #34c759;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(143,183,255,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero {
+            padding: 100px 20px 60px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--sauna); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .price-badge { background: var(--sauna); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        /* Protocols */
+        .protocols {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .protocol-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .protocol-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .protocol-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .protocol-card p { color: var(--text-secondary); font-size: 14px; margin-bottom: 12px; }
+        .protocol-phases { display: flex; gap: 8px; flex-wrap: wrap; }
+        .phase-tag { font-size: 12px; padding: 4px 10px; border-radius: 12px; font-weight: 500; }
+        .phase-tag.sauna { background: rgba(255, 107, 53, 0.15); color: var(--sauna); }
+        .phase-tag.cold { background: rgba(0, 180, 216, 0.15); color: var(--cold); }
+        .phase-tag.rest { background: rgba(78, 205, 196, 0.15); color: var(--rest); }
+
+        /* Phase Demo */
+        .phase-demo {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .phase-cards {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .phase-card {
+            padding: 40px 20px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+        }
+
+        .phase-card.sauna { background: linear-gradient(135deg, #ff6b35, #f7931e); }
+        .phase-card.cold { background: linear-gradient(135deg, #00b4d8, #0077b6); }
+        .phase-card.rest { background: linear-gradient(135deg, #4ecdc4, #2ab7ca); }
+
+        .phase-card .icon { font-size: 48px; margin-bottom: 12px; }
+        .phase-card h3 { font-size: 24px; margin-bottom: 8px; }
+        .phase-card p { opacity: 0.9; font-size: 14px; }
+
+        /* Recursos */
+        .features {
+            padding: 60px 20px;
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Platforms */
+        .platforms {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .platforms-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .platform-item .icon { font-size: 48px; margin-bottom: 12px; }
+        .platform-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+        .platform-item p { color: var(--text-secondary); font-size: 14px; }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 30px 18px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Solução de problemas */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(255,87,34,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .phase-cards { grid-template-columns: 1fr; }
+            .platforms-grid { grid-template-columns: 1fr; gap: 20px; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Início</a>
+                <a href="../../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
+                <a href="../../about.html">Sobre</a>
+                <a href="../../support.html">Suporte</a>
+                <a href="../../privacy.html">Privacidade</a>
+                <a href="../../terms.html">Termos</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>ThermoTimer</h1>
+                <p class="tagline">Sauna & Cold Plunge Timer</p>
+                <p>The perfect companion for your thermal therapy sessions. Guided protocols for sauna and cold plunge with phase timing, session tracking, and Apple Watch support.</p>
+                <div class="hero-badges">
+                    <a href="https://apps.apple.com/us/app/thermotimer/id6755892933" class="app-store-badge" target="_blank">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <span class="price-badge">$2.99</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../../images/thermotimer-256.png" alt="ThermoTimer" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <section class="phase-demo">
+        <h2 class="section-title">Three Phase Types</h2>
+        <div class="phase-cards">
+            <div class="phase-card sauna">
+                <div class="icon">🔥</div>
+                <h3>Sauna</h3>
+                <p>Heat exposure for relaxation and recovery</p>
+            </div>
+            <div class="phase-card cold">
+                <div class="icon">❄️</div>
+                <h3>Cold Plunge</h3>
+                <p>Cold immersion for alertness and resilience</p>
+            </div>
+            <div class="phase-card rest">
+                <div class="icon">🧘</div>
+                <h3>Rest</h3>
+                <p>Recovery time between phases</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="protocols">
+        <h2 class="section-title">6 Guided Protocols</h2>
+        <div class="protocols-grid">
+            <div class="protocol-card">
+                <h3>Beginner</h3>
+                <p>Gentle introduction to thermal therapy</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">10min Sauna</span>
+                    <span class="phase-tag cold">30s Cold</span>
+                    <span class="phase-tag rest">3min Rest</span>
+                    <span class="phase-tag">× 2</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Wim Hof Method</h3>
+                <p>Short cold, longer sauna exposure</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">15min Sauna</span>
+                    <span class="phase-tag cold">3min Cold</span>
+                    <span class="phase-tag rest">2min Rest</span>
+                    <span class="phase-tag">× 3</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Finnish Sauna</h3>
+                <p>Traditional long sauna sessions</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">20min Sauna</span>
+                    <span class="phase-tag cold">1min Cold</span>
+                    <span class="phase-tag rest">5min Rest</span>
+                    <span class="phase-tag">× 3</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Contrast Therapy</h3>
+                <p>Balanced hot and cold exposure</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">10min Sauna</span>
+                    <span class="phase-tag cold">2min Cold</span>
+                    <span class="phase-tag rest">1min Rest</span>
+                    <span class="phase-tag">× 4</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Quick Recovery</h3>
+                <p>Short session for busy days</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">8min Sauna</span>
+                    <span class="phase-tag cold">2min Cold</span>
+                    <span class="phase-tag rest">1min Rest</span>
+                    <span class="phase-tag">× 2</span>
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h3>Cold Focused</h3>
+                <p>Emphasis on cold exposure</p>
+                <div class="protocol-phases">
+                    <span class="phase-tag sauna">5min Sauna</span>
+                    <span class="phase-tag cold">5min Cold</span>
+                    <span class="phase-tag rest">2min Rest</span>
+                    <span class="phase-tag">× 3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Recursos</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⌚</div>
+                <h3>Apple Watch</h3>
+                <p>Control your sessions directly from your wrist. Perfect for when your phone is in a locker.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Session History</h3>
+                <p>Track all your sessions with detailed stats. See time spent in hot and cold phases.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Streak Tracking</h3>
+                <p>Build consistency with streak tracking. Stay motivated with your progress.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Three Themes</h3>
+                <p>Sauna Glow for warm ambiance, Dark Minimal for OLED, Light Clean for outdoors.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔅</div>
+                <h3>Dim Mode</h3>
+                <p>Low brightness mode keeps the timer visible in dark sauna environments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Audio & Haptics</h3>
+                <p>Customizable alerts for phase transitions. Never miss a change.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <h3>Custom Protocols</h3>
+                <p>Create your own therapy sequences with custom durations and phases.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <h3>Export Sessions</h3>
+                <p>Share your session history. Track your thermal therapy journey.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Offline</h3>
+                <p>No accounts, no ads, no subscriptions. Works everywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms">
+        <h2 class="section-title">Available On</h2>
+        <div class="platforms-grid">
+            <div class="platform-item">
+                <div class="icon">📱</div>
+                <h3>iPhone</h3>
+                <p>iOS 17.0+</p>
+            </div>
+            <div class="platform-item">
+                <div class="icon">📱</div>
+                <h3>iPad</h3>
+                <p>iPadOS 17.0+</p>
+            </div>
+            <div class="platform-item">
+                <div class="icon">⌚</div>
+                <h3>Apple Watch</h3>
+                <p>watchOS 11.0+</p>
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <p class="section-subtitle">Cooking timers + meat thermometer</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Cooking Tips</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What temperatures are safe?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>USDA-recommended internal temperatures are built in: poultry 165°F, ground meat 160°F, beef/lamb steaks 145°F + 3-min rest, pork 145°F + 3-min rest, fish 145°F. ThermoTimer's preset timers count up to those targets.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does ThermoTimer connect to a Bluetooth probe?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Not yet. Current version is a manual entry + reference + cooking timer combo. Bluetooth probe support is roadmapped for a Pro update.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Solução de problemas</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Timer alarm didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check Settings → Notifications → ThermoTimer → Allow. The alarm uses a local notification scheduled for the timer's end. iOS Focus mode may suppress the visible alert but the sound still plays.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Temperature unit toggled to Celsius unexpectedly</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>ThermoTimer follows your iOS region by default. Override per-recipe in the recipe detail view.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="cta">
+        <h2>Ready to optimize your thermal therapy?</h2>
+        <p>Download ThermoTimer for just $2.99. No subscriptions, no ads.</p>
+        <a href="https://apps.apple.com/us/app/thermotimer/id6755892933" class="app-store-badge" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">Início</a>
+            <a href="../../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
+            <a href="../../about.html">Sobre</a>
+            <a href="../../support.html">Suporte</a>
+            <a href="../../privacy.html">Privacidade</a>
+            <a href="../../terms.html">Termos</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

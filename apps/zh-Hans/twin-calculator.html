@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Another Twin Calculator – Dual Calculator | Andy Arevalo</title>
+    <meta name="description" content="Two calculators side-by-side. Compare numbers, transfer results between panels, and work faster. Simple, clean, and practical.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/zh-Hans/twin-calculator.html">
+    <meta property="og:title" content="Not Another Twin Calculator – Dual Calculator">
+    <meta property="og:description" content="Two calculators side-by-side. Compare numbers, transfer results between panels, and work faster. Simple, clean, and practical.">
+    <meta property="og:image" content="https://andyarevalo.com/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/zh-Hans/twin-calculator.html">
+    <meta name="twitter:title" content="Not Another Twin Calculator – Dual Calculator">
+    <meta name="twitter:description" content="Two calculators side-by-side. Compare numbers, transfer results between panels, and work faster. Simple, clean, and practical.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/og-image.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/zh-Hans/twin-calculator.html">
+    <link rel="alternate" hreflang="x-default" href="https://andyarevalo.com/apps/zh-Hans/twin-calculator.html">
+    <link rel="alternate" hreflang="en" href="https://andyarevalo.com/apps/zh-Hans/twin-calculator.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://andyarevalo.com/apps/zh-Hans/twin-calculator.html">
+    <link rel="alternate" hreflang="it" href="https://andyarevalo.com/apps/it/twin-calculator.html">
+    <link rel="alternate" hreflang="ru" href="https://andyarevalo.com/apps/ru/twin-calculator.html">
+    <link rel="alternate" hreflang="de" href="https://andyarevalo.com/apps/de/twin-calculator.html">
+    <link rel="alternate" hreflang="ko" href="https://andyarevalo.com/apps/ko/twin-calculator.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://andyarevalo.com/apps/pt-BR/twin-calculator.html">
+    <link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/twin-calculator.html">
+    <link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/twin-calculator.html">
+
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/zh-Hans/twin-calculator.html#app",
+          "name": "Not Another Twin Calculator",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/zh-Hans/twin-calculator.html",
+          "description": "Two calculators side-by-side. Compare numbers, transfer results between panels, and work faster. Simple, clean, and practical.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "featureList": [
+            "Side-by-side calculators",
+            "History tracking",
+            "Transfer results between panels",
+            "Clean interface"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "首页",
+              "item": "https://andyarevalo.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Not Another Twin Calculator",
+              "item": "https://andyarevalo.com/apps/zh-Hans/twin-calculator.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #8fb7ff;
+            --accent2: #9ef0d2;
+            --card-bg: rgba(15,22,38,.72);
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #007AFF;
+            --accent2: #34c759;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(143,183,255,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero {
+            padding: 100px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 44px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .price-badge { background: var(--accent); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .app-icon-placeholder-large { width: 280px; height: 280px; border-radius: 56px; background: linear-gradient(135deg, var(--accent), #5856d6); display: flex; align-items: center; justify-content: center; font-size: 100px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        /* Why Two */
+        .why-two {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .use-case-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .use-case-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .use-case-icon { font-size: 48px; margin-bottom: 16px; }
+        .use-case-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .use-case-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* 功能 */
+        .features {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Philosophy */
+        .philosophy {
+            padding: 80px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .philosophy blockquote {
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            border-left: 4px solid var(--accent);
+            padding-left: 24px;
+            text-align: left;
+        }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; background: var(--bg-secondary); }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer {
+            background: var(--bg);
+            padding: 30px 18px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* 常见问题 + 故障排查 */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(146,90,220,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 32px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large, .app-icon-placeholder-large { width: 200px; height: 200px; border-radius: 40px; font-size: 70px; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">首页</a>
+                <a href="../../index.html#apps">应用</a>
+                <a href="#faq">常见问题</a>
+                <a href="../../about.html">关于</a>
+                <a href="../../support.html">支持</a>
+                <a href="../../privacy.html">隐私</a>
+                <a href="../../terms.html">条款</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Not Another Twin Calculator</h1>
+                <p class="tagline">Dual Calculator</p>
+                <p>Two clean calculators side-by-side, so you can compare numbers, transfer results between panels, and keep moving. No clutter, no unnecessary features.</p>
+                <div class="hero-badges">
+                    <a href="https://apps.apple.com/us/app/not-another-twin-calculator/id6755574828" class="app-store-badge" target="_blank">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <span class="price-badge">$1.99</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="app-icon-placeholder-large">🔢</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-two">
+        <h2 class="section-title">Why Two Calculators?</h2>
+        <div class="use-case-grid">
+            <div class="use-case-card">
+                <div class="use-case-icon">💰</div>
+                <h3>Split Bills</h3>
+                <p>Calculate your share on one side, your friend's on the other. No switching back and forth.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">🔄</div>
+                <h3>Compare Prices</h3>
+                <p>Unit price on the left, total on the right. See which deal is actually better.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">📐</div>
+                <h3>Conversions</h3>
+                <p>Original measurement on one side, converted value on the other.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">✅</div>
+                <h3>Double-Check</h3>
+                <p>Do the same calculation twice. Make sure you got it right.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Simple & Powerful</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👆</div>
+                <h3>Tap to Transfer</h3>
+                <p>One tap moves results between calculators. No copy-paste needed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>Separate History</h3>
+                <p>Each calculator keeps its own calculation history.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">➗</div>
+                <h3>Basic Operations</h3>
+                <p>Add, subtract, multiply, divide. The essentials, done right.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Works Everywhere</h3>
+                <p>iPhone, iPad, Mac, and Apple Vision. One purchase, all devices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                <h3>Family Sharing</h3>
+                <p>Share with up to 6 family members at no extra cost.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>No Tracking</h3>
+                <p>No data collection. No accounts. Just math.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <blockquote>
+            "Most calculators keep adding 'features' that slow you down. This one stays focused: quick, readable, and practical."
+        </blockquote>
+    </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">常见问题</h2>
+        <p class="section-subtitle">Twin pregnancy due-date calculator</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Calculations</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How does Not Another Twin Calculator estimate twin due dates?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Twin pregnancies typically deliver 2-3 weeks earlier than singletons. The app applies ACOG (American College of Obstetricians and Gynecologists) guidance: 36-37 weeks for di-di twins, 34-37 weeks for mo-di twins, 32-34 weeks for mo-mo twins.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I enter LMP or conception date?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Both. LMP (last menstrual period) follows the standard +280 days minus 14 to convert. Conception is +266 days. Twin offset applied after.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is this medical advice?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p><strong>No.</strong> Not Another Twin Calculator is an informational tool only. Always consult your obstetrician for actual delivery planning. Twin pregnancies have many variables this calculator can't predict.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">故障排查</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Date picker shows wrong format</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Date format follows your iOS region. To force MM/dd/yyyy or dd/MM/yyyy, change iOS Settings → General → Language &amp; Region.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="cta">
+        <h2>Two is better than one</h2>
+        <p>Get Not Another Twin Calculator for just $1.99. No subscriptions, no ads.</p>
+        <a href="https://apps.apple.com/us/app/not-another-twin-calculator/id6755574828" class="app-store-badge" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">首页</a>
+            <a href="../../index.html#apps">应用</a>
+                <a href="#faq">常见问题</a>
+            <a href="../../about.html">关于</a>
+            <a href="../../support.html">支持</a>
+            <a href="../../privacy.html">隐私</a>
+            <a href="../../terms.html">条款</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. 保留所有权利。</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

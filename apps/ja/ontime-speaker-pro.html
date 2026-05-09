@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnTime Speaker Pro – Professional Speech Timer | Andy Arevalo</title>
+    <meta name="description" content="The ultimate speech timer for Toastmasters, debate teams, and conferences. Green-yellow-red timing system with Meeting Mode, Live Activities, and 14 presets.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/ja/ontime-speaker-pro.html">
+    <meta property="og:title" content="OnTime Speaker Pro – Professional Speech Timer">
+    <meta property="og:description" content="The ultimate speech timer for Toastmasters, debate teams, and conferences. Green-yellow-red timing system with Meeting Mode, Live Activities, and 14 presets.">
+    <meta property="og:image" content="https://andyarevalo.com/images/ontime-speaker-pro.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/ja/ontime-speaker-pro.html">
+    <meta name="twitter:title" content="OnTime Speaker Pro – Professional Speech Timer">
+    <meta name="twitter:description" content="The ultimate speech timer for Toastmasters, debate teams, and conferences. Green-yellow-red timing system with Meeting Mode, Live Activities, and 14 presets.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/ontime-speaker-pro.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/ja/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="x-default" href="https://andyarevalo.com/apps/ja/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="en" href="https://andyarevalo.com/apps/ja/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://andyarevalo.com/apps/zh-Hans/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="it" href="https://andyarevalo.com/apps/it/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="ru" href="https://andyarevalo.com/apps/ru/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="de" href="https://andyarevalo.com/apps/de/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="ko" href="https://andyarevalo.com/apps/ko/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://andyarevalo.com/apps/pt-BR/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/ontime-speaker-pro.html">
+    <link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/ontime-speaker-pro.html">
+
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/ja/ontime-speaker-pro.html#app",
+          "name": "OnTime Speaker Pro",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/ja/ontime-speaker-pro.html",
+          "description": "The ultimate speech timer for Toastmasters, debate teams, and conferences. Green-yellow-red timing system with Meeting Mode, Live Activities, and 14 presets.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "featureList": [
+            "14 speech presets",
+            "Meeting Mode for multiple speakers",
+            "Live Activities support",
+            "Report sharing",
+            "Green-yellow-red timing system"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "ホーム",
+              "item": "https://andyarevalo.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "OnTime Speaker Pro",
+              "item": "https://andyarevalo.com/apps/ja/ontime-speaker-pro.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #8fb7ff;
+            --accent2: #9ef0d2;
+            --card-bg: rgba(15,22,38,.72);
+            --green: #34c759;
+            --yellow: #ffcc00;
+            --red: #ff3b30;
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #007AFF;
+            --accent2: #34c759;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(143,183,255,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            padding: 100px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .price-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        /* Color System */
+        .color-system {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .color-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .color-card {
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+        }
+
+        .color-card.green { background: var(--green); }
+        .color-card.yellow { background: var(--yellow); color: #1d1d1f; }
+        .color-card.red { background: var(--red); }
+
+        .color-card h3 { font-size: 24px; margin-bottom: 8px; }
+        .color-card p { opacity: 0.9; }
+
+        /* 機能 */
+        .features {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Use Cases */
+        .use-cases {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .use-cases-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .use-case-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* 価格 */
+        .pricing {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .pricing-content { max-width: 600px; margin: 0 auto; text-align: center; }
+
+        .pricing-options {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .pricing-option {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px 32px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .pricing-option { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .pricing-option.featured {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px var(--accent), 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        .pricing-option .price { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+        .pricing-option .period { color: var(--text-secondary); font-size: 14px; }
+        .free-trial { color: var(--accent); font-weight: 600; }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 30px 18px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* よくある質問 + トラブルシューティング */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(33,102,172,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .color-cards { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">ホーム</a>
+                <a href="../../index.html#apps">アプリ</a>
+                <a href="#faq">よくある質問</a>
+                <a href="../../about.html">概要</a>
+                <a href="../../support.html">サポート</a>
+                <a href="../../privacy.html">プライバシー</a>
+                <a href="../../terms.html">利用規約</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="テーマを切替">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>OnTime Speaker Pro</h1>
+                <p class="tagline">Professional Speech Timer</p>
+                <p>The ultimate timer for Toastmasters, debate teams, and conferences. 機能 the classic green-yellow-red timing system with Meeting Mode for queuing multiple speakers.</p>
+                <div class="hero-badges">
+                    <a href="https://apps.apple.com/us/app/ontime-speaker-pro/id6755796055" class="app-store-badge" target="_blank">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <span class="price-badge">無料 3-day trial</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../../images/ontime-speaker-pro-256.png" alt="OnTime Speaker Pro" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <section class="color-system">
+        <h2 class="section-title">The Classic Timing System</h2>
+        <div class="color-cards">
+            <div class="color-card green">
+                <h3>Green</h3>
+                <p>Minimum time reached. Keep speaking with confidence.</p>
+            </div>
+            <div class="color-card yellow">
+                <h3>Yellow</h3>
+                <p>Time to begin your concluding remarks.</p>
+            </div>
+            <div class="color-card red">
+                <h3>Red</h3>
+                <p>Maximum time exceeded. Wrap up now.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">機能</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>14 Speech Presets</h3>
+                <p>Pre-configured timing for all standard Toastmasters speeches, from Ice Breakers to advanced projects.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Meeting Mode</h3>
+                <p>Queue and time multiple speakers in sequence. Perfect for running entire Toastmasters meetings.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏝️</div>
+                <h3>Dynamic Island</h3>
+                <p>Live Activity support shows your timer on the Lock Screen and Dynamic Island.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📺</div>
+                <h3>AirPlay サポート</h3>
+                <p>Mirror to external displays so your entire audience can see the timer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Sound & Haptic Alerts</h3>
+                <p>Customizable audio cues and vibration feedback at each stage transition.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👁️</div>
+                <h3>Color-Blind Mode</h3>
+                <p>Accessibility options ensure everyone can use the timing system effectively.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Portrait & Landscape</h3>
+                <p>Works in any orientation. Set up however is most visible for your venue.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Report Sharing</h3>
+                <p>Export timing reports after meetings to track speaker performance over time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Offline</h3>
+                <p>No account required. No tracking. No data collection. Works anywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <h2 class="section-title">Perfect For</h2>
+        <div class="use-cases-list">
+            <span class="use-case-tag">Toastmasters Meetings</span>
+            <span class="use-case-tag">Speech Competitions</span>
+            <span class="use-case-tag">Debate Teams</span>
+            <span class="use-case-tag">Public Speaking Practice</span>
+            <span class="use-case-tag">Conference Presentations</span>
+            <span class="use-case-tag">Training Workshops</span>
+            <span class="use-case-tag">Classroom Presentations</span>
+            <span class="use-case-tag">TED-style Talks</span>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Simple 価格</h2>
+            <p class="free-trial">Start with a free 3-day trial</p>
+            <div class="pricing-options">
+                <div class="pricing-option">
+                    <div class="price">$1.99</div>
+                    <div class="period">per week</div>
+                </div>
+                <div class="pricing-option">
+                    <div class="price">$4.99</div>
+                    <div class="period">per month</div>
+                </div>
+                <div class="pricing-option featured">
+                    <div class="price">$14.99</div>
+                    <div class="period">per year</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 14px;">Works on iPhone, iPad, and Mac (M1+)</p>
+        </div>
+    </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">よくある質問</h2>
+        <p class="section-subtitle">Speech prep, timer cues, troubleshooting</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Setup &amp; Speech Types</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What speech types are supported?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Built-in templates for Toastmasters Pathways speeches, TED talks, conference talks, classroom presentations, and custom durations. Each template has its own green/yellow/red cue points. Pro lets you edit cue points per speech.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I save my own speech configurations?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes (Pro). Customize duration, cue colors, and cue points, then save as a template. The template appears in the picker for future sessions.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Cues &amp; Audio</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why didn't the timer beep at the cue?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Audio cues are off by default to avoid surprising the speaker. Enable in Settings → Audio. If enabled but silent: AVAudioSession may have been interrupted by a call. Re-launch the app to reset.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does Live Activity work on my iPhone?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS 16.1+ on any iPhone. iPhone 14 Pro and newer get the Dynamic Island view. Older iPhones get a regular Live Activity on the lock screen.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">History &amp; Reports</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How long is meeting history retained?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Indefinitely on free tier (last 10 sessions). Pro keeps unlimited history with notes, durations, and ranges. All on-device, no cloud.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">トラブルシューティング</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Pause-then-resume drifted the timer by a few seconds</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Pause/resume uses CFAbsoluteTimeGetCurrent for monotonic timing — drift should be &lt;100ms. If you see seconds of drift, an iOS time-zone change happened mid-session. Restart the timer.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Restore Purchase says "no purchases"</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Make sure you're signed into the same Apple ID that bought the subscription. Settings → Apple ID → Subscriptions to verify it's active. Then in OnTime Speaker Pro, tap Restore Purchase.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Notifications are not arriving for cue boundaries</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Local notifications need permission. Settings → Notifications → OnTime Speaker Pro → Allow. The cue notifications fire at green / yellow / red boundaries when the app is backgrounded.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="cta">
+        <h2>Ready to improve your speeches?</h2>
+        <p>Download OnTime Speaker Pro and start timing like a pro.</p>
+        <a href="https://apps.apple.com/us/app/ontime-speaker-pro/id6755796055" class="app-store-badge" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">ホーム</a>
+            <a href="../../index.html#apps">アプリ</a>
+                <a href="#faq">よくある質問</a>
+            <a href="../../about.html">概要</a>
+            <a href="../../support.html">サポート</a>
+            <a href="../../privacy.html">プライバシー</a>
+            <a href="../../terms.html">利用規約</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. 全著作権所有。</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

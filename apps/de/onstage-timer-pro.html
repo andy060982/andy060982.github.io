@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnStage Timer Pro – Performer & Presenter Timer | Andy Arevalo</title>
+    <meta name="description" content="Professional countdown timer for speakers, presenters, and performers. Three themes, overtime tracking, external display support, and Apple Watch app.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/de/onstage-timer-pro.html">
+    <meta property="og:title" content="OnStage Timer Pro – Performer & Presenter Timer">
+    <meta property="og:description" content="Professional countdown timer for speakers, presenters, and performers. Three themes, overtime tracking, external display support, and Apple Watch app.">
+    <meta property="og:image" content="https://andyarevalo.com/images/onstage-timer-pro.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/de/onstage-timer-pro.html">
+    <meta name="twitter:title" content="OnStage Timer Pro – Performer & Presenter Timer">
+    <meta name="twitter:description" content="Professional countdown timer for speakers, presenters, and performers. Three themes, overtime tracking, external display support, and Apple Watch app.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/onstage-timer-pro.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/de/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="x-default" href="https://andyarevalo.com/apps/de/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="en" href="https://andyarevalo.com/apps/de/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://andyarevalo.com/apps/zh-Hans/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="it" href="https://andyarevalo.com/apps/it/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="ru" href="https://andyarevalo.com/apps/ru/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="de" href="https://andyarevalo.com/apps/de/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="ko" href="https://andyarevalo.com/apps/ko/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://andyarevalo.com/apps/pt-BR/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/onstage-timer-pro.html">
+    <link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/onstage-timer-pro.html">
+
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/de/onstage-timer-pro.html#app",
+          "name": "OnStage Timer Pro",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/de/onstage-timer-pro.html",
+          "description": "Professional countdown timer for speakers, presenters, and performers. Three themes, overtime tracking, external display support, and Apple Watch app.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "featureList": [
+            "Overtime alerts and tracking",
+            "Custom visual themes",
+            "External display support",
+            "Apple Watch app",
+            "Pro customizations"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Start",
+              "item": "https://andyarevalo.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "OnStage Timer Pro",
+              "item": "https://andyarevalo.com/apps/de/onstage-timer-pro.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #8fb7ff;
+            --accent2: #9ef0d2;
+            --card-bg: rgba(15,22,38,.72);
+            --green: #34c759;
+            --yellow: #ffcc00;
+            --red: #ff3b30;
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #007AFF;
+            --accent2: #34c759;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(143,183,255,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(158,240,210,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(143,183,255,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero {
+            padding: 100px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .price-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        /* Themes Section */
+        .themes {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .theme-card {
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .theme-card.dark { background: #1c1c1e; color: white; }
+        .theme-card.minimal { background: #2c2c2e; color: white; }
+        .theme-card.light { background: #f5f5f7; color: #1d1d1f; border: 1px solid var(--line); }
+
+        .theme-card h3 { font-size: 20px; margin-bottom: 8px; }
+        .theme-card p { opacity: 0.8; font-size: 14px; }
+
+        /* Funktionen */
+        .features {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Use Cases */
+        .use-cases { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .use-cases-list { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .use-case-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* Platforms */
+        .platforms { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .platforms-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .platform { text-align: center; }
+        .platform-icon { font-size: 48px; margin-bottom: 8px; }
+        .platform span { color: var(--text-secondary); font-size: 14px; }
+
+        /* Preise */
+        .pricing { padding: 60px 20px; background: var(--bg-secondary); }
+        .pricing-content { max-width: 600px; margin: 0 auto; text-align: center; }
+        .pricing-box {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+        [data-theme="light"] .pricing-box { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .pricing-box .price { font-size: 48px; font-weight: 700; }
+        .pricing-box .period { color: var(--text-secondary); font-size: 18px; }
+        .free-trial { color: var(--accent); font-weight: 600; margin-top: 16px; }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 30px 18px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+        /* FAQ + Fehlerbehebung */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(139,0,0,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .themes-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Start</a>
+                <a href="../../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
+                <a href="../../about.html">Über</a>
+                <a href="../../support.html">Support</a>
+                <a href="../../privacy.html">Datenschutz</a>
+                <a href="../../terms.html">AGB</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Design wechseln">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>OnStage Timer Pro</h1>
+                <p class="tagline">Performer & Presenter Timer</p>
+                <p>Professional countdown timer for speakers, presenters, and performers. Full-screen display with overtime tracking, customizable themes, and external display support.</p>
+                <div class="hero-badges">
+                    <a href="https://apps.apple.com/us/app/onstage-timer-pro/id6755630146" class="app-store-badge" target="_blank">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
+                    <span class="price-badge">Kostenlos 3-day trial</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../../images/onstage-timer-pro-256.png" alt="OnStage Timer Pro" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <section class="themes">
+        <h2 class="section-title">Professional Themes</h2>
+        <div class="themes-grid">
+            <div class="theme-card dark">
+                <h3>Spotlight Dark</h3>
+                <p>Bold and visible. Perfect for stages and studios.</p>
+            </div>
+            <div class="theme-card minimal">
+                <h3>Minimal Dark</h3>
+                <p>Clean and distraction-free. Focus on what matters.</p>
+            </div>
+            <div class="theme-card light">
+                <h3>Light Stage</h3>
+                <p>Bright and readable. Great for well-lit environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Funktionen</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Overtime Tracking</h3>
+                <p>Timer continues past zero showing negative time (e.g., "-02:30") so you know exactly how far over you've gone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Color Zones</h3>
+                <p>Customizable green/yellow/red thresholds. Set your own warning and critical time points.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📺</div>
+                <h3>External Display</h3>
+                <p>Mirror to HDMI or USB-C displays from iPad. Your audience sees the countdown too.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⌚</div>
+                <h3>Apple Watch App</h3>
+                <p>Control your timer from your wrist. Start, pause, and monitor without touching your phone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Quick Adjustments</h3>
+                <p>Add or subtract 30 seconds or 1 minute while the timer is running. Adapt on the fly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Custom Messages</h3>
+                <p>Display motivational messages at each stage. Personalize the experience.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Unlimited Presets</h3>
+                <p>Save configurations for different events. Store duration, thresholds, colors, and alerts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Professional Cues</h3>
+                <p>Multiple cue tone options with optional haptic feedback. Choose what works for your environment.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Millisecond Accurate</h3>
+                <p>Precision timing engine ensures your countdown is always accurate.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <h2 class="section-title">Perfect For</h2>
+        <div class="use-cases-list">
+            <span class="use-case-tag">Conference Speakers</span>
+            <span class="use-case-tag">Workshop Leaders</span>
+            <span class="use-case-tag">Toastmasters</span>
+            <span class="use-case-tag">Educators</span>
+            <span class="use-case-tag">Performers</span>
+            <span class="use-case-tag">Moderators</span>
+            <span class="use-case-tag">Debate Teams</span>
+            <span class="use-case-tag">Podcasters</span>
+            <span class="use-case-tag">Worship Leaders</span>
+        </div>
+    </section>
+
+    <section class="platforms">
+        <h2 class="section-title">Available On</h2>
+        <div class="platforms-grid">
+            <div class="platform">
+                <div class="platform-icon">📱</div>
+                <span>iPhone</span>
+            </div>
+            <div class="platform">
+                <div class="platform-icon">📱</div>
+                <span>iPad</span>
+            </div>
+            <div class="platform">
+                <div class="platform-icon">⌚</div>
+                <span>Apple Watch</span>
+            </div>
+            <div class="platform">
+                <div class="platform-icon">💻</div>
+                <span>Mac (M1+)</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Simple Preise</h2>
+            <div class="pricing-box">
+                <div class="price">$5.99</div>
+                <div class="period">per year</div>
+                <p class="free-trial">Includes free 3-day trial</p>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 14px;">One subscription works across all your devices</p>
+        </div>
+    </section>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Häufig gestellte Fragen</h2>
+        <p class="section-subtitle">Stage timing, audio cues, troubleshooting</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Live Activities &amp; Stage Display</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How do I show the timer on the lock screen?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Start any timer — OnStage Timer Pro automatically presents a Live Activity on iPhone (iOS 17+) and on the Dynamic Island (iPhone 14 Pro+ / 15 / 16 / 17 Pro). The timer continues counting down even when the app is backgrounded. Tap the Live Activity to bring the app forward.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I display on Apple Watch?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes — pair your Watch to your iPhone, and the timer appears on the Watch face automatically when running. Tap-to-pause from the Watch.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does it support external displays for stage delivery?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Connect via AirPlay or Lightning-to-HDMI / USB-C-to-HDMI. The full-screen mirror shows huge digits the speaker can read from across the stage.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Audio Cues</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What audio cues are available?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Configurable: 5-min warning, 1-min warning, 30-sec warning, 10-sec countdown beeps, end alarm. Each can be enabled or muted individually. Volume override is on by default — even with silent switch on, the cues play (configurable in Settings).</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cue didn't play when phone was muted</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Make sure "Override silent switch" is on in Settings → Audio. We also configure AVAudioSession for playback so cues fire regardless of ringer state. If cues still don't play, restart the app once — the audio session sometimes needs a fresh init after a system audio interruption (call, FaceTime).</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Fehlerbehebung</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Live Activity disappeared mid-talk</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS terminates Live Activities after 8 hours. If your talk is shorter than that, the activity should never expire. Common causes for premature termination: iOS low-power mode, a different app with a higher-priority Live Activity, or an iOS background freeze. Open OnStage Timer Pro to refresh.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Idle timer dimmed the screen during a presentation</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>OnStage Timer Pro disables the iOS idle timer while a timer is running — your screen stays awake. If you paused the timer, the idle timer reactivates after iOS's normal delay. To keep the screen on while paused, use Settings → "Keep screen always on".</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Live Activity shows wrong time after backgrounding</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Live Activities sometimes lag a second or two during scenePhase transitions (background → foreground). On foreground, OnStage Timer Pro re-syncs the activity. If the timer is consistently wrong, force-quit and re-launch.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="cta">
+        <h2>Take the stage with confidence</h2>
+        <p>Download OnStage Timer Pro and never lose track of time again.</p>
+        <a href="https://apps.apple.com/us/app/onstage-timer-pro/id6755630146" class="app-store-badge" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">Start</a>
+            <a href="../../index.html#apps">Apps</a>
+                <a href="#faq">FAQ</a>
+            <a href="../../about.html">Über</a>
+            <a href="../../support.html">Support</a>
+            <a href="../../privacy.html">Datenschutz</a>
+            <a href="../../terms.html">AGB</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

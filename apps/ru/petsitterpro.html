@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSitterPro – Professional Pet Sitting Management | Andy Arevalo</title>
+    <meta name="description" content="The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/ru/petsitterpro.html">
+    <meta property="og:title" content="PetSitterPro – Professional Pet Sitting Management">
+    <meta property="og:description" content="The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.">
+    <meta property="og:image" content="https://andyarevalo.com/images/petsitterpro-icon.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/ru/petsitterpro.html">
+    <meta name="twitter:title" content="PetSitterPro – Professional Pet Sitting Management">
+    <meta name="twitter:description" content="The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/petsitterpro-icon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/ru/petsitterpro.html">
+    <link rel="alternate" hreflang="x-default" href="https://andyarevalo.com/apps/ru/petsitterpro.html">
+    <link rel="alternate" hreflang="en" href="https://andyarevalo.com/apps/ru/petsitterpro.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://andyarevalo.com/apps/zh-Hans/petsitterpro.html">
+    <link rel="alternate" hreflang="it" href="https://andyarevalo.com/apps/it/petsitterpro.html">
+    <link rel="alternate" hreflang="ru" href="https://andyarevalo.com/apps/ru/petsitterpro.html">
+    <link rel="alternate" hreflang="de" href="https://andyarevalo.com/apps/de/petsitterpro.html">
+    <link rel="alternate" hreflang="ko" href="https://andyarevalo.com/apps/ko/petsitterpro.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://andyarevalo.com/apps/pt-BR/petsitterpro.html">
+    <link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/petsitterpro.html">
+    <link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/petsitterpro.html">
+
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/ru/petsitterpro.html#app",
+          "name": "PetSitterPro",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/ru/petsitterpro.html",
+          "description": "The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/PreOrder"
+          },
+          "featureList": [
+            "GPS visit tracking",
+            "Invoice generation",
+            "Client management",
+            "Scheduling and reports"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Главная",
+              "item": "https://andyarevalo.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "PetSitterPro",
+              "item": "https://andyarevalo.com/apps/ru/petsitterpro.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #4A90A4;
+            --accent2: #FF9500;
+            --card-bg: rgba(15,22,38,.72);
+            --teal: #4A90A4;
+            --warning: #ff9f0a;
+            --purple: #af52de;
+            --pink: #ff2d55;
+            --green: #34c759;
+            --blue: #007aff;
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #4A90A4;
+            --accent2: #FF9500;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(74,144,164,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(255,149,0,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(74,144,164,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        /* Page Navigation */
+        .page-nav {
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            padding: 12px 20px;
+            margin-top: 58px;
+            position: sticky;
+            top: 58px;
+            z-index: 999;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .page-nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .page-nav a {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .page-nav a:hover {
+            color: var(--text);
+            background: var(--card-bg);
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 40px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--teal); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .testflight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        .testflight-badge:hover {
+            transform: scale(1.02);
+            text-decoration: none;
+        }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large {
+            width: 280px;
+            height: 280px;
+            border-radius: 56px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            object-fit: cover;
+        }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 16px; }
+        .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Screenshot Gallery */
+        .screenshots-section {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .screenshots-gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .screenshot-item {
+            text-align: center;
+        }
+
+        .screenshot-item img {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .screenshot-item img:hover {
+            transform: scale(1.02);
+        }
+
+        .screenshot-item p {
+            margin-top: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* Core Функции */
+        .core-features {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+            border: 1px solid var(--line);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-icon { font-size: 48px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 20px; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 14px; }
+
+        /* Функции */
+        .features {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+
+        .features-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .features-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .features-icon { font-size: 36px; margin-bottom: 16px; }
+        .features-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .features-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* How-To Section */
+        .howto-section {
+            padding: 60px 20px;
+        }
+
+        .howto-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .howto-item {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.25);
+        }
+
+        [data-theme="light"] .howto-item { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .howto-item h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .howto-steps {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .howto-steps li {
+            counter-increment: step;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .howto-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .howto-steps li::before {
+            content: counter(step);
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .howto-tip {
+            background: rgba(74,144,164,.15);
+            border-left: 4px solid var(--accent);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .howto-tip strong {
+            color: var(--accent);
+        }
+
+        /* Цены */
+        .pricing {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        .pricing-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .pricing-card { box-shadow: 0 8px 40px rgba(0,0,0,.1); }
+
+        .pricing-trial {
+            background: var(--green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .pricing-price span {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 60px 20px;
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 40px;
+        }
+
+        .faq-category-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+            padding-left: 16px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover { background: rgba(255,255,255,.02); }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        .footer-copyright {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-badges { justify-content: center; }
+            .feature-grid { grid-template-columns: 1fr 1fr; }
+            .screenshots-gallery { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 { font-size: 32px; }
+            .hero-text .tagline { font-size: 18px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .app-icon-large { width: 180px; height: 180px; }
+            .nav-links { display: none; }
+            .screenshots-gallery { grid-template-columns: 1fr; }
+            .screenshot-item img { max-height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot"></span>
+                Andy Arevalo
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Главная</a>
+                <a href="../../about.html">О нас</a>
+                <a href="../../support.html">Поддержка</a>
+                <a href="../../privacy.html">Конфиденциальность</a>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-nav">
+        <div class="page-nav-content">
+            <a href="#screenshots">Screenshots</a>
+            <a href="#features">Функции</a>
+            <a href="#howto">How To</a>
+            <a href="#pricing">Цены</a>
+            <a href="#faq">FAQ</a>
+            <a href="#support">Поддержка</a>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>PetSitterPro</h1>
+                <p class="tagline">Professional Pet Sitting Management</p>
+                <p>The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create professional invoices, and grow your business.</p>
+                <div class="hero-badges">
+                    <a href="https://testflight.apple.com/join/petsitterpro" class="testflight-badge">
+                        Join TestFlight Beta
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../../images/petsitterpro-icon.png" alt="PetSitterPro App Icon" class="app-icon-large">
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Gallery -->
+    <section id="screenshots" class="screenshots-section">
+        <h2 class="section-title">See It In Action</h2>
+        <p class="section-subtitle">Everything you need to run your pet sitting business professionally</p>
+        <div class="screenshots-gallery">
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/01-today-dashboard-portrait.png" alt="Today's Dashboard showing visits and schedule">
+                <p>Today's Dashboard</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/02-clients-list-portrait.png" alt="Clients list with pet counts">
+                <p>Client Management</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/03-client-detail-portrait.png" alt="Client detail with pets and access info">
+                <p>Client Details</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/04-schedule-calendar-portrait.png" alt="Calendar view of scheduled visits">
+                <p>Smart Scheduling</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/05-money-overview-portrait.png" alt="Money overview with billing options">
+                <p>Money Overview</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/06-invoices-list-portrait.png" alt="Invoice list with status filters">
+                <p>Invoice Tracking</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/07-invoice-detail-portrait.png" alt="Invoice detail view">
+                <p>Professional Invoices</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/08-quotes-list-portrait.png" alt="Quotes list">
+                <p>Quote Management</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/09-quote-detail-portrait.png" alt="Quote detail view">
+                <p>Detailed Quotes</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/10-mileage-tracking-portrait.png" alt="Mileage tracking with tax deduction">
+                <p>Mileage Tracking</p>
+            </div>
+            <div class="screenshot-item">
+                <img src="../../images/petsitterpro/11-settings-portrait.png" alt="Settings screen">
+                <p>Settings & Security</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="core-features">
+        <h2 class="section-title">Everything You Need</h2>
+        <p class="section-subtitle">Run your pet sitting business like a pro</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#128101;</div>
+                <h3>Client Management</h3>
+                <p>Store client details, emergency contacts, and access codes all in one secure place.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128205;</div>
+                <h3>GPS Walk Tracking</h3>
+                <p>Track every walk with GPS. Show clients exactly where you went and how far.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128197;</div>
+                <h3>Smart Scheduling</h3>
+                <p>Visual calendar with recurring visits, blocked time, and calendar sync.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128196;</div>
+                <h3>Professional Reports</h3>
+                <p>Generate branded PDF reports with activities, photos, and walk maps.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128176;</div>
+                <h3>Quotes & Invoicing</h3>
+                <p>Create professional quotes and invoices. Track payments and who owes you.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128202;</div>
+                <h3>Financial Tracking</h3>
+                <p>Log expenses and mileage for tax time. See your profit at a glance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Powerful Функции</h2>
+        <p class="section-subtitle">Built specifically for professional pet sitters</p>
+        <div class="features-grid">
+            <div class="features-card">
+                <div class="features-icon">&#128273;</div>
+                <h3>Access Codes</h3>
+                <p>Store keys, lockbox codes, alarm codes, and gate codes for each client. Never forget access info again.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128198;</div>
+                <h3>Recurring Schedules</h3>
+                <p>Set up recurring visits like MWF walks that auto-generate. Block your days off weekly.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128241;</div>
+                <h3>Quick Messages</h3>
+                <p>Send "On my way!" or "Just finished!" messages with one tap using customizable templates.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128247;</div>
+                <h3>Visit Photos</h3>
+                <p>Capture photos during visits and include them in your professional reports to clients.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128663;</div>
+                <h3>Mileage Tracking</h3>
+                <p>Track your miles for tax deductions. Manual entry or automatic tracking with IRS rate calculation.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128179;</div>
+                <h3>Expense Tracking</h3>
+                <p>Log business expenses with receipt photos. Organized by IRS categories for easy tax prep.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#128274;</div>
+                <h3>Face ID Security</h3>
+                <p>Protect your client data with Face ID or Touch ID. Your business information stays secure.</p>
+            </div>
+            <div class="features-card">
+                <div class="features-icon">&#127760;</div>
+                <h3>Конфиденциальность First</h3>
+                <p>All data stored locally on your device. We never see your business data or client information.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How-To Section -->
+    <section id="howto" class="howto-section">
+        <h2 class="section-title">How To Guides</h2>
+        <p class="section-subtitle">Get started quickly with these step-by-step guides</p>
+        <div class="howto-content">
+            <div class="howto-item">
+                <h3>Setting Up Your First Client</h3>
+                <ol class="howto-steps">
+                    <li>Open the app and tap the <strong>Clients</strong> tab at the bottom</li>
+                    <li>Tap the <strong>+</strong> button in the top right corner</li>
+                    <li>Enter the client's name, address, and contact information</li>
+                    <li>Add emergency contact details (recommended for all clients)</li>
+                    <li>Tap <strong>Save</strong> to create the client profile</li>
+                    <li>From the client detail screen, tap <strong>Add Pet</strong> to add their pets</li>
+                    <li>Tap <strong>Add Access Info</strong> to store keys, codes, or lockbox information</li>
+                </ol>
+                <div class="howto-tip">
+                    <strong>Tip:</strong> Add detailed notes about each pet's feeding schedule, medications, and behavior to have everything at your fingertips during visits.
+                </div>
+            </div>
+
+            <div class="howto-item">
+                <h3>Tracking a Walk with GPS</h3>
+                <ol class="howto-steps">
+                    <li>Start or check in to a scheduled visit from the <strong>Today</strong> tab</li>
+                    <li>Once the visit is active, tap <strong>Track Walk</strong> to begin GPS tracking</li>
+                    <li>Walk your normal route - the app tracks your path in the background</li>
+                    <li>When finished, tap <strong>Stop Tracking</strong></li>
+                    <li>The route map and distance are automatically saved to the visit</li>
+                    <li>When you generate a report, the walk map and distance are included</li>
+                </ol>
+                <div class="howto-tip">
+                    <strong>Tip:</strong> Make sure Location Services are enabled for PetSitterPro in your iPhone Settings for accurate tracking.
+                </div>
+            </div>
+
+            <div class="howto-item">
+                <h3>Creating and Sending an Invoice</h3>
+                <ol class="howto-steps">
+                    <li>Go to the <strong>Money</strong> tab and tap <strong>Invoices</strong></li>
+                    <li>Tap the <strong>+</strong> button to create a new invoice</li>
+                    <li>Select the client from your client list</li>
+                    <li>Tap <strong>Add Line Item</strong> to add services and amounts</li>
+                    <li>Optionally link completed visits to the line items</li>
+                    <li>Set the due date and add any notes</li>
+                    <li>Tap <strong>Save</strong> to save as draft, or <strong>Preview</strong> to see the PDF</li>
+                    <li>From the preview, tap <strong>Share</strong> to send via email, Messages, or AirDrop</li>
+                </ol>
+                <div class="howto-tip">
+                    <strong>Tip:</strong> Set up your business profile in Settings to have your logo and contact info automatically appear on all invoices.
+                </div>
+            </div>
+
+            <div class="howto-item">
+                <h3>Tracking Mileage for Taxes</h3>
+                <ol class="howto-steps">
+                    <li>Go to the <strong>Money</strong> tab and tap <strong>Mileage</strong></li>
+                    <li>Tap <strong>+</strong> to add a manual entry, or <strong>Start Tracking</strong> for automatic GPS tracking</li>
+                    <li>For manual entry: enter start/end locations, miles driven, and purpose</li>
+                    <li>Optionally link the trip to a specific client or visit</li>
+                    <li>The app automatically calculates your IRS deduction at the current rate ($0.67/mile)</li>
+                    <li>At year end, go to <strong>Reports</strong> to generate a mileage summary for your taxes</li>
+                </ol>
+                <div class="howto-tip">
+                    <strong>Tip:</strong> Log mileage after every client visit to ensure accurate records. The IRS requires contemporaneous records for mileage deductions.
+                </div>
+            </div>
+
+            <div class="howto-item">
+                <h3>Blocking Time Off</h3>
+                <ol class="howto-steps">
+                    <li>Go to the <strong>Schedule</strong> tab</li>
+                    <li>Tap the menu icon and select <strong>Blocked Time</strong></li>
+                    <li>Tap <strong>+</strong> to add a new blocked time</li>
+                    <li>Enter a title (e.g., "Vacation", "Doctor Appointment")</li>
+                    <li>Set the start and end dates/times</li>
+                    <li>For recurring blocks (like every Sunday off), enable <strong>Repeat</strong> and set the pattern</li>
+                    <li>Blocked times appear on your calendar and prevent scheduling conflicts</li>
+                </ol>
+                <div class="howto-tip">
+                    <strong>Tip:</strong> Set up recurring weekly blocks for your regular days off so clients can't accidentally book during your personal time.
+                </div>
+            </div>
+
+            <div class="howto-item">
+                <h3>Creating a Quote for New Clients</h3>
+                <ol class="howto-steps">
+                    <li>Go to the <strong>Money</strong> tab and tap <strong>Quotes</strong></li>
+                    <li>Tap the <strong>+</strong> button to create a new quote</li>
+                    <li>Select an existing client or add client details manually</li>
+                    <li>Add line items for each service you're proposing</li>
+                    <li>Set the validity period (how long the quote is good for)</li>
+                    <li>Add terms and conditions from your business profile or customize</li>
+                    <li>Preview the PDF and share with the potential client</li>
+                    <li>Track quote status (Sent, Accepted, Declined) from the Quotes list</li>
+                </ol>
+                <div class="howto-tip">
+                    <strong>Tip:</strong> Set up your standard service rates in Settings > Rate Card so you can quickly add them to quotes with consistent pricing.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Simple Цены</h2>
+        <p class="section-subtitle">Start free, upgrade when you're ready</p>
+        <div class="pricing-card">
+            <span class="pricing-trial">7-Day Бесплатно Trial</span>
+            <div class="pricing-price">$9.99<span>/month</span></div>
+            <ul class="pricing-features">
+                <li>Unlimited clients and pets</li>
+                <li>GPS walk tracking</li>
+                <li>Professional PDF reports</li>
+                <li>Quotes and invoicing</li>
+                <li>Expense and mileage tracking</li>
+                <li>Recurring blocked time</li>
+                <li>Calendar integration</li>
+                <li>Face ID/Touch ID security</li>
+            </ul>
+            <a href="https://testflight.apple.com/join/petsitterpro" class="cta-button">
+                Join TestFlight Beta
+            </a>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <p class="section-subtitle">Answers to common questions about PetSitterPro</p>
+        <div class="faq-content">
+            <!-- Getting Started -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Getting Started</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I add a new client?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Go to the Clients tab and tap the + button in the top right corner. Fill in the client's details including name, address, and contact info. Then add their pets and access information from the client detail screen.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I add pets to a client?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Open the client's profile, then tap "Add Pet" in the Pets section. Enter the pet's name, species, breed, and add a photo if you'd like. You can also add detailed care instructions, feeding schedules, and medication info.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I store keys and access codes?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        From a client's profile, tap "Add Access Info" in the Keys & Access section. Choose the type (Key, Lockbox, Alarm Code, Gate Code, etc.), enter the location or code, and add any notes. This info is shown during active visits for quick reference.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visits & Scheduling -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Visits & Scheduling</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I schedule a visit?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Go to the Schedule tab and tap the + button. Select a client, choose the date and time, pick the visit type (Walk, Drop-in, Overnight, etc.), and set the duration. You can also set it as recurring for regular visits.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How does GPS walk tracking work?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        During an active visit, tap "Track Walk" to start GPS tracking. Your route will be recorded and displayed on a map. Tap "Stop Tracking" when done. The route and distance are saved with the visit and can be included in your report to the client.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I set up recurring visits?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        When creating a visit, enable the "Recurring" option and choose your pattern (daily, weekly on specific days, etc.). The app will automatically generate visits according to your schedule. You can set an end date or let it repeat indefinitely.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I block recurring days off?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Go to Schedule, then Blocked Time, then tap Add. Toggle on "Repeat" and select your frequency (Weekly, Daily, etc.). For weekly blocks, select the days you want off. The blocked times appear on your calendar and prevent scheduling conflicts.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing & Invoicing -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Billing & Invoicing</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I create an invoice?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Go to the Money tab, then Invoices, then tap +. Select a client, add line items for your services, set the due date, and save. You can preview the professional PDF invoice and share it with your client via email, Messages, or AirDrop.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I record a payment?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Open the invoice, then tap "Record Payment". Enter the amount, payment date, and method (Cash, Venmo, Zelle, Check, etc.). The invoice status will update automatically to Paid or Partial based on the amount received.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do quotes work?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Quotes let you send pricing proposals to potential clients before they book. Create a quote with your services and pricing, set how long it's valid, and share the professional PDF. Track whether quotes are Sent, Accepted, or Declined.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Taxes & Finances -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Taxes & Finances</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I track my mileage for taxes?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Go to Money, then Mileage. You can manually enter trips or use the tracker to record your drive in real-time. The app calculates your IRS deduction automatically at the current rate ($0.67/mile for 2024). Generate a year-end mileage report for your taxes.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I track business expenses?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Go to Money, then Expenses, and tap + to add an expense. Choose a category (Gas, Supplies, Equipment, etc.), enter the amount and vendor, and optionally attach a receipt photo. Expenses are organized by IRS categories for easy tax preparation.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I generate tax reports?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Go to Money, then Reports to see income summaries, expense reports by category, and mileage logs. You can generate PDF reports for any time period to share with your accountant or use for tax filing.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data & Конфиденциальность -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Data & Конфиденциальность</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Is my data backed up?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Your data is stored locally on your device and included in your iCloud or iTunes backups if you have those enabled. The app itself does not upload data to cloud servers to protect your privacy and your clients' information.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How secure is my client data?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        PetSitterPro offers Face ID/Touch ID protection to prevent unauthorized access to your app. All data is stored locally on your device using Apple's secure storage. We never have access to your business data or client information.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I export my data?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! You can export various reports as PDF files including client lists, visit reports, invoices, quotes, mileage logs, and expense summaries. These can be shared, saved, or printed as needed.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription -->
+            <div class="faq-category">
+                <h3 class="faq-category-title">Subscription</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How does the free trial work?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        You get full access to all features for 7 days, completely free. No credit card required to start. After the trial, you can subscribe for $9.99/month to continue using all features, or the app becomes read-only.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What happens if I don't subscribe?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        After your trial ends, the app enters read-only mode. You can still view all your existing data (clients, visits, invoices, etc.) but cannot add new entries or make changes. Your data is never deleted.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I cancel my subscription?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Subscriptions are managed through Apple. Go to your iPhone Settings, tap [Your Name], then Subscriptions, then PetSitterPro, then Cancel Subscription. You'll retain access until the end of your current billing period.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" style="padding: 60px 20px; text-align: center;">
+        <h2 class="section-title">Need Help?</h2>
+        <p class="section-subtitle">We're here to help you succeed with PetSitterPro</p>
+        <p style="margin-top: 20px;">
+            <a href="mailto:support@andyarevalo.com" style="font-size: 20px; font-weight: 600;">support@andyarevalo.com</a>
+        </p>
+        <p style="margin-top: 16px; color: var(--text-secondary);">
+            Response time: Usually within 24 hours
+        </p>
+    </section>
+
+    <section id="troubleshooting" class="faq-section">
+        <h2 class="section-title">Устранение неполадок</h2>
+        <p class="section-subtitle">Common issues for pet sitters and dog walkers</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Bookings &amp; Calendar</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Visit reminder didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Each visit has its own reminder. Visit detail → enable reminder. PetSitterPro uses Time Sensitive notifications so they break through Focus mode.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Apple Calendar sync isn't reflecting visits</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Calendar permission needed. Settings → Конфиденциальность &amp; Security → Calendars → PetSitterPro → enable. Existing visits sync on next app launch.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Invoices &amp; Payments</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>PDF invoice looks broken</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>If your business name has unusual characters or the visit list is very long, the PDF renderer may misalign. Try shortening the business name or splitting the visit list across multiple invoices.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Tax calculation isn't applied</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Tax rate is per-client. Client detail → Tax Rate → set the percentage. PetSitterPro applies that to all visits for that client.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Biometric &amp; Security</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Face ID prompts every time</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Settings → Конфиденциальность → Auto-Lock interval. Set to a longer duration (or "Never" while actively working) to reduce prompts.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Restore Purchase says "no purchases"</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Confirm you're signed into the Apple ID that bought Pro. Settings → Apple ID → Subscriptions to verify it's active. Then PetSitterPro → Restore Purchase.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">Главная</a>
+            <a href="../../privacy.html">Конфиденциальность Policy</a>
+            <a href="../../terms.html">Условия of Service</a>
+            <a href="../../support.html">Поддержка</a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 Andy Приложения. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.getAttribute('data-theme') === 'light') {
+                html.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#9790;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('open');
+        }
+
+        // Load saved theme
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const icon = document.getElementById('theme-icon');
+            if (saved === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#9790;';
+            }
+        })();
+    </script>
+</body>
+</html>

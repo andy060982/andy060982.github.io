@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kickoff – Weight Loss & Fitness | Andy Arevalo</title>
+    <meta name="description" content="A no-fluff weight tracker for people who actually do the work. Solo or with a team. Log weight, food, activity. Send a 7-day report to your coach in one tap.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/zh-Hans/kickoff.html">
+    <meta property="og:title" content="Kickoff – Weight Loss & Fitness">
+    <meta property="og:description" content="A no-fluff weight tracker for people who actually do the work. Solo or with a team. Log weight, food, activity. Send a 7-day report to your coach in one tap.">
+    <meta property="og:image" content="https://andyarevalo.com/images/kickoff.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/zh-Hans/kickoff.html">
+    <meta name="twitter:title" content="Kickoff – Weight Loss & Fitness">
+    <meta name="twitter:description" content="A no-fluff weight tracker for people who actually do the work. Solo or with a team. Log weight, food, activity. Send a 7-day report to your coach in one tap.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/kickoff.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andyarevalo.com/apps/zh-Hans/kickoff.html">
+    <link rel="alternate" hreflang="x-default" href="https://andyarevalo.com/apps/zh-Hans/kickoff.html">
+    <link rel="alternate" hreflang="en" href="https://andyarevalo.com/apps/zh-Hans/kickoff.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://andyarevalo.com/apps/zh-Hans/kickoff.html">
+    <link rel="alternate" hreflang="it" href="https://andyarevalo.com/apps/it/kickoff.html">
+    <link rel="alternate" hreflang="ru" href="https://andyarevalo.com/apps/ru/kickoff.html">
+    <link rel="alternate" hreflang="de" href="https://andyarevalo.com/apps/de/kickoff.html">
+    <link rel="alternate" hreflang="ko" href="https://andyarevalo.com/apps/ko/kickoff.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://andyarevalo.com/apps/pt-BR/kickoff.html">
+    <link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/kickoff.html">
+    <link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/kickoff.html">
+
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/zh-Hans/kickoff.html#app",
+          "name": "Kickoff: Weight Loss & Fitness",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS",
+          "url": "https://andyarevalo.com/apps/zh-Hans/kickoff.html",
+          "description": "A no-fluff weight tracker for people who actually do the work. Solo or with a team. Log weight, food, activity. Send a 7-day report to your coach in one tap.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/PreOrder"
+          },
+          "featureList": [
+            "Solo or team weight tracking",
+            "BMI calculation and trend charts",
+            "Food and activity logging",
+            "Apple Health sync",
+            "Coach Share — 7-day text report",
+            "首页-screen widget"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "首页",
+              "item": "https://andyarevalo.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Kickoff",
+              "item": "https://andyarevalo.com/apps/zh-Hans/kickoff.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #2E7D32;
+            --accent2: #4CAF50;
+            --card-bg: rgba(15,22,38,.72);
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --line: rgba(0,0,0,.12);
+            --accent: #2E7D32;
+            --accent2: #4CAF50;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(46,125,50,.18), transparent 55%),
+                        radial-gradient(900px 700px at 80% 25%, rgba(76,175,80,.14), transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before { background: none; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,22,38,.55);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 14px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 650;
+            letter-spacing: .2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 20px rgba(46,125,50,.35);
+        }
+
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero {
+            padding: 100px 20px 60px;
+            background: var(--bg-secondary);
+        }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-text h1 { font-size: 44px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 24px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7; }
+
+        .hero-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .app-store-badge img { height: 50px; }
+        .price-badge { background: var(--accent); color: white; padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; }
+
+        .hero-image { display: flex; justify-content: center; }
+        .app-icon-large { width: 280px; height: 280px; border-radius: 56px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+        .modes {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mode-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .mode-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .mode-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .mode-icon { font-size: 48px; margin-bottom: 16px; }
+        .mode-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--accent); }
+        .mode-card p { color: var(--text-secondary); font-size: 16px; margin-bottom: 16px; }
+        .mode-card ul { list-style: none; padding: 0; }
+        .mode-card li { padding: 6px 0; padding-left: 24px; position: relative; color: var(--text-secondary); font-size: 15px; }
+        .mode-card li::before { content: '✓'; position: absolute; left: 0; color: var(--accent2); font-weight: bold; }
+
+        /* 功能 */
+        .features {
+            padding: 80px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        /* Coach */
+        .coach {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .coach h2 { font-size: 32px; font-weight: 600; margin-bottom: 16px; }
+        .coach p { color: var(--text-secondary); font-size: 17px; margin-bottom: 30px; }
+
+        .coach-preview {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            font-family: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+
+        [data-theme="light"] .coach-preview { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+
+        /* Philosophy */
+        .philosophy {
+            padding: 80px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .philosophy blockquote {
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            border-left: 4px solid var(--accent);
+            padding-left: 24px;
+            text-align: left;
+        }
+
+        /* CTA */
+        .cta { padding: 80px 20px; text-align: center; background: var(--bg-secondary); }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer {
+            background: var(--bg);
+            padding: 30px 18px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        /* 常见问题 + 故障排查 */
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer ul { margin: 12px 0; padding-left: 24px; }
+        .faq-answer li { margin-bottom: 8px; }
+        .faq-answer code { background: rgba(46,125,50,0.18); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 32px; }
+            .hero-badges { justify-content: center; }
+            .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
+            .mode-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">首页</a>
+                <a href="../../index.html#apps">应用</a>
+                <a href="#faq">常见问题</a>
+                <a href="../../about.html">关于</a>
+                <a href="../../support.html">支持</a>
+                <a href="../../privacy.html">隐私</a>
+                <a href="../../terms.html">条款</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+                    <span id="theme-icon">&#9728;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Kickoff</h1>
+                <p class="tagline">Weight Loss & Fitness</p>
+                <p>A no-fluff weight tracker for people who actually do the work. Solo, or as part of a team. Log weight, food, and activity in seconds. Send a clean 7-day report to your coach in one tap.</p>
+                <div class="hero-badges">
+                    <span class="price-badge">免费</span>
+                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">即将推出 to App Store</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="../../images/kickoff.png" alt="Kickoff app icon" class="app-icon-large">
+            </div>
+        </div>
+    </section>
+
+    <section class="modes">
+        <h2 class="section-title">Two ways to play</h2>
+        <div class="mode-grid">
+            <div class="mode-card">
+                <div class="mode-icon">👤</div>
+                <h3>Solo Mode</h3>
+                <p>Pure weight tracking, just for you.</p>
+                <ul>
+                    <li>Weekly weigh-ins with trend chart</li>
+                    <li>BMI auto-calculated</li>
+                    <li>Food and activity log</li>
+                    <li>Progress charts and milestones</li>
+                </ul>
+            </div>
+            <div class="mode-card">
+                <div class="mode-icon">⚽</div>
+                <h3>Team / League Mode</h3>
+                <p>Compete with teammates the way fitness leagues do.</p>
+                <ul>
+                    <li>Match results and bonus goals</li>
+                    <li>League standings</li>
+                    <li>Per-player weekly tracking</li>
+                    <li>8 customizable scoring rules</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Built for daily use</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3>Weekly Weigh-Ins</h3>
+                <p>Log a number in seconds. Backdate when you forget. Mark a week absent when you skip.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Real Progress Charts</h3>
+                <p>See start weight, current weight, target, and the trend line connecting them.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🍴</div>
+                <h3>Food Diary</h3>
+                <p>Quick meal entries by breakfast / lunch / dinner / snack. No calorie counting required.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏃</div>
+                <h3>Activity Log</h3>
+                <p>Walk, run, gym, football, swim, cycle. Track minutes, not steps.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">❤️</div>
+                <h3>Apple Health</h3>
+                <p>Imports your weight history so you don't start from zero. Writes new entries back to keep everything in sync.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>首页-Screen Widget</h3>
+                <p>Current weight, BMI, and distance-to-goal one glance away.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Achievements</h3>
+                <p>18 unlockable milestones. Streaks, 5%, 10%, full season, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Your data, your device</h3>
+                <p>No accounts. No ads. No subscriptions. Your data stays in Apple Health where it belongs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="coach">
+        <h2>Send to Coach</h2>
+        <p>One tap generates a clean text report covering the last 7 days — weigh-ins, food, and activity. Share it via Messages, WhatsApp, email, or any messaging app. Your coach gets the full picture without learning a new app.</p>
+        <div class="coach-preview">Kickoff - 7-Day Update
+Player: Alex
+Generated: May 5, 2026
+
+WEIGHT PROGRESS
+---------------
+Current: 91.0 kg
+Total lost: 4.0 kg (4.2%)
+
+Recent weigh-ins:
+  Apr 28, 2026: 91.0 kg (-0.8 kg)
+  Apr 21, 2026: 91.8 kg (-0.8 kg)
+  Apr 14, 2026: 92.6 kg (-0.9 kg)
+
+FOOD LOG (last 7 days)
+----------------------
+May 5:
+  Breakfast: Greek yogurt with berries
+  Lunch: Grilled chicken salad
+  Dinner: Salmon, roasted veg, brown rice
+
+ACTIVITY LOG (last 7 days)
+--------------------------
+Total: 220 min across 5 sessions
+
+  May 5 - Run, 35m
+  May 4 - Gym, 45m
+  May 3 - Walk, 50m
+
+Sent from Kickoff</div>
+    </section>
+
+    <section class="philosophy">
+        <blockquote>
+            "Most weight-loss apps want to be a lifestyle. This one wants to get out of your way and let you log a number."
+        </blockquote>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">常见问题</h2>
+        <p class="section-subtitle">Setup, troubleshooting, and the philosophy behind Kickoff</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Getting Started</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Solo Mode or Team Mode — which should I pick?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Solo if you're tracking your own weight loss without a competition. Team if you're in a fitness league (Man v Fat-style) where matches, weekly weigh-ins, and standings matter. You can switch modes from Settings — your data follows you.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How do I import my historical weight from Apple Health?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Onboarding asks for HealthKit access. Grant it, and Kickoff imports every weight reading Apple Health has on file. Apple Health is the source of truth — Kickoff writes new weigh-ins back to Apple Health, so your iPhone Health app stays in sync.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Do I need an account?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No. No account, no email, no password. Your data lives on your device + Apple Health. Coach Share generates a text report you send via Messages / WhatsApp / email — no accounts on either side.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Coach Share</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What does the Coach Share report include?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Last 7 days: every weigh-in with delta, every food entry by meal, every activity session with duration. Plus current weight, total lost, and percent of starting weight. Plain text, copy-pastable, ~30 lines. Designed to fit in a single iMessage bubble.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I customize what's in the report?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Coach Share has a content toggle for: weigh-ins, food, activity, and footer notes. Disable any to keep the report focused.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is the report 7 days or longer?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>7 days by default. Long press the Coach Share button to choose a custom range (Pro). Most coaches prefer the 7-day cadence.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">League Sync (Team Mode)</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What leagues are supported?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Any league publishing weekly fixtures + results on a public web page. Kickoff includes a built-in URL parser for the major weight-loss-football platforms; you can also paste any league URL and Kickoff scrapes the table.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why didn't my latest match sync?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Three common reasons: (1) the league hasn't posted results yet — Kickoff syncs what the page shows, (2) the league site changed its HTML structure and the parser needs updating (we ship updates as fixes), (3) URL mode is set to manual — switch to auto in League Settings.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>I edited a match locally and it got overwritten by URL sync</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>v1.2 introduced conflict resolution. Edit a match → the next URL sync detects your edit (within 5 minutes), shows a "Keep mine / Use synced / Merge" sheet. URL sync mode picker (auto / manual / disabled) is in League Settings.</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Match Day &amp; Live Mode</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What's Live Match Mode?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>v1.2 feature. While playing, tap "Start Live Match" — Kickoff runs a timer, lets you log goal scorers, assists, cards, and own-goals as they happen. When the match ends, the result is auto-saved AND a HKWorkout record is logged to Apple Health (sport: Soccer). Solo mode users can use Live Mode too — goals attributed to "you" automatically.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>HealthKit didn't auto-link my workout</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Kickoff's HealthKit auto-discovery looks for Soccer-type workouts (≥20 min, in the last 30 days, not already linked). If your Apple Watch logged the workout but it didn't appear, check: was the workout type set to Soccer? (Other type → no auto-link.) Was it ≥20 min? Did Apple Health write it ≥30 days ago?</p></div></div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">故障排查</h3>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>BMI shows wrong number</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>BMI = weight / height². Make sure your height is set in Settings → Profile (not just weight). Apple Health height syncs automatically if set there. Imperial vs metric: Kickoff respects your iOS region, but you can override per-field.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Multi-image OCR import didn't read my fixture page</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Tips: (1) screenshot only the standings table, not the whole page, (2) make sure team names + numbers are visible — don't crop too tight, (3) if the website uses unusual fonts, OCR confidence drops. The "Manually edit" path is always available as a fallback.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Achievements unlocked but no notification</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Notifications need permission. Settings → Notifications → Kickoff → Allow. iOS may suppress the first notification if you have Focus mode on. The achievement is still unlocked even without the alert — check Achievements view to confirm.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Widget shows old weight</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS refreshes widgets on a system schedule (every 15-60 min, varies). Force refresh: long-press the widget → Edit Widget → Done. Or open Kickoff once — that triggers an immediate widget reload.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Daily food log reminder didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Set the time in Settings → Reminders → Food Log Reminder. The reminder is local (on-device), no cloud. Make sure notifications are allowed. v1.2 added this; if you upgraded, the reminder defaults off — turn it on.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Lose weight without the noise</h2>
+        <p>Kickoff is free. No accounts, no ads, no subscriptions. Coming soon to the App Store.</p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../index.html">首页</a>
+            <a href="../../index.html#apps">应用</a>
+            <a href="../../about.html">关于</a>
+            <a href="../../support.html">支持</a>
+            <a href="../../privacy.html">隐私</a>
+            <a href="../../terms.html">条款</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. 保留所有权利。</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>
