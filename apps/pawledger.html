@@ -108,7 +108,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #007AFF;
             --accent2: #34c759;
@@ -796,7 +796,9 @@
                 <p class="tagline">Pet Health Tracker</p>
                 <p>Pet health management made simple. Track medications, vaccinations, weight, and vet appointments for all your furry pets. Set smart reminders so nothing is missed.</p>
                 <div class="hero-badges">
-                    <span class="coming-soon-badge">Coming Soon</span>
+                    <a href="https://apps.apple.com/app/id6757627356" class="app-store-badge" target="_blank" rel="noopener">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
@@ -1717,50 +1719,50 @@
                 <h3 class="faq-category-title">General</h3>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What is PawLedger?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>PawLedger is an iOS app for pet owners managing their pets' health. It helps you track medications, vaccinations, weight, vet appointments, and preventative treatments for multiple pets. It's designed for pet owners caring for dogs, cats, and other furry family members.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Is PawLedger for veterinary clinics?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p><strong>No.</strong> PawLedger is a personal health tracking tool for individual and family use. It is NOT for veterinary clinics and should not be used by veterinarians, covered entities, or for any purpose requiring veterinary clinic compliance. Your data is stored locally on your device.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Does PawLedger provide medical advice?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p><strong>No.</strong> PawLedger is a tracking and organization tool only. It does not provide medical advice, diagnoses, or treatment recommendations. Always consult qualified veterinarians for medical decisions. The medication education feature provides general information only and should not replace professional medical guidance.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Where is my data stored?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>All your data is stored locally on your device using Apple's SwiftData framework. PawLedger does not require an account and does not upload your health data to any servers. The only exception is when using AI features (prescription scanning with Cloud OCR or medication education), which sends specific data to the AI service for processing.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Can I sync data between devices?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Automatic real-time CloudKit sync is planned for a future update. In the meantime, you can use <strong>iCloud Backup</strong> to manually back up your data and restore it on another device. Go to Settings > Backup & Restore to back up to iCloud or export to a file.</p>
                     </div>
@@ -1772,30 +1774,30 @@
                 <h3 class="faq-category-title">Pets & Medications</h3>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>How many pets can I track?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Free users can track <strong>1 pet</strong>. Premium subscribers can track <strong>unlimited pets</strong>. This is perfect for families with multiple pets.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Is there a limit on medications?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>No, there is no limit on the number of medications you can track, even on the free tier. You can add as many medications as needed for each pet.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What schedule types are supported?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>PawLedger supports four schedule types:</p>
                         <ul>
@@ -1809,20 +1811,20 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>How do I track "as needed" medications?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>For as-needed (PRN) medications, set the schedule type to "As Needed". You won't get scheduled reminders, but you can still log doses when taken. The app will track your usage patterns and calculate inventory based on your actual consumption history.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What happens if I miss a dose?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>If you don't check in a dose within a configurable time window, you'll receive an overdue alert. You can then mark the dose as:</p>
                         <ul>
@@ -1840,10 +1842,10 @@
                 <h3 class="faq-category-title">AI & Prescription Scanner</h3>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>How does the prescription scanner work?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>The scanner uses Optical Character Recognition (OCR) to read prescription labels. Two modes are available:</p>
                         <ul>
@@ -1855,20 +1857,20 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>How many AI features can I use for free?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Free users get <strong>3 AI uses per month</strong>, shared between Cloud OCR and Medication Education. The counter resets on the first of each month. On-device OCR is always free and unlimited.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What is BYOK (Bring Your Own Key)?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>BYOK is a <strong>Premium feature</strong> that allows you to use your own Claude API key for AI features. This gives you:</p>
                         <ul>
@@ -1881,10 +1883,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Is my data safe when using AI features?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>When using AI features, only the specific data needed for that request is sent to the AI service (e.g., the prescription image or medication name). This data is processed and not stored by the AI provider. You must grant explicit consent before using any AI features, and you can revoke consent at any time in Settings.</p>
                     </div>
@@ -1896,10 +1898,10 @@
                 <h3 class="faq-category-title">Notifications & Reminders</h3>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Why am I not receiving notifications?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>If notifications aren't working, check these things:</p>
                         <ul>
@@ -1913,10 +1915,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What is the Trust Score?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>The Trust Score (0-100) measures notification reliability. It's calculated from:</p>
                         <ul>
@@ -1928,20 +1930,20 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Can I customize notification times?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Yes! Each medication can have its own schedule with multiple daily times. Appointment reminders can be set to alert you a configurable number of hours before (default: 1 hour). You can also enable or disable specific notification types in Settings.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What do I do if the Notification Health test fails?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>If the self-test fails, try these troubleshooting steps:</p>
                         <ul>
@@ -1966,10 +1968,10 @@
                 <h3 class="faq-category-title">Subscription & Pricing</h3>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What's included in the free tier?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>The free tier includes:</p>
                         <ul>
@@ -1985,10 +1987,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What do I get with Premium?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Premium unlocks:</p>
                         <ul>
@@ -2002,20 +2004,20 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Do TestFlight users get Premium?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p><strong>Yes!</strong> TestFlight beta testers automatically receive full Premium access for the duration of the beta. This allows you to test all features and provide feedback. Thank you for helping us improve PawLedger!</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Can I cancel my subscription?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Yes, you can cancel anytime through your Apple ID subscription settings. You'll retain Premium access until the end of your billing period. Your data remains on your device even after downgrading to the free tier.</p>
                     </div>
@@ -2027,10 +2029,10 @@
                 <h3 class="faq-category-title">Data & Privacy</h3>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>How do I export my data?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Go to Settings > Data Export. You can export:</p>
                         <ul>
@@ -2043,20 +2045,20 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>Can I delete a pet or medication?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Yes. Swipe left on any item in a list to delete, or tap Edit and then Delete. Be careful: deleting a pet will permanently remove all their medications, appointments, vaccinations, and notes. Deleting a medication removes its dose history and inventory events.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>What happens if I delete the app?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Deleting the app will permanently delete all your PawLedger data from your device. We recommend exporting your data before uninstalling. If you reinstall the app, you'll need to start fresh unless CloudKit sync is enabled in a future update.</p>
                     </div>
@@ -2068,10 +2070,10 @@
                 <h3 class="faq-category-title">Troubleshooting</h3>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>The scanner isn't reading my label correctly</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Try these tips for better scanning results:</p>
                         <ul>
@@ -2086,10 +2088,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>My pill count seems wrong</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>The pill count is calculated from inventory events (refills) minus doses taken. If it's incorrect:</p>
                         <ul>
@@ -2102,10 +2104,10 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                         <h4>How do I contact support?</h4>
                         <span class="faq-toggle">+</span>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <p>Visit our <a href="../support.html">Support page</a> to contact us. Please include:</p>
                         <ul>
@@ -2237,7 +2239,9 @@
     <section class="cta">
         <h2>Care for your pets, simplified</h2>
         <p>PawLedger helps pet owners manage their pets' health with confidence.</p>
-        <span class="coming-soon-badge">Coming Soon to the App Store</span>
+        <a href="https://apps.apple.com/app/id6757627356" class="app-store-badge" target="_blank" rel="noopener">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
     </section>
 
     <footer>
@@ -2275,7 +2279,9 @@
 
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
 
         (function() {

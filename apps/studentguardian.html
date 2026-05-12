@@ -115,7 +115,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #007AFF;
             --accent2: #FF3B30;
@@ -562,7 +562,34 @@
             .step { flex-direction: column; text-align: center; }
             .pricing-card.featured { transform: none; }
             .nav-links { display: none; }
+            .version-banner { flex-direction: column; text-align: center; gap: 10px; }
+            .version-banner a { margin-left: 0; }
         }
+
+        .version-banner {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(168,85,247,.12));
+            border: 1px solid var(--accent, #6366f1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text, #1d1d1f);
+        }
+        .version-badge {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: .3px;
+        }
+        .version-banner p { margin: 0; font-size: 15px; }
+        .version-banner a { margin-left: auto; white-space: nowrap; font-weight: 600; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -590,6 +617,12 @@
         <p class="tagline">Never miss another school email. AI-powered summaries, calendar integration, and grade tracking for busy parents.</p>
         <a href="https://apps.apple.com/app/student-guardian/id6756404037" class="app-store-badge">Download on the App Store</a>
     </section>
+
+    <div class="version-banner">
+        <span class="version-badge">LIVE v1.2.1</span>
+        <p>Student Guardian is live and available worldwide in 15 languages on the App Store.</p>
+        <a href="https://apps.apple.com/app/student-guardian/id6756404037" target="_blank" rel="noopener">Get on App Store &rarr;</a>
+    </div>
 
     <section class="core-features">
         <h2 class="section-title">Everything You Need</h2>
@@ -813,60 +846,60 @@
             <h2 class="section-title">Frequently Asked Questions</h2>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                     <span>Is my email data secure?</span>
                     <span class="faq-toggle">&#9662;</span>
-                </div>
+                </button>
                 <div class="faq-answer">
                     Yes! Your email credentials are stored securely in the iOS Keychain, and your emails are processed locally on your device. We never store your emails on our servers. The only data sent to our servers is the email content for AI summarization, and it's immediately discarded after processing.
                 </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                     <span>Which email providers are supported?</span>
                     <span class="faq-toggle">&#9662;</span>
-                </div>
+                </button>
                 <div class="faq-answer">
                     We support Gmail, Outlook/Microsoft 365, iCloud, Yahoo, and AOL. Gmail uses IMAP with app passwords for secure access. Outlook uses OAuth 2.0 for secure authentication.
                 </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                     <span>What are "Trusted Sources"?</span>
                     <span class="faq-toggle">&#9662;</span>
-                </div>
+                </button>
                 <div class="faq-answer">
                     Trusted Sources are email addresses or domains that you mark as school-related. Only emails from these sources appear in Student Guardian. For example, you might add "teachers@school.edu" or the entire "@school.edu" domain.
                 </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                     <span>How does AI summarization work?</span>
                     <span class="faq-toggle">&#9662;</span>
-                </div>
+                </button>
                 <div class="faq-answer">
                     When you tap "Summarize" on an email, we send the email content to our secure backend which uses GPT-4o-mini to generate a concise summary. The AI extracts key information like dates, events, grades, and action items. Premium users can also bring their own OpenAI API key.
                 </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                     <span>Can I use Student Guardian for multiple children?</span>
                     <span class="faq-toggle">&#9662;</span>
-                </div>
+                </button>
                 <div class="faq-answer">
                     Absolutely! You can create unlimited student profiles, each with their own color for easy identification. Associate trusted sources with specific students to keep their communications organized.
                 </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
                     <span>What's the difference between Free and Premium?</span>
                     <span class="faq-toggle">&#9662;</span>
-                </div>
+                </button>
                 <div class="faq-answer">
                     Free users get unlimited email filtering, calendar integration, and 5 AI summaries per month (English only). Premium unlocks unlimited AI summaries, 15 languages, auto-summarization of new emails, grade/attendance extraction, and the ability to use your own OpenAI API key.
                 </div>
@@ -880,18 +913,18 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Schedule &amp; Reminders</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Class reminder didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check Settings → Notifications → Student Guardian → Allow. Also confirm the specific class has reminders enabled in its detail view. Student Guardian uses Time Sensitive notifications which break through Focus mode.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Class shows on the wrong day after a holiday</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Add the holiday to your school calendar (Settings → School Calendar → Add Holiday). Holidays shift A-Day / B-Day rotation forward.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Class reminder didn't fire</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check Settings → Notifications → Student Guardian → Allow. Also confirm the specific class has reminders enabled in its detail view. Student Guardian uses Time Sensitive notifications which break through Focus mode.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Class shows on the wrong day after a holiday</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Add the holiday to your school calendar (Settings → School Calendar → Add Holiday). Holidays shift A-Day / B-Day rotation forward.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Grades &amp; Homework</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>GPA calculation looks wrong</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check the GPA scale in Settings → Grading. US schools usually use 4.0 unweighted; some use 5.0 weighted with AP/honors. Set the scale to match your school's policy. Each course's credit weight matters — 0-credit courses don't count.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Homework due date passed but it's still showing</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Past-due assignments stay visible until marked complete. Tap the checkbox to mark done. Auto-archive is in Settings → Homework.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>GPA calculation looks wrong</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check the GPA scale in Settings → Grading. US schools usually use 4.0 unweighted; some use 5.0 weighted with AP/honors. Set the scale to match your school's policy. Each course's credit weight matters — 0-credit courses don't count.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Homework due date passed but it's still showing</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Past-due assignments stay visible until marked complete. Tap the checkbox to mark done. Auto-archive is in Settings → Homework.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Sync &amp; Multi-Device</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Family Sharing isn't working</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Each family member needs Student Guardian installed and signed into the same iCloud Family Sharing group. Settings → Family Sharing → enable Student Guardian. Sync happens via CloudKit on app launch.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Data missing after iOS upgrade</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS upgrades preserve app data. If you see data missing, force-quit and re-open — SwiftData sometimes lags after a major iOS update.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Family Sharing isn't working</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Each family member needs Student Guardian installed and signed into the same iCloud Family Sharing group. Settings → Family Sharing → enable Student Guardian. Sync happens via CloudKit on app launch.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Data missing after iOS upgrade</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS upgrades preserve app data. If you see data missing, force-quit and re-open — SwiftData sometimes lags after a major iOS update.</p></div></div>
             </div>
         </div>
     </section>
@@ -932,7 +965,9 @@
 
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
 
         (function() {

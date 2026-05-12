@@ -104,7 +104,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #2E7D32;
             --accent2: #4CAF50;
@@ -354,7 +354,33 @@
             .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
             .mode-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 10px; font-size: 13px; }
+            .version-banner { flex-direction: column; text-align: center; gap: 10px; }
+            .version-banner a { margin-left: 0; }
         }
+
+        .version-banner {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(143,183,255,.12), rgba(158,240,210,.12));
+            border: 1px solid var(--accent2, #9ef0d2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .version-badge {
+            background: linear-gradient(135deg, var(--accent2, #9ef0d2), var(--accent, #8fb7ff));
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: .3px;
+        }
+        .version-banner p { margin: 0; font-size: 15px; }
+        .version-banner a { margin-left: auto; white-space: nowrap; font-weight: 600; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -387,7 +413,9 @@
                 <p>A no-fluff weight tracker for people who actually do the work. Solo, or as part of a team. Log weight, food, and activity in seconds. Send a clean 7-day report to your coach in one tap.</p>
                 <div class="hero-badges">
                     <span class="price-badge">Free</span>
-                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">Coming Soon to App Store</span>
+                    <a href="https://apps.apple.com/app/id6766747051" class="app-store-badge" target="_blank" rel="noopener">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
@@ -395,6 +423,12 @@
             </div>
         </div>
     </section>
+
+    <div class="version-banner">
+        <span class="version-badge">LIVE v1.2</span>
+        <p>Match-day Dashboard card, goal scorers and minute, box-score detail view, HealthKit auto-link, and more.</p>
+        <a href="https://apps.apple.com/app/id6766747051" target="_blank" rel="noopener">Get on App Store &rarr;</a>
+    </div>
 
     <section class="modes">
         <h2 class="section-title">Two ways to play</h2>
@@ -517,41 +551,41 @@ Sent from Kickoff</div>
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Getting Started</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Solo Mode or Team Mode — which should I pick?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Solo if you're tracking your own weight loss without a competition. Team if you're in a fitness league (Man v Fat-style) where matches, weekly weigh-ins, and standings matter. You can switch modes from Settings — your data follows you.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How do I import my historical weight from Apple Health?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Onboarding asks for HealthKit access. Grant it, and Kickoff imports every weight reading Apple Health has on file. Apple Health is the source of truth — Kickoff writes new weigh-ins back to Apple Health, so your iPhone Health app stays in sync.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Do I need an account?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No. No account, no email, no password. Your data lives on your device + Apple Health. Coach Share generates a text report you send via Messages / WhatsApp / email — no accounts on either side.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Solo Mode or Team Mode — which should I pick?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Solo if you're tracking your own weight loss without a competition. Team if you're in a fitness league (Man v Fat-style) where matches, weekly weigh-ins, and standings matter. You can switch modes from Settings — your data follows you.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How do I import my historical weight from Apple Health?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Onboarding asks for HealthKit access. Grant it, and Kickoff imports every weight reading Apple Health has on file. Apple Health is the source of truth — Kickoff writes new weigh-ins back to Apple Health, so your iPhone Health app stays in sync.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Do I need an account?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>No. No account, no email, no password. Your data lives on your device + Apple Health. Coach Share generates a text report you send via Messages / WhatsApp / email — no accounts on either side.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Coach Share</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What does the Coach Share report include?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Last 7 days: every weigh-in with delta, every food entry by meal, every activity session with duration. Plus current weight, total lost, and percent of starting weight. Plain text, copy-pastable, ~30 lines. Designed to fit in a single iMessage bubble.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I customize what's in the report?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Coach Share has a content toggle for: weigh-ins, food, activity, and footer notes. Disable any to keep the report focused.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is the report 7 days or longer?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>7 days by default. Long press the Coach Share button to choose a custom range (Pro). Most coaches prefer the 7-day cadence.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What does the Coach Share report include?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Last 7 days: every weigh-in with delta, every food entry by meal, every activity session with duration. Plus current weight, total lost, and percent of starting weight. Plain text, copy-pastable, ~30 lines. Designed to fit in a single iMessage bubble.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I customize what's in the report?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Coach Share has a content toggle for: weigh-ins, food, activity, and footer notes. Disable any to keep the report focused.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Is the report 7 days or longer?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>7 days by default. Long press the Coach Share button to choose a custom range (Pro). Most coaches prefer the 7-day cadence.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">League Sync (Team Mode)</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What leagues are supported?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Any league publishing weekly fixtures + results on a public web page. Kickoff includes a built-in URL parser for the major weight-loss-football platforms; you can also paste any league URL and Kickoff scrapes the table.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why didn't my latest match sync?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Three common reasons: (1) the league hasn't posted results yet — Kickoff syncs what the page shows, (2) the league site changed its HTML structure and the parser needs updating (we ship updates as fixes), (3) URL mode is set to manual — switch to auto in League Settings.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>I edited a match locally and it got overwritten by URL sync</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>v1.2 introduced conflict resolution. Edit a match → the next URL sync detects your edit (within 5 minutes), shows a "Keep mine / Use synced / Merge" sheet. URL sync mode picker (auto / manual / disabled) is in League Settings.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What leagues are supported?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Any league publishing weekly fixtures + results on a public web page. Kickoff includes a built-in URL parser for the major weight-loss-football platforms; you can also paste any league URL and Kickoff scrapes the table.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Why didn't my latest match sync?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Three common reasons: (1) the league hasn't posted results yet — Kickoff syncs what the page shows, (2) the league site changed its HTML structure and the parser needs updating (we ship updates as fixes), (3) URL mode is set to manual — switch to auto in League Settings.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>I edited a match locally and it got overwritten by URL sync</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>v1.2 introduced conflict resolution. Edit a match → the next URL sync detects your edit (within 5 minutes), shows a "Keep mine / Use synced / Merge" sheet. URL sync mode picker (auto / manual / disabled) is in League Settings.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Match Day &amp; Live Mode</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What's Live Match Mode?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>v1.2 feature. While playing, tap "Start Live Match" — Kickoff runs a timer, lets you log goal scorers, assists, cards, and own-goals as they happen. When the match ends, the result is auto-saved AND a HKWorkout record is logged to Apple Health (sport: Soccer). Solo mode users can use Live Mode too — goals attributed to "you" automatically.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>HealthKit didn't auto-link my workout</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Kickoff's HealthKit auto-discovery looks for Soccer-type workouts (≥20 min, in the last 30 days, not already linked). If your Apple Watch logged the workout but it didn't appear, check: was the workout type set to Soccer? (Other type → no auto-link.) Was it ≥20 min? Did Apple Health write it ≥30 days ago?</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What's Live Match Mode?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>v1.2 feature. While playing, tap "Start Live Match" — Kickoff runs a timer, lets you log goal scorers, assists, cards, and own-goals as they happen. When the match ends, the result is auto-saved AND a HKWorkout record is logged to Apple Health (sport: Soccer). Solo mode users can use Live Mode too — goals attributed to "you" automatically.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>HealthKit didn't auto-link my workout</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Kickoff's HealthKit auto-discovery looks for Soccer-type workouts (≥20 min, in the last 30 days, not already linked). If your Apple Watch logged the workout but it didn't appear, check: was the workout type set to Soccer? (Other type → no auto-link.) Was it ≥20 min? Did Apple Health write it ≥30 days ago?</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>BMI shows wrong number</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>BMI = weight / height². Make sure your height is set in Settings → Profile (not just weight). Apple Health height syncs automatically if set there. Imperial vs metric: Kickoff respects your iOS region, but you can override per-field.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Multi-image OCR import didn't read my fixture page</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Tips: (1) screenshot only the standings table, not the whole page, (2) make sure team names + numbers are visible — don't crop too tight, (3) if the website uses unusual fonts, OCR confidence drops. The "Manually edit" path is always available as a fallback.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Achievements unlocked but no notification</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Notifications need permission. Settings → Notifications → Kickoff → Allow. iOS may suppress the first notification if you have Focus mode on. The achievement is still unlocked even without the alert — check Achievements view to confirm.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Widget shows old weight</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS refreshes widgets on a system schedule (every 15-60 min, varies). Force refresh: long-press the widget → Edit Widget → Done. Or open Kickoff once — that triggers an immediate widget reload.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Daily food log reminder didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Set the time in Settings → Reminders → Food Log Reminder. The reminder is local (on-device), no cloud. Make sure notifications are allowed. v1.2 added this; if you upgraded, the reminder defaults off — turn it on.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>BMI shows wrong number</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>BMI = weight / height². Make sure your height is set in Settings → Profile (not just weight). Apple Health height syncs automatically if set there. Imperial vs metric: Kickoff respects your iOS region, but you can override per-field.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Multi-image OCR import didn't read my fixture page</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Tips: (1) screenshot only the standings table, not the whole page, (2) make sure team names + numbers are visible — don't crop too tight, (3) if the website uses unusual fonts, OCR confidence drops. The "Manually edit" path is always available as a fallback.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Achievements unlocked but no notification</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Notifications need permission. Settings → Notifications → Kickoff → Allow. iOS may suppress the first notification if you have Focus mode on. The achievement is still unlocked even without the alert — check Achievements view to confirm.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Widget shows old weight</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS refreshes widgets on a system schedule (every 15-60 min, varies). Force refresh: long-press the widget → Edit Widget → Done. Or open Kickoff once — that triggers an immediate widget reload.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Daily food log reminder didn't fire</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Set the time in Settings → Reminders → Food Log Reminder. The reminder is local (on-device), no cloud. Make sure notifications are allowed. v1.2 added this; if you upgraded, the reminder defaults off — turn it on.</p></div></div>
             </div>
         </div>
     </section>
 
     <section class="cta">
         <h2>Lose weight without the noise</h2>
-        <p>Kickoff is free. No accounts, no ads, no subscriptions. Coming soon to the App Store.</p>
+        <p>Kickoff is free. No accounts, no ads, no subscriptions. <a href="https://apps.apple.com/app/id6766747051" target="_blank" rel="noopener">Download on the App Store</a>.</p>
     </section>
 
     <footer>
@@ -584,7 +618,9 @@ Sent from Kickoff</div>
 
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
         (function() {
             const savedTheme = localStorage.getItem('theme');

@@ -622,18 +622,18 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Widgets</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Widget not updating to today's countdown</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS refreshes widgets on a system schedule (every 15 min - 1 hour). Force refresh: long-press widget → Edit Widget → Done. Or open Not Another Countdown to trigger an immediate widget reload.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Lock-screen widget shows yesterday's count</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Lock screen widgets refresh less aggressively than home-screen widgets. Wake the phone and let iOS refresh, or open the app once.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Widget not updating to today's countdown</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS refreshes widgets on a system schedule (every 15 min - 1 hour). Force refresh: long-press widget → Edit Widget → Done. Or open Not Another Countdown to trigger an immediate widget reload.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Lock-screen widget shows yesterday's count</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Lock screen widgets refresh less aggressively than home-screen widgets. Wake the phone and let iOS refresh, or open the app once.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Notifications</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Countdown reminder didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Each countdown has its own notification toggle. Open the countdown → Edit → Reminders → enable. iOS Focus mode may suppress the visible alert.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>"Today is the day" notification didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>That notification fires at midnight in your iOS timezone. If you crossed timezones the day before, the boundary may shift. Open the app to see the current state.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Countdown reminder didn't fire</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Each countdown has its own notification toggle. Open the countdown → Edit → Reminders → enable. iOS Focus mode may suppress the visible alert.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>"Today is the day" notification didn't fire</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>That notification fires at midnight in your iOS timezone. If you crossed timezones the day before, the boundary may shift. Open the app to see the current state.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Countdown shows negative days for a future date</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Likely a timezone mismatch — the date you saved is interpreted differently by your current device timezone. Edit the countdown and re-pick the date.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Lost data after device restore</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Not Another Countdown stores on-device. iOS Backup (iCloud or computer) preserves app data. After restore, the countdowns return.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Countdown shows negative days for a future date</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Likely a timezone mismatch — the date you saved is interpreted differently by your current device timezone. Edit the countdown and re-pick the date.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Lost data after device restore</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Not Another Countdown stores on-device. iOS Backup (iCloud or computer) preserves app data. After restore, the countdowns return.</p></div></div>
             </div>
         </div>
     </section>
@@ -679,7 +679,9 @@
     <script>
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
     </script>
 </body>

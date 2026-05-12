@@ -26,7 +26,7 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <style>
         :root { --bg: #0b0f19; --bg-secondary: #0f1626; --text: #e8edf7; --text-secondary: #b7c0d4; --line: rgba(255,255,255,.12); --accent: #C2185B; --accent2: #E91E63; --card-bg: rgba(15,22,38,.72); }
-        [data-theme="light"] { --bg: #fff; --bg-secondary: #f5f5f7; --text: #1d1d1f; --text-secondary: #6e6e73; --line: rgba(0,0,0,.12); --card-bg: #fff; }
+        [data-theme="light"] { --bg: #fff; --bg-secondary: #f5f5f7; --text: #1d1d1f; --text-secondary: #595961; --line: rgba(0,0,0,.12); --card-bg: #fff; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
         body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(1200px 800px at 15% 10%, rgba(194,24,91,.18), transparent 55%); pointer-events: none; z-index: -1; }
@@ -114,20 +114,20 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Coloring</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How do I fill a region?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Pick a color from the palette, tap any region — done. Tap again to change. For shading effects, use Apple Pencil on iPad with pressure sensitivity enabled.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I save a page mid-color and come back later?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes — auto-save every 30 seconds. Closing the app preserves your work. Tap the page in the gallery to resume.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Are new pages added regularly?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Monthly content drops. Subscribers get the full library; free tier gets the starter pack + 1 free page from each new drop.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How do I fill a region?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Pick a color from the palette, tap any region — done. Tap again to change. For shading effects, use Apple Pencil on iPad with pressure sensitivity enabled.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I save a page mid-color and come back later?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes — auto-save every 30 seconds. Closing the app preserves your work. Tap the page in the gallery to resume.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Are new pages added regularly?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Monthly content drops. Subscribers get the full library; free tier gets the starter pack + 1 free page from each new drop.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Apple Pencil</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Pencil pressure isn't doing anything</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Settings → Drawing → Pressure Sensitivity → enable. Apple Pencil 1st gen works for tap-fill but lacks pressure for shading.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Hover preview missing on iPad Pro M2+</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Settings → Drawing → Pencil Hover Preview → enable. Shows where the next color will land before you tap.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Pencil pressure isn't doing anything</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Settings → Drawing → Pressure Sensitivity → enable. Apple Pencil 1st gen works for tap-fill but lacks pressure for shading.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Hover preview missing on iPad Pro M2+</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Settings → Drawing → Pencil Hover Preview → enable. Shows where the next color will land before you tap.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Lost a finished page</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Pages are stored in the on-device gallery. iOS Backup (iCloud or computer) preserves them. After a restore, your gallery comes back.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Export to PDF is blurry</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Use Settings → Export → High Resolution PDF (Pro feature). Free tier exports at 1024x1024 which is fine for screen sharing but soft for print. Pro exports at 4096x4096.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Color picker doesn't show all palettes</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Custom palettes are tied to Pro. Free tier shows the 5 starter palettes. Restore Purchase if you've upgraded but don't see them.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Lost a finished page</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Pages are stored in the on-device gallery. iOS Backup (iCloud or computer) preserves them. After a restore, your gallery comes back.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Export to PDF is blurry</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Use Settings → Export → High Resolution PDF (Pro feature). Free tier exports at 1024x1024 which is fine for screen sharing but soft for print. Pro exports at 4096x4096.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Color picker doesn't show all palettes</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Custom palettes are tied to Pro. Free tier shows the 5 starter palettes. Restore Purchase if you've upgraded but don't see them.</p></div></div>
             </div>
         </div>
     </section>

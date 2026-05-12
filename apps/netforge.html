@@ -93,7 +93,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #00857A;
             --accent2: #2EB68F;
@@ -194,7 +194,37 @@
             .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
             .price-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 10px; font-size: 13px; }
+            .version-banner { flex-direction: column; text-align: center; gap: 10px; }
+            .version-banner a { margin-left: 0; }
         }
+
+        /* What's New banner */
+        .version-banner {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(143,183,255,.12), rgba(158,240,210,.12));
+            border: 1px solid var(--accent2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        [data-theme="light"] .version-banner {
+            background: linear-gradient(135deg, rgba(0,122,255,.08), rgba(52,199,89,.08));
+        }
+        .version-badge {
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: .3px;
+        }
+        .version-banner p { margin: 0; font-size: 15px; }
+        .version-banner a { margin-left: auto; white-space: nowrap; font-weight: 600; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -235,6 +265,12 @@
             </div>
         </div>
     </section>
+
+    <div class="version-banner">
+        <span class="version-badge">v1.0.1 SUBMITTED</span>
+        <p>Paywall navigation fix on iOS, dev-unlock hash corrected, performance polish, Mac Catalyst v1.0 also submitted.</p>
+        <a href="https://apps.apple.com/app/id6767094044" target="_blank" rel="noopener">Get on App Store &rarr;</a>
+    </div>
 
     <section id="tools" class="tools">
         <h2 class="section-title">60+ tools, organized</h2>
@@ -396,67 +432,67 @@
             <div class="faq-category">
                 <h3 class="faq-category-title">General</h3>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Who is NetForge for?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Network engineers, sysadmins, DevOps engineers, and anyone who debugs network problems at a customer site or from a laptop. The app replaces a folder of bookmarks (whatsmydns.net, mxtoolbox, ipinfo.io, sslchecker, subnet calculator, etc.) with a single offline-first tool.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Who is NetForge for?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Network engineers, sysadmins, DevOps engineers, and anyone who debugs network problems at a customer site or from a laptop. The app replaces a folder of bookmarks (whatsmydns.net, mxtoolbox, ipinfo.io, sslchecker, subnet calculator, etc.) with a single offline-first tool.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why one app instead of separate ones?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Field debug is rarely "just DNS" or "just ping". A flaky outage triage usually involves DNS, then ping, then traceroute, then TLS, then WHOIS, then BGP. Switching apps wastes seconds. NetForge keeps state across tools, has a history of every run, and offers recipe workflows that bundle the common sequences.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Why one app instead of separate ones?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Field debug is rarely "just DNS" or "just ping". A flaky outage triage usually involves DNS, then ping, then traceroute, then TLS, then WHOIS, then BGP. Switching apps wastes seconds. NetForge keeps state across tools, has a history of every run, and offers recipe workflows that bundle the common sequences.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does NetForge work without internet?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>The reference content (RFC index, standards, man pages, IANA ports, subnet math) works offline. The active tools (DNS, ping, traceroute, TLS, WHOIS) need internet — they make real network calls. Subnet Calc is fully offline.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does NetForge work without internet?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>The reference content (RFC index, standards, man pages, IANA ports, subnet math) works offline. The active tools (DNS, ping, traceroute, TLS, WHOIS) need internet — they make real network calls. Subnet Calc is fully offline.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Mac version too?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Mac Catalyst version is in App Store review now and ships imminently. Universal purchase — Pro on iOS unlocks Mac and vice versa.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Mac version too?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. Mac Catalyst version is in App Store review now and ships imminently. Universal purchase — Pro on iOS unlocks Mac and vice versa.</p></div></div>
             </div>
 
             <div class="faq-category">
                 <h3 class="faq-category-title">Tools</h3>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Which DNS record types are supported?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, CAA, PTR (reverse), DNSKEY, DS, RRSIG, NSEC, NSEC3, TLSA, SVCB, HTTPS. You can pick which DNS resolver to query (1.1.1.1, 8.8.8.8, 9.9.9.9, your ISP, custom). Wire-format queries — no DoH proxy.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Which DNS record types are supported?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, CAA, PTR (reverse), DNSKEY, DS, RRSIG, NSEC, NSEC3, TLSA, SVCB, HTTPS. You can pick which DNS resolver to query (1.1.1.1, 8.8.8.8, 9.9.9.9, your ISP, custom). Wire-format queries — no DoH proxy.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does ping use ICMP?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS sandboxing doesn't allow raw ICMP from a non-system app. NetForge uses TCP ping (configurable port — default 443) which gives you reachability + RTT for the part of the path that matters most for service availability. Traceroute uses TCP-based hop discovery for the same reason.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does ping use ICMP?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS sandboxing doesn't allow raw ICMP from a non-system app. NetForge uses TCP ping (configurable port — default 443) which gives you reachability + RTT for the part of the path that matters most for service availability. Traceroute uses TCP-based hop discovery for the same reason.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What does the TLS Cert Inspector show?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Full chain (leaf, intermediates, root), SAN list, SNI, expiry date with countdown, signature algorithm, key size, OCSP staple if present, cipher suite negotiated, TLS version, SCT count. Tap any cert in the chain to see its full PEM and computed fingerprints.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What does the TLS Cert Inspector show?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Full chain (leaf, intermediates, root), SAN list, SNI, expiry date with countdown, signature algorithm, key size, OCSP staple if present, cipher suite negotiated, TLS version, SCT count. Tap any cert in the chain to see its full PEM and computed fingerprints.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Subnet Calculator features?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>IPv4 + IPv6. CIDR notation. VLSM (variable-length subnet mask) breakdown — give it a /24 and ask for 4 /26 + 2 /29, get the assignments. Wildcard mask conversion. Supernet aggregator. CIDR overlap detector. All offline.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Subnet Calculator features?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>IPv4 + IPv6. CIDR notation. VLSM (variable-length subnet mask) breakdown — give it a /24 and ask for 4 /26 + 2 /29, get the assignments. Wildcard mask conversion. Supernet aggregator. CIDR overlap detector. All offline.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>WHOIS supports all TLDs?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Most. NetForge follows the standard WHOIS referral chain (IANA → registry → registrar). For modern TLDs that have RDAP (the JSON-based replacement), NetForge uses RDAP for cleaner output. For ccTLDs without WHOIS exposure (a few exist), NetForge tells you so.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>WHOIS supports all TLDs?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Most. NetForge follows the standard WHOIS referral chain (IANA → registry → registrar). For modern TLDs that have RDAP (the JSON-based replacement), NetForge uses RDAP for cleaner output. For ccTLDs without WHOIS exposure (a few exist), NetForge tells you so.</p></div></div>
             </div>
 
             <div class="faq-category">
                 <h3 class="faq-category-title">Pricing &amp; Pro</h3>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What's free vs Pro?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p><strong>Free:</strong> 6 tools (DNS Lookup, Ping, Public IP, Subnet Calculator, TLS Cert Inspector, WHOIS) with unlimited runs. <strong>Pro:</strong> all 54 additional tools, run history, saved sites, recipe workflows, cert expiry watch list with notifications, home-screen widgets, PDF export.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What's free vs Pro?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p><strong>Free:</strong> 6 tools (DNS Lookup, Ping, Public IP, Subnet Calculator, TLS Cert Inspector, WHOIS) with unlimited runs. <strong>Pro:</strong> all 54 additional tools, run history, saved sites, recipe workflows, cert expiry watch list with notifications, home-screen widgets, PDF export.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Why one-time purchase, no subscription?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Tools you reach for ad-hoc deserve to be paid for once. A monthly subscription for an app you might use every day OR not for a month makes no sense. $19.99 lifetime, no upsells, no recurring billing. The price will likely go up over time but anyone with the lifetime keeps it.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Why one-time purchase, no subscription?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Tools you reach for ad-hoc deserve to be paid for once. A monthly subscription for an app you might use every day OR not for a month makes no sense. $19.99 lifetime, no upsells, no recurring billing. The price will likely go up over time but anyone with the lifetime keeps it.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is the Pro purchase tied to my Apple ID?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Once purchased, Pro is unlocked on every device tied to your Apple ID — iPhone, iPad, Mac. Use Restore Purchase if you change devices.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Is the Pro purchase tied to my Apple ID?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. Once purchased, Pro is unlocked on every device tied to your Apple ID — iPhone, iPad, Mac. Use Restore Purchase if you change devices.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I try Pro before buying?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>The free 6 tools are the most-used in the app and are unlimited. Tap any locked tool to see exactly what Pro adds — the paywall shows the full feature list. There's no trial period, but the lifetime price is low enough to be a low-stakes commit.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I try Pro before buying?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>The free 6 tools are the most-used in the app and are unlimited. Tap any locked tool to see exactly what Pro adds — the paywall shows the full feature list. There's no trial period, but the lifetime price is low enough to be a low-stakes commit.</p></div></div>
             </div>
 
             <div class="faq-category">
                 <h3 class="faq-category-title">Privacy &amp; Security</h3>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Where do queries go?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Directly from your device to the network endpoint or service you specified. NetForge has no server. The only "third-party" call is to <code>ipinfo.io</code> for the Public IP tool — opt-in on first run. Everything else is direct: DNS to the resolver you picked, ping to the host you typed, TLS handshake to the SNI host you queried.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Where do queries go?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Directly from your device to the network endpoint or service you specified. NetForge has no server. The only "third-party" call is to <code>ipinfo.io</code> for the Public IP tool — opt-in on first run. Everything else is direct: DNS to the resolver you picked, ping to the host you typed, TLS handshake to the SNI host you queried.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is run history private?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. History is stored in iOS-encrypted SwiftData on your device only. Never leaves the phone. Can be cleared at any time from Settings.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Is run history private?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. History is stored in iOS-encrypted SwiftData on your device only. Never leaves the phone. Can be cleared at any time from Settings.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Any analytics or tracking?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No. No analytics SDK. No crash reporter that sends data off-device. App Store nutrition label confirms: zero data collected.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Any analytics or tracking?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>No. No analytics SDK. No crash reporter that sends data off-device. App Store nutrition label confirms: zero data collected.</p></div></div>
             </div>
 
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>"DNS query timed out"</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Either the resolver is unreachable, or there's an iOS network issue. Try switching the resolver in Settings (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9). If all resolvers fail: airplane mode? Captive portal not signed in? Check Wi-Fi.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>"DNS query timed out"</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Either the resolver is unreachable, or there's an iOS network issue. Try switching the resolver in Settings (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9). If all resolvers fail: airplane mode? Captive portal not signed in? Check Wi-Fi.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Ping shows host unreachable but I can browse the site</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>NetForge's ping uses TCP on port 443 by default. If a firewall blocks 443 to that IP from outside (load balancer in front, etc.) but allows the host's actual web port, the TCP ping fails while HTTP works. Try changing the ping port in Settings to match the service's listening port.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Ping shows host unreachable but I can browse the site</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>NetForge's ping uses TCP on port 443 by default. If a firewall blocks 443 to that IP from outside (load balancer in front, etc.) but allows the host's actual web port, the TCP ping fails while HTTP works. Try changing the ping port in Settings to match the service's listening port.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>TLS Cert Inspector shows expired but the site loads in Safari</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Different SNI. The cert NetForge sees is the one served when SNI = the hostname you typed. Safari may be sending a different SNI (or none, falling back to the default cert). Compare the SAN in NetForge's report to the actual hostname in your Safari URL.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>TLS Cert Inspector shows expired but the site loads in Safari</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Different SNI. The cert NetForge sees is the one served when SNI = the hostname you typed. Safari may be sending a different SNI (or none, falling back to the default cert). Compare the SAN in NetForge's report to the actual hostname in your Safari URL.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cert expiry watch doesn't notify me</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check Settings → Notifications → NetForge is enabled. Background expiry checks fire on app foreground (current implementation). v1.1 adds true BGAppRefreshTask scheduling. If you haven't opened the app in &gt; 7 days, you may miss the 7-day warning — open the app weekly or rely on the 14 / 30 day warnings.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Cert expiry watch doesn't notify me</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check Settings → Notifications → NetForge is enabled. Background expiry checks fire on app foreground (current implementation). v1.1 adds true BGAppRefreshTask scheduling. If you haven't opened the app in &gt; 7 days, you may miss the 7-day warning — open the app weekly or rely on the 14 / 30 day warnings.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Public IP keeps showing my carrier's CGNAT IP, not my home IP</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Expected when on cellular. Your carrier-NATs all phones behind a shared egress IP (CGNAT). Switch to your home Wi-Fi to see your real public IP.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Public IP keeps showing my carrier's CGNAT IP, not my home IP</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Expected when on cellular. Your carrier-NATs all phones behind a shared egress IP (CGNAT). Switch to your home Wi-Fi to see your real public IP.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>WHOIS for .ai or other ccTLD shows nothing</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Some ccTLDs (.ai, .io historically, certain country registries) don't expose WHOIS at all, only an in-browser web form. NetForge will tell you when no WHOIS is available. For those, the registry's web page is the source of truth.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>WHOIS for .ai or other ccTLD shows nothing</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Some ccTLDs (.ai, .io historically, certain country registries) don't expose WHOIS at all, only an in-browser web form. NetForge will tell you when no WHOIS is available. For those, the registry's web page is the source of truth.</p></div></div>
 
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Traceroute hops mostly show * * *</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Many ISPs and corporate firewalls drop the response packets that traceroute relies on. Hops between the source and destination silently swallow the probe. Look at the FIRST hop (your gateway) and the LAST hop (the destination) — those usually answer. The hops in between being dark is normal and not a sign of a problem.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Traceroute hops mostly show * * *</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Many ISPs and corporate firewalls drop the response packets that traceroute relies on. Hops between the source and destination silently swallow the probe. Look at the FIRST hop (your gateway) and the LAST hop (the destination) — those usually answer. The hops in between being dark is normal and not a sign of a problem.</p></div></div>
             </div>
         </div>
     </section>
@@ -494,7 +530,9 @@
         }
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
         (function() {
             const savedTheme = localStorage.getItem('theme');

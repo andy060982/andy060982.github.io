@@ -105,7 +105,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #007AFF;
             --accent2: #34c759;
@@ -360,6 +360,79 @@
             .phase-cards { grid-template-columns: 1fr; }
             .platforms-grid { grid-template-columns: 1fr; gap: 20px; }
             .nav-links { gap: 10px; font-size: 13px; }
+            .version-banner { flex-direction: column; text-align: center; gap: 10px; }
+            .version-banner a { margin-left: 0; }
+        }
+
+        /* What's New Banner + Section */
+        .version-banner {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(143,183,255,.12), rgba(158,240,210,.12));
+            border: 1px solid var(--accent2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        [data-theme="light"] .version-banner {
+            background: linear-gradient(135deg, rgba(0,122,255,.08), rgba(52,199,89,.08));
+        }
+        .version-badge {
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: .3px;
+        }
+        .version-banner p { margin: 0; font-size: 15px; }
+        .version-banner a { margin-left: auto; white-space: nowrap; font-weight: 600; font-size: 14px; }
+
+        .whats-new {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+        .whats-new-content { max-width: 900px; margin: 0 auto; }
+        .whats-new-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .whats-new-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+        [data-theme="light"] .whats-new-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .whats-new-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+        }
+        .whats-new-card .card-icon { font-size: 32px; margin-bottom: 12px; }
+        .whats-new-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .whats-new-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+        .new-badge {
+            display: inline-block;
+            background: var(--accent2);
+            color: var(--bg);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -395,11 +468,56 @@
                     <a href="https://apps.apple.com/us/app/thermotimer/id6755892933" class="app-store-badge" target="_blank">
                         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
                     </a>
-                    <span class="price-badge">$2.99</span>
+                    <span class="price-badge">Free</span>
                 </div>
             </div>
             <div class="hero-image">
                 <img src="../images/thermotimer-256.png" alt="ThermoTimer" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <div class="version-banner">
+        <span class="version-badge">v1.0.1 SUBMITTED</span>
+        <p>Live Activities now actually work on Lock Screen + Dynamic Island, plus reliability and stability improvements throughout.</p>
+        <a href="#whats-new">See what's new &rarr;</a>
+    </div>
+
+    <section id="whats-new" class="whats-new">
+        <div class="whats-new-content">
+            <h2 class="section-title">What's New in v1.0.1</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">First post-launch fix release. Focused on the Live Activity feature, error handling, and code hygiene.</p>
+
+            <div class="whats-new-grid">
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128241;</div>
+                    <h3>Live Activities Actually Work <span class="new-badge">USER-VISIBLE</span></h3>
+                    <p>The Lock Screen and Dynamic Island timer display, advertised since launch, was silently broken because the wrong widget was registered. The real Live Activity now shows the active phase, remaining time, and round count on the Lock Screen and Dynamic Island as designed.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#9201;&#65039;</div>
+                    <h3>Smoother Activity Updates</h3>
+                    <p>Resolved a timing race where the Lock Screen activity could show stale data for the first 1–2 seconds of a new session. Updates now appear immediately when the session begins.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#9203;</div>
+                    <h3>Reliable Session History Saves</h3>
+                    <p>Replaced silent error swallowing in the session-history and settings save paths with explicit error handling. Any future save failure will now surface in logs instead of dropping data quietly.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#8987;</div>
+                    <h3>Watch Face Negative-Time Fix</h3>
+                    <p>The Apple Watch companion no longer displays nonsensical negative time strings if the sync from iPhone lags slightly past zero. The watch face clamps to 0:00 in that edge case.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128737;</div>
+                    <h3>Compliance &amp; Hygiene</h3>
+                    <p>Added the App Store privacy manifest, declared the encryption-compliance answer, hardened the paywall navigation flow against iOS 17+ nested-navigation issues, and removed a duplicate Watch source folder that was a latent build-failure risk.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -568,13 +686,13 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Cooking Tips</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What temperatures are safe?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>USDA-recommended internal temperatures are built in: poultry 165°F, ground meat 160°F, beef/lamb steaks 145°F + 3-min rest, pork 145°F + 3-min rest, fish 145°F. ThermoTimer's preset timers count up to those targets.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does ThermoTimer connect to a Bluetooth probe?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Not yet. Current version is a manual entry + reference + cooking timer combo. Bluetooth probe support is roadmapped for a Pro update.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What temperatures are safe?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>USDA-recommended internal temperatures are built in: poultry 165°F, ground meat 160°F, beef/lamb steaks 145°F + 3-min rest, pork 145°F + 3-min rest, fish 145°F. ThermoTimer's preset timers count up to those targets.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does ThermoTimer connect to a Bluetooth probe?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Not yet. Current version is a manual entry + reference + cooking timer combo. Bluetooth probe support is roadmapped for a Pro update.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Timer alarm didn't fire</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check Settings → Notifications → ThermoTimer → Allow. The alarm uses a local notification scheduled for the timer's end. iOS Focus mode may suppress the visible alert but the sound still plays.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Temperature unit toggled to Celsius unexpectedly</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>ThermoTimer follows your iOS region by default. Override per-recipe in the recipe detail view.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Timer alarm didn't fire</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check Settings → Notifications → ThermoTimer → Allow. The alarm uses a local notification scheduled for the timer's end. iOS Focus mode may suppress the visible alert but the sound still plays.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Temperature unit toggled to Celsius unexpectedly</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>ThermoTimer follows your iOS region by default. Override per-recipe in the recipe detail view.</p></div></div>
             </div>
         </div>
     </section>
@@ -582,7 +700,7 @@
 
     <section class="cta">
         <h2>Ready to optimize your thermal therapy?</h2>
-        <p>Download ThermoTimer for just $2.99. No subscriptions, no ads.</p>
+        <p>Download ThermoTimer free. No subscriptions, no ads.</p>
         <a href="https://apps.apple.com/us/app/thermotimer/id6755892933" class="app-store-badge" target="_blank">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
         </a>
@@ -618,7 +736,9 @@
         }
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
 
 

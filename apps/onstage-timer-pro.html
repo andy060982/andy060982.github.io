@@ -106,7 +106,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #007AFF;
             --accent2: #34c759;
@@ -516,20 +516,20 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Live Activities &amp; Stage Display</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How do I show the timer on the lock screen?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Start any timer — OnStage Timer Pro automatically presents a Live Activity on iPhone (iOS 17+) and on the Dynamic Island (iPhone 14 Pro+ / 15 / 16 / 17 Pro). The timer continues counting down even when the app is backgrounded. Tap the Live Activity to bring the app forward.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I display on Apple Watch?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes — pair your Watch to your iPhone, and the timer appears on the Watch face automatically when running. Tap-to-pause from the Watch.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Does it support external displays for stage delivery?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Connect via AirPlay or Lightning-to-HDMI / USB-C-to-HDMI. The full-screen mirror shows huge digits the speaker can read from across the stage.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How do I show the timer on the lock screen?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Start any timer — OnStage Timer Pro automatically presents a Live Activity on iPhone (iOS 17+) and on the Dynamic Island (iPhone 14 Pro+ / 15 / 16 / 17 Pro). The timer continues counting down even when the app is backgrounded. Tap the Live Activity to bring the app forward.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I display on Apple Watch?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes — pair your Watch to your iPhone, and the timer appears on the Watch face automatically when running. Tap-to-pause from the Watch.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does it support external displays for stage delivery?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. Connect via AirPlay or Lightning-to-HDMI / USB-C-to-HDMI. The full-screen mirror shows huge digits the speaker can read from across the stage.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Audio Cues</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What audio cues are available?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Configurable: 5-min warning, 1-min warning, 30-sec warning, 10-sec countdown beeps, end alarm. Each can be enabled or muted individually. Volume override is on by default — even with silent switch on, the cues play (configurable in Settings).</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Cue didn't play when phone was muted</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Make sure "Override silent switch" is on in Settings → Audio. We also configure AVAudioSession for playback so cues fire regardless of ringer state. If cues still don't play, restart the app once — the audio session sometimes needs a fresh init after a system audio interruption (call, FaceTime).</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What audio cues are available?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Configurable: 5-min warning, 1-min warning, 30-sec warning, 10-sec countdown beeps, end alarm. Each can be enabled or muted individually. Volume override is on by default — even with silent switch on, the cues play (configurable in Settings).</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Cue didn't play when phone was muted</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Make sure "Override silent switch" is on in Settings → Audio. We also configure AVAudioSession for playback so cues fire regardless of ringer state. If cues still don't play, restart the app once — the audio session sometimes needs a fresh init after a system audio interruption (call, FaceTime).</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Live Activity disappeared mid-talk</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS terminates Live Activities after 8 hours. If your talk is shorter than that, the activity should never expire. Common causes for premature termination: iOS low-power mode, a different app with a higher-priority Live Activity, or an iOS background freeze. Open OnStage Timer Pro to refresh.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Idle timer dimmed the screen during a presentation</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>OnStage Timer Pro disables the iOS idle timer while a timer is running — your screen stays awake. If you paused the timer, the idle timer reactivates after iOS's normal delay. To keep the screen on while paused, use Settings → "Keep screen always on".</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Live Activity shows wrong time after backgrounding</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Live Activities sometimes lag a second or two during scenePhase transitions (background → foreground). On foreground, OnStage Timer Pro re-syncs the activity. If the timer is consistently wrong, force-quit and re-launch.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Live Activity disappeared mid-talk</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS terminates Live Activities after 8 hours. If your talk is shorter than that, the activity should never expire. Common causes for premature termination: iOS low-power mode, a different app with a higher-priority Live Activity, or an iOS background freeze. Open OnStage Timer Pro to refresh.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Idle timer dimmed the screen during a presentation</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>OnStage Timer Pro disables the iOS idle timer while a timer is running — your screen stays awake. If you paused the timer, the idle timer reactivates after iOS's normal delay. To keep the screen on while paused, use Settings → "Keep screen always on".</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Live Activity shows wrong time after backgrounding</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Live Activities sometimes lag a second or two during scenePhase transitions (background → foreground). On foreground, OnStage Timer Pro re-syncs the activity. If the timer is consistently wrong, force-quit and re-launch.</p></div></div>
             </div>
         </div>
     </section>
@@ -573,7 +573,9 @@
         }
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
 
 

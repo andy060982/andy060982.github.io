@@ -102,7 +102,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #007AFF;
             --accent2: #34c759;
@@ -359,7 +359,7 @@
                     <a href="https://apps.apple.com/us/app/not-another-twin-calculator/id6755574828" class="app-store-badge" target="_blank">
                         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
                     </a>
-                    <span class="price-badge">$1.99</span>
+                    <span class="price-badge">Free</span>
                 </div>
             </div>
             <div class="hero-image">
@@ -441,13 +441,13 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Calculations</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How does Not Another Twin Calculator estimate twin due dates?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Twin pregnancies typically deliver 2-3 weeks earlier than singletons. The app applies ACOG (American College of Obstetricians and Gynecologists) guidance: 36-37 weeks for di-di twins, 34-37 weeks for mo-di twins, 32-34 weeks for mo-mo twins.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I enter LMP or conception date?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Both. LMP (last menstrual period) follows the standard +280 days minus 14 to convert. Conception is +266 days. Twin offset applied after.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is this medical advice?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p><strong>No.</strong> Not Another Twin Calculator is an informational tool only. Always consult your obstetrician for actual delivery planning. Twin pregnancies have many variables this calculator can't predict.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How does Not Another Twin Calculator estimate twin due dates?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Twin pregnancies typically deliver 2-3 weeks earlier than singletons. The app applies ACOG (American College of Obstetricians and Gynecologists) guidance: 36-37 weeks for di-di twins, 34-37 weeks for mo-di twins, 32-34 weeks for mo-mo twins.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I enter LMP or conception date?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Both. LMP (last menstrual period) follows the standard +280 days minus 14 to convert. Conception is +266 days. Twin offset applied after.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Is this medical advice?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p><strong>No.</strong> Not Another Twin Calculator is an informational tool only. Always consult your obstetrician for actual delivery planning. Twin pregnancies have many variables this calculator can't predict.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Date picker shows wrong format</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Date format follows your iOS region. To force MM/dd/yyyy or dd/MM/yyyy, change iOS Settings → General → Language &amp; Region.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Date picker shows wrong format</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Date format follows your iOS region. To force MM/dd/yyyy or dd/MM/yyyy, change iOS Settings → General → Language &amp; Region.</p></div></div>
             </div>
         </div>
     </section>
@@ -455,7 +455,7 @@
 
     <section class="cta">
         <h2>Two is better than one</h2>
-        <p>Get Not Another Twin Calculator for just $1.99. No subscriptions, no ads.</p>
+        <p>Get Not Another Twin Calculator free. No subscriptions, no ads.</p>
         <a href="https://apps.apple.com/us/app/not-another-twin-calculator/id6755574828" class="app-store-badge" target="_blank">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
         </a>
@@ -491,7 +491,9 @@
         }
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
 
 

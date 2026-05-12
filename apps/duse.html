@@ -109,7 +109,7 @@
             --bg: #ffffff;
             --bg-secondary: #f5f5f7;
             --text: #1d1d1f;
-            --text-secondary: #6e6e73;
+            --text-secondary: #595961;
             --line: rgba(0,0,0,.12);
             --accent: #007AFF;
             --accent2: #34c759;
@@ -420,6 +420,79 @@
             .app-icon-large { width: 200px; height: 200px; border-radius: 40px; }
             .habit-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 10px; font-size: 13px; }
+            .version-banner { flex-direction: column; text-align: center; gap: 10px; }
+            .version-banner a { margin-left: 0; }
+        }
+
+        /* What's New Banner + Section */
+        .version-banner {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(143,183,255,.12), rgba(158,240,210,.12));
+            border: 1px solid var(--accent2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        [data-theme="light"] .version-banner {
+            background: linear-gradient(135deg, rgba(0,122,255,.08), rgba(52,199,89,.08));
+        }
+        .version-badge {
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: .3px;
+        }
+        .version-banner p { margin: 0; font-size: 15px; }
+        .version-banner a { margin-left: auto; white-space: nowrap; font-weight: 600; font-size: 14px; }
+
+        .whats-new {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+        .whats-new-content { max-width: 900px; margin: 0 auto; }
+        .whats-new-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .whats-new-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+        [data-theme="light"] .whats-new-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .whats-new-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+        }
+        .whats-new-card .card-icon { font-size: 32px; margin-bottom: 12px; }
+        .whats-new-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .whats-new-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+        .new-badge {
+            display: inline-block;
+            background: var(--accent2);
+            color: var(--bg);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -466,6 +539,12 @@
             </div>
         </div>
     </section>
+
+    <div class="version-banner">
+        <span class="version-badge">v2.1.3 SUBMITTED</span>
+        <p>Premium banner fix, locale-aware 24-hour time display, safer notification habit completions, stability improvements.</p>
+        <a href="#whats-new">See what's new &rarr;</a>
+    </div>
 
     <section class="habit-types">
         <h2 class="section-title">Build or Break</h2>
@@ -525,6 +604,39 @@
                 <div class="feature-icon">🔒</div>
                 <h3>Private & Local</h3>
                 <p>All data stored on your device. No accounts, no tracking, no cloud.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="whats-new" class="whats-new">
+        <div class="whats-new-content">
+            <h2 class="section-title">What's New in v2.1.3</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Small but meaningful fixes for premium users, international users, and notification reliability.</p>
+
+            <div class="whats-new-grid">
+                <div class="whats-new-card">
+                    <div class="card-icon">&#127775;</div>
+                    <h3>Premium Banner Fix <span class="new-badge">USER-VISIBLE</span></h3>
+                    <p>The "Get Premium" banner in Settings now flips to "Premium Active" immediately after a successful purchase, instead of waiting for the screen to rebuild. No more confusion about whether your purchase went through.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128340;</div>
+                    <h3>24-Hour Time Display</h3>
+                    <p>Smart Reminders and Streak Protection now respect your system's 12/24-hour preference. Users in Germany, Russia, Korea, China, Japan, and Brazil see "14:00" instead of "2 PM" when their device is set to 24-hour time.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128276;</div>
+                    <h3>Safer Notification Completions</h3>
+                    <p>Tapping "Mark Complete" on a habit notification now uses safer error handling. Previously a rare write failure could silently drop the completion. Now failures are logged and reported so they can be addressed.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128737;</div>
+                    <h3>Compliance &amp; Hygiene</h3>
+                    <p>Added the App Store encryption-compliance declaration, removed a developer-only StoreKit config from the production bundle, and bumped the minimum supported iOS to 17.0.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -592,20 +704,20 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Habits &amp; Streaks</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How does Duse define a "streak"?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>A streak counts the number of consecutive days you completed a habit. Skipping a day resets the streak unless that day is a configured rest day. You can also manually mark a day as "skipped" without breaking the streak (Pro feature).</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can I have habits with different schedules?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Each habit has its own schedule: daily, every N days, specific days of the week, weekends only, weekdays only. The streak counter respects the schedule — a Monday-Wednesday-Friday habit completed every M-W-F is a perfect streak.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What's the maximum streak Duse tracks?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>No upper limit. We've seen users with 1,000+ day streaks. The Best Streak counter never decreases — only the current streak resets on a miss.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How does Duse define a "streak"?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>A streak counts the number of consecutive days you completed a habit. Skipping a day resets the streak unless that day is a configured rest day. You can also manually mark a day as "skipped" without breaking the streak (Pro feature).</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I have habits with different schedules?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. Each habit has its own schedule: daily, every N days, specific days of the week, weekends only, weekdays only. The streak counter respects the schedule — a Monday-Wednesday-Friday habit completed every M-W-F is a perfect streak.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What's the maximum streak Duse tracks?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>No upper limit. We've seen users with 1,000+ day streaks. The Best Streak counter never decreases — only the current streak resets on a miss.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Widgets &amp; Notifications</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Widget shows old data</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>iOS schedules widget refreshes — typically every 15-60 minutes. Force refresh: long-press the widget → Edit Widget → Done. Or open Duse to trigger an immediate widget reload.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Reminder didn't fire at the scheduled time</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Check Settings → Notifications → Duse is allowed. iOS Focus mode (Do Not Disturb) suppresses non-Time Sensitive alerts — Duse uses standard notifications. If you've upgraded iOS recently, sometimes the permission resets — re-enable.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Widget shows old data</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS schedules widget refreshes — typically every 15-60 minutes. Force refresh: long-press the widget → Edit Widget → Done. Or open Duse to trigger an immediate widget reload.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Reminder didn't fire at the scheduled time</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check Settings → Notifications → Duse is allowed. iOS Focus mode (Do Not Disturb) suppresses non-Time Sensitive alerts — Duse uses standard notifications. If you've upgraded iOS recently, sometimes the permission resets — re-enable.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>I marked a habit complete but the streak didn't increment</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Streak increments at midnight (your timezone) once the day's quota is met. Marking a habit complete late in the day is fine. If a streak still isn't incrementing the next morning: force-quit the app and re-open. SwiftData sometimes lags on first read.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Lost my data after deleting + reinstalling</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Duse stores data on-device only — no cloud backup. Reinstalling clears it. iCloud Drive Backup (set up in iOS Settings → Apple ID → iCloud) backs up app data automatically. After restoring from backup, your habits are back.</p></div></div>
-                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Daylight saving time messed up my streak</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Duse uses your iOS timezone — DST transitions shouldn't affect streaks. If you traveled across timezones, the day boundary may shift. Manually edit the affected entry from the Habit Detail view.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>I marked a habit complete but the streak didn't increment</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Streak increments at midnight (your timezone) once the day's quota is met. Marking a habit complete late in the day is fine. If a streak still isn't incrementing the next morning: force-quit the app and re-open. SwiftData sometimes lags on first read.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Lost my data after deleting + reinstalling</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Duse stores data on-device only — no cloud backup. Reinstalling clears it. iCloud Drive Backup (set up in iOS Settings → Apple ID → iCloud) backs up app data automatically. After restoring from backup, your habits are back.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Daylight saving time messed up my streak</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Duse uses your iOS timezone — DST transitions shouldn't affect streaks. If you traveled across timezones, the day boundary may shift. Manually edit the affected entry from the Habit Detail view.</p></div></div>
             </div>
         </div>
     </section>
@@ -649,7 +761,9 @@
         }
         function toggleFaq(element) {
             const item = element.closest('.faq-item');
-            item.classList.toggle('open');
+            const isOpen = item.classList.toggle('open');
+            // Keep aria-expanded in sync so screen readers announce state.
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
 
 
