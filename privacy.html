@@ -261,27 +261,22 @@
 
   <main>
     <h1>Privacy Policy</h1>
-    <p class="updated"><strong>Last Updated:</strong> December 2025</p>
+    <p class="updated"><strong>Last Updated:</strong> May 2026</p>
 
     <div class="card">
-      <p>Andy Arevalo ("we," "us," or "our") is committed to protecting your privacy. This policy covers all our apps: Student Guardian (SchoolSync), OnTime Speaker Pro, OnStage Timer Pro, Not Another Twin Calculator, Not Another Stage Timer, Duse – Habit Tracker, ThermoTimer, RoadWatch CA, CareLedger, and future releases.</p>
+      <p>Andy Arevalo ("we," "us," or "our") is committed to protecting your privacy. This policy covers all our iOS, iPadOS, watchOS, and macOS apps: Student Guardian (SchoolSync), OnTime Speaker Pro, OnStage Timer Pro, Not Another Twin Calculator, Not Another Stage Timer, Not Another Countdown, Not Another Fasting Timer, Not Another Coloring Book, Duse – Habit Tracker, ThermoTimer, RoadWatch CA, CareLedger, PawLedger, PetSitterPro, Healko, Kickoff (Weight Loss &amp; Fitness), NetForge: Engineer's Toolkit, and future releases.</p>
     </div>
 
     <div class="card">
-      <h2>1. Information We Do NOT Collect</h2>
-      <p>Our apps do not gather:</p>
+      <h2>1. Our Privacy Principles</h2>
+      <p>Our apps are designed to keep your personal data on your device wherever possible. We follow these principles across the whole portfolio:</p>
       <ul>
-        <li>Personal identifiers (name, email, phone) unless explicitly provided for app functionality</li>
-        <li>Precise geolocation data (RoadWatch CA uses approximate location only to show nearby cameras)</li>
-        <li>Contact information</li>
-        <li>Media files</li>
-        <li>Health metrics</li>
-        <li>Usage patterns or analytics</li>
-        <li>Tracking data</li>
-        <li>Device IDs</li>
-        <li>Apple ID-linked information</li>
+        <li><strong>On-device by default</strong> — Notes, settings, history, health entries, client records, timer configurations, and similar app content are stored locally on your device using iOS data containers.</li>
+        <li><strong>No advertising trackers</strong> — We do not include Google Analytics, Firebase Analytics, third-party ad SDKs, or social-plugin trackers in any of our apps.</li>
+        <li><strong>No user profiles for marketing</strong> — We do not build cross-app user profiles, sell data to third parties, or share information with data brokers.</li>
+        <li><strong>No accounts required by default</strong> — Most apps work without creating an account. Where an account is needed (e.g. CareLedger / PawLedger backend AI features), the account is used only for service operation.</li>
       </ul>
-      <p><strong>We do not build user profiles, track behavior, or sell data.</strong></p>
+      <p>Some apps DO need to access specific data on-device or send specific information to a service in order to work — for example, PetSitterPro needs GPS to record a pet-sitting visit, CareLedger sends a prescription image to our AI processing service when you tap "Scan", and Healko reads selected Apple Health metrics with your explicit permission. Those flows are described per-app in Section 3.</p>
     </div>
 
     <div class="card">
@@ -338,57 +333,89 @@
     </div>
 
     <div class="card">
-      <h2>3. Device-Only Storage</h2>
-      <p>Limited information may remain locally on your device:</p>
-      <ul>
-        <li>Email data and settings (Student Guardian)</li>
-        <li>Habit entries (Duse)</li>
-        <li>Calculation records (Twin Calculator)</li>
-        <li>Timer configurations (Stage Timer/Speaker Timer)</li>
-        <li>Meeting Mode information (OnTime Speaker Pro)</li>
-        <li>Session history (ThermoTimer)</li>
-        <li>Favorite cameras and groups (RoadWatch CA)</li>
-        <li>Patient profiles, medications, dose events, and caregiver notes (CareLedger)</li>
-      </ul>
-      <p>Data remains on-device unless intentionally exported or shared by you.</p>
-    </div>
+      <h2>3. Per-App Data Flows</h2>
+      <p>The following table summarizes what each app accesses, where it stores data, and what (if anything) it sends to a network service. All on-device data stays on your device unless you explicitly export or share it.</p>
 
-    <div class="card">
-      <h2>3.2 CareLedger - Health Data</h2>
-      <p>CareLedger handles sensitive health-related information with extra care:</p>
+      <h3>3.0 On-device storage (all apps)</h3>
       <ul>
-        <li><strong>Local Storage Only:</strong> All patient profiles, medications, dose events, symptoms, and caregiver notes are stored exclusively on your device</li>
-        <li><strong>No Server Storage:</strong> Your health information is never transmitted to or stored on our servers</li>
-        <li><strong>AI Features (Optional):</strong> When you use AI-powered features (prescription scanning, medication education), only the specific text or image being processed is sent to the AI service</li>
-        <li><strong>AI Data Handling:</strong> AI requests are processed in real-time and not retained by the AI service</li>
-        <li><strong>Export Control:</strong> You choose when and how to export or share your data (e.g., Visit Prep PDF summaries)</li>
+        <li>Habit entries (Duse), calculation records (Twin Calculator), timer configurations (Stage Timer / Speaker Timer / OnStage Timer Pro / ThermoTimer / Not Another Countdown), favorite cameras (RoadWatch CA), patient profiles &amp; medications &amp; dose events &amp; caregiver notes (CareLedger), pet profiles &amp; vaccination &amp; weight &amp; vet records (PawLedger), client &amp; pet &amp; visit &amp; invoice &amp; expense &amp; mileage records (PetSitterPro), fasting protocol selection &amp; fast history (Not Another Fasting Timer), countdown events (Not Another Countdown), saved targets &amp; workspaces &amp; run history (NetForge), match data &amp; weight log (Kickoff), Home Assistant URL &amp; sync history (Healko), email data &amp; OAuth tokens &amp; calendar events (Student Guardian).</li>
+        <li>Data remains on-device unless you intentionally export, share, or sync it.</li>
+      </ul>
+
+      <h3>3.1 RoadWatch CA — Location data</h3>
+      <p>RoadWatch CA requests location permission to show traffic cameras near you, calculate distances, and sort by proximity. Location data stays on your device. Camera images are fetched directly from the public Caltrans API. We do not track location history, do not send location to our servers, and do not have any servers in the loop for RoadWatch CA at all.</p>
+
+      <h3>3.2 CareLedger — Health data and AI scanning</h3>
+      <p>CareLedger handles sensitive health-related information for personal and family medication management:</p>
+      <ul>
+        <li><strong>On-device storage</strong> — Patient profiles, medications, dose events, symptoms, and caregiver notes are stored exclusively on your device.</li>
+        <li><strong>Apple HealthKit</strong> — CareLedger may read and write specific HealthKit categories (e.g. medication, mood) only with your explicit permission via iOS prompts. You can revoke this at any time in iOS Settings → Privacy → Health.</li>
+        <li><strong>AI features (optional, user-initiated)</strong> — When you tap "Scan prescription" or request "Medication info", the specific text or image being processed is sent over TLS to our Cloudflare Worker proxy (see Section 5) which forwards the request to an upstream AI provider. The AI provider processes the request in real time and does not retain content. We do not store the request or response on our servers.</li>
+        <li><strong>Export control</strong> — You choose when and how to export (e.g. Visit Prep PDF summaries).</li>
       </ul>
       <div class="highlight">
-        <strong>Important:</strong> CareLedger is a personal health tracking tool for individual and family use. It is NOT HIPAA compliant and should not be used by healthcare providers, covered entities, or for any purpose requiring HIPAA compliance. This app does not provide medical advice.
+        <strong>Important:</strong> CareLedger is a personal health-tracking utility for individual and family use. It is NOT HIPAA-compliant, does not provide medical advice, and should not be used by healthcare providers or covered entities. Always consult a qualified healthcare provider for medical decisions.
       </div>
-    </div>
 
-    <div class="card">
-      <h2>3.1 RoadWatch CA - Location Data</h2>
-      <p>RoadWatch CA requests location permission to:</p>
+      <h3>3.3 PawLedger — Pet health data and AI med-info</h3>
+      <p>PawLedger stores pet health records (vaccinations, medications, weight, vet visits, photos) on-device. AI features that look up medication information send the medication name (text only) to our Cloudflare Worker proxy (see Section 5) for forwarding to an upstream AI provider. We do not store pet health records on our servers. PawLedger is not a veterinary diagnostic tool and does not provide veterinary advice.</p>
+
+      <h3>3.4 PetSitterPro — Location, calendar, photos, biometric, contacts</h3>
+      <p>PetSitterPro is a business tool for independent pet sitters. With your explicit permission per iOS prompts, it accesses:</p>
       <ul>
-        <li>Show traffic cameras near your current location</li>
-        <li>Calculate and display distances to cameras</li>
-        <li>Sort cameras by proximity</li>
+        <li><strong>Location (precise GPS)</strong> for live visit tracking — recorded route is stored on-device and attached to the visit record.</li>
+        <li><strong>Calendar (EventKit)</strong> to surface conflicts with your existing schedule.</li>
+        <li><strong>Photos library</strong> only when you attach a receipt photo to an expense.</li>
+        <li><strong>Face ID / Touch ID</strong> to lock the app between sessions; the biometric check itself is performed by iOS, not the app.</li>
+        <li><strong>Contacts you enter</strong> (client name / phone / email) stay on-device for invoicing and visit reports.</li>
+      </ul>
+      <p>None of the above is transmitted to our servers; reports and invoices are generated on-device and shared via Apple's standard share sheet when you choose to send them.</p>
+
+      <h3>3.5 Healko — Apple Health and Home Assistant bridge</h3>
+      <p>Healko is a home-automation utility that bridges Apple Health to a Home Assistant instance you control. With your explicit permission per iOS prompts:</p>
+      <ul>
+        <li>It <strong>reads</strong> selected Apple Health metrics that you authorize (e.g. heart rate, steps, sleep) and sends those values, over TLS, directly to the Home Assistant URL you provide.</li>
+        <li>It <strong>writes</strong> values from your Home Assistant sensors back into Apple Health on your behalf.</li>
+        <li>Your Home Assistant URL and access token are stored only in the iOS Keychain on your device. They are not transmitted to our servers.</li>
+        <li>If you use Nabu Casa Cloud, traffic goes through Nabu Casa per its own terms; Healko is not a party to that connection.</li>
       </ul>
       <div class="highlight">
-        <strong>Important:</strong> Your location data is used only on your device and is never transmitted to our servers or any third party. Camera data is fetched directly from the public Caltrans API. We do not track your location history or movements.
+        <strong>Important:</strong> Healko is a home-automation utility, not a medical device. It does not diagnose, treat, cure, or prevent any disease. The values displayed are the same metrics already stored in Apple Health on your device. Always consult a qualified healthcare provider for medical advice.
       </div>
+
+      <h3>3.6 Kickoff — HealthKit and match-data fetching</h3>
+      <p>Kickoff is a weight-loss and fitness tracker. With your explicit permission via iOS, it may read weight and body-fat values from Apple Health and write back any weight you log in-app. When you connect a league URL, Kickoff fetches public match data directly from that URL; no Kickoff servers are involved in this loop. All entries are stored on-device. Kickoff is not medical advice; do not use it to make medical decisions.</p>
+
+      <h3>3.7 Student Guardian — Email, OAuth, calendar, AI summaries</h3>
+      <p>Student Guardian uses Apple Sign-in plus IMAP / Gmail OAuth to read school-related emails you select. Email content is cached locally for offline access. With your explicit action, the app can send a specific email's text to our Cloudflare Worker proxy (see Section 5) for AI summarization. Section 2 above describes the Gmail-specific flow in more detail; this section applies equally to other email providers if connected.</p>
+
+      <h3>3.8 NetForge — Network diagnostics on your behalf</h3>
+      <p>NetForge runs network-diagnostic operations (DNS lookups, ping, traceroute, port scans, TLS inspection, etc.) <strong>on behalf of you</strong>, against hosts and IPs that you type in. The app sends those network requests directly from your device to the target host. Results are stored on-device. NetForge does not collect telemetry about the targets you scan, does not phone home, and does not send any of your queries to our servers.</p>
+
+      <h3>3.9 Apps with no network use</h3>
+      <p>The following apps operate entirely on-device with no network requests except where you explicitly initiate sharing: Not Another Twin Calculator, Not Another Stage Timer, Not Another Countdown, Not Another Fasting Timer, Not Another Coloring Book, Duse, ThermoTimer, OnStage Timer Pro, OnTime Speaker Pro.</p>
     </div>
 
     <div class="card">
       <h2>4. Payment Processing</h2>
-      <p>All transactions occur through Apple's system using your Apple ID. We receive only anonymized subscription status from Apple, never your payment details.</p>
+      <p>All transactions occur through Apple's system using your Apple ID. We receive only anonymized subscription status from Apple, never your payment details. Apple's own Privacy Policy applies to that transaction.</p>
     </div>
 
     <div class="card">
-      <h2>5. No Third-Party Analytics</h2>
-      <p>Our apps exclude: Google Analytics, Firebase Analytics, advertising SDKs, tracking tools, and social plugins.</p>
+      <h2>5. Service Providers</h2>
+      <p>For the apps that have AI features (CareLedger prescription scanning + medication info, PawLedger pet-med info, Student Guardian email summaries), we operate a Cloudflare Worker proxy that receives the specific request from your device and forwards it to a third-party AI provider for processing. The Worker:</p>
+      <ul>
+        <li>Does not log or persist your request body or the response.</li>
+        <li>Authenticates each request with a per-device token so we can rate-limit abuse, but does not associate the token with any personal identity.</li>
+        <li>Operates on Cloudflare's standard infrastructure under Cloudflare's own privacy and security terms.</li>
+      </ul>
+      <p>The upstream AI provider (a major commercial LLM vendor) processes each request ephemerally and is contractually prohibited from training on or retaining the data per its enterprise API terms. We do not allow data to be used for model training under any circumstances.</p>
+
+      <h3>5.1 What this means in practice</h3>
+      <p>If you never tap the AI scan / AI summary buttons, no data leaves your device for these flows. The Cloudflare Worker is only invoked when you initiate an AI feature.</p>
+
+      <h3>5.2 No third-party analytics SDKs</h3>
+      <p>Our apps do not include Google Analytics, Firebase Analytics, advertising SDKs, social plugins, or behavioral tracking tools. The Cloudflare Worker described above is operational infrastructure for specific AI features, not an analytics service.</p>
     </div>
 
     <div class="card">
@@ -398,7 +425,7 @@
 
     <div class="card">
       <h2>7. Child Safety</h2>
-      <p>Our apps contain no child-specific data collection mechanisms. Student Guardian is designed for parents to manage their children's school communications; children's personal data is not collected or processed.</p>
+      <p>Our apps contain no child-specific data collection mechanisms. Student Guardian is designed for adults (parents or students) to manage school communications they receive; the app does not actively collect, profile, or process children's personal data.</p>
     </div>
 
     <div class="card">
@@ -419,7 +446,7 @@
       <ul>
         <li><strong>Access:</strong> View all data stored by our apps on your device</li>
         <li><strong>Delete:</strong> Remove all app data by deleting the app or using in-app data deletion options</li>
-        <li><strong>Revoke:</strong> Disconnect third-party accounts (Gmail, Outlook) at any time</li>
+        <li><strong>Revoke:</strong> Disconnect third-party accounts (Gmail and other connected email providers) at any time via the app's Settings or directly in your account dashboard for that provider</li>
         <li><strong>Export:</strong> Export your data where export functionality is provided</li>
       </ul>
     </div>
