@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Another Business Card — Multi-card. No signup. No subscription required. | Andy Arevalo</title>
+    <meta name="description" content="A business card app that respects you. Unlimited cards. No account. On-device privacy. Apple Wallet, AirDrop, NFC, and iPhone-to-iPhone tap exchange. Coming soon.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/notanotherbusinesscard.html">
+    <meta property="og:title" content="Not Another Business Card — Multi-card. No signup. No subscription required.">
+    <meta property="og:description" content="A business card app that respects you. Unlimited cards. No account. On-device privacy.">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanotherbusinesscard.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)">
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #a855f7;
+            --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3ee 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        nav { padding: 20px 0; border-bottom: 1px solid var(--line); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 600; color: var(--text); text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent); }
+        .hero { padding: 80px 0; text-align: center; }
+        .coming-soon { display: inline-block; padding: 6px 16px; background: rgba(168,85,247,.15); border: 1px solid rgba(168,85,247,.35); border-radius: 999px; color: var(--accent); font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 24px; }
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; }
+        .hero .tagline { font-size: 1.35rem; color: var(--text-secondary); margin-bottom: 28px; max-width: 720px; margin-left: auto; margin-right: auto; }
+        .section { padding: 60px 0; border-top: 1px solid var(--line); }
+        .section h2 { font-size: 2rem; margin-bottom: 32px; text-align: center; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+        .feature { background: var(--bg-secondary); border-radius: 16px; padding: 24px; border: 1px solid var(--line); }
+        .feature h3 { color: var(--accent); margin-bottom: 8px; font-size: 1.1rem; }
+        .feature p { color: var(--text-secondary); font-size: .95rem; }
+        .feature .badge { display: inline-block; font-size: .7rem; padding: 2px 8px; background: rgba(168,85,247,.18); color: var(--accent); border-radius: 999px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .04em; font-weight: 700; }
+        .feature .badge.free { background: rgba(34,197,94,.18); color: #22c55e; }
+        .compare { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: .95rem; }
+        .compare th { background: var(--bg-secondary); padding: 12px; text-align: left; font-weight: 600; border-bottom: 1px solid var(--line); }
+        .compare td { padding: 12px; border-bottom: 1px solid var(--line); color: var(--text-secondary); }
+        .compare td:first-child { color: var(--text); font-weight: 500; }
+        .compare .y { color: #22c55e; font-weight: 600; }
+        .compare .n { color: rgba(239, 68, 68, .8); }
+        .price-cta { background: var(--bg-secondary); border-radius: 20px; padding: 32px; text-align: center; margin-top: 24px; border: 1px solid var(--accent); }
+        .price-cta h3 { font-size: 1.4rem; margin-bottom: 12px; }
+        .price-cta p { color: var(--text-secondary); margin-bottom: 18px; }
+        .price-cta a { display: inline-block; padding: 12px 24px; background: var(--accent); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; }
+        .price-cta a:hover { background: #9333ea; }
+        footer { padding: 40px 0; border-top: 1px solid var(--line); text-align: center; color: var(--text-secondary); font-size: .9rem; }
+        footer a { color: var(--text-secondary); text-decoration: none; margin: 0 12px; }
+        @media (max-width:720px){ h1 { font-size: 2.25rem; } .nav-links { display: none; } .compare { font-size: .85rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="nav-brand">Andy Arevalo</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#apps">Apps</a></li>
+                <li><a href="notanotherpass.html">Pass</a></li>
+                <li><a href="../support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="coming-soon">Coming Soon — part of the Not Another Pass</span>
+            <h1>Not Another Business Card</h1>
+            <p class="tagline">A business card app that respects you. Unlimited cards, zero accounts, on-device privacy.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>What you get free</h2>
+            <p style="text-align:center; color: var(--text-secondary); margin-bottom: 32px; max-width: 720px; margin-left:auto; margin-right:auto;">No signup. No subscription on the basics. No selling your contacts.</p>
+            <div class="features-grid">
+                <div class="feature"><span class="badge free">Free</span><h3>Unlimited cards</h3><p>Got 3 jobs? Make 3 cards. No per-card fee like Blinq. No 1-card limit like HiHello's free tier.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>No account required</h3><p>Open the app, create a card, share. We don't ask for your email or sign you up to anything.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>On-device privacy</h3><p>Your cards and contacts live on your iPhone. iCloud sync is opt-in. Apple's end-to-end encryption only.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>QR + vCard + AirDrop</h3><p>Share via QR (encodes the full contact, not just a URL), vCard file (.vcf — works on every device), or AirDrop.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Tap-to-exchange</h3><p>Two iPhones with the app open exchange cards over Bluetooth + Wi-Fi peer link. NO internet, NO recipient install.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Scan paper cards</h3><p>Point the camera at a paper business card and we extract name, title, company, email, phone, website. On-device Apple Vision OCR.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Save to Contacts.app</h3><p>One tap to save a scanned card to your iPhone's Contacts. Works system-wide forever.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Lock Screen widget</h3><p>Quick-share widget on Lock Screen and Home Screen. Tap to open the share sheet.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>With the Pass — everything extra</h2>
+            <div class="features-grid">
+                <div class="feature"><span class="badge">Pass</span><h3>🎨 Themes &amp; branded QR</h3><p>8+ card designs, custom branded QR codes with your logo + colors.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>📊 Card analytics</h3><p>See when &amp; where each card was shared. Local-only — never uploaded.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>📚 Unlimited contacts</h3><p>Free tier caps scanned-card storage at 5. Pass removes the lid. Add tags, notes, follow-up reminders.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>📅 Calendar context</h3><p>Auto-tag "met at WWDC 2026 on May 15" by linking your calendar.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>⌚ Apple Watch</h3><p>Show your active card's QR on your watch face. Flick wrist, done.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>⚡ Live Activity</h3><p>Pin your active card to Lock Screen during a calendar-tagged event.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>🤖 AI Notes</h3><p>Apple Intelligence (iOS 18.1+) auto-summarizes meeting notes per contact. On-device.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>📤 CSV export</h3><p>Export your saved contacts for CRM uploads. No vendor lock-in.</p></div>
+            </div>
+
+            <div class="price-cta">
+                <h3>One Pass — every Not Another app, current and future</h3>
+                <p>From $4.99/month (7-day free trial), $29.99/year (save 50%), or $79.99 lifetime.</p>
+                <a href="notanotherpass.html">Learn about the Pass &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>How we compare</h2>
+            <table class="compare">
+                <thead>
+                    <tr><th></th><th>Not Another</th><th>Blinq</th><th>HiHello</th><th>CamCard</th><th>Kado</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>No account required</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+                    <tr><td>Unlimited cards in free tier</td><td class="y">✓</td><td class="n">$4.99/card/mo</td><td class="n">1 only</td><td class="n">500 cap</td><td class="n">1 only</td></tr>
+                    <tr><td>One-time purchase available</td><td class="y">$19.99 / $79.99</td><td class="n">Subscription only</td><td class="n">Subscription only</td><td class="n">Subscription only</td><td class="n">Subscription only</td></tr>
+                    <tr><td>On-device storage by default</td><td class="y">✓</td><td class="n">Cloud-only</td><td class="n">Cloud-only</td><td class="n">Cloud-only</td><td class="n">Cloud-only</td></tr>
+                    <tr><td>iPhone-to-iPhone offline exchange</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+                    <tr><td>OCR scanner in free tier</td><td class="y">✓</td><td class="n">Pro only</td><td class="n">Pro only</td><td class="n">Paid + ads</td><td class="n">Pro only</td></tr>
+                    <tr><td>No ads ever</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">Ads in paid version</td><td class="y">✓</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>What we will never do</h2>
+            <div class="features-grid">
+                <div class="feature"><h3>❌ Make you create an account</h3><p>No email signup. No password. No "verify your identity." Open the app, use it.</p></div>
+                <div class="feature"><h3>❌ Store your contacts on our server</h3><p>Your contact list never touches our infrastructure. iCloud is optional and encrypted by Apple.</p></div>
+                <div class="feature"><h3>❌ Charge per card</h3><p>Make 1 card or 30. Same price. Same app. The "you have 3 jobs, pay 3x" model is dead.</p></div>
+                <div class="feature"><h3>❌ Pop up a paywall on launch</h3><p>Free features are free. Paid features live behind explicit user action. Always.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            <a href="../privacy.html">Privacy</a> &middot;
+            <a href="../terms.html">Terms</a> &middot;
+            <a href="../support.html">Support</a> &middot;
+            <a href="../legal/eula.html">EULA</a>
+        </p>
+        <p style="margin-top: 12px;">&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
