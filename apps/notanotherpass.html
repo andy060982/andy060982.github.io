@@ -419,8 +419,8 @@
             <span class="coming-soon-badge">Coming Soon</span>
             <h1>Not Another Pass</h1>
             <p class="tagline">One subscription. Every Not Another app, current and future. Less than the cost of two coffees a month.</p>
-            <div class="price-preview">$4.99 / month</div>
-            <div class="price-suffix">7-day free trial &middot; cancel anytime</div>
+            <div class="price-preview">From $4.99/mo &middot; or $79.99 lifetime</div>
+            <div class="price-suffix">7-day free trial on monthly &middot; cancel anytime</div>
 
             <form class="notify-form" onsubmit="handleNotify(event)">
                 <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
@@ -477,42 +477,74 @@
     <section class="pricing">
         <div class="container">
             <h2>Choose your plan</h2>
+            <p class="subtitle" style="text-align: center; color: var(--text-secondary); max-width: 720px; margin: 0 auto 60px;">Most people pick the annual Pass — it saves 50% vs monthly and unlocks every Not Another app forever as long as you stay subscribed.</p>
+
+            <h3 style="text-align: center; font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Not Another Pass &mdash; All apps</h3>
 
             <div class="pricing-grid">
                 <div class="price-card">
-                    <h3>Individual app</h3>
-                    <div class="price">$1.99</div>
-                    <div class="price-period">per app, per month</div>
-                    <ul>
-                        <li>Unlocks one Not Another app</li>
-                        <li>Cancel anytime in Settings</li>
-                        <li>Subscribe inside the app</li>
-                    </ul>
-                    <p class="price-note">For when you only need one.</p>
-                </div>
-
-                <div class="price-card featured">
-                    <h3>Not Another Pass</h3>
+                    <h3>Monthly</h3>
                     <div class="price">$4.99</div>
                     <div class="price-period">per month, all apps</div>
                     <ul>
                         <li>Unlocks every Not Another app</li>
                         <li>All future Not Another apps included</li>
                         <li>7-day free trial</li>
-                        <li>Works across iPhone &amp; iPad</li>
-                        <li>Family Sharing supported</li>
+                        <li>Cancel anytime in Settings</li>
                     </ul>
-                    <p class="price-note">Break-even at just 2.5 apps.</p>
+                    <p class="price-note">Try the Pass first.</p>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>Annual</h3>
+                    <div class="price">$29.99</div>
+                    <div class="price-period">per year &middot; save 50%</div>
+                    <ul>
+                        <li>Everything in monthly</li>
+                        <li>50% off vs monthly (saves $30/yr)</li>
+                        <li>Family Sharing eligible</li>
+                        <li>Works across iPhone &amp; iPad</li>
+                    </ul>
+                    <p class="price-note">Like $2.50/mo for the whole suite.</p>
                 </div>
 
                 <div class="price-card">
-                    <h3>Lifetime per app</h3>
-                    <div class="price">$19.99</div>
-                    <div class="price-period">one-time, per app</div>
+                    <h3>Lifetime</h3>
+                    <div class="price">$79.99</div>
+                    <div class="price-period">one-time, forever</div>
                     <ul>
-                        <li>Pay once, own forever</li>
+                        <li>Every current Not Another app</li>
+                        <li>Every future Not Another app</li>
+                        <li>No recurring charges, ever</li>
+                        <li>Family Sharing eligible</li>
+                    </ul>
+                    <p class="price-note">Best long-term value.</p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; font-size: 1.25rem; color: var(--text-secondary); margin: 80px 0 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Or just one app</h3>
+
+            <div class="pricing-grid" style="max-width: 640px;">
+                <div class="price-card">
+                    <h3>Per-app monthly</h3>
+                    <div class="price">$1.99</div>
+                    <div class="price-period">per app, per month</div>
+                    <ul>
+                        <li>Unlocks the premium tier of one app</li>
+                        <li>Cancel anytime in Settings</li>
+                        <li>Switch to Pass anytime (iOS prorates)</li>
+                    </ul>
+                    <p class="price-note">For when you only need one.</p>
+                </div>
+
+                <div class="price-card">
+                    <h3>Per-app lifetime</h3>
+                    <div class="price">$19.99</div>
+                    <div class="price-period">one-time, one app</div>
+                    <ul>
+                        <li>Pay once, own one app forever</li>
                         <li>No recurring charges</li>
-                        <li>Available per individual app</li>
+                        <li>Pass lifetime ($79.99) is cheaper for 2+ apps</li>
                     </ul>
                     <p class="price-note">For long-time fans of a single app.</p>
                 </div>
@@ -521,6 +553,40 @@
             <p style="text-align: center; margin-top: 40px; color: var(--text-secondary); font-size: 0.9rem;">
                 All prices in USD. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. Cancel anytime in iOS Settings &rarr; Apple ID &rarr; Subscriptions.
             </p>
+        </div>
+    </section>
+
+    <section class="included" style="background: var(--bg);">
+        <div class="container">
+            <h2>What the Pass unlocks</h2>
+            <p class="subtitle">Premium-tier features in every Not Another app, one subscription.</p>
+
+            <div class="apps-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <div class="app-card" style="cursor: default; text-align: left; align-items: flex-start;">
+                    <h3 style="color: var(--accent); margin-bottom: 12px;">Twin Calculator</h3>
+                    <p style="text-align: left; min-height: 0;">History log (last 100 calcs), result transfer between panels, scientific mode (sin/cos/log/power), unit conversion overlay, widget, themes.</p>
+                </div>
+                <div class="app-card" style="cursor: default; text-align: left; align-items: flex-start;">
+                    <h3 style="color: var(--accent); margin-bottom: 12px;">Stage Timer</h3>
+                    <p style="text-align: left; min-height: 0;">Multi-segment cue lists, preset library, Live Activity on Lock Screen, Bluetooth/AirPlay remote, custom warning thresholds, audience-facing display.</p>
+                </div>
+                <div class="app-card" style="cursor: default; text-align: left; align-items: flex-start;">
+                    <h3 style="color: var(--accent); margin-bottom: 12px;">Countdown</h3>
+                    <p style="text-align: left; min-height: 0;">Unlimited countdowns (free = 3), all widget sizes, photo backgrounds, recurring events, themes, share via link, iCloud sync.</p>
+                </div>
+                <div class="app-card" style="cursor: default; text-align: left; align-items: flex-start;">
+                    <h3 style="color: var(--accent); margin-bottom: 12px;">Fasting Timer</h3>
+                    <p style="text-align: left; min-height: 0;">Unlimited custom protocols (free = 1), full history with charts, weight tracking, HealthKit integration, mood/journal notes, widget, streak tracker.</p>
+                </div>
+                <div class="app-card" style="cursor: default; text-align: left; align-items: flex-start; opacity: 0.7;">
+                    <h3 style="color: var(--accent); margin-bottom: 12px;">Tip Calculator <span class="status soon" style="font-size: 0.7rem; padding: 2px 8px; vertical-align: middle; margin-left: 6px;">Coming</span></h3>
+                    <p style="text-align: left; min-height: 0;">Currency conversion (live rates), group splitting (even or per-item), tip history with CSV export, local tip-culture intelligence (US/UK/JP/EU), business-trip mode, widget.</p>
+                </div>
+                <div class="app-card" style="cursor: default; text-align: left; align-items: flex-start; opacity: 0.5;">
+                    <h3 style="color: var(--accent); margin-bottom: 12px;">+ Future apps</h3>
+                    <p style="text-align: left; min-height: 0;">Every new Not Another app launches with its premium tier already unlocked for Pass holders. No upgrade needed, no extra purchase.</p>
+                </div>
+            </div>
         </div>
     </section>
 
