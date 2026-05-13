@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Another Tip Calculator — Tip math without the ads | Andy Arevalo</title>
+    <meta name="description" content="A tip calculator that respects you. Zero ads, ever. No paywall on the basics. Coming soon as part of the Not Another Pass.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/notanothertipcalculator.html">
+    <meta property="og:title" content="Not Another Tip Calculator — Tip math without the ads">
+    <meta property="og:description" content="A tip calculator that respects you. Zero ads, ever. No paywall on the basics.">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanothertipcalculator.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)">
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #a855f7;
+            --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3ee 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        nav { padding: 20px 0; border-bottom: 1px solid var(--line); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 600; color: var(--text); text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .hero { padding: 80px 0; text-align: center; }
+        .coming-soon { display: inline-block; padding: 6px 16px; background: rgba(168,85,247,.15); border: 1px solid rgba(168,85,247,.35); border-radius: 999px; color: var(--accent); font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 24px; }
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; }
+        .hero .tagline { font-size: 1.35rem; color: var(--text-secondary); margin-bottom: 28px; max-width: 620px; margin-left: auto; margin-right: auto; }
+
+        .section { padding: 60px 0; border-top: 1px solid var(--line); }
+        .section h2 { font-size: 2rem; margin-bottom: 32px; text-align: center; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+        .feature { background: var(--bg-secondary); border-radius: 16px; padding: 24px; border: 1px solid var(--line); }
+        .feature h3 { color: var(--accent); margin-bottom: 8px; font-size: 1.1rem; }
+        .feature p { color: var(--text-secondary); font-size: .95rem; }
+        .feature .badge { display: inline-block; font-size: .7rem; padding: 2px 8px; background: rgba(168,85,247,.18); color: var(--accent); border-radius: 999px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .04em; font-weight: 700; }
+        .feature .badge.free { background: rgba(34,197,94,.18); color: #22c55e; }
+
+        .price-cta { background: var(--bg-secondary); border-radius: 20px; padding: 32px; text-align: center; margin-top: 24px; border: 1px solid var(--accent); }
+        .price-cta h3 { font-size: 1.4rem; margin-bottom: 12px; }
+        .price-cta p { color: var(--text-secondary); margin-bottom: 18px; }
+        .price-cta a { display: inline-block; padding: 12px 24px; background: var(--accent); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; }
+        .price-cta a:hover { background: #9333ea; }
+
+        footer { padding: 40px 0; border-top: 1px solid var(--line); text-align: center; color: var(--text-secondary); font-size: .9rem; }
+        footer a { color: var(--text-secondary); text-decoration: none; margin: 0 12px; }
+        @media (max-width:720px){ h1 { font-size: 2.25rem; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="nav-brand">Andy Arevalo</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#apps">Apps</a></li>
+                <li><a href="notanotherpass.html">Pass</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="coming-soon">Coming Soon — part of the Not Another Pass</span>
+            <h1>Not Another Tip Calculator</h1>
+            <p class="tagline">A tip calculator that respects you. Zero ads, ever. No paywall on the basics.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>What you get free</h2>
+            <p style="text-align:center; color: var(--text-secondary); margin-bottom: 32px; max-width: 720px; margin-left:auto; margin-right:auto;">Everything most people actually need to calculate a tip. No ads. No popup paywall on launch. No signup. Forever.</p>
+            <div class="features-grid">
+                <div class="feature"><span class="badge free">Free</span><h3>Tip slider + presets</h3><p>0–50% slider with 4 customizable preset chips you can rename to your standard rates.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Pre-tax tip option</h3><p>The feature most calculators hide behind a paywall. Tip on the bill before tax with one toggle.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Smart rounding</h3><p>Round up or down on the tip or the total — whichever feels right for the bill.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Split 1–20 ways</h3><p>Even split among any number of diners with a clear per-person breakdown.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Locale currency</h3><p>Your device locale's currency by default. No US-centric formatting.</p></div>
+                <div class="feature"><span class="badge free">Free</span><h3>Quick-launch widget</h3><p>Lock Screen + Home Screen widget to land directly in the calculator. One tap.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>With the Pass — everything extra</h2>
+            <p style="text-align:center; color: var(--text-secondary); margin-bottom: 32px; max-width: 720px; margin-left:auto; margin-right:auto;">Designed for travelers, business diners, and anyone who eats out enough to want the perks.</p>
+            <div class="features-grid">
+                <div class="feature"><span class="badge">Pass</span><h3>🌍 Currency conversion</h3><p>Type the bill in any local currency, see tip and total in your home currency. Live rates with offline fallback.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>🗺️ 30+ country tipping guide</h3><p>Restaurant, taxi, hotel, bar, delivery — venue-specific tip ranges + cultural notes. Knows Japan = don't tip.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>👥 Per-item bill splitting</h3><p>Assign each line item to who ordered it. Tip splits proportionally. End-of-table math, solved.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>📷 Receipt OCR</h3><p>Point the camera at a receipt. The app fills in the bill amount and tax for you. Uses Apple Vision on-device.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>📚 Bill history & CSV export</h3><p>Save every meal with venue, notes, and ratings. Export to CSV for expense reports.</p></div>
+                <div class="feature"><span class="badge">Pass</span><h3>💼 Business-trip mode</h3><p>Tag bills as business, group by trip name, export at the end of the conference.</p></div>
+            </div>
+
+            <div class="price-cta">
+                <h3>One Pass — every Not Another app, current and future</h3>
+                <p>From $4.99/month (7-day free trial), $29.99/year (save 50%), or $79.99 lifetime.</p>
+                <a href="notanotherpass.html">Learn about the Pass &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>What we will never do</h2>
+            <div class="features-grid">
+                <div class="feature"><h3>❌ Show you an ad</h3><p>Not in the free tier. Not in the paid tier. Not ever. Your time at the cashier matters.</p></div>
+                <div class="feature"><h3>❌ Make you create an account</h3><p>No email, no password, no signup wall. The app works the second you open it.</p></div>
+                <div class="feature"><h3>❌ Pop up a paywall on launch</h3><p>Free features are free. The paywall lives behind explicit user action.</p></div>
+                <div class="feature"><h3>❌ Beg for a 5-star review</h3><p>If we earn it, you'll leave one. We use Apple's rate-limited prompt, not a custom nag.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            <a href="../privacy.html">Privacy</a> &middot;
+            <a href="../terms.html">Terms</a> &middot;
+            <a href="../support.html">Support</a> &middot;
+            <a href="../legal/eula.html">EULA</a>
+        </p>
+        <p style="margin-top: 12px;">&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
