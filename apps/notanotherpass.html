@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Another Pass — One subscription. Every Not Another app. | Andy Arevalo</title>
+    <meta name="description" content="One subscription unlocks every Not Another app, current and future. Coming soon to iPhone and iPad.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/notanotherpass.html">
+    <meta property="og:title" content="Not Another Pass — One subscription. Every Not Another app.">
+    <meta property="og:description" content="One subscription unlocks every Not Another app, current and future. Coming soon to iPhone and iPad.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Not Another Pass — One subscription. Every Not Another app.">
+    <meta name="twitter:description" content="One subscription unlocks every Not Another app, current and future. Coming soon to iPhone and iPad.">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/notanotherpass.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --bg-secondary: #0f1626;
+            --text: #e8edf7;
+            --text-secondary: #b7c0d4;
+            --line: rgba(255,255,255,.12);
+            --accent: #a855f7;
+            --accent-alt: #7c3aed;
+            --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3ee 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        nav { padding: 20px 0; border-bottom: 1px solid var(--line); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 600; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+        /* Hero */
+        .hero { padding: 80px 0 40px; text-align: center; }
+
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            border-radius: 999px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero .tagline {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .price-preview {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .hero .price-suffix {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .notify-form {
+            margin-top: 40px;
+            display: flex;
+            gap: 12px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .notify-form input[type="email"] {
+            flex: 1;
+            min-width: 240px;
+            padding: 14px 18px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .notify-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .notify-form button {
+            padding: 14px 24px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .notify-form button:hover { background: var(--accent-alt); transform: translateY(-1px); }
+
+        /* What's Included */
+        .included { padding: 80px 0; background: var(--bg-secondary); }
+        .included h2 { text-align: center; font-size: 2rem; margin-bottom: 16px; }
+        .included .subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 60px; }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .app-card {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .app-card img {
+            width: 88px;
+            height: 88px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .app-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .app-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            min-height: 2.4em;
+        }
+
+        .app-card .status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        .status.live { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .status.soon { background: rgba(168, 85, 247, 0.15); color: var(--accent); border: 1px solid rgba(168, 85, 247, 0.35); }
+        .status.future { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
+
+        /* Pricing */
+        .pricing { padding: 80px 0; }
+        .pricing h2 { text-align: center; font-size: 2rem; margin-bottom: 60px; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 36px 28px;
+            border: 1px solid var(--line);
+            text-align: center;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(180deg, rgba(168, 85, 247, 0.08) 0%, var(--bg-secondary) 100%);
+        }
+
+        .price-card.featured::before {
+            content: 'Best Value';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 14px;
+            border-radius: 999px;
+        }
+
+        .price-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .price-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 16px 0 4px;
+            color: var(--text);
+        }
+
+        .price-card .price-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 24px 0;
+        }
+
+        .price-card li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .price-card li::before {
+            content: '\2713';
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .price-card .price-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* How It Works */
+        .how-it-works { padding: 80px 0; background: var(--bg-secondary); }
+        .how-it-works h2 { text-align: center; font-size: 2rem; margin-bottom: 60px; }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ */
+        .faq { padding: 80px 0; }
+        .faq h2 { text-align: center; font-size: 2rem; margin-bottom: 60px; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+
+        .faq-item {
+            border-bottom: 1px solid var(--line);
+            padding: 4px 0;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 20px 0;
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+
+        .faq-question[aria-expanded="true"]::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            color: var(--text-secondary);
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+
+        /* Footer */
+        footer { padding: 40px 0; border-top: 1px solid var(--line); text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+        footer a { color: var(--text-secondary); text-decoration: none; margin: 0 12px; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 2.25rem; }
+            .hero .tagline { font-size: 1.1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="nav-brand">Andy Arevalo</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#apps">Apps</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h1>Not Another Pass</h1>
+            <p class="tagline">One subscription. Every Not Another app, current and future. Less than the cost of two coffees a month.</p>
+            <div class="price-preview">$4.99 / month</div>
+            <div class="price-suffix">7-day free trial &middot; cancel anytime</div>
+
+            <form class="notify-form" onsubmit="handleNotify(event)">
+                <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+                <button type="submit">Notify me at launch</button>
+            </form>
+            <p id="notify-msg" style="margin-top: 16px; color: var(--text-secondary); font-size: 0.9rem; min-height: 1.4em;"></p>
+        </div>
+    </section>
+
+    <section class="included">
+        <div class="container">
+            <h2>Every Not Another app, unlocked.</h2>
+            <p class="subtitle">Available now or arriving soon &mdash; one Pass covers them all.</p>
+
+            <div class="apps-grid">
+                <a href="twin-calculator.html" class="app-card">
+                    <div style="width: 88px; height: 88px; border-radius: 20px; background: linear-gradient(135deg, #6366f1, #22d3ee); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">&#128290;</div>
+                    <h3>Not Another Twin Calculator</h3>
+                    <p>Dual calculator for side-by-side math.</p>
+                    <span class="status live">Live free</span>
+                </a>
+
+                <a href="stage-timer.html" class="app-card">
+                    <img src="../images/not-another-stage-timer-80.png" alt="Not Another Stage Timer">
+                    <h3>Not Another Stage Timer</h3>
+                    <p>Speaker, presenter and event countdown timer.</p>
+                    <span class="status live">Live free</span>
+                </a>
+
+                <a href="notanothercountdown.html" class="app-card">
+                    <img src="../images/notanothercountdown-80.png" alt="Not Another Countdown">
+                    <h3>Not Another Countdown</h3>
+                    <p>Beautiful event countdowns with widgets.</p>
+                    <span class="status soon">Coming soon</span>
+                </a>
+
+                <a href="notanotherfastingtimer.html" class="app-card">
+                    <img src="../images/notanotherfastingtimer-80.png" alt="Not Another Fasting Timer">
+                    <h3>Not Another Fasting Timer</h3>
+                    <p>Intermittent fasting tracker with custom protocols.</p>
+                    <span class="status soon">Coming soon</span>
+                </a>
+
+                <div class="app-card" style="cursor: default; opacity: 0.6;">
+                    <img src="../images/notanother-future.png" alt="Future Not Another app" onerror="this.style.display='none'">
+                    <h3>More on the way</h3>
+                    <p>New utilities in the Not Another family land in the Pass automatically.</p>
+                    <span class="status future">Future</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>Choose your plan</h2>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Individual app</h3>
+                    <div class="price">$1.99</div>
+                    <div class="price-period">per app, per month</div>
+                    <ul>
+                        <li>Unlocks one Not Another app</li>
+                        <li>Cancel anytime in Settings</li>
+                        <li>Subscribe inside the app</li>
+                    </ul>
+                    <p class="price-note">For when you only need one.</p>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>Not Another Pass</h3>
+                    <div class="price">$4.99</div>
+                    <div class="price-period">per month, all apps</div>
+                    <ul>
+                        <li>Unlocks every Not Another app</li>
+                        <li>All future Not Another apps included</li>
+                        <li>7-day free trial</li>
+                        <li>Works across iPhone &amp; iPad</li>
+                        <li>Family Sharing supported</li>
+                    </ul>
+                    <p class="price-note">Break-even at just 2.5 apps.</p>
+                </div>
+
+                <div class="price-card">
+                    <h3>Lifetime per app</h3>
+                    <div class="price">$19.99</div>
+                    <div class="price-period">one-time, per app</div>
+                    <ul>
+                        <li>Pay once, own forever</li>
+                        <li>No recurring charges</li>
+                        <li>Available per individual app</li>
+                    </ul>
+                    <p class="price-note">For long-time fans of a single app.</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 40px; color: var(--text-secondary); font-size: 0.9rem;">
+                All prices in USD. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. Cancel anytime in iOS Settings &rarr; Apple ID &rarr; Subscriptions.
+            </p>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How it works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Subscribe in any Not Another app</h3>
+                    <p>Open any Not Another app and tap &ldquo;Get the Pass.&rdquo; Subscribe once, no account required.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Unlock everywhere instantly</h3>
+                    <p>Your Pass syncs across all your Not Another apps via iCloud &mdash; usually within seconds.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>New apps land automatically</h3>
+                    <p>When we ship a new Not Another app, your Pass already includes it. No extra purchase.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently asked</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">When does the Pass launch?</button>
+                    <div class="faq-answer">
+                        <p>We&rsquo;re building it now. Drop your email above and we&rsquo;ll send a one-line note the day it goes live &mdash; no marketing spam.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">What unlocks with the Pass?</button>
+                    <div class="faq-answer">
+                        <p>Every Not Another app gets premium-tier access. That includes unlocked feature limits, widgets, themes, and any future Pro-only features we ship. The free tier of each app keeps working as it does today &mdash; the Pass just removes the lid.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">Do I need an account or login?</button>
+                    <div class="faq-answer">
+                        <p>No. Your Pass is tied to your Apple Account via iCloud Key-Value Store. Apps see your active Pass automatically when you&rsquo;re signed into iCloud. No usernames, no passwords, no email lists.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">Does it work with Family Sharing?</button>
+                    <div class="faq-answer">
+                        <p>Yes. The Pass is set up as Family Sharing eligible, so up to six family members on your Apple Family can use it at no extra cost.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">Can I switch from a per-app subscription to the Pass?</button>
+                    <div class="faq-answer">
+                        <p>Yes. iOS handles the changeover automatically and prorates the difference. You won&rsquo;t pay double during the transition.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">How do I cancel?</button>
+                    <div class="faq-answer">
+                        <p>Open iOS Settings &rarr; tap your name at the top &rarr; Subscriptions &rarr; Not Another Pass &rarr; Cancel. The Pass remains active through the end of the period you&rsquo;ve already paid for.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">Will my data be lost if I cancel?</button>
+                    <div class="faq-answer">
+                        <p>No. Your data stays on your device (and in your iCloud where applicable). The Pass only gates premium features &mdash; if you re-subscribe later, everything is exactly where you left it.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">Is there a free trial?</button>
+                    <div class="faq-answer">
+                        <p>Yes. The Pass includes a 7-day free trial. You won&rsquo;t be charged until day 8, and you can cancel any time during the trial with no commitment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            <a href="../privacy.html">Privacy</a> &middot;
+            <a href="../terms.html">Terms</a> &middot;
+            <a href="../support.html">Support</a> &middot;
+            <a href="../legal/eula.html">EULA</a>
+        </p>
+        <p style="margin-top: 12px;">&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('y').textContent = new Date().getFullYear();
+
+        function toggleFaq(btn) {
+            var open = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+            var answer = btn.nextElementSibling;
+            if (answer && answer.classList.contains('faq-answer')) {
+                answer.classList.toggle('open');
+            }
+        }
+
+        function handleNotify(e) {
+            e.preventDefault();
+            var msg = document.getElementById('notify-msg');
+            var email = e.target.email.value.trim();
+            if (!email) return;
+            // For launch: just acknowledge. Replace with mailto/form handler when wired.
+            window.location.href = 'mailto:arevalo.andy@gmail.com?subject=Notify%20me%20when%20Not%20Another%20Pass%20launches&body=Please%20add%20' + encodeURIComponent(email) + '%20to%20the%20Not%20Another%20Pass%20launch%20list.';
+            msg.textContent = 'Thanks! Your mail app should open with a pre-filled message. Send it and we will email you at launch.';
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
