@@ -843,6 +843,23 @@
         .version-entry.latest .version-num { color: var(--accent2); }
         .version-date { font-size: 13px; color: var(--text-secondary); }
         .version-entry p { margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+
+        /* Limited-time sale banner (shown via JS only during the sale window) */
+        .sale-banner {
+            display: none;
+            margin-top: 58px; /* clears the fixed nav when shown */
+            background: linear-gradient(135deg, #ff7a45, #ff4d6d);
+            color: #fff;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+        .sale-banner:hover { filter: brightness(1.07); }
+        .sale-banner strong { font-weight: 800; }
+        .sale-was { text-decoration: line-through; opacity: .75; margin: 0 4px; }
     </style>
 </head>
 <body>
@@ -865,6 +882,10 @@
             </div>
         </div>
     </nav>
+
+    <a class="sale-banner" id="saleBanner" href="https://apps.apple.com/app/id6757627356" target="_blank" rel="noopener">
+        Limited-time offer &mdash; PawLedger Lifetime <strong>70% off: $29.99</strong> <span class="sale-was">$99.99</span> &middot; through Sun, May 24 &rarr;
+    </a>
 
     <div class="page-nav">
         <div class="page-nav-content">
@@ -2437,6 +2458,22 @@
                 document.getElementById('theme-icon').innerHTML = '&#127769;';
             }
             document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+
+        // Show the limited-time sale banner only during the sale window (May 19-24, 2026).
+        (function() {
+            var now = new Date();
+            var start = new Date(2026, 4, 19);  // May 19, 2026 00:00 local
+            var end = new Date(2026, 4, 25);    // hide at May 25, 2026 00:00 local
+            if (now >= start && now < end) {
+                var b = document.getElementById('saleBanner');
+                if (b) {
+                    b.style.display = 'block';
+                    // banner now provides the 58px nav clearance, so drop page-nav's
+                    var pn = document.querySelector('.page-nav');
+                    if (pn) pn.style.marginTop = '0';
+                }
+            }
         })();
     </script>
 </body>
