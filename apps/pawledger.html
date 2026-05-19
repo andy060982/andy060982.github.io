@@ -757,6 +757,92 @@
             .feature-list { grid-template-columns: 1fr; }
             .section-title { font-size: 26px; }
         }
+
+        /* What's New Banner + Section */
+        .version-banner {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(143,183,255,.12), rgba(158,240,210,.12));
+            border: 1px solid var(--accent2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        [data-theme="light"] .version-banner {
+            background: linear-gradient(135deg, rgba(0,122,255,.08), rgba(52,199,89,.08));
+        }
+        .version-badge {
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: .3px;
+        }
+        .version-banner p { margin: 0; font-size: 15px; }
+        .version-banner a { margin-left: auto; white-space: nowrap; font-weight: 600; font-size: 14px; }
+
+        .whats-new {
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+        }
+        .whats-new-content { max-width: 900px; margin: 0 auto; }
+        .whats-new-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .whats-new-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+        [data-theme="light"] .whats-new-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .whats-new-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+        }
+        .whats-new-card .card-icon { font-size: 32px; margin-bottom: 12px; }
+        .whats-new-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .whats-new-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+        .new-badge {
+            display: inline-block;
+            background: var(--accent2);
+            color: var(--bg);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* Version History */
+        .version-history { padding: 60px 20px; }
+        .version-list { max-width: 720px; margin: 32px auto 0; display: flex; flex-direction: column; gap: 14px; }
+        .version-entry {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 20px 24px;
+        }
+        .version-entry-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+        .version-num { font-weight: 700; font-size: 17px; }
+        .version-entry.latest .version-num { color: var(--accent2); }
+        .version-date { font-size: 13px; color: var(--text-secondary); }
+        .version-entry p { margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -782,6 +868,7 @@
 
     <div class="page-nav">
         <div class="page-nav-content">
+            <a href="#whats-new">What's New</a>
             <a href="#features">Features</a>
             <a href="#howto">How-To Guides</a>
             <a href="#faq">FAQ</a>
@@ -803,6 +890,65 @@
             </div>
             <div class="hero-image">
                 <img src="../images/pawledger-256.png" alt="PawLedger" class="app-icon-large" width="280" height="280" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <div class="version-banner">
+        <span class="version-badge">v1.0.8 SUBMITTED</span>
+        <p>Tapping &ldquo;Scan Prescription&rdquo; now opens the camera straight away &mdash; no more detour through the manual-entry form.</p>
+        <a href="#whats-new">See what's new &rarr;</a>
+    </div>
+
+    <section id="whats-new" class="whats-new">
+        <div class="whats-new-content">
+            <h2 class="section-title">What's New in v1.0.8</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">A focused fix release that smooths out the prescription-scanning flow.</p>
+
+            <div class="whats-new-grid" style="max-width:560px; margin-left:auto; margin-right:auto;">
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128247;</div>
+                    <h3>Smoother Prescription Scanning <span class="new-badge">FIX</span></h3>
+                    <p>Tapping &ldquo;Scan Prescription&rdquo; now opens the camera scanner directly. Previously it briefly showed the manual-entry form first, which you had to cancel to reach the scanner &mdash; a confusing extra step. Scanning now goes straight to the camera as expected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="version-history" class="version-history">
+        <div class="whats-new-content">
+            <h2 class="section-title">Version History</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Every PawLedger release and what changed.</p>
+
+            <div class="version-list">
+                <div class="version-entry latest">
+                    <div class="version-entry-head">
+                        <span class="version-num">v1.0.8</span>
+                        <span class="version-date">May 2026</span>
+                    </div>
+                    <p>Tapping &ldquo;Scan Prescription&rdquo; now opens the camera scanner directly instead of briefly showing the manual-entry form first.</p>
+                </div>
+                <div class="version-entry">
+                    <div class="version-entry-head">
+                        <span class="version-num">v1.0.7</span>
+                        <span class="version-date">May 2026</span>
+                    </div>
+                    <p>Bug fixes and minor improvements.</p>
+                </div>
+                <div class="version-entry">
+                    <div class="version-entry-head">
+                        <span class="version-num">v1.0.6</span>
+                        <span class="version-date">May 2026</span>
+                    </div>
+                    <p>Improved the security of premium-access verification. Performance improvements and bug fixes throughout the app.</p>
+                </div>
+                <div class="version-entry">
+                    <div class="version-entry-head">
+                        <span class="version-num">v1.0.5</span>
+                        <span class="version-date">January 2026</span>
+                    </div>
+                    <p>An earlier maintenance release.</p>
+                </div>
             </div>
         </div>
     </section>
