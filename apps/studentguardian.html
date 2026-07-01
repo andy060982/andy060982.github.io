@@ -609,15 +609,33 @@
     <section class="hero">
         <div class="app-icon">&#127891;</div>
         <h1>Student Guardian</h1>
-        <p class="tagline">Never miss another school email. AI-powered summaries, calendar integration, and grade tracking for busy parents.</p>
+        <p class="tagline">School emails, simplified. AI-powered summaries, calendar integration, and grade tracking for busy parents.</p>
         <a href="https://apps.apple.com/app/student-guardian/id6756404037" class="app-store-badge">Download on the App Store</a>
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">LIVE v1.2.1</span>
+        <span class="version-badge">LIVE v1.2.3</span>
         <p>Student Guardian is live and available worldwide in 15 languages on the App Store.</p>
         <a href="https://apps.apple.com/app/student-guardian/id6756404037" target="_blank" rel="noopener">Get on App Store &rarr;</a>
     </div>
+
+    <section id="whats-new" class="core-features">
+        <h2 class="section-title">What's New</h2>
+        <div class="feature-grid" style="grid-template-columns: 1fr;">
+            <div class="feature-card" style="text-align: left;">
+                <h3>Version 1.2.3</h3>
+                <p>Hardened encryption so a background refresh while your phone is locked can never lock you out of your saved data. The daily reminder is now protected from being crowded out when you have a very full inbox. Plus privacy and stability improvements.</p>
+            </div>
+            <div class="feature-card" style="text-align: left;">
+                <h3>Version 1.2.2</h3>
+                <p>Security hotfix: sensitive student information is now encrypted on your device with AES-GCM for stronger protection of your children's data.</p>
+            </div>
+            <div class="feature-card" style="text-align: left;">
+                <h3>Version 1.2.1</h3>
+                <p>Initial App Store release: connect your school email, filter by trusted sources, and get AI summaries, a unified calendar, and a daily dashboard.</p>
+            </div>
+        </div>
+    </section>
 
     <section class="core-features">
         <h2 class="section-title">Everything You Need</h2>
@@ -708,6 +726,11 @@
                 <p>Add home screen widgets to see today's summary and upcoming events at a glance.</p>
             </div>
             <div class="features-card">
+                <div class="features-icon">&#9729;&#65039;</div>
+                <h3>iCloud Sync</h3>
+                <p>Your trusted sources, sender roles, and student profiles sync across your devices, so your setup follows you to your iPad.</p>
+            </div>
+            <div class="features-card">
                 <div class="features-icon">&#128100;</div>
                 <h3>Multiple Students</h3>
                 <p>Manage communications for all your children in one place. Color-coded profiles keep things organized.</p>
@@ -731,15 +754,15 @@
                 <span class="language-badge">&#127465;&#127466; German</span>
                 <span class="language-badge">&#127470;&#127481; Italian</span>
                 <span class="language-badge">&#127477;&#127481; Portuguese</span>
-                <span class="language-badge">&#127464;&#127475; Chinese</span>
+                <span class="language-badge">&#127464;&#127475; Chinese (Simplified)</span>
+                <span class="language-badge">&#127481;&#127484; Chinese (Traditional)</span>
                 <span class="language-badge">&#127471;&#127477; Japanese</span>
                 <span class="language-badge">&#127472;&#127479; Korean</span>
                 <span class="language-badge">&#127479;&#127482; Russian</span>
                 <span class="language-badge">&#127462;&#127466; Arabic</span>
                 <span class="language-badge">&#127470;&#127475; Hindi</span>
                 <span class="language-badge">&#127483;&#127475; Vietnamese</span>
-                <span class="language-badge">&#127477;&#127473; Polish</span>
-                <span class="language-badge">&#127475;&#127473; Dutch</span>
+                <span class="language-badge">&#127477;&#127469; Tagalog</span>
             </div>
         </div>
     </section>
@@ -846,7 +869,7 @@
                     <span class="faq-toggle">&#9662;</span>
                 </button>
                 <div class="faq-answer">
-                    Yes! Your email credentials are stored securely in the iOS Keychain, and your emails are processed locally on your device. We never store your emails on our servers. The only data sent to our servers is the email content for AI summarization, and it's immediately discarded after processing.
+                    Yes! Your email credentials are stored securely in the iOS Keychain, and sensitive student information is encrypted on your device with AES-GCM. Your emails are processed locally on your device, and we never store them on our servers. The only data sent to our servers is the email content for AI summarization, and it's immediately discarded after processing.
                 </div>
             </div>
 
@@ -907,19 +930,19 @@
         <p class="section-subtitle">Common issues and quick fixes</p>
         <div class="faq-content">
             <div class="faq-category">
-                <h3 class="faq-category-title">Schedule &amp; Reminders</h3>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Class reminder didn't fire</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check Settings → Notifications → Student Guardian → Allow. Also confirm the specific class has reminders enabled in its detail view. Student Guardian uses Time Sensitive notifications which break through Focus mode.</p></div></div>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Class shows on the wrong day after a holiday</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Add the holiday to your school calendar (Settings → School Calendar → Add Holiday). Holidays shift A-Day / B-Day rotation forward.</p></div></div>
+                <h3 class="faq-category-title">Email &amp; Sync</h3>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>An email shows headers instead of the message body</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Older cached emails may predate a decoding fix. Go to Settings → Clear Emails &amp; Re-sync to delete the cache and re-fetch from your connected accounts. Your students and trusted sources are preserved.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>I'm only seeing some of my emails</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>That's by design — Student Guardian only shows messages from your trusted sources so your personal email stays private. If a school message is missing, add that sender's address or domain to your Trusted Sources list.</p></div></div>
             </div>
             <div class="faq-category">
-                <h3 class="faq-category-title">Grades &amp; Homework</h3>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>GPA calculation looks wrong</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check the GPA scale in Settings → Grading. US schools usually use 4.0 unweighted; some use 5.0 weighted with AP/honors. Set the scale to match your school's policy. Each course's credit weight matters — 0-credit courses don't count.</p></div></div>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Homework due date passed but it's still showing</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Past-due assignments stay visible until marked complete. Tap the checkbox to mark done. Auto-archive is in Settings → Homework.</p></div></div>
+                <h3 class="faq-category-title">AI Summaries</h3>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>AI summarization isn't working</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check your network connection first. If you're using your own API key (BYOK), confirm it's entered correctly in Settings → AI. Free accounts are limited to 5 summaries per month; upgrade to Premium for unlimited summaries.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Summaries aren't in my language</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Translation into all 15 languages is a Premium feature; free summaries are in English. Set your preferred language in Settings, then re-summarize an email to see it translated.</p></div></div>
             </div>
             <div class="faq-category">
-                <h3 class="faq-category-title">Sync &amp; Multi-Device</h3>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Family Sharing isn't working</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Each family member needs Student Guardian installed and signed into the same iCloud Family Sharing group. Settings → Family Sharing → enable Student Guardian. Sync happens via CloudKit on app launch.</p></div></div>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Data missing after iOS upgrade</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS upgrades preserve app data. If you see data missing, force-quit and re-open — SwiftData sometimes lags after a major iOS update.</p></div></div>
+                <h3 class="faq-category-title">Notifications &amp; Multi-Device</h3>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>I'm not getting notifications</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check Settings → Notifications → Student Guardian → Allow. Also confirm you haven't silenced them with Quiet Hours, and that your Daily Digest time is set in the app's notification settings.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>My setup didn't appear on my iPad</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Trusted sources, sender roles, and student profiles sync via iCloud. Make sure both devices are signed into the same Apple ID with iCloud enabled, then open the app to trigger a sync.</p></div></div>
             </div>
         </div>
     </section>

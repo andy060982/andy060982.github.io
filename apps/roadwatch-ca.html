@@ -52,12 +52,12 @@
           "url": "https://andyarevalo.com/apps/roadwatch-ca.html",
           "description": "See California roads in real-time before you drive. Access 2,000+ Caltrans traffic cameras with live video and snapshots across all 12 districts.",
           "author": { "@id": "https://andyarevalo.com/#andy" },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          },
+          "offers": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "name": "Free" },
+            { "@type": "Offer", "price": "1.99", "priceCurrency": "USD", "name": "Pro Monthly" },
+            { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "name": "Pro Yearly" },
+            { "@type": "Offer", "price": "19.99", "priceCurrency": "USD", "name": "Pro Lifetime" }
+          ],
           "featureList": [
             "Live video streaming",
             "2,000+ Caltrans cameras",
@@ -545,14 +545,43 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v1.0.1 SUBMITTED</span>
-        <p>Background alerts now actually fire, paywall navigation fixed, locale-aware distance display, and a faster splash on returning launches.</p>
+        <span class="version-badge">v1.0.2</span>
+        <p>Smoother scrolling and tab switching, camera images now load instantly and refresh in the background, alert times display correctly outside the US, and the favorite-routes filter is more accurate.</p>
         <a href="#whats-new">See what's new &rarr;</a>
     </div>
 
     <section id="whats-new" class="whats-new">
         <div class="whats-new-content">
-            <h2 class="section-title">What's New in v1.0.1</h2>
+            <h2 class="section-title">What's New in v1.0.2</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Faster and more reliable, with fixes for international users.</p>
+
+            <div class="whats-new-grid">
+                <div class="whats-new-card">
+                    <div class="card-icon">&#9889;</div>
+                    <h3>Smoother Scrolling <span class="new-badge">FASTER</span></h3>
+                    <p>Scrolling through camera lists and switching between tabs is now noticeably smoother, with less stutter on long lists.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128247;</div>
+                    <h3>Instant Camera Images</h3>
+                    <p>Camera snapshots now appear instantly and refresh quietly in the background, so you see the road without waiting for images to load.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128336;</div>
+                    <h3>Correct Alert Times Worldwide</h3>
+                    <p>Alert timestamps now display correctly for users outside the US, matching your device's region and time settings.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#11088;</div>
+                    <h3>Sharper Favorite-Routes Filter</h3>
+                    <p>The favorite-routes filter is more accurate, so your saved cameras and routes surface exactly the feeds you expect.</p>
+                </div>
+            </div>
+
+            <h3 class="section-title" style="font-size:22px; margin-top:56px; margin-bottom:8px;">Previously &mdash; v1.0.1</h3>
             <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">The first round of post-launch fixes, focused on reliability + international usability.</p>
 
             <div class="whats-new-grid">
@@ -777,8 +806,8 @@
             </div>
             <div class="feature-card">
                 <div class="feature-icon">&#128176;</div>
-                <h3>No Subscriptions</h3>
-                <p>Pay once, use forever. No ads, no in-app purchases, no recurring fees.</p>
+                <h3>Free with Optional Pro</h3>
+                <p>Live cameras, the map, search and all 12 districts are free. Pro adds favorites &amp; groups, commute-route alerts, background alerts and full camera detail &mdash; $1.99/mo, $9.99/yr, or $19.99 once. No ads, ever.</p>
             </div>
         </div>
     </section>
@@ -834,7 +863,7 @@
 
     <section class="cta">
         <h2>Never be surprised by traffic again</h2>
-        <p>Download RoadWatch CA free. No subscriptions, no ads.</p>
+        <p>Download RoadWatch CA free. No ads. Optional Pro unlocks alerts, favorites &amp; camera detail.</p>
         <a href="#" class="app-store-badge">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
         </a>

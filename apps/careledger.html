@@ -906,7 +906,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>CareLedger</h1>
-                <p class="tagline">Medication Tracker</p>
+                <p class="tagline">Your Family's Health Record</p>
                 <p>Family medication management made simple. Track medications for yourself and loved ones, set smart reminders, coordinate care with other caregivers, and prepare for doctor visits.</p>
                 <div class="hero-badges">
                     <a href="https://apps.apple.com/app/id6757565001" class="app-store-badge" target="_blank">
@@ -926,8 +926,8 @@
     </div>
 
     <div class="version-banner">
-        <span class="version-badge">v1.5 COMING SOON</span>
-        <p>Glass dashboard, patient-colored timelines, collapsible stats, and early-dose safety alerts.</p>
+        <span class="version-badge">v1.6.2 AVAILABLE NOW</span>
+        <p>Localized subscribe screen and date labels, region-aware time formats, a fixed Insights adherence score, and reminders that break through Focus modes.</p>
         <a href="#whats-new">See what's new &rarr;</a>
     </div>
 
@@ -947,47 +947,52 @@
         </div>
     </section>
 
-    <!-- What's New in v1.5 -->
+    <!-- What's New in v1.6.2 -->
     <section id="whats-new" class="whats-new">
         <div class="whats-new-content">
-            <h2 class="section-title">What's New in v1.5</h2>
-            <p class="section-subtitle">A polished dashboard with glassmorphism, smarter visuals, and a new safety feature to prevent accidental doses.</p>
+            <h2 class="section-title">What's New in v1.6.2</h2>
+            <p class="section-subtitle">Better localization, region-aware dates and times, a corrected Insights score, and reminders that reach you through Focus modes.</p>
 
             <div class="whats-new-grid">
                 <div class="whats-new-card">
-                    <div class="card-icon">&#10024;</div>
-                    <h3>Glass Dashboard Cards</h3>
-                    <p>Stat cards and patient cards now use a frosted-glass effect with SwiftUI Materials. The translucent backdrop adapts automatically to light and dark mode, giving the dashboard a modern, layered feel.</p>
+                    <div class="card-icon">&#127760;</div>
+                    <h3>Fully Localized Screens</h3>
+                    <p>The subscribe screen and date labels &mdash; Today, Tomorrow, Yesterday, and refill timing &mdash; now appear in your language instead of always in English.</p>
                 </div>
 
                 <div class="whats-new-card">
-                    <div class="card-icon">&#127912;</div>
-                    <h3>Patient-Colored Timelines</h3>
-                    <p>Each dose in the upcoming timeline now shows a colored bullet matching the patient's assigned color. Quickly see which patient each dose belongs to at a glance &mdash; purple for Mom, pink for Dad, and so on.</p>
+                    <div class="card-icon">&#128336;</div>
+                    <h3>Region-Aware Dates &amp; Times</h3>
+                    <p>Times and full date-and-time labels now follow your region's format, including 24-hour-clock locales &mdash; no more forced AM/PM or an English "at".</p>
                 </div>
 
                 <div class="whats-new-card">
                     <div class="card-icon">&#128202;</div>
-                    <h3>Equal-Height Stat Cards</h3>
-                    <p>All four dashboard stat cards (Doses Today, Next Dose, Streak, Appointments) now render at the same height for a clean, uniform grid &mdash; regardless of their content length.</p>
+                    <h3>Accurate Insights Score</h3>
+                    <p>The Insights dashboard no longer reports 100% adherence and an inflated health score when there is no dose data. It now shows "&mdash;" until there is something to measure.</p>
                 </div>
 
                 <div class="whats-new-card">
-                    <div class="card-icon">&#128101;</div>
-                    <h3>Collapsible Patient Stats</h3>
-                    <p>Tap the chevron on any patient card to expand additional details: last dose taken, total pills tracked, and upcoming appointment count. Only one card expands at a time to keep the view tidy.</p>
+                    <div class="card-icon">&#128276;</div>
+                    <h3>Focus-Mode Reminders <span class="new-badge">RELIABILITY</span></h3>
+                    <p>Dose and appointment reminders now request Time-Sensitive notification permission, so they can break through Focus modes as intended.</p>
                 </div>
 
                 <div class="whats-new-card">
-                    <div class="card-icon">&#128721;</div>
-                    <h3>Early-Dose Safety Alert <span class="new-badge">SAFETY</span></h3>
-                    <p>Accidentally tapped "Taken" too early? CareLedger now warns you when a dose is more than 15 minutes before its scheduled time. A confirmation dialog prevents accidental check-ins that could lead to dose stacking.</p>
+                    <div class="card-icon">&#128274;</div>
+                    <h3>Privacy &amp; Stability</h3>
+                    <p>Purchase History is now declared in the privacy manifest to match the subscription data the app stores, alongside general stability improvements.</p>
                 </div>
+            </div>
 
+            <!-- Version History -->
+            <div class="whats-new-grid" style="margin-top: 32px;">
                 <div class="whats-new-card">
-                    <div class="card-icon">&#127761;</div>
-                    <h3>Dark Mode Glass</h3>
-                    <p>The frosted glass effect uses SwiftUI's <code>.ultraThinMaterial</code>, which automatically adapts to your system appearance. Dark mode gets an elegant translucent blur over the dark background.</p>
+                    <div class="card-icon">&#128220;</div>
+                    <h3>Version History</h3>
+                    <p style="margin-bottom: 12px;"><strong>1.6.0</strong> &mdash; AI consent gate now covers every path that sends personal health information off-device (cloud AI is opt-in); prescription scanning falls back to on-device OCR until you consent. Full 9-language localization pass (~96% coverage). Atomic backup restore, symptom delete confirmation, and a corrected privacy manifest.</p>
+                    <p style="margin-bottom: 12px;"><strong>1.5.3</strong> &mdash; Fixed scan and add buttons sharing one tap target in list rows; fixed the Add Symptom duration picker wiping in-progress entries.</p>
+                    <p><strong>1.5.2</strong> &mdash; Treatment-length / end-date picker for medications; multi-dose-per-day medications now generate every time slot; adherence no longer counts not-yet-due doses as missed; editing a medication no longer cancels unrelated reminders; dynamic free-trial disclosure; assorted compliance and safety fixes.</p>
                 </div>
             </div>
         </div>
@@ -1171,6 +1176,13 @@
                     <div>
                         <h4>Week Navigation</h4>
                         <p>Navigate forward and backward to see past and future events.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#9989;</div>
+                    <div>
+                        <h4>Care Tasks</h4>
+                        <p>Create care tasks with priorities and due dates. Refill tasks are added automatically when supply runs low.</p>
                     </div>
                 </div>
             </div>
@@ -2165,7 +2177,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Free users can track <strong>1 patient</strong>. Premium subscribers can track <strong>unlimited patients</strong>. This is perfect for families caring for multiple people.</p>
+                        <p>Free users can track <strong>2 patients</strong>. Premium subscribers can track <strong>unlimited patients</strong>. This is perfect for families caring for multiple people.</p>
                     </div>
                 </div>
 
@@ -2248,7 +2260,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Free users get <strong>5 AI uses per month</strong>, shared between Cloud OCR and Medication Education. The counter resets on the first of each month. On-device OCR is always free and unlimited.</p>
+                        <p>Free users get <strong>3 AI uses per month</strong>, shared between Cloud OCR and Medication Education. The counter resets on the first of each month. On-device OCR is always free and unlimited.</p>
                     </div>
                 </div>
 
@@ -2361,12 +2373,12 @@
                     <div class="faq-answer">
                         <p>The free tier includes:</p>
                         <ul>
-                            <li>1 patient profile</li>
+                            <li>2 patient profiles</li>
                             <li>Unlimited medications</li>
                             <li>All notifications and reminders</li>
                             <li>Unlimited on-device OCR scanning</li>
-                            <li>5 AI features per month (Cloud OCR + Education)</li>
-                            <li>30 caregiver notes per patient</li>
+                            <li>3 AI features per month (Cloud OCR + Education)</li>
+                            <li>10 caregiver notes per patient</li>
                             <li>CSV export</li>
                             <li>Calendar, symptom journal, and timeline</li>
                         </ul>
@@ -2521,10 +2533,10 @@
             <div class="free-tier">
                 <p><strong>Free Tier Includes:</strong></p>
                 <div class="free-features">
-                    <span>&#10003; 1 Patient</span>
+                    <span>&#10003; 2 Patients</span>
                     <span>&#10003; Unlimited Medications</span>
                     <span>&#10003; All Reminders</span>
-                    <span>&#10003; 5 AI Scans/Month</span>
+                    <span>&#10003; 3 AI Uses/Month</span>
                 </div>
             </div>
             <div class="pricing-cards">

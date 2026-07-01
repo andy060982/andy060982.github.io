@@ -56,7 +56,7 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD",
-            "availability": "https://schema.org/PreOrder"
+            "availability": "https://schema.org/InStock"
           },
           "featureList": [
             "GPS visit tracking",
@@ -748,53 +748,45 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v1.0.4 SUBMITTED</span>
-        <p>2025 IRS mileage rate, locale-aware currency, stronger biometric lock storage, smoother paywall.</p>
+        <span class="version-badge">v1.1.0 AVAILABLE</span>
+        <p>Now fully localized in 9 languages, plus a brand-color stability fix, updated calendar permissions, and reliability improvements throughout.</p>
         <a href="#whats-new">See what's new &rarr;</a>
     </div>
 
     <section id="whats-new" class="whats-new">
         <div class="whats-new-content">
-            <h2 class="section-title">What's New in v1.0.4</h2>
-            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Quality, privacy, and international polish — small changes that make a daily difference.</p>
+            <h2 class="section-title">What's New in v1.1.0</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Now speaking your language, with stability and reliability polish throughout.</p>
 
             <div class="whats-new-grid">
                 <div class="whats-new-card">
-                    <div class="card-icon">&#128176;</div>
-                    <h3>2025 IRS Mileage Rate <span class="new-badge">TAX</span></h3>
-                    <p>Updated the standard mileage rate to <strong>$0.70 / mile</strong> (2025 rate). Your tax deduction totals now reflect the current IRS rate everywhere — Dashboard, Mileage list, and Tax Reports.</p>
+                    <div class="card-icon">&#127760;</div>
+                    <h3>9 Languages <span class="new-badge">NEW</span></h3>
+                    <p>PetSitterPro is now fully localized in English, Chinese (Simplified), Italian, Russian, German, Korean, Portuguese, Spanish, and Japanese — built from a fresh 575-string translation catalog.</p>
                 </div>
 
                 <div class="whats-new-card">
-                    <div class="card-icon">&#127758;</div>
-                    <h3>Locale-Aware Currency</h3>
-                    <p>Currency amounts now use your device's local symbol — &euro;, &pound;, &yen;, &#8377;, R$ — instead of falling back to "$" when the system formatter returned nothing. International sitters get a proper experience.</p>
+                    <div class="card-icon">&#127912;</div>
+                    <h3>Brand Color Stability Fix</h3>
+                    <p>Fixed a crash that could occur when a business profile used a grayscale brand color (white, black, or gray). Color parsing now handles these cleanly.</p>
                 </div>
 
                 <div class="whats-new-card">
-                    <div class="card-icon">&#128274;</div>
-                    <h3>Stronger Biometric Lock</h3>
-                    <p>Moved the Face ID / Touch ID auth timestamp from preferences to the system Keychain so a restored backup can't extend your auth window. Existing users are migrated automatically on first launch.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#128221;</div>
-                    <h3>Privacy Manifest Update</h3>
-                    <p>Declared File Timestamp access for reason code C617.1 (display dates on this device only). Keeps PetSitterPro current with Apple's required-reason API rules — no behavior change for you.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#11088;</div>
-                    <h3>Cleaner Upgrade Screen</h3>
-                    <p>Fixed a navigation glitch where the upgrade screen could render in a corrupted state on iOS 17+. Clarified the free-trial banner to say "days of free preview remaining". Subscription disclosure is now always visible.</p>
+                    <div class="card-icon">&#128197;</div>
+                    <h3>Updated Calendar Permissions</h3>
+                    <p>Refined how the calendar permission prompt is presented so device-calendar sync connects reliably on iOS 17 and later.</p>
                 </div>
 
                 <div class="whats-new-card">
                     <div class="card-icon">&#9889;</div>
-                    <h3>Smoother Scrolling</h3>
-                    <p>Replaced five per-frame date formatter allocations with a shared cache. The Expenses and Mileage lists scroll noticeably more smoothly on older iPhones and on long histories.</p>
+                    <h3>Reliability Improvements</h3>
+                    <p>Behind-the-scenes stability work across the app for a smoother, more dependable day-to-day experience.</p>
                 </div>
             </div>
+
+            <p style="text-align:center; color: var(--text-secondary); font-size: 14px; margin-top: 28px;">
+                <strong>Previously in v1.0.4:</strong> 2025 IRS mileage rate ($0.70/mile), locale-aware currency symbols, stronger Keychain-backed biometric lock, a cleaner upgrade screen, and smoother scrolling on the Expenses and Mileage lists.
+            </p>
         </div>
     </section>
 

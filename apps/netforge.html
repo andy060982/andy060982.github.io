@@ -60,7 +60,9 @@
             "WHOIS lookup",
             "Cert expiry monitoring with notifications",
             "Public IP + ASN + geolocation",
-            "Port scanner",
+            "Port scanner with banner grab",
+            "Subnet Scanner — ping-sweep with PDF report (Pro)",
+            "Home-screen widgets (Local Network, Public IP, Subnet, Cert Expiry)",
             "Recipes — multi-tool workflows",
             "Standards + RFC reference inline",
             "PDF export (Pro)",
@@ -267,10 +269,45 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v1.0.2 SUBMITTED</span>
-        <p>Traceroute is now a free tool — no Pro required. Free tier is now 7 tools.</p>
+        <span class="version-badge">v1.0.7 LIVE</span>
+        <p>New Subnet Scanner (ping-sweep + shareable PDF report), four new home-screen widgets, expanded diagnostic recipes, and reliability improvements.</p>
         <a href="https://apps.apple.com/app/id6767094044" target="_blank" rel="noopener">Get on App Store &rarr;</a>
     </div>
+
+    <section id="whats-new" class="tools" style="padding-bottom: 0;">
+        <h2 class="section-title">What's new</h2>
+        <p class="section-subtitle">Release history — matches the App Store changelog.</p>
+        <div class="tool-categories">
+            <div class="tool-card">
+                <h3>v1.0.7</h3>
+                <ul>
+                    <li>New Subnet Scanner — ping-sweep a network to find live hosts, with hostname resolution and a shareable PDF report (Pro)</li>
+                    <li>New home-screen widgets: Local Network, Public IP, Subnet Reference, Certificate Expiry</li>
+                    <li>Expanded multi-step diagnostic recipes</li>
+                    <li>Reliability improvements across ping, DNS, port scanning, RADIUS, and the speed test</li>
+                    <li>New tools and widgets fully localized in all 9 languages</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>v1.0.4</h3>
+                <ul>
+                    <li>Full localization of the tool catalog and UI into all 9 languages</li>
+                    <li>Run history loads newest-first with a retention limit</li>
+                    <li>Recipes can be cancelled mid-run; Speed Test and Traceroute memory/socket improvements</li>
+                    <li>Fixed a launch crash from duplicate MAC-vendor (OUI) prefixes</li>
+                    <li>RADIUS shared secrets redacted in history and entered via a masked field</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>v1.0.3</h3>
+                <ul>
+                    <li>9-language localization of the tool catalog and interface</li>
+                    <li>Streaming output for AD Port Suite, RBL / Blacklist Checker, and Office 365 Endpoint Health</li>
+                    <li>UI polish on Speed Test and IANA Port reference screens</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <section id="tools" class="tools">
         <h2 class="section-title">60+ tools, organized</h2>
@@ -281,17 +318,15 @@
                 <ul>
                     <li>DNS Lookup <span class="free">FREE</span></li>
                     <li>Reverse DNS (PTR)</li>
-                    <li>WHOIS</li>
-                    <li>DNS Propagation Check</li>
-                    <li>DNSSEC Validator</li>
-                    <li>SPF / DMARC / DKIM</li>
+                    <li>WHOIS <span class="free">FREE</span></li>
+                    <li>SPF / DMARC / DKIM analyzer</li>
                 </ul>
             </div>
             <div class="tool-card">
                 <h3>Connectivity</h3>
                 <ul>
                     <li>Ping <span class="free">FREE</span></li>
-                    <li>Traceroute (MTR-style hops)</li>
+                    <li>Traceroute (MTR-style hops) <span class="free">FREE</span></li>
                     <li>HTTP timing breakdown</li>
                     <li>Speed Test</li>
                     <li>MOS Calculator (VoIP quality)</li>
@@ -322,9 +357,9 @@
                 <ul>
                     <li>Public IP <span class="free">FREE</span></li>
                     <li>ASN lookup</li>
-                    <li>BGP route lookup</li>
-                    <li>Geolocation</li>
-                    <li>Port scanner</li>
+                    <li>Subnet Scanner (ping-sweep + PDF)</li>
+                    <li>Port scanner + banner grab</li>
+                    <li>MAC OUI lookup</li>
                 </ul>
             </div>
             <div class="tool-card">
@@ -339,10 +374,12 @@
             <div class="tool-card">
                 <h3>Recipes (Workflows)</h3>
                 <ul>
-                    <li>DNS Propagation Check across resolvers</li>
-                    <li>Wi-Fi Quality Assessment</li>
-                    <li>Outage Triage</li>
-                    <li>Cert Health for a domain</li>
+                    <li>Domain Health Check (DNS + TLS + headers + CDN)</li>
+                    <li>Email Security Audit (SPF + DMARC + MX)</li>
+                    <li>Office 365 Connectivity</li>
+                    <li>VoIP Readiness</li>
+                    <li>Domain Controller Sweep</li>
+                    <li>Web Performance Audit</li>
                 </ul>
             </div>
             <div class="tool-card">
@@ -352,7 +389,7 @@
                     <li>Saved tab (pin sites)</li>
                     <li>PDF export</li>
                     <li>Cert expiry watch list</li>
-                    <li>Public IP + Cert widgets</li>
+                    <li>Widgets: Local Network, Public IP, Subnet, Cert Expiry</li>
                 </ul>
             </div>
         </div>
@@ -413,7 +450,7 @@
                 <h3>Free</h3>
                 <div class="price">$0</div>
                 <div class="period">forever</div>
-                <p>7 essential tools: DNS, Ping, Traceroute, Public IP, Subnet Calc, TLS Cert, WHOIS. Unlimited runs.</p>
+                <p>6 essential tools: DNS, Ping, Public IP, Subnet Calc, TLS Cert, WHOIS. Unlimited runs.</p>
             </div>
             <div class="price-card highlight">
                 <h3>Pro Lifetime</h3>
@@ -438,7 +475,7 @@
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does NetForge work without internet?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>The reference content (RFC index, standards, man pages, IANA ports, subnet math) works offline. The active tools (DNS, ping, traceroute, TLS, WHOIS) need internet — they make real network calls. Subnet Calc is fully offline.</p></div></div>
 
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Mac version too?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. Mac Catalyst version is in App Store review now and ships imminently. Universal purchase — Pro on iOS unlocks Mac and vice versa.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Mac version too?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. A Mac Catalyst version ships alongside iOS. Universal purchase — Pro on iOS unlocks Mac and vice versa.</p></div></div>
             </div>
 
             <div class="faq-category">
@@ -446,7 +483,7 @@
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Which DNS record types are supported?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>A, AAAA, CNAME, MX, TXT, NS, SOA, SRV, CAA, PTR (reverse), DNSKEY, DS, RRSIG, NSEC, NSEC3, TLSA, SVCB, HTTPS. You can pick which DNS resolver to query (1.1.1.1, 8.8.8.8, 9.9.9.9, your ISP, custom). Wire-format queries — no DoH proxy.</p></div></div>
 
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does ping use ICMP?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>iOS sandboxing doesn't allow raw ICMP from a non-system app. NetForge uses TCP ping (configurable port — default 443) which gives you reachability + RTT for the part of the path that matters most for service availability. Traceroute uses TCP-based hop discovery for the same reason.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does ping use ICMP?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. iOS blocks raw sockets, but it allows ICMP echo through datagram sockets, so NetForge's Ping sends real ICMP echo requests and reports packet loss and latency. Traceroute uses ICMP and UDP probes to map the hops to a destination.</p></div></div>
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What does the TLS Cert Inspector show?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Full chain (leaf, intermediates, root), SAN list, SNI, expiry date with countdown, signature algorithm, key size, OCSP staple if present, cipher suite negotiated, TLS version, SCT count. Tap any cert in the chain to see its full PEM and computed fingerprints.</p></div></div>
 
@@ -458,7 +495,7 @@
             <div class="faq-category">
                 <h3 class="faq-category-title">Pricing &amp; Pro</h3>
 
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What's free vs Pro?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p><strong>Free:</strong> 6 tools (DNS Lookup, Ping, Public IP, Subnet Calculator, TLS Cert Inspector, WHOIS) with unlimited runs. <strong>Pro:</strong> all 54 additional tools, run history, saved sites, recipe workflows, cert expiry watch list with notifications, home-screen widgets, PDF export.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What's free vs Pro?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p><strong>Free:</strong> 7 tools (DNS Lookup, Ping, Traceroute, Public IP, Subnet Calculator, TLS Cert Inspector, WHOIS) with unlimited runs. <strong>Pro:</strong> all 50+ additional tools, run history, saved sites, recipe workflows, cert expiry watch list with notifications, home-screen widgets, PDF export.</p></div></div>
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Why one-time purchase, no subscription?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Tools you reach for ad-hoc deserve to be paid for once. A monthly subscription for an app you might use every day OR not for a month makes no sense. $19.99 lifetime, no upsells, no recurring billing. The price will likely go up over time but anyone with the lifetime keeps it.</p></div></div>
 
@@ -482,7 +519,7 @@
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>"DNS query timed out"</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Either the resolver is unreachable, or there's an iOS network issue. Try switching the resolver in Settings (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9). If all resolvers fail: airplane mode? Captive portal not signed in? Check Wi-Fi.</p></div></div>
 
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Ping shows host unreachable but I can browse the site</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>NetForge's ping uses TCP on port 443 by default. If a firewall blocks 443 to that IP from outside (load balancer in front, etc.) but allows the host's actual web port, the TCP ping fails while HTTP works. Try changing the ping port in Settings to match the service's listening port.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Ping shows host unreachable but I can browse the site</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>NetForge's Ping uses ICMP echo. Many hosts, firewalls, and load balancers drop or rate-limit ICMP even though they serve HTTP/HTTPS fine, so a host can be reachable in a browser while ICMP ping times out. A silent ping doesn't necessarily mean the service is down.</p></div></div>
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>TLS Cert Inspector shows expired but the site loads in Safari</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Different SNI. The cert NetForge sees is the one served when SNI = the hostname you typed. Safari may be sending a different SNI (or none, falling back to the default cert). Compare the SAN in NetForge's report to the actual hostname in your Safari URL.</p></div></div>
 

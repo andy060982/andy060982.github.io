@@ -522,7 +522,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Duse</h1>
-                <p class="tagline">Habit Tracker</p>
+                <p class="tagline">Goal Tracker &amp; Daily Planner</p>
                 <p>The beautifully simple habit tracker that empowers you to build lasting habits and achieve your goals—without the complexity.</p>
                 <div class="hero-badges">
                     <a href="https://apps.apple.com/us/app/duse-habit-tracker/id6742254716" class="app-store-badge" target="_blank">
@@ -541,8 +541,8 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v2.1.3 SUBMITTED</span>
-        <p>Premium banner fix, locale-aware 24-hour time display, safer notification habit completions, stability improvements.</p>
+        <span class="version-badge">v2.1.7 LIVE</span>
+        <p>New: Streak Freeze — earn a freeze every 7-day streak and use it to protect a missed day, so life's interruptions don't cost you your progress.</p>
         <a href="#whats-new">See what's new &rarr;</a>
     </div>
 
@@ -601,43 +601,60 @@
                 <p>Build momentum with streak tracking. Don't break the chain!</p>
             </div>
             <div class="feature-card">
+                <div class="feature-icon">❄️</div>
+                <h3>Streak Freeze</h3>
+                <p>Earn a freeze at each 7-day streak (save up to 3). Miss a day? Use a freeze to protect your streak instead of losing it.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Achievements</h3>
+                <p>Unlock achievements as you build consistency and reach milestones.</p>
+            </div>
+            <div class="feature-card">
                 <div class="feature-icon">🔒</div>
                 <h3>Private & Local</h3>
-                <p>All data stored on your device. No accounts, no tracking, no cloud.</p>
+                <p>Your data stays on your device with optional iCloud backup. No accounts, no third-party tracking.</p>
             </div>
         </div>
     </section>
 
     <section id="whats-new" class="whats-new">
         <div class="whats-new-content">
-            <h2 class="section-title">What's New in v2.1.3</h2>
-            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Small but meaningful fixes for premium users, international users, and notification reliability.</p>
+            <h2 class="section-title">What's New in v2.1.7</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Streak Freeze — keep a streak alive even when life gets in the way.</p>
 
             <div class="whats-new-grid">
                 <div class="whats-new-card">
-                    <div class="card-icon">&#127775;</div>
-                    <h3>Premium Banner Fix <span class="new-badge">USER-VISIBLE</span></h3>
-                    <p>The "Get Premium" banner in Settings now flips to "Premium Active" immediately after a successful purchase, instead of waiting for the screen to rebuild. No more confusion about whether your purchase went through.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#128340;</div>
-                    <h3>24-Hour Time Display</h3>
-                    <p>Smart Reminders and Streak Protection now respect your system's 12/24-hour preference. Users in Germany, Russia, Korea, China, Japan, and Brazil see "14:00" instead of "2 PM" when their device is set to 24-hour time.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#128276;</div>
-                    <h3>Safer Notification Completions</h3>
-                    <p>Tapping "Mark Complete" on a habit notification now uses safer error handling. Previously a rare write failure could silently drop the completion. Now failures are logged and reported so they can be addressed.</p>
+                    <div class="card-icon">&#10052;&#65039;</div>
+                    <h3>Earn a Freeze <span class="new-badge">NEW</span></h3>
+                    <p>Every time a daily habit reaches a 7-day streak you earn a Streak Freeze, up to 3 saved per habit. It's completely free — no paywall.</p>
                 </div>
 
                 <div class="whats-new-card">
                     <div class="card-icon">&#128737;</div>
-                    <h3>Compliance &amp; Hygiene</h3>
-                    <p>Added the App Store encryption-compliance declaration, removed a developer-only StoreKit config from the production bundle, and bumped the minimum supported iOS to 17.0.</p>
+                    <h3>Protect a Missed Day</h3>
+                    <p>Missed a day? Tap "Use Freeze" on that day to protect your streak instead of losing it. Your hard-earned momentum stays intact.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128198;</div>
+                    <h3>Snowflake on Your Calendar</h3>
+                    <p>Frozen days are clearly marked with a snowflake in the habit calendar, so you always know which days a freeze protected.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#9889;</div>
+                    <h3>Reliability Improvements</h3>
+                    <p>Plus behind-the-scenes reliability improvements across streak tracking and reminders.</p>
                 </div>
             </div>
+
+            <p style="text-align:center; color: var(--text-secondary); font-size: 14px; margin-top: 32px;">
+                <strong>Previous updates:</strong>
+                v2.1.6 — reliable multi-reminder scheduling (fixed iOS 64-notification cap), cleaner localized notifications, in-app language shortcut.
+                v2.1.5 — unified, more accurate streak algorithm across the app, HealthKit &amp; iCloud sync fixes, wider localization.
+                v2.1.4 — privacy hardening, widget performance, and localized widget &amp; celebration strings.
+            </p>
         </div>
     </section>
 
@@ -704,7 +721,7 @@
         <div class="faq-content">
             <div class="faq-category">
                 <h3 class="faq-category-title">Habits &amp; Streaks</h3>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How does Duse define a "streak"?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>A streak counts the number of consecutive days you completed a habit. Skipping a day resets the streak unless that day is a configured rest day. You can also manually mark a day as "skipped" without breaking the streak (Pro feature).</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How does Duse define a "streak"?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>A streak counts the number of consecutive days you completed a habit. Skipping a day normally resets the streak. With Streak Freeze (added in v2.1.7, free for everyone) you earn a freeze each time a daily habit hits a 7-day streak — save up to 3 — and can tap "Use Freeze" on a missed day to protect the streak instead of losing it. Frozen days show a snowflake on the calendar.</p></div></div>
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I have habits with different schedules?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes. Each habit has its own schedule: daily, every N days, specific days of the week, weekends only, weekdays only. The streak counter respects the schedule — a Monday-Wednesday-Friday habit completed every M-W-F is a perfect streak.</p></div></div>
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What's the maximum streak Duse tracks?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>No upper limit. We've seen users with 1,000+ day streaks. The Best Streak counter never decreases — only the current streak resets on a miss.</p></div></div>
             </div>
@@ -716,7 +733,7 @@
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>I marked a habit complete but the streak didn't increment</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Streak increments at midnight (your timezone) once the day's quota is met. Marking a habit complete late in the day is fine. If a streak still isn't incrementing the next morning: force-quit the app and re-open. SwiftData sometimes lags on first read.</p></div></div>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Lost my data after deleting + reinstalling</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Duse stores data on-device only — no cloud backup. Reinstalling clears it. iCloud Drive Backup (set up in iOS Settings → Apple ID → iCloud) backs up app data automatically. After restoring from backup, your habits are back.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Lost my data after deleting + reinstalling</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Duse stores data on-device. If you enabled optional iCloud backup, your habits sync to iCloud and return after reinstalling or on a new device. Without iCloud backup enabled, deleting the app clears local data — so turn on iCloud backup in Settings if you want it preserved.</p></div></div>
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Daylight saving time messed up my streak</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Duse uses your iOS timezone — DST transitions shouldn't affect streaks. If you traveled across timezones, the day boundary may shift. Manually edit the affected entry from the Habit Detail view.</p></div></div>
             </div>
         </div>

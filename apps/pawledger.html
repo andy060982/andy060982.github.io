@@ -56,7 +56,7 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD",
-            "availability": "https://schema.org/PreOrder"
+            "availability": "https://schema.org/InStock"
           },
           "featureList": [
             "Multi-pet health tracking",
@@ -901,7 +901,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>PawLedger</h1>
-                <p class="tagline">Pet Health Tracker</p>
+                <p class="tagline">Reminders, vaccines &amp; vet log</p>
                 <p>Pet health management made simple. Track medications, vaccinations, weight, and vet appointments for all your furry pets. Set smart reminders so nothing is missed.</p>
                 <div class="hero-badges">
                     <a href="https://apps.apple.com/app/id6757627356" class="app-store-badge" target="_blank" rel="noopener">
@@ -916,21 +916,31 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v1.0.8 SUBMITTED</span>
-        <p>Tapping &ldquo;Scan Prescription&rdquo; now opens the camera straight away &mdash; no more detour through the manual-entry form.</p>
+        <span class="version-badge">v1.1.1 &middot; LIVE</span>
+        <p>Refocused on the essentials &mdash; medication reminders and a vet-ready health summary &mdash; with a fresh App Store look that makes PawLedger easier to find.</p>
         <a href="#whats-new">See what's new &rarr;</a>
     </div>
 
     <section id="whats-new" class="whats-new">
         <div class="whats-new-content">
-            <h2 class="section-title">What's New in v1.0.8</h2>
-            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">A focused fix release that smooths out the prescription-scanning flow.</p>
+            <h2 class="section-title">What's New in v1.1.1</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Refocused on the essentials: medication reminders and a vet-ready health summary.</p>
 
-            <div class="whats-new-grid" style="max-width:560px; margin-left:auto; margin-right:auto;">
+            <div class="whats-new-grid">
                 <div class="whats-new-card">
-                    <div class="card-icon">&#128247;</div>
-                    <h3>Smoother Prescription Scanning <span class="new-badge">FIX</span></h3>
-                    <p>Tapping &ldquo;Scan Prescription&rdquo; now opens the camera scanner directly. Previously it briefly showed the manual-entry form first, which you had to cancel to reach the scanner &mdash; a confusing extra step. Scanning now goes straight to the camera as expected.</p>
+                    <div class="card-icon">&#128138;</div>
+                    <h3>Focused on What Matters <span class="new-badge">NEW</span></h3>
+                    <p>Medication reminders and a vet-ready health summary are now front and center, with a refreshed App Store presence that makes PawLedger easier to find.</p>
+                </div>
+                <div class="whats-new-card">
+                    <div class="card-icon">&#127760;</div>
+                    <h3>Now in 9 Languages <span class="new-badge">NEW</span></h3>
+                    <p>PawLedger is fully localized into English, Chinese (Simplified), Italian, Russian, German, Korean, Portuguese (Brazil), Spanish (Mexico), and Japanese, with locale-aware dates, numbers, and currency throughout.</p>
+                </div>
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128200;</div>
+                    <h3>Real Adherence &amp; Streaks</h3>
+                    <p>The dashboard and medication detail screens now show your true adherence rate, current streak, and doses completed today &mdash; no more placeholder values.</p>
                 </div>
             </div>
         </div>
@@ -943,6 +953,20 @@
 
             <div class="version-list">
                 <div class="version-entry latest">
+                    <div class="version-entry-head">
+                        <span class="version-num">v1.1.1</span>
+                        <span class="version-date">June 2026</span>
+                    </div>
+                    <p>Refocused on the essentials &mdash; medication reminders and a vet-ready health summary &mdash; with a refreshed App Store listing that makes PawLedger easier to find.</p>
+                </div>
+                <div class="version-entry">
+                    <div class="version-entry-head">
+                        <span class="version-num">v1.1.0</span>
+                        <span class="version-date">May 2026</span>
+                    </div>
+                    <p>Full localization into 9 languages with locale-aware formatting, an AI consent gate for the symptom checker, and real adherence, streak, and completed-dose values on the dashboard. Migrated to Swift 6 for stability, fixed the Upgrade buttons on the Symptoms, Expenses, and Documents screens, and made &ldquo;Delete All Data&rdquo; also clear expenses, symptoms, and documents.</p>
+                </div>
+                <div class="version-entry">
                     <div class="version-entry-head">
                         <span class="version-num">v1.0.8</span>
                         <span class="version-date">May 2026</span>
@@ -1132,6 +1156,129 @@
                     <div>
                         <h4>Safety Verification</h4>
                         <p>Review and confirm extracted data before saving with confidence scores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaccination Records -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128137;</div>
+                <div>
+                    <h3>Vaccination Records</h3>
+                    <p>Keep every vaccine in one place</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128203;</div>
+                    <div>
+                        <h4>Vaccine History</h4>
+                        <p>Store all vaccine records with dates given and next-due dates.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128276;</div>
+                    <div>
+                        <h4>Due-Date Reminders</h4>
+                        <p>Get notified before vaccines are due so nothing lapses.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128308;</div>
+                    <div>
+                        <h4>Color-Coded Status</h4>
+                        <p>See status at a glance: green (current), orange (due soon), red (overdue).</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128196;</div>
+                    <div>
+                        <h4>Vet-Ready Summary</h4>
+                        <p>Vaccinations are included in the Visit Prep PDF for every appointment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preventatives -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#128737;</div>
+                <div>
+                    <h3>Preventatives</h3>
+                    <p>Year-round protection, on schedule</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128027;</div>
+                    <div>
+                        <h4>Flea &amp; Tick</h4>
+                        <p>Track flea and tick treatments and when the next dose is due.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#10084;</div>
+                    <div>
+                        <h4>Heartworm</h4>
+                        <p>Keep heartworm prevention on a reliable monthly schedule.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128197;</div>
+                    <div>
+                        <h4>Monthly Reminders</h4>
+                        <p>Monthly reminders keep your pet protected all year round.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128200;</div>
+                    <div>
+                        <h4>Treatment History</h4>
+                        <p>Review a full history of every preventative dose given.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weight Tracking -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">&#9878;</div>
+                <div>
+                    <h3>Weight Tracking</h3>
+                    <p>Spot trends before your vet does</p>
+                </div>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128207;</div>
+                    <div>
+                        <h4>Weight Log</h4>
+                        <p>Record weight over time in your preferred units.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128200;</div>
+                    <div>
+                        <h4>Trend Charts</h4>
+                        <p>Visual charts show whether your pet is gaining, losing, or stable.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128202;</div>
+                    <div>
+                        <h4>Trend Analysis</h4>
+                        <p>See at-a-glance trends so changes never sneak up on you.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-icon">&#128196;</div>
+                    <div>
+                        <h4>Share With Your Vet</h4>
+                        <p>Weight history is included in the Visit Prep summary.</p>
                     </div>
                 </div>
             </div>
@@ -1407,7 +1554,7 @@
                     <ol class="howto-steps">
                         <li>
                             <strong>Download PawLedger</strong>
-                            <p>Download the app from the App Store when it launches.</p>
+                            <p>Download the app free from the App Store.</p>
                         </li>
                         <li>
                             <strong>Complete Onboarding</strong>
@@ -2305,18 +2452,18 @@
             <div class="pricing-cards">
                 <div class="pricing-card">
                     <h3>Monthly</h3>
-                    <div class="price">$3.99</div>
+                    <div class="price">$4.99</div>
                     <div class="period">per month</div>
                 </div>
                 <div class="pricing-card featured">
                     <h3>Yearly</h3>
-                    <div class="price">$29.99</div>
+                    <div class="price">$49.99</div>
                     <div class="period">per year</div>
-                    <div class="note">Save 37% vs monthly</div>
+                    <div class="note">Save 17% vs monthly</div>
                 </div>
                 <div class="pricing-card">
                     <h3>Lifetime</h3>
-                    <div class="price">$79.99</div>
+                    <div class="price">$99.99</div>
                     <div class="period">one-time</div>
                     <div class="note">Pay once, own forever</div>
                 </div>

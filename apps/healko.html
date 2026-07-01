@@ -242,11 +242,12 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Healko</h1>
-                <p class="tagline">Apple Health ↔ Home Assistant</p>
+                <p class="tagline">Apple Health to Home Assistant</p>
                 <p>The privacy-first bridge between Apple Health and your smart home. Push your vitals to your Home Assistant dashboard in under 30 seconds — or pull sensor data the other way. No middleman, no servers, no accounts.</p>
                 <div class="hero-badges">
                     <span class="price-badge">Free + Pro IAPs</span>
                     <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">iOS 17+</span>
+                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">v1.0.3</span>
                 </div>
             </div>
             <div class="hero-image">
@@ -358,6 +359,51 @@
                 <div class="price">$79.99</div>
                 <div class="period">one-time, own forever</div>
                 <p>Everything Pro, no recurring charges. Best for HA users who hate subscriptions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="whats-new" class="pricing">
+        <h2 class="section-title">What's New</h2>
+        <p class="section-subtitle">Current version 1.0.3 — recent updates to Healko</p>
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Version 1.0.3</h3>
+                <div class="faq-answer" style="display: block;">
+                    <ul>
+                        <li>The Health and Local Network permission prompts, and a few status messages, now appear in your language instead of English.</li>
+                        <li>Sync error logs no longer keep any part of a server's raw response, so a health value can never end up in the local sync log.</li>
+                        <li>Stability improvements.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Version 1.0.2</h3>
+                <div class="faq-answer" style="display: block;">
+                    <ul>
+                        <li>Completed localization: the remaining English-only strings (settings, sync log, paywall, Siri/Shortcuts responses, sleep-stage labels) are now translated across all 9 languages.</li>
+                        <li>The sync log no longer grows without bound — entries older than 30 days are pruned on launch.</li>
+                        <li>First-time sync reads only the last 7 days of Apple Health history, preventing a memory spike for users with years of data.</li>
+                        <li>The Home Assistant URL field now rejects non-http(s) input before saving.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Version 1.0.1</h3>
+                <div class="faq-answer" style="display: block;">
+                    <ul>
+                        <li>Added a medical disclaimer in onboarding clarifying that Healko is not a medical device.</li>
+                        <li>Full localization for all 9 supported languages, including every Apple Health metric name, Home Assistant connection error, sync setting, and paywall tier.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faq-category">
+                <h3 class="faq-category-title">Version 1.0</h3>
+                <div class="faq-answer" style="display: block;">
+                    <ul>
+                        <li>Initial release.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

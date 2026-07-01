@@ -478,45 +478,53 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v1.0.1 SUBMITTED</span>
-        <p>Live Activities now actually work on Lock Screen + Dynamic Island, plus reliability and stability improvements throughout.</p>
+        <span class="version-badge">v1.1.0</span>
+        <p>ThermoTimer is now free to download, with a one-time Pro upgrade (no subscription). Plus smoother session progress and more reliable Live Activities.</p>
         <a href="#whats-new">See what's new &rarr;</a>
     </div>
 
     <section id="whats-new" class="whats-new">
         <div class="whats-new-content">
-            <h2 class="section-title">What's New in v1.0.1</h2>
-            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">First post-launch fix release. Focused on the Live Activity feature, error handling, and code hygiene.</p>
+            <h2 class="section-title">What's New in v1.1.0</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">ThermoTimer is now free to download, with a one-time Pro upgrade and reliability polish throughout.</p>
 
             <div class="whats-new-grid">
                 <div class="whats-new-card">
-                    <div class="card-icon">&#128241;</div>
-                    <h3>Live Activities Actually Work <span class="new-badge">USER-VISIBLE</span></h3>
-                    <p>The Lock Screen and Dynamic Island timer display, advertised since launch, was silently broken because the wrong widget was registered. The real Live Activity now shows the active phase, remaining time, and round count on the Lock Screen and Dynamic Island as designed.</p>
+                    <div class="card-icon">&#127881;</div>
+                    <h3>Now Free to Download <span class="new-badge">NEW</span></h3>
+                    <p>ThermoTimer is now free. Everyone who supported the app early has been upgraded to Pro for free, forever &mdash; thank you.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#11088;</div>
+                    <h3>One-Time Pro Upgrade</h3>
+                    <p>Unlock ThermoTimer Pro with a single one-time purchase &mdash; no subscription. Pro adds unlimited custom protocols, full session history and stats, session export, all themes, and Apple Watch.</p>
                 </div>
 
                 <div class="whats-new-card">
                     <div class="card-icon">&#9201;&#65039;</div>
-                    <h3>Smoother Activity Updates</h3>
-                    <p>Resolved a timing race where the Lock Screen activity could show stale data for the first 1–2 seconds of a new session. Updates now appear immediately when the session begins.</p>
+                    <h3>Smoother Session Progress</h3>
+                    <p>Session progress now updates more smoothly, and Live Activities on the Lock Screen and Dynamic Island are more reliable throughout a session.</p>
                 </div>
 
                 <div class="whats-new-card">
-                    <div class="card-icon">&#9203;</div>
-                    <h3>Reliable Session History Saves</h3>
-                    <p>Replaced silent error swallowing in the session-history and settings save paths with explicit error handling. Any future save failure will now surface in logs instead of dropping data quietly.</p>
+                    <div class="card-icon">&#10024;</div>
+                    <h3>Polish Throughout</h3>
+                    <p>A range of small refinements and stability improvements across the app for a more dependable timing experience.</p>
+                </div>
+            </div>
+
+            <div class="whats-new-grid">
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128736;&#65039;</div>
+                    <h3>Earlier: v1.0.2</h3>
+                    <p>Reliability and stability improvements, with additional polish across sessions and Live Activities.</p>
                 </div>
 
                 <div class="whats-new-card">
-                    <div class="card-icon">&#8987;</div>
-                    <h3>Watch Face Negative-Time Fix</h3>
-                    <p>The Apple Watch companion no longer displays nonsensical negative time strings if the sync from iPhone lags slightly past zero. The watch face clamps to 0:00 in that edge case.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#128737;</div>
-                    <h3>Compliance &amp; Hygiene</h3>
-                    <p>Added the App Store privacy manifest, declared the encryption-compliance answer, hardened the paywall navigation flow against iOS 17+ nested-navigation issues, and removed a duplicate Watch source folder that was a latent build-failure risk.</p>
+                    <div class="card-icon">&#128241;</div>
+                    <h3>Earlier: v1.0.1</h3>
+                    <p>Fixed Live Activities on the Lock Screen and Dynamic Island, immediate phase display at session start, an Apple Watch negative-time fix, reliable session-history saves, and the App Store privacy manifest.</p>
                 </div>
             </div>
         </div>
@@ -682,17 +690,18 @@
     </section>
     <section id="faq" class="faq-section">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Cooking timers + meat thermometer</p>
+        <p class="section-subtitle">Sauna &amp; cold plunge timing, answered</p>
         <div class="faq-content">
             <div class="faq-category">
-                <h3 class="faq-category-title">Cooking Tips</h3>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What temperatures are safe?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>USDA-recommended internal temperatures are built in: poultry 165°F, ground meat 160°F, beef/lamb steaks 145°F + 3-min rest, pork 145°F + 3-min rest, fish 145°F. ThermoTimer's preset timers count up to those targets.</p></div></div>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does ThermoTimer connect to a Bluetooth probe?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Not yet. Current version is a manual entry + reference + cooking timer combo. Bluetooth probe support is roadmapped for a Pro update.</p></div></div>
+                <h3 class="faq-category-title">Using ThermoTimer</h3>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What protocols are included?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Six guided protocols are built in: Beginner, Wim Hof Method, Finnish Sauna, Contrast Therapy, Quick Recovery, and Cold Focused. Each moves you through sauna, cold plunge, and rest phases with clear transitions and cues. You can also create custom protocols with your own phases and durations.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Is ThermoTimer free?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes, ThermoTimer is free to download. A single one-time ThermoTimer Pro purchase (no subscription) unlocks unlimited custom protocols, full session history and stats, session export, all themes, and Apple Watch.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does it work offline?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Completely. ThermoTimer is 100% offline with no account, no ads, and no networking &mdash; ideal for remote cabins, spas, and at-home sauna setups.</p></div></div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Troubleshooting</h3>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Timer alarm didn't fire</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Check Settings → Notifications → ThermoTimer → Allow. The alarm uses a local notification scheduled for the timer's end. iOS Focus mode may suppress the visible alert but the sound still plays.</p></div></div>
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Temperature unit toggled to Celsius unexpectedly</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>ThermoTimer follows your iOS region by default. Override per-recipe in the recipe detail view.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>The Live Activity didn't appear on my Lock Screen</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Make sure Live Activities are enabled in Settings → Face ID &amp; Passcode (allow on Lock Screen) and Settings → ThermoTimer. Once a session starts, the Live Activity shows the current phase, remaining time, and round count on the Lock Screen and in the Dynamic Island.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>My Apple Watch app suspends during a session</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>This is almost always Sleep Focus or Theater Mode, which watchOS uses to aggressively suspend apps. Disable Sleep Focus in Watch Control Center (swipe up, tap the bed icon) before your session. ThermoTimer uses an extended runtime session to stay active while the timer runs.</p></div></div>
             </div>
         </div>
     </section>

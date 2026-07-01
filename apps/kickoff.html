@@ -56,7 +56,7 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD",
-            "availability": "https://schema.org/PreOrder"
+            "availability": "https://schema.org/InStock"
           },
           "featureList": [
             "Solo or team weight tracking",
@@ -64,7 +64,8 @@
             "Food and activity logging",
             "Apple Health sync",
             "Coach Share — 7-day text report",
-            "Home-screen widget"
+            "Home-screen widget",
+            "World Cup 2026 fixtures, standings, and bracket with match reminders"
           ]
         },
         {
@@ -409,7 +410,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Kickoff</h1>
-                <p class="tagline">Weight Loss & Fitness</p>
+                <p class="tagline">Solo or team weight tracker</p>
                 <p>A no-fluff weight tracker for people who actually do the work. Solo, or as part of a team. Log weight, food, and activity in seconds. Send a clean 7-day report to your coach in one tap.</p>
                 <div class="hero-badges">
                     <span class="price-badge">Free</span>
@@ -425,8 +426,8 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">LIVE v1.2</span>
-        <p>Match-day Dashboard card, goal scorers and minute, box-score detail view, HealthKit auto-link, and more.</p>
+        <span class="version-badge">LIVE v1.4.2</span>
+        <p>World Cup 2026 tab with fixtures, group standings, and a visual knockout bracket — plus per-match reminders that ping you before kickoff.</p>
         <a href="https://apps.apple.com/app/id6766747051" target="_blank" rel="noopener">Get on App Store &rarr;</a>
     </div>
 
@@ -497,6 +498,11 @@
                 <p>18 unlockable milestones. Streaks, 5%, 10%, full season, and more.</p>
             </div>
             <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>World Cup 2026</h3>
+                <p>Follow the tournament inside Kickoff: fixtures, group standings, and a visual knockout bracket. Tap the bell on any match for a reminder ~15 min before kickoff. Appears during the tournament, retires after the final.</p>
+            </div>
+            <div class="feature-card">
                 <div class="feature-icon">🔒</div>
                 <h3>Your data, your device</h3>
                 <p>No accounts. No ads. No subscriptions. Your data stays in Apple Health where it belongs.</p>
@@ -545,6 +551,60 @@ Sent from Kickoff</div>
         </blockquote>
     </section>
 
+    <section class="modes">
+        <h2 class="section-title">What's New</h2>
+        <div class="mode-grid">
+            <div class="mode-card">
+                <h3>v1.4.2</h3>
+                <p>World Cup match reminders.</p>
+                <ul>
+                    <li>Tap the bell on any upcoming match to follow it</li>
+                    <li>Get notified about 15 minutes before kickoff</li>
+                    <li>Reminders update automatically if kickoff times change</li>
+                </ul>
+            </div>
+            <div class="mode-card">
+                <h3>v1.4.1</h3>
+                <p>A proper visual World Cup bracket.</p>
+                <ul>
+                    <li>Tap a round to jump to it, with connector lines between rounds</li>
+                    <li>Kickoff date and time on every match card</li>
+                    <li>Third-place play-off shown correctly beside the Final</li>
+                    <li>Match dates formatted for every language and region</li>
+                </ul>
+            </div>
+            <div class="mode-card">
+                <h3>v1.4.0</h3>
+                <p>World Cup 2026 tab.</p>
+                <ul>
+                    <li>Today view with next-match countdown and trivia</li>
+                    <li>Group standings and a full knockout bracket</li>
+                    <li>Appears during the tournament, retires after the final</li>
+                </ul>
+            </div>
+            <div class="mode-card">
+                <h3>v1.3.x</h3>
+                <p>Progress and reliability.</p>
+                <ul>
+                    <li>All-Time Journey view, Goal Forecast, and Team Status board</li>
+                    <li>Full localization into all 9 supported languages</li>
+                    <li>League sync merges fixtures without wiping manual match data</li>
+                    <li>Fixed a migration bug that could drop the app into temporary storage</li>
+                </ul>
+            </div>
+            <div class="mode-card">
+                <h3>v1.2</h3>
+                <p>First release as Kickoff (formerly ManVFat Tracker).</p>
+                <ul>
+                    <li>Match-day Dashboard card and box-score detail view</li>
+                    <li>Live Match mode with timer, goal scorers, and cards</li>
+                    <li>HealthKit workout auto-linking and daily food-log reminder</li>
+                    <li>League URL sync with conflict resolution</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section id="faq" class="faq-section">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <p class="section-subtitle">Setup, troubleshooting, and the philosophy behind Kickoff</p>
@@ -569,6 +629,7 @@ Sent from Kickoff</div>
             </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Match Day &amp; Live Mode</h3>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How does the World Cup 2026 tab work?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>During the tournament a World Cup tab appears with a Today view (next-match countdown and trivia), group standings, and a full visual knockout bracket. Tap the bell on any upcoming match to follow it and Kickoff notifies you about 15 minutes before kickoff; reminders update automatically if kickoff times change. The tab retires automatically after the final.</p></div></div>
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What's Live Match Mode?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>v1.2 feature. While playing, tap "Start Live Match" — Kickoff runs a timer, lets you log goal scorers, assists, cards, and own-goals as they happen. When the match ends, the result is auto-saved AND a HKWorkout record is logged to Apple Health (sport: Soccer). Solo mode users can use Live Mode too — goals attributed to "you" automatically.</p></div></div>
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>HealthKit didn't auto-link my workout</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Kickoff's HealthKit auto-discovery looks for Soccer-type workouts (≥20 min, in the last 30 days, not already linked). If your Apple Watch logged the workout but it didn't appear, check: was the workout type set to Soccer? (Other type → no auto-link.) Was it ≥20 min? Did Apple Health write it ≥30 days ago?</p></div></div>
             </div>
