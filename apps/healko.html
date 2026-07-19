@@ -247,7 +247,7 @@
                 <div class="hero-badges">
                     <span class="price-badge">Free + Pro IAPs</span>
                     <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">iOS 17+</span>
-                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">v1.0.3</span>
+                    <span class="price-badge" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--line);">v1.0.4</span>
                 </div>
             </div>
             <div class="hero-image">
@@ -365,8 +365,20 @@
 
     <section id="whats-new" class="pricing">
         <h2 class="section-title">What's New</h2>
-        <p class="section-subtitle">Current version 1.0.3 — recent updates to Healko</p>
+        <p class="section-subtitle">Current version 1.0.4 — recent updates to Healko</p>
         <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">Version 1.0.4</h3>
+                <div class="faq-answer" style="display: block;">
+                    <ul>
+                        <li>Safer Apple Health writes: sensors reporting an invalid or extreme reading (like "nan" or "infinity") are now skipped instead of risking a bad value landing in Apple Health.</li>
+                        <li>The sensor picker now marks already-connected sensors as "Already mapped", so you can't bind the same one twice and create duplicate Health entries.</li>
+                        <li>Now speaks your language: Home Assistant connection errors, sync status messages, Siri/Shortcuts responses, the sync-failure lock-screen notification, and paywall/purchase messages appear in your language instead of English — 38 more strings translated across all 9 languages, with proper plurals (e.g. "1 metric" vs "3 metrics").</li>
+                        <li>Accessibility: VoiceOver now announces exactly which switch you're toggling on the Background-sync and per-metric sync screens.</li>
+                        <li>Privacy: nightly sleep totals (total, deep, and REM minutes) are no longer written to device diagnostic logs in cleartext.</li>
+                    </ul>
+                </div>
+            </div>
             <div class="faq-category">
                 <h3 class="faq-category-title">Version 1.0.3</h3>
                 <div class="faq-answer" style="display: block;">

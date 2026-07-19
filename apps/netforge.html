@@ -269,8 +269,8 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v1.0.7 LIVE</span>
-        <p>New Subnet Scanner (ping-sweep + shareable PDF report), four new home-screen widgets, expanded diagnostic recipes, and reliability improvements.</p>
+        <span class="version-badge">v1.0.9 AVAILABLE</span>
+        <p>Fully localized in all 9 languages — the Pro upgrade screen, every tool's error messages, and 100+ result labels now translate instead of falling back to English. Plus a cleaner run history, a Local Network crash fix, and tighter handling of secrets.</p>
         <a href="https://apps.apple.com/app/id6767094044" target="_blank" rel="noopener">Get on App Store &rarr;</a>
     </div>
 
@@ -278,6 +278,17 @@
         <h2 class="section-title">What's new</h2>
         <p class="section-subtitle">Release history — matches the App Store changelog.</p>
         <div class="tool-categories">
+            <div class="tool-card">
+                <h3>v1.0.9</h3>
+                <ul>
+                    <li>Fully localized in all 9 languages: the Pro upgrade screen, every tool's input-validation and error messages, 100+ result labels (latency / jitter / loss stats, TLS certificate fields, DNS &amp; NTP fields, percentiles), and the Subnet Scanner's name and description now translate instead of falling back to English</li>
+                    <li>Cleaner run history — reference and calculator tools (vendor CLI cheatsheets, RFC / IANA-port lookup, standards reference, MOS Calculator) no longer log a history entry on every keystroke, so history stays reserved for real network operations</li>
+                    <li>Fixed a Local Network snapshot crash (app and widget) when a VPN or tunnel interface reports a null address</li>
+                    <li>Security: the HTTP Request tool and Cisco Type-7 password decoder no longer store credentials or secrets in plain text in run history or PDF exports</li>
+                    <li>Bonjour / mDNS Browser now shows a clear "Local Network Access Off" screen with a direct Settings link when permission is denied, instead of silently returning zero results</li>
+                    <li>Reliability: local data store pinned to not use iCloud sync (with a fallback banner instead of silent data loss), and fixed a concurrency issue when checking multiple certificate expiries at once</li>
+                </ul>
+            </div>
             <div class="tool-card">
                 <h3>v1.0.7</h3>
                 <ul>
@@ -311,7 +322,7 @@
 
     <section id="tools" class="tools">
         <h2 class="section-title">60+ tools, organized</h2>
-        <p class="section-subtitle">Every tool you reach for, in one app. The first 6 are free; Pro unlocks the rest.</p>
+        <p class="section-subtitle">Every tool you reach for, in one app. The first 7 are free; Pro unlocks the rest.</p>
         <div class="tool-categories">
             <div class="tool-card">
                 <h3>DNS &amp; Naming</h3>
@@ -450,7 +461,7 @@
                 <h3>Free</h3>
                 <div class="price">$0</div>
                 <div class="period">forever</div>
-                <p>6 essential tools: DNS, Ping, Public IP, Subnet Calc, TLS Cert, WHOIS. Unlimited runs.</p>
+                <p>7 essential tools: DNS, Ping, Traceroute, Public IP, Subnet Calc, TLS Cert, WHOIS. Unlimited runs.</p>
             </div>
             <div class="price-card highlight">
                 <h3>Pro Lifetime</h3>

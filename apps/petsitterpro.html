@@ -51,6 +51,8 @@
           "operatingSystem": "iOS",
           "url": "https://andyarevalo.com/apps/petsitterpro.html",
           "description": "The all-in-one iOS app for independent pet sitters. Manage clients, track visits with GPS, create invoices, and grow your business.",
+          "softwareVersion": "1.1.2",
+          "dateModified": "2026-07-10",
           "author": { "@id": "https://andyarevalo.com/#andy" },
           "offers": {
             "@type": "Offer",
@@ -748,44 +750,44 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">v1.1.0 AVAILABLE</span>
-        <p>Now fully localized in 9 languages, plus a brand-color stability fix, updated calendar permissions, and reliability improvements throughout.</p>
+        <span class="version-badge">v1.1.2 AVAILABLE</span>
+        <p>Your clients' access codes are now encrypted at rest with AES-256, and Face ID / passcode lock protects the entire app the moment it opens.</p>
         <a href="#whats-new">See what's new &rarr;</a>
     </div>
 
     <section id="whats-new" class="whats-new">
         <div class="whats-new-content">
-            <h2 class="section-title">What's New in v1.1.0</h2>
-            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">Now speaking your language, with stability and reliability polish throughout.</p>
+            <h2 class="section-title">What's New in v1.1.2</h2>
+            <p style="text-align:center; color: var(--text-secondary); font-size: 16px;">A security-first update that hardens how your clients' most sensitive information is stored and protected.</p>
 
             <div class="whats-new-grid">
                 <div class="whats-new-card">
+                    <div class="card-icon">&#128272;</div>
+                    <h3>Encrypted Access Codes <span class="new-badge">NEW</span></h3>
+                    <p>Lockbox, alarm, garage, gate, and door codes are now encrypted at rest with AES-256 (GCM), with the key held securely in your device Keychain. Existing codes upgrade to encrypted automatically. If a code can't be decrypted after restoring to a new device, the app clearly flags it and prompts you to re-enter it instead of silently showing nothing.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128274;</div>
+                    <h3>Whole-App Lock <span class="new-badge">NEW</span></h3>
+                    <p>Face ID, Touch ID, or your passcode now protects the entire app the moment it launches — not just the Clients tab. Access codes shown on the Active Visit, Add Visit, and Schedule screens are covered too, and VoiceOver can no longer read the blurred content behind the lock screen.</p>
+                </div>
+
+                <div class="whats-new-card">
+                    <div class="card-icon">&#128179;</div>
+                    <h3>Stronger Trial Protection</h3>
+                    <p>Free-trial state now lives in the secure Keychain, so reinstalling the app or restoring from a backup can no longer reset an expired trial.</p>
+                </div>
+
+                <div class="whats-new-card">
                     <div class="card-icon">&#127760;</div>
-                    <h3>9 Languages <span class="new-badge">NEW</span></h3>
-                    <p>PetSitterPro is now fully localized in English, Chinese (Simplified), Italian, Russian, German, Korean, Portuguese, Spanish, and Japanese — built from a fresh 575-string translation catalog.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#127912;</div>
-                    <h3>Brand Color Stability Fix</h3>
-                    <p>Fixed a crash that could occur when a business profile used a grayscale brand color (white, black, or gray). Color parsing now handles these cleanly.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#128197;</div>
-                    <h3>Updated Calendar Permissions</h3>
-                    <p>Refined how the calendar permission prompt is presented so device-calendar sync connects reliably on iOS 17 and later.</p>
-                </div>
-
-                <div class="whats-new-card">
-                    <div class="card-icon">&#9889;</div>
-                    <h3>Reliability Improvements</h3>
-                    <p>Behind-the-scenes stability work across the app for a smoother, more dependable day-to-day experience.</p>
+                    <h3>Fuller Language Coverage</h3>
+                    <p>Reminder notifications and onboarding are now fully localized across all 9 supported languages, rounding out the remaining screens.</p>
                 </div>
             </div>
 
             <p style="text-align:center; color: var(--text-secondary); font-size: 14px; margin-top: 28px;">
-                <strong>Previously in v1.0.4:</strong> 2025 IRS mileage rate ($0.70/mile), locale-aware currency symbols, stronger Keychain-backed biometric lock, a cleaner upgrade screen, and smoother scrolling on the Expenses and Mileage lists.
+                <strong>Previously in v1.1.0:</strong> full localization in 9 languages built from a fresh translation catalog, a brand-color stability fix for grayscale profile colors, refined calendar permissions for reliable device-calendar sync, and reliability improvements throughout.
             </p>
         </div>
     </section>
