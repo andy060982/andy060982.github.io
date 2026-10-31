@@ -123,8 +123,7 @@
         .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; box-shadow: 0 10px 30px rgba(62,142,222,.35); }
         .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--line); }
         .hero-image { display: flex; justify-content: center; }
-        .app-mark { width: 260px; height: 260px; border-radius: 52px; background: linear-gradient(135deg, #14233c, #0b1324); border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(0,0,0,0.45); display: grid; place-items: center; }
-        .app-mark svg { width: 150px; height: 150px; }
+        .app-mark { width: 260px; height: 260px; filter: drop-shadow(0 22px 55px rgba(0,0,0,0.5)); }
 
         .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 14px; }
         .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
@@ -237,18 +236,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="app-mark" role="img" aria-label="Hawser app mark">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0" stop-color="#67d0e0"/>
-                                <stop offset="1" stop-color="#3e8ede"/>
-                            </linearGradient>
-                        </defs>
-                        <polyline points="26,34 44,50 26,66" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line x1="52" y1="68" x2="74" y2="68" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
-                    </svg>
-                </div>
+                <img class="app-mark" src="../images/hawser.png" alt="Hawser app icon" width="260" height="260">
             </div>
         </div>
     </section>
