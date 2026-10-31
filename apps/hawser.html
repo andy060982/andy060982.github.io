@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawser — SSH &amp; SFTP client | Andy Arevalo</title>
+    <meta name="description" content="Hawser is a fast, small, open-source SSH and SFTP desktop client for Windows, Linux, and macOS. Terminal, file transfer, tunnels, a tamper-evident audit log, searchable history, and config-change detection. Tauri + Rust. Free and open source.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andyarevalo.com/apps/hawser.html">
+    <meta property="og:title" content="Hawser — SSH &amp; SFTP client">
+    <meta property="og:description" content="A fast, small, open-source SSH and SFTP desktop client for Windows, Linux, and macOS. Tauri + Rust, pure-Rust SSH. Free and open source.">
+    <meta property="og:image" content="https://andyarevalo.com/images/hawser.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andyarevalo.com/apps/hawser.html">
+    <meta name="twitter:title" content="Hawser — SSH &amp; SFTP client">
+    <meta name="twitter:description" content="A fast, small, open-source SSH and SFTP desktop client for Windows, Linux, and macOS. Tauri + Rust, pure-Rust SSH. Free and open source.">
+    <meta name="twitter:image" content="https://andyarevalo.com/images/hawser.png">
+
+    <link rel="canonical" href="https://andyarevalo.com/apps/hawser.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://andyarevalo.com/apps/hawser.html#app",
+          "name": "Hawser",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Windows, Linux, macOS",
+          "url": "https://andyarevalo.com/apps/hawser.html",
+          "downloadUrl": "https://github.com/andy060982/hawser/releases",
+          "softwareVersion": "0.5.0-beta",
+          "license": "https://opensource.org/licenses/MIT",
+          "description": "A fast, small, open-source SSH and SFTP desktop client for Windows, Linux, and macOS. Terminal, file transfer, tunnels, a tamper-evident audit log, searchable history, and config-change detection. Tauri + Rust.",
+          "author": { "@id": "https://andyarevalo.com/#andy" },
+          "offers": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free and open source (MIT)" }
+          ],
+          "featureList": [
+            "SSH terminal with saved hosts",
+            "SFTP file browser and transfers",
+            "Port forwarding / tunnels",
+            "In-app Ed25519 key generation and copy-id",
+            "Credentials stored in the OS keychain",
+            "Tamper-evident, hash-chained audit log",
+            "Searchable session history",
+            "Config-change detection since your last visit",
+            "Advisor-only AI panel (bring your own key)",
+            "Pure-Rust SSH stack (russh), no OpenSSL/libssh2",
+            "Windows, Linux, macOS"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://andyarevalo.com" },
+            { "@type": "ListItem", "position": 2, "name": "Hawser", "item": "https://andyarevalo.com/apps/hawser.html" }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0a0f1a;
+            --bg-secondary: #0e1524;
+            --text: #e8edf7;
+            --text-secondary: #b3bdd2;
+            --line: rgba(255,255,255,.12);
+            --accent: #3e8ede;
+            --accent2: #67d0e0;
+            --warn: #f2b25c;
+            --card-bg: rgba(14,21,36,.72);
+        }
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f4f6fb;
+            --text: #1d1d1f;
+            --text-secondary: #565b66;
+            --line: rgba(0,0,0,.12);
+            --accent: #1f6fc0;
+            --accent2: #2092ad;
+            --warn: #b9791f;
+            --card-bg: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+        body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(1200px 800px at 15% 10%, rgba(62,142,222,.18), transparent 55%), radial-gradient(900px 700px at 80% 25%, rgba(103,208,224,.14), transparent 55%); pointer-events: none; z-index: -1; }
+        [data-theme="light"] body::before { background: none; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav { position: fixed; top: 0; left: 0; right: 0; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(14,21,36,.55); border-bottom: 1px solid var(--line); z-index: 1000; }
+        [data-theme="light"] nav { background: rgba(255,255,255,0.8); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: .2px; color: var(--text); text-decoration: none; }
+        .brand:hover { text-decoration: none; opacity: 0.8; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 0 20px rgba(62,142,222,.35); }
+        .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 18px; padding: 5px; color: var(--text-secondary); }
+        .theme-toggle:hover { color: var(--text); }
+
+        .hero { padding: 100px 20px 60px; background: var(--bg-secondary); }
+        .hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-text h1 { font-size: 46px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .hero-text .tagline { font-size: 23px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.7; }
+        .hero-badges { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 28px; }
+        .price-badge { background: var(--accent); color: white; padding: 10px 18px; border-radius: 25px; font-size: 14px; font-weight: 600; }
+        .price-badge.ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--line); }
+        .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+        .btn:hover { text-decoration: none; transform: translateY(-1px); }
+        .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; box-shadow: 0 10px 30px rgba(62,142,222,.35); }
+        .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--line); }
+        .hero-image { display: flex; justify-content: center; }
+        .app-mark { width: 260px; height: 260px; border-radius: 52px; background: linear-gradient(135deg, #14233c, #0b1324); border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(0,0,0,0.45); display: grid; place-items: center; }
+        .app-mark svg { width: 150px; height: 150px; }
+
+        .section-title { font-size: 32px; font-weight: 600; text-align: center; margin-bottom: 14px; }
+        .section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; font-size: 17px; }
+
+        .version-banner { max-width: 1000px; margin: 20px auto; padding: 16px 24px; background: linear-gradient(135deg, rgba(62,142,222,.12), rgba(103,208,224,.12)); border: 1px solid var(--accent2); border-radius: 12px; display: flex; align-items: center; gap: 16px; }
+        [data-theme="light"] .version-banner { background: linear-gradient(135deg, rgba(31,111,192,.08), rgba(32,146,173,.08)); }
+        .version-badge { background: linear-gradient(135deg, var(--accent2), var(--accent)); color: white; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; white-space: nowrap; letter-spacing: .3px; }
+        .version-banner p { margin: 0; font-size: 15px; }
+        .version-banner a { margin-left: auto; white-space: nowrap; font-weight: 600; font-size: 14px; }
+
+        .tools { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .tool-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .tool-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .tool-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .tool-card h3 { color: var(--accent); margin-bottom: 12px; font-size: 18px; }
+        .tool-card ul { list-style: none; padding: 0; }
+        .tool-card li { padding: 4px 0; padding-left: 18px; position: relative; color: var(--text-secondary); font-size: 14px; }
+        .tool-card li::before { content: '\203A'; position: absolute; left: 0; color: var(--accent2); font-weight: bold; }
+
+        .features { padding: 80px 20px; background: var(--bg-secondary); }
+        .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 30px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .feature-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .feature-icon { font-size: 34px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-secondary); font-size: 15px; }
+
+        .install { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
+        .install-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .install-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 16px; padding: 26px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+        [data-theme="light"] .install-card { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+        .install-card .os-icon { font-size: 34px; margin-bottom: 12px; }
+        .install-card h3 { font-size: 18px; margin-bottom: 6px; }
+        .install-card p { color: var(--text-secondary); font-size: 14px; margin-bottom: 4px; }
+        .install-note { max-width: 900px; margin: 24px auto 0; text-align: center; color: var(--text-secondary); font-size: 13.5px; }
+
+        .faq-section { padding: 80px 20px; background: var(--bg-secondary); }
+        .faq-content { max-width: 900px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; width: 100%; background: none; border: none; text-align: left; color: var(--text); }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        [data-theme="light"] .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question h4 { font-size: 16px; font-weight: 500; padding-right: 20px; }
+        .faq-toggle { font-size: 18px; color: var(--text-secondary); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 16px; display: none; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer code { background: rgba(62,142,222,0.18); padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+
+        .cta { padding: 80px 20px; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { color: var(--text-secondary); font-size: 18px; margin-bottom: 30px; }
+
+        footer { background: var(--bg); padding: 30px 18px; text-align: center; border-top: 1px solid var(--line); }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px 40px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 34px; }
+            .hero-badges, .cta-row { justify-content: center; }
+            .app-mark { width: 190px; height: 190px; border-radius: 40px; }
+            .app-mark svg { width: 110px; height: 110px; }
+            .install-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 10px; font-size: 13px; }
+            .version-banner { flex-direction: column; text-align: center; gap: 10px; }
+            .version-banner a { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Andy Arevalo</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#apps">Apps</a>
+                <a href="#features">Features</a>
+                <a href="#capabilities">Capabilities</a>
+                <a href="#install">Download</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">GitHub</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span id="theme-icon">&#9728;</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hawser</h1>
+                <p class="tagline">The secure line to your servers</p>
+                <p>A fast, small, open-source SSH &amp; SFTP client for the desktop. Terminal, file transfer, and tunnels in one window — plus a tamper-evident audit log, searchable history, and a heads-up when a host's config changes since you last connected. Your credentials stay in your OS keychain; nothing phones home.</p>
+                <div class="hero-badges">
+                    <span class="price-badge">Free &amp; open source</span>
+                    <span class="price-badge ghost">Windows &middot; Linux &middot; macOS</span>
+                    <span class="price-badge ghost">Tauri + Rust</span>
+                </div>
+                <div class="cta-row">
+                    <a class="btn btn-primary" href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Download beta &#8594;</a>
+                    <a class="btn btn-secondary" href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">View source on GitHub</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="app-mark" role="img" aria-label="Hawser app mark">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#67d0e0"/>
+                                <stop offset="1" stop-color="#3e8ede"/>
+                            </linearGradient>
+                        </defs>
+                        <polyline points="26,34 44,50 26,66" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="52" y1="68" x2="74" y2="68" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="version-banner">
+        <span class="version-badge">PUBLIC BETA</span>
+        <p>Hawser is in open beta. Windows and Linux builds are on GitHub Releases; the source is MIT-licensed and fully auditable. A signed macOS build is on the way.</p>
+        <a href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Get the latest build &rarr;</a>
+    </div>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Why Hawser</h2>
+        <p class="section-subtitle">Built for people who connect to real servers and want to trust the tool doing it.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#128273;</div>
+                <h3>Your keys stay yours</h3>
+                <p>Passwords and passphrases live in the native OS keychain — macOS Keychain, Windows Credential Manager, or the Linux Secret Service. Never in a plaintext config file.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#129534;</div>
+                <h3>Tamper-evident audit log</h3>
+                <p>Every connect, transfer, key install, and credential change is appended to a hash-chained log whose head is sealed in your keychain. One click verifies the chain — or shows exactly where it was altered.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128269;</div>
+                <h3>Searchable history</h3>
+                <p>Find that command or output from three weeks ago on any host. Session history is recorded locally and searchable in-app — no more scrolling a dead terminal buffer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128225;</div>
+                <h3>Know what changed</h3>
+                <p>Opt in per host, and Hawser snapshots the config it reads on connect — then flags, with a diff, anything that changed since your last visit. Catch drift before it bites.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#129520;</div>
+                <h3>Pure-Rust SSH</h3>
+                <p>The SSH stack is <code>russh</code> — no system OpenSSL or libssh2 to patch, no vcpkg, no C toolchain surprises. Small binary, reproducible builds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128161;</div>
+                <h3>Advisor-only AI</h3>
+                <p>An optional AI panel suggests commands and explains output using your own API key. It never runs anything on its own — you stay in the loop for every keystroke that touches a server.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities" class="tools">
+        <h2 class="section-title">Everything in one window</h2>
+        <p class="section-subtitle">A terminal, a file manager, and a key manager that share state.</p>
+        <div class="tool-categories">
+            <div class="tool-card">
+                <h3>Terminal</h3>
+                <ul>
+                    <li>Interactive SSH sessions</li>
+                    <li>Saved hosts with one-click connect</li>
+                    <li>Run &amp; capture command output</li>
+                    <li>known_hosts verification</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>SFTP</h3>
+                <ul>
+                    <li>Browse remote files</li>
+                    <li>Upload &amp; download with progress</li>
+                    <li>Rename, delete, make directories</li>
+                    <li>Owner-only permissions on writes</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Keys &amp; access</h3>
+                <ul>
+                    <li>Generate Ed25519 keys in-app</li>
+                    <li>Install a public key on a host (copy-id)</li>
+                    <li>Credentials in the OS keychain</li>
+                    <li>Export / import your host list</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Tunnels</h3>
+                <ul>
+                    <li>Port forwarding</li>
+                    <li>Reach services behind a jump box</li>
+                    <li>Per-host configuration</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>Trust &amp; history</h3>
+                <ul>
+                    <li>Hash-chained audit log + verify</li>
+                    <li>Searchable session history</li>
+                    <li>Config-change detection with diff</li>
+                </ul>
+            </div>
+            <div class="tool-card">
+                <h3>AI advisor (optional)</h3>
+                <ul>
+                    <li>Bring your own API key</li>
+                    <li>Suggests &amp; explains, never auto-runs</li>
+                    <li>Key stored in the keychain</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="install" class="install">
+        <h2 class="section-title">Download</h2>
+        <p class="section-subtitle">Free, open source, and distributed straight from GitHub.</p>
+        <div class="install-grid">
+            <div class="install-card">
+                <div class="os-icon">&#129001;</div>
+                <h3>Windows</h3>
+                <p>Installer + portable</p>
+                <p><a href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Latest release &rarr;</a></p>
+            </div>
+            <div class="install-card">
+                <div class="os-icon">&#128039;</div>
+                <h3>Linux</h3>
+                <p>AppImage + .deb</p>
+                <p><a href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Latest release &rarr;</a></p>
+            </div>
+            <div class="install-card">
+                <div class="os-icon">&#127822;</div>
+                <h3>macOS</h3>
+                <p>Signed build coming soon</p>
+                <p><a href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">Watch the repo &rarr;</a></p>
+            </div>
+        </div>
+        <p class="install-note">This is a public beta. Builds are not yet notarized on every platform, so your OS may warn on first launch — the full source is on GitHub if you'd rather build it yourself.</p>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">What Hawser is, where your data lives, and how to trust it</p>
+
+        <div class="faq-content">
+            <div class="faq-category">
+                <h3 class="faq-category-title">General</h3>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What is Hawser?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>A desktop SSH and SFTP client: a terminal, a remote file browser, key management, and tunnels in one window. It adds a few things most clients don't — a tamper-evident audit log, searchable session history, and a diff of what changed on a host since you last connected.</p></div></div>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Is it a terminal emulator?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Not quite — it's an SSH connection manager with a terminal built in. The point is managing many hosts, transfers, and keys with trust and history, rather than being a drop-in replacement for your local shell terminal.</p></div></div>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What does it cost?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Nothing. Hawser is free and open source under the MIT license. No account, no subscription, no paid tier.</p></div></div>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Which platforms?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Windows and Linux builds are available now on GitHub Releases. A signed macOS build is in progress. It's built with Tauri + Rust, so the binary is small and the same code runs across all three.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">Security &amp; trust</h3>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Where are my passwords and keys stored?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>In your operating system's native secret store: the macOS Keychain, the Windows Credential Manager, or the Linux Secret Service. Hawser never writes passwords or passphrases to a plaintext config file.</p></div></div>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What makes the audit log "tamper-evident"?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Each entry is hashed together with the previous entry's hash, forming a chain — change or remove any entry and every entry after it stops verifying. The chain's head is sealed into your OS keychain as an external anchor, so even deleting or rewriting the whole file is detectable. It records metadata only (host, user, path, byte counts) — never passwords or command output. It's tamper-<em>evident</em>, not tamper-<em>proof</em>: someone with access to both the file and your unlocked keychain could still forge it, and the docs say so plainly.</p></div></div>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does Hawser phone home?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>No telemetry, no analytics, no tracking. The only network connections it makes are the SSH/SFTP sessions you start — and, if you turn on the AI panel, calls to the AI provider whose key you supplied. Everything else stays on your machine.</p></div></div>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What does the AI panel actually do?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>It's advisor-only. With your own API key, it can suggest commands and explain output, but it never executes anything itself — you review and run every command. The key is stored in the keychain alongside your other secrets, never logged.</p></div></div>
+            </div>
+
+            <div class="faq-category">
+                <h3 class="faq-category-title">The source</h3>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I read or build the code myself?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes — it's all on <a href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">GitHub</a>, MIT-licensed. The SSH layer uses the pure-Rust <code>russh</code> crate, so there's no system OpenSSL or libssh2 to install and the build is reproducible.</p></div></div>
+
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How do I report a bug or request a feature?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Open an issue on the GitHub repo. Because it's early beta, that feedback shapes what ships next.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Connect with confidence.</h2>
+        <p>Free, open source, and on GitHub now. Windows &amp; Linux today, macOS soon.</p>
+        <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Download beta &#8594;</a>
+            <a class="btn btn-secondary" href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">View source</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#apps">Apps</a>
+            <a href="../about.html">About</a>
+            <a href="../support.html">Support</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+            <a href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p class="copyright">&copy; <span id="y"></span> Andy Arevalo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            const isOpen = item.classList.toggle('open');
+            element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+            document.getElementById('y').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

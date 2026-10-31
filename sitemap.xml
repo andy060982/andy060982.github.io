@@ -2509,4 +2509,10 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://andyarevalo.com/apps/es-MX/twin-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://andyarevalo.com/apps/ja/twin-calculator.html"/>
   </url>
+  <url>
+    <loc>https://andyarevalo.com/apps/hawser.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
