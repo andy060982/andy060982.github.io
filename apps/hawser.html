@@ -35,8 +35,8 @@
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "Windows, Linux, macOS",
           "url": "https://andyarevalo.com/apps/hawser.html",
-          "downloadUrl": "https://github.com/andy060982/hawser/releases",
-          "softwareVersion": "0.5.0-beta",
+          "downloadUrl": "https://github.com/andy060982/hawser/releases/latest",
+          "softwareVersion": "0.6.0",
           "license": "https://opensource.org/licenses/MIT",
           "description": "A fast, small, open-source SSH and SFTP desktop client for Windows, Linux, and macOS. Terminal, file transfer, tunnels, a tamper-evident audit log, searchable history, and config-change detection. Tauri + Rust.",
           "author": { "@id": "https://andyarevalo.com/#andy" },
@@ -231,7 +231,7 @@
                     <span class="price-badge ghost">Tauri + Rust</span>
                 </div>
                 <div class="cta-row">
-                    <a class="btn btn-primary" href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Download beta &#8594;</a>
+                    <a class="btn btn-primary" href="https://github.com/andy060982/hawser/releases/latest" target="_blank" rel="noopener">Download &#8594;</a>
                     <a class="btn btn-secondary" href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">View source on GitHub</a>
                 </div>
             </div>
@@ -242,9 +242,9 @@
     </section>
 
     <div class="version-banner">
-        <span class="version-badge">PUBLIC BETA</span>
-        <p>Hawser is in open beta. Windows and Linux builds are on GitHub Releases; the source is MIT-licensed and fully auditable. A signed macOS build is on the way.</p>
-        <a href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Get the latest build &rarr;</a>
+        <span class="version-badge">NEW IN 0.6.0</span>
+        <p>Signed auto-updates, one-click import from <code>~/.ssh/config</code> and PuTTY, and editing remote files in your own editor &mdash; plus about 150 fixes from a full security and reliability audit.</p>
+        <a href="https://github.com/andy060982/hawser/releases/latest" target="_blank" rel="noopener">Get 0.6.0 &rarr;</a>
     </div>
 
     <section id="features" class="features">
@@ -304,6 +304,7 @@
                     <li>Upload &amp; download with progress</li>
                     <li>Rename, delete, make directories</li>
                     <li>Owner-only permissions on writes</li>
+                    <li>Edit a remote file in your own editor</li>
                 </ul>
             </div>
             <div class="tool-card">
@@ -313,6 +314,7 @@
                     <li>Install a public key on a host (copy-id)</li>
                     <li>Credentials in the OS keychain</li>
                     <li>Export / import your host list</li>
+                    <li>Import hosts from <code>~/.ssh/config</code> &amp; PuTTY</li>
                 </ul>
             </div>
             <div class="tool-card">
@@ -329,6 +331,7 @@
                     <li>Hash-chained audit log + verify</li>
                     <li>Searchable session history</li>
                     <li>Config-change detection with diff</li>
+                    <li>Signed, verified auto-updates</li>
                 </ul>
             </div>
             <div class="tool-card">
@@ -350,13 +353,13 @@
                 <div class="os-icon">&#129001;</div>
                 <h3>Windows</h3>
                 <p>Installer + portable</p>
-                <p><a href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Latest release &rarr;</a></p>
+                <p><a href="https://github.com/andy060982/hawser/releases/latest" target="_blank" rel="noopener">Latest release &rarr;</a></p>
             </div>
             <div class="install-card">
                 <div class="os-icon">&#128039;</div>
                 <h3>Linux</h3>
                 <p>AppImage + .deb</p>
-                <p><a href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Latest release &rarr;</a></p>
+                <p><a href="https://github.com/andy060982/hawser/releases/latest" target="_blank" rel="noopener">Latest release &rarr;</a></p>
             </div>
             <div class="install-card">
                 <div class="os-icon">&#127822;</div>
@@ -365,7 +368,7 @@
                 <p><a href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">Watch the repo &rarr;</a></p>
             </div>
         </div>
-        <p class="install-note">This is a public beta. Builds are not yet notarized on every platform, so your OS may warn on first launch — the full source is on GitHub if you'd rather build it yourself.</p>
+        <p class="install-note">Installed copies update themselves: every update is verified against Hawser's signing key, and nothing installs until you click &ldquo;Install and restart&rdquo;. Windows builds aren't code-signed yet, so SmartScreen may warn on first launch &mdash; the full source is on GitHub if you'd rather build it yourself.</p>
     </section>
 
     <section id="faq" class="faq-section">
@@ -392,7 +395,7 @@
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What makes the audit log "tamper-evident"?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Each entry is hashed together with the previous entry's hash, forming a chain — change or remove any entry and every entry after it stops verifying. The chain's head is sealed into your OS keychain as an external anchor, so even deleting or rewriting the whole file is detectable. It records metadata only (host, user, path, byte counts) — never passwords or command output. It's tamper-<em>evident</em>, not tamper-<em>proof</em>: someone with access to both the file and your unlocked keychain could still forge it, and the docs say so plainly.</p></div></div>
 
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does Hawser phone home?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>No telemetry, no analytics, no tracking. The only network connections it makes are the SSH/SFTP sessions you start — and, if you turn on the AI panel, calls to the AI provider whose key you supplied. Everything else stays on your machine.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Does Hawser phone home?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>No telemetry, no analytics, no tracking. The only network connections it makes are the SSH/SFTP sessions you start, an update check against GitHub Releases (at most once a day; turn it off in Settings &rarr; Updates), and, if you turn on the AI panel, calls to the AI provider whose key you supplied. Everything else stays on your machine.</p></div></div>
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>What does the AI panel actually do?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>It's advisor-only. With your own API key, it can suggest commands and explain output, but it never executes anything itself — you review and run every command. The key is stored in the keychain alongside your other secrets, never logged.</p></div></div>
             </div>
@@ -402,7 +405,7 @@
 
                 <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>Can I read or build the code myself?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Yes — it's all on <a href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">GitHub</a>, MIT-licensed. The SSH layer uses the pure-Rust <code>russh</code> crate, so there's no system OpenSSL or libssh2 to install and the build is reproducible.</p></div></div>
 
-                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How do I report a bug or request a feature?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Open an issue on the GitHub repo. Because it's early beta, that feedback shapes what ships next.</p></div></div>
+                <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)"><h4>How do I report a bug or request a feature?</h4><span class="faq-toggle">+</span></button><div class="faq-answer"><p>Open an issue on the GitHub repo. That feedback shapes what ships next.</p></div></div>
             </div>
         </div>
     </section>
@@ -411,7 +414,7 @@
         <h2>Connect with confidence.</h2>
         <p>Free, open source, and on GitHub now. Windows &amp; Linux today, macOS soon.</p>
         <div class="cta-row" style="justify-content:center;">
-            <a class="btn btn-primary" href="https://github.com/andy060982/hawser/releases" target="_blank" rel="noopener">Download beta &#8594;</a>
+            <a class="btn btn-primary" href="https://github.com/andy060982/hawser/releases/latest" target="_blank" rel="noopener">Download &#8594;</a>
             <a class="btn btn-secondary" href="https://github.com/andy060982/hawser" target="_blank" rel="noopener">View source</a>
         </div>
     </section>
